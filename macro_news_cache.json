@@ -1,6 +1,62 @@
 {
   "Politik/Makro": [
     {
+      "ticker": "TSLA",
+      "title": "Tesla Gains as Semi Opens a $17 Billion Software Door",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/tesla-gains-semi-opens-17-211218178.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1789161138.0
+    },
+    {
+      "ticker": "DELL",
+      "title": "Update: Wall Street Rises at End of Losing Week Amid Inflation Worries",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/wall-street-rises-end-losing-205314084.html",
+      "publisher": "MT Newswires",
+      "ts": 1789159994.0
+    },
+    {
+      "ticker": "MRNA",
+      "title": "Dow Jones Futures: $100 Oil, Surging Yields Pressure Stocks With Fed Rate Hike Seen. Apple Leads New Buys.",
+      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-100-oil-surging-yields-pressure-stocks-with-fed-rate-hike-seen-apple-leads-new-buys/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789159162.0
+    },
+    {
+      "ticker": "TSLA",
+      "title": "Jason Calacanis Warns Chinese EVs Could End US Auto Industry: ‘Consumers Will Love to Buy These Cars’",
+      "link": "https://finance.yahoo.com/economy/policy/articles/jason-calacanis-warns-chinese-evs-203055040.html",
+      "publisher": "Benzinga",
+      "ts": 1789158655.0
+    },
+    {
+      "ticker": "DELL",
+      "title": "S&P 500 ends higher as strong inflation data cements rate-hike bets",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/wall-st-futures-recover-oil-095547409.html",
+      "publisher": "Reuters",
+      "ts": 1789157845.0
+    },
+    {
+      "ticker": "^GSPC",
+      "title": "Why the S&P 500 is 'like a duck' amid risks of rising interest rates",
+      "link": "https://finance.yahoo.com/video/why-p-500-duck-amid-195113865.html",
+      "publisher": "Yahoo Finance Video",
+      "ts": 1789156273.0
+    },
+    {
+      "ticker": "CRM",
+      "title": "Adobe vs. Salesforce: Which Software Stock Is a Better Buy in 2026?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/adobe-vs-salesforce-software-stock-193412882.html",
+      "publisher": "Motley Fool",
+      "ts": 1789155252.0
+    },
+    {
+      "ticker": "CRM",
+      "title": "Is Salesforce Stock Cheap Because Software Is Dying?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/salesforce-stock-cheap-because-software-190406517.html",
+      "publisher": "Trefis",
+      "ts": 1789153446.0
+    },
+    {
       "ticker": "AMZN",
       "title": "Weekly Wrap: Rate Hike Expectations Pressure Crypto",
       "link": "https://finance.yahoo.com/markets/crypto/articles/weekly-wrap-rate-hike-expectations-184400665.html",
@@ -83,65 +139,86 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/3-p-500-stocks-warning-170705317.html",
       "publisher": "StockStory",
       "ts": 1789146425.0
-    },
-    {
-      "ticker": "ORCL",
-      "title": "Stock Market Midday, Sept. 11: Stocks Rise as Falling Oil Prices Outweigh Sticky Inflation",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/stock-market-midday-sept-11-165319326.html",
-      "publisher": "Motley Fool",
-      "ts": 1789145599.0
-    },
-    {
-      "ticker": "SPCX",
-      "title": "Ted Cruz Warns ‘Whole World Is in Trouble’ if China Leads AI, Says ‘We Need Guardrails’",
-      "link": "https://www.yahoo.com/news/politics/articles/ted-cruz-warns-whole-world-163008984.html",
-      "publisher": "Benzinga",
-      "ts": 1789144208.0
-    },
-    {
-      "ticker": "ORCL",
-      "title": "Wall St bounces as oil cools, inflation risks keeps Fed in focus",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/wall-st-futures-recover-oil-095547409.html",
-      "publisher": "Reuters",
-      "ts": 1789144187.0
-    },
-    {
-      "ticker": "HPE",
-      "title": "Is Ciena a Buy as 30% Growth Meets Its Premium Forward Valuation?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/ciena-buy-30-growth-meets-160600027.html",
-      "publisher": "Zacks",
-      "ts": 1789142760.0
-    },
-    {
-      "ticker": "AMD",
-      "title": "AMD, BE, CRWV In Focus: Situational Awareness Has Been Reportedly Buying Options Tied To These Stocks",
-      "link": "https://finance.yahoo.com/markets/options/articles/amd-crwv-focus-situational-awareness-154811955.html",
-      "publisher": "Stocktwits",
-      "ts": 1789141691.0
-    },
-    {
-      "ticker": "FTNT",
-      "title": "Would You Be Glad To Own Synopsys At A Discount While AI Tests Its Software?",
-      "link": "https://finance.yahoo.com/markets/options/articles/glad-own-synopsys-discount-while-154512552.html",
-      "publisher": "Trefis",
-      "ts": 1789141512.0
-    },
-    {
-      "ticker": "TSM",
-      "title": "Fed Rate Hike Close To A Lock; Clarity Act Vote Looms: Week Ahead",
-      "link": "https://www.investors.com/research/investing-action-plan/federal-reserve-rate-hike-close-to-clarity-act-vote-salesforce-dreamforce/?src=A00220&yptr=yahoo",
-      "publisher": "Investor's Business Daily",
-      "ts": 1789141194.0
-    },
-    {
-      "ticker": "TSLA",
-      "title": "Elon Musk Says Anthropic’s 15% US GDP Growth Scenario Will 'Certainly Be True’ Once Humanoid Robots Reach Volume Production",
-      "link": "https://finance.yahoo.com/economy/articles/elon-musk-says-anthropic-15-153025268.html",
-      "publisher": "Benzinga",
-      "ts": 1789140625.0
     }
   ],
   "Wirtschaft": [
+    {
+      "ticker": "^IXIC",
+      "title": "Super Group (SGHC) Limited (SGHC) Outpaces Stock Market Gains: What You Should Know",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/super-group-sghc-limited-sghc-215004412.html",
+      "publisher": "Zacks",
+      "ts": 1789163404.0
+    },
+    {
+      "ticker": "^IXIC",
+      "title": "RCM Technologies, Inc. (RCMT) Laps the Stock Market: Here's Why",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/rcm-technologies-inc-rcmt-laps-215003837.html",
+      "publisher": "Zacks",
+      "ts": 1789163403.0
+    },
+    {
+      "ticker": "BA",
+      "title": "Boeing (BA) Beats Stock Market Upswing: What Investors Need to Know",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/boeing-ba-beats-stock-market-214505242.html",
+      "publisher": "Zacks",
+      "ts": 1789163105.0
+    },
+    {
+      "ticker": "QCOM",
+      "title": "Qualcomm (QCOM) Beats Stock Market Upswing: What Investors Need to Know",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/qualcomm-qcom-beats-stock-market-214503629.html",
+      "publisher": "Zacks",
+      "ts": 1789163103.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "Alphabet (GOOGL) Beats Stock Market Upswing: What Investors Need to Know",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/alphabet-googl-beats-stock-market-214502350.html",
+      "publisher": "Zacks",
+      "ts": 1789163102.0
+    },
+    {
+      "ticker": "GS",
+      "title": "Goldman, BofA vie to manage Anthropic employee wealth post-IPO - report",
+      "link": "https://finance.yahoo.com/technology/ai/articles/goldman-bofa-vie-manage-anthropic-213608799.html",
+      "publisher": "Investing.com",
+      "ts": 1789162568.0
+    },
+    {
+      "ticker": "SPCX",
+      "title": "SpaceX Just Added a $13 Billion AI Revenue Engine",
+      "link": "https://finance.yahoo.com/technology/ai/articles/spacex-just-added-13-billion-211112988.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1789161072.0
+    },
+    {
+      "ticker": "DELL",
+      "title": "Stock Market Today, Sept. 11: HPE Surges on AI Infrastructure Demand and Recently Raised Guidance",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-11-210543572.html",
+      "publisher": "Motley Fool",
+      "ts": 1789160743.0
+    },
+    {
+      "ticker": "ADBE",
+      "title": "Stock Market Today: Dow Soars 500 Points Amid Rate-Hike Bets; Apple Advances",
+      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-oracle-stock-orcl/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789159288.0
+    },
+    {
+      "ticker": "CAT",
+      "title": "Deere and Caterpillar Are Both Up Over 40% This Year: Take Profits or Hold On for the Ride?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/deere-caterpillar-both-over-40-190926613.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789153766.0
+    },
+    {
+      "ticker": "FPS",
+      "title": "AI Infrastructure Stock Forgent Power, Cardiovascular Play Kestra In Earnings Spotlight",
+      "link": "https://www.investors.com/research/earnings-preview/ai-infrastructure-forgent-power-kestra-medical-earnings/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789152982.0
+    },
     {
       "ticker": "^GSPC",
       "title": "Ally Financial (ALLY): Buy, Sell, or Hold Post Q2 Earnings?",
@@ -204,367 +281,290 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/coreweave-top-ipo-pick-now-175000145.html",
       "publisher": "Motley Fool",
       "ts": 1789149000.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "‘The Largest IPO Ever, Surpassing SpaceX’: Anthropic Is Up Next",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/largest-ipo-ever-surpassing-spacex-174331849.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789148611.0
-    },
-    {
-      "ticker": "^GSPC",
-      "title": "Primerica (PRI): Buy, Sell, or Hold Post Q2 Earnings?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/primerica-pri-buy-sell-hold-173105184.html",
-      "publisher": "StockStory",
-      "ts": 1789147865.0
-    },
-    {
-      "ticker": "MSFT",
-      "title": "Oracle Margin Pressure, Modest Guidance Raise Leave Morgan Stanley Needing More Visibility",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/oracle-margin-pressure-modest-guidance-171606566.html",
-      "publisher": "MT Newswires",
-      "ts": 1789146966.0
-    },
-    {
-      "ticker": "MSFT",
-      "title": "China Could Absolutely Cripple Anthropic And OpenAI IPOs",
-      "link": "https://finance.yahoo.com/technology/ai/articles/china-could-absolutely-cripple-anthropic-170909772.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789146549.0
-    },
-    {
-      "ticker": "TSLA",
-      "title": "Is Tesla Stock Priced For Its Earnings Or Its Robots?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/tesla-stock-priced-earnings-robots-170555487.html",
-      "publisher": "Trefis",
-      "ts": 1789146355.0
-    },
-    {
-      "ticker": "AAPL",
-      "title": "Stock Market Today: Dow Jumps Nearly 600 Points After CPI Surprise; Shipping Name Breaks Out (Live Coverage)",
-      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-oracle-stock-orcl/?src=A00220&yptr=yahoo",
-      "publisher": "Investor's Business Daily",
-      "ts": 1789146343.0
-    },
-    {
-      "ticker": "META",
-      "title": "Nscale adds former OpenAI exec Fidji Simo to its board ahead of potential IPO",
-      "link": "https://finance.yahoo.com/technology/ai/articles/nscale-adds-former-openai-exec-164625951.html",
-      "publisher": "TechCrunch",
-      "ts": 1789145185.0
-    },
-    {
-      "ticker": "DELL",
-      "title": "DELL, HPE Stocks Lead S&P 500 Gains: Oracle’s $95B Capex Plan Lifts AI Stocks",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/dell-hpe-stocks-lead-p-162714531.html",
-      "publisher": "Stocktwits",
-      "ts": 1789144034.0
-    },
-    {
-      "ticker": "ADBE",
-      "title": "Adobe Just Reported Earnings. Here's What Investors Need to Know.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/adobe-just-reported-earnings-heres-160359619.html",
-      "publisher": "Motley Fool",
-      "ts": 1789142639.0
-    },
-    {
-      "ticker": "ADBE",
-      "title": "Top Midday Stories: Rate-Hike Expectations Rise After August CPI Release; Oracle Shares Up Modestly After Strong Earnings Results",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/top-midday-stories-rate-hike-154457462.html",
-      "publisher": "MT Newswires",
-      "ts": 1789141497.0
-    },
-    {
-      "ticker": "SPCX",
-      "title": "SpaceX Fell 3.9% on Its Third Lockup Release Since the IPO. I'd Wait to Buy the Stock.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/spacex-fell-3-9-third-154301400.html",
-      "publisher": "Motley Fool",
-      "ts": 1789141381.0
     }
   ],
   "Technologie": [
     {
-      "ticker": "TSM",
-      "title": "Astera Labs vs. Taiwan Semiconductor Manufacturing: Which AI Supplier Stock Is a Better Buy in 2026?",
-      "link": "https://finance.yahoo.com/technology/ai/articles/astera-labs-vs-taiwan-semiconductor-182656662.html",
-      "publisher": "Motley Fool",
-      "ts": 1789151216.0
-    },
-    {
-      "ticker": "SPCX",
-      "title": "SpaceX Stays Flat After Unveiling a $13 Billion AI Contract",
-      "link": "https://finance.yahoo.com/technology/ai/articles/spacex-stays-flat-unveiling-13-181734030.html",
-      "publisher": "GuruFocus.com",
-      "ts": 1789150654.0
+      "ticker": "JPM",
+      "title": "JPMorgan cuts off lending to Aschenbrenner’s AI fund after historic losses - FT",
+      "link": "https://finance.yahoo.com/markets/options/articles/jpmorgan-cuts-off-lending-aschenbrenner-220120622.html",
+      "publisher": "Investing.com",
+      "ts": 1789164080.0
     },
     {
       "ticker": "ORCL",
-      "title": "Oracle Nearly Erases 7% Jump Despite $664 Billion AI Backlog",
-      "link": "https://finance.yahoo.com/technology/ai/articles/oracle-nearly-erases-7-jump-181329239.html",
+      "title": "BMO Tweaks Oracle Stock Price Target After AI Risk",
+      "link": "https://finance.yahoo.com/technology/ai/articles/bmo-tweaks-oracle-stock-price-211207388.html",
       "publisher": "GuruFocus.com",
-      "ts": 1789150409.0
+      "ts": 1789161127.0
     },
     {
-      "ticker": "JPM",
-      "title": "Are Value ETFs the New AI Trade?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/value-etfs-ai-trade-180800898.html",
-      "publisher": "Zacks",
-      "ts": 1789150080.0
+      "ticker": "ORCL",
+      "title": "Oracle Says Its Expiring AI Contracts Are Renewing 20% Higher",
+      "link": "https://finance.yahoo.com/technology/ai/articles/oracle-says-expiring-ai-contracts-211202725.html",
+      "publisher": "Motley Fool",
+      "ts": 1789161122.0
     },
     {
-      "ticker": "LRCX",
-      "title": "Lam Research Lifts 2026 WFE Outlook as AI Demand Strains Fab Capacity",
-      "link": "https://finance.yahoo.com/technology/ai/articles/lam-research-lifts-2026-wfe-180229282.html",
-      "publisher": "MarketBeat",
-      "ts": 1789149749.0
+      "ticker": "META",
+      "title": "Meta Gains Despite California's Million-Dollar Youth-AI Threat",
+      "link": "https://finance.yahoo.com/technology/ai/articles/meta-gains-despite-californias-million-211140112.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1789161100.0
+    },
+    {
+      "ticker": "V",
+      "title": "Visa Stock Rises as AI Alliance Forms, Trades 13.06% Below GF Value",
+      "link": "https://finance.yahoo.com/technology/ai/articles/visa-stock-rises-ai-alliance-211132983.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1789161092.0
     },
     {
       "ticker": "MSFT",
-      "title": "Dell and HPE Stocks Are Surging on the AI Spending Boom",
-      "link": "https://www.barrons.com/articles/dell-hpe-stock-ai-spending-oracle-617217e8?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1789149600.0
+      "title": "Microsoft Gains After Signing 10 Enforceable School-AI Guardrails",
+      "link": "https://finance.yahoo.com/technology/ai/articles/microsoft-gains-signing-10-enforceable-211130848.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1789161090.0
+    },
+    {
+      "ticker": "ADBE",
+      "title": "JPMorgan Cuts Adobe Target to $315 as AI Monetization Concerns Persist",
+      "link": "https://finance.yahoo.com/technology/ai/articles/jpmorgan-cuts-adobe-target-315-211105037.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1789161065.0
+    },
+    {
+      "ticker": "AMZN",
+      "title": "Chinese AI Upstart Raises Stakes for U.S. Tech Giants",
+      "link": "https://finance.yahoo.com/technology/ai/articles/chinese-ai-upstart-raises-stakes-211059608.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1789161059.0
     },
     {
       "ticker": "MSFT",
-      "title": "Update: Market Chatter: Microsoft Plans to More Than Triple Data Center Capacity",
-      "link": "https://finance.yahoo.com/technology/articles/market-chatter-microsoft-plans-more-174020764.html",
-      "publisher": "MT Newswires",
-      "ts": 1789148420.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Palantir Wants the AI Work OpenAI Cannot Touch. Nvidia Just Helped It Make the Pitch.",
-      "link": "https://finance.yahoo.com/technology/ai/articles/palantir-wants-ai-openai-cannot-174006859.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789148406.0
-    },
-    {
-      "ticker": "AVGO",
-      "title": "Do You Have the Guts to Buy the AI Stocks Right Now?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/guts-buy-ai-stocks-now-173900651.html",
-      "publisher": "Zacks",
-      "ts": 1789148340.0
-    },
-    {
-      "ticker": "AVGO",
-      "title": "Ciena's Backlog Or Arista's Margins: Which Should Carry Your AI Network Bet?",
-      "link": "https://finance.yahoo.com/technology/articles/cienas-backlog-aristas-margins-carry-171718720.html",
-      "publisher": "Trefis",
-      "ts": 1789147038.0
+      "title": "OpenAI Rethinks Its Next Big Move",
+      "link": "https://finance.yahoo.com/technology/ai/articles/openai-rethinks-next-big-move-211052878.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1789161052.0
     },
     {
       "ticker": "SPCX",
-      "title": "SpaceX just revealed an important timeline for launching data centers in space",
-      "link": "https://finance.yahoo.com/markets/stocks/article/spacex-just-revealed-an-important-timeline-for-launching-data-centers-in-space-170346515.html",
-      "publisher": "Yahoo Finance",
-      "ts": 1789146226.0
+      "title": "SpaceX Makes Blockbuster Move in AI Race",
+      "link": "https://finance.yahoo.com/technology/ai/articles/spacex-makes-blockbuster-move-ai-211049393.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1789161049.0
     },
     {
-      "ticker": "AMD",
-      "title": "AMD Expands Into Rack-Scale AI as Agentic Workloads Boost CPU Demand",
-      "link": "https://finance.yahoo.com/technology/ai/articles/amd-expands-rack-scale-ai-170203981.html",
+      "ticker": "ORCL",
+      "title": "Oracle's AI Cloud Growth Lifts CoreWeave, Nebius and IREN",
+      "link": "https://finance.yahoo.com/technology/ai/articles/oracles-ai-cloud-growth-lifts-211041374.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1789161041.0
+    },
+    {
+      "ticker": "MSFT",
+      "title": "Microsoft Plans to Triple Its Data Center Footprint",
+      "link": "https://finance.yahoo.com/technology/articles/microsoft-plans-triple-data-center-211016595.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1789161016.0
+    },
+    {
+      "ticker": "PLTR",
+      "title": "Q&A: Kirkland & Ellis on AI and its deal with Palantir",
+      "link": "https://finance.yahoo.com/technology/ai/articles/q-kirkland-ellis-ai-deal-210403638.html",
+      "publisher": "Pitchbook",
+      "ts": 1789160643.0
+    },
+    {
+      "ticker": "SNOW",
+      "title": "Snowflake Says AI Adoption Is Driving Consumption Growth and Margin Gains",
+      "link": "https://finance.yahoo.com/technology/ai/articles/snowflake-says-ai-adoption-driving-210159817.html",
       "publisher": "MarketBeat",
-      "ts": 1789146123.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "Prediction: This Could Be an Unexpected AI Winner Through 2030",
-      "link": "https://finance.yahoo.com/technology/ai/articles/prediction-could-unexpected-ai-winner-163056327.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789144256.0
-    },
-    {
-      "ticker": "LRCX",
-      "title": "Lam Research Sees Sold-Out Chip Demand, Targets Capacity and AI Service Gains",
-      "link": "https://finance.yahoo.com/technology/ai/articles/lam-research-sees-sold-chip-160333077.html",
-      "publisher": "MarketBeat",
-      "ts": 1789142613.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "My Agentic AI Capital Is Going One Place Over and Over",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/agentic-ai-capital-going-one-160053595.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789142453.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "Qualcomm’s AWS Deal Takes Aim at Nvidia, But Comes With Fine Print",
-      "link": "https://finance.yahoo.com/technology/ai/articles/qualcomm-aws-deal-takes-aim-154005241.html",
-      "publisher": "Insider Monkey",
-      "ts": 1789141205.0
+      "ts": 1789160519.0
     },
     {
       "ticker": "PANW",
-      "title": "Wedbush Names CrowdStrike and Palo Alto Networks AI Cybersecurity Winners",
-      "link": "https://finance.yahoo.com/technology/ai/articles/wedbush-names-crowdstrike-palo-alto-154004806.html",
-      "publisher": "GuruFocus.com",
-      "ts": 1789141204.0
-    },
-    {
-      "ticker": "^GSPC",
-      "title": "BigBear.ai Stock Dives 29% in the Past 3 Months: Hold or Fold?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/bigbear-ai-stock-dives-29-153300767.html",
-      "publisher": "Zacks",
-      "ts": 1789140780.0
+      "title": "How Far Could Cisco Stock Swing On You As AI Networking Orders Grow?",
+      "link": "https://finance.yahoo.com/markets/options/articles/far-could-cisco-stock-swing-204923429.html",
+      "publisher": "Trefis",
+      "ts": 1789159763.0
     },
     {
       "ticker": "SPCX",
-      "title": "SpaceX signs another AI computing deal, with $100 billion in ARR 'on track,' CFO says",
-      "link": "https://finance.yahoo.com/markets/stocks/article/spacex-signs-another-ai-computing-deal-with-100-billion-in-arr-on-track-cfo-says-152933886.html",
-      "publisher": "Yahoo Finance",
-      "ts": 1789140573.0
+      "title": "SpaceX CFO Touts New $13 Billion AI Deal, Upcoming Starship Milestones",
+      "link": "https://www.investors.com/news/spacex-revenue-ai-compute-client-starship-test-flight-details-goldman-conference-spcx-stock/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789158479.0
     },
     {
-      "ticker": "GS",
-      "title": "The Goldman Sachs (GS) Deepens AI Push as Competition for Tech Talent Intensifies",
-      "link": "https://finance.yahoo.com/technology/ai/articles/goldman-sachs-gs-deepens-ai-152645980.html",
-      "publisher": "Insider Monkey",
-      "ts": 1789140405.0
+      "ticker": "TSLA",
+      "title": "Inside Tesla’s Cybertruck and robotaxi experience",
+      "link": "https://finance.yahoo.com/video/inside-tesla-cybertruck-robotaxi-experience-202100555.html",
+      "publisher": "Yahoo Finance Video",
+      "ts": 1789158060.0
+    },
+    {
+      "ticker": "AMD",
+      "title": "Former OpenAI Researcher Bets on AI Stocks After $35 Billion Wipeout",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/former-openai-researcher-bets-ai-201641481.html",
+      "publisher": "BeInCrypto",
+      "ts": 1789157801.0
+    },
+    {
+      "ticker": "PLTR",
+      "title": "Palantir Stock Gets Jaw-Dropping Price Target Hike on AI Demand",
+      "link": "https://finance.yahoo.com/technology/ai/articles/palantir-stock-gets-jaw-dropping-201122928.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1789157482.0
+    },
+    {
+      "ticker": "SPCX",
+      "title": "SpaceX’s New AI Deal and 4 Other Revelations From Its CFO",
+      "link": "https://www.barrons.com/articles/spacex-stock-orbital-ai-cfo-1ced4262?siteid=yhoof2&yptr=yahoo",
+      "publisher": "Barrons.com",
+      "ts": 1789157460.0
     }
   ],
   "Sonstiges": [
     {
       "ticker": "NVDA",
-      "title": "Nvidia Rebounds After Rivals Open a 10-Point Weekly Gap",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-rebounds-rivals-open-10-183944063.html",
-      "publisher": "GuruFocus.com",
-      "ts": 1789151984.0
-    },
-    {
-      "ticker": "^GSPC",
-      "title": "1 Consumer Stock to Target This Week and 2 Facing Headwinds",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/1-consumer-stock-target-week-183505485.html",
-      "publisher": "StockStory",
-      "ts": 1789151705.0
-    },
-    {
-      "ticker": "BRK-B",
-      "title": "Greg Abel's Berkshire Hathaway Repurchased $4.5 Billion of Its Own Stock Last Quarter. Is This a Bullish Signal for Investors?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/greg-abels-berkshire-hathaway-repurchased-183500830.html",
-      "publisher": "Motley Fool",
-      "ts": 1789151700.0
+      "title": "Marvell CEO reveals decade-long gem behind its explosive 239% surge",
+      "link": "https://finance.yahoo.com/technology/ai/articles/marvell-ceo-reveals-decade-long-220700564.html",
+      "publisher": "TheStreet",
+      "ts": 1789164420.0
     },
     {
       "ticker": "NVDA",
-      "title": "Why NuScale Power Stock Just Crashed",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/why-nuscale-power-stock-just-183042826.html",
+      "title": "Sell the Nvidia Shares That Made Your Retirement or Ride Them Into It? These 3 ETFs Are the Middle Path",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/sell-nvidia-shares-made-retirement-215531809.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789163731.0
+    },
+    {
+      "ticker": "META",
+      "title": "2 Stocks Cathie Wood Is Snapping Up at a Discount Right Now",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/2-stocks-cathie-wood-snapping-215300205.html",
       "publisher": "Motley Fool",
-      "ts": 1789151442.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "I Almost Didn't Buy This 6%+ Yielder Because of Industry Headwinds. Here's Why I'm Glad I Bought It Anyway.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/almost-didnt-buy-6-yielder-182500183.html",
-      "publisher": "Motley Fool",
-      "ts": 1789151100.0
-    },
-    {
-      "ticker": "PLTR",
-      "title": "Palantir Stalls as a $225 Target Demands 36% Upside",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/palantir-stalls-225-target-demands-182330342.html",
-      "publisher": "GuruFocus.com",
-      "ts": 1789151010.0
-    },
-    {
-      "ticker": "DELL",
-      "title": "Investing.com’s stocks of the week",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/investing-com-stocks-week-182145466.html",
-      "publisher": "Investing.com",
-      "ts": 1789150905.0
+      "ts": 1789163580.0
     },
     {
       "ticker": "^GSPC",
-      "title": "CAH Gains More Than 29% in 4 Months: Will the Uptrend Continue?",
-      "link": "https://finance.yahoo.com/healthcare/articles/cah-gains-more-29-4-182100627.html",
+      "title": "Clear Secure (YOU) Stock Slides as Market Rises: Facts to Know Before You Trade",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/clear-secure-stock-slides-market-215004523.html",
       "publisher": "Zacks",
-      "ts": 1789150860.0
+      "ts": 1789163404.0
     },
     {
-      "ticker": "MU",
-      "title": "Micron Stays Flat as 68-Month Bonuses Fail to End Strike Risk",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/micron-stays-flat-68-month-181517768.html",
-      "publisher": "GuruFocus.com",
-      "ts": 1789150517.0
+      "ticker": "^GSPC",
+      "title": "Toyota Motor Corporation (TM) Exceeds Market Returns: Some Facts to Consider",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/toyota-motor-corporation-tm-exceeds-215004298.html",
+      "publisher": "Zacks",
+      "ts": 1789163404.0
+    },
+    {
+      "ticker": "^GSPC",
+      "title": "SharkNinja, Inc. (SN) Stock Sinks As Market Gains: What You Should Know",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/sharkninja-inc-sn-stock-sinks-215004171.html",
+      "publisher": "Zacks",
+      "ts": 1789163404.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "What Are You Really Paying For Reddit's Ad Growth?",
+      "link": "https://finance.yahoo.com/media-advertising/articles/really-paying-reddits-ad-growth-214742080.html",
+      "publisher": "Trefis",
+      "ts": 1789163262.0
     },
     {
       "ticker": "AAPL",
-      "title": "Can Apple Stock's Premium Survive The Memory Squeeze On Its Margin?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/apple-stocks-premium-survive-memory-181357279.html",
-      "publisher": "Trefis",
-      "ts": 1789150437.0
+      "title": "How a 66-Year-Old’s $800,000 in JEPQ and QQQI Pays $8,200 a Month, and the IRS Only Sees Half of It",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/66-old-800-000-jepq-214535054.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789163135.0
+    },
+    {
+      "ticker": "FTNT",
+      "title": "Fortinet (FTNT) Stock Dips While Market Gains: Key Facts",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/fortinet-ftnt-stock-dips-while-214506273.html",
+      "publisher": "Zacks",
+      "ts": 1789163106.0
+    },
+    {
+      "ticker": "AAPL",
+      "title": "Apple (AAPL) Rises Higher Than Market: Key Facts",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/apple-aapl-rises-higher-market-214504972.html",
+      "publisher": "Zacks",
+      "ts": 1789163104.0
+    },
+    {
+      "ticker": "NOW",
+      "title": "ServiceNow (NOW) Outperforms Broader Market: What You Need to Know",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/servicenow-now-outperforms-broader-market-214503848.html",
+      "publisher": "Zacks",
+      "ts": 1789163103.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "Alphabet Inc. (GOOG) Outperforms Broader Market: What You Need to Know",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/alphabet-inc-goog-outperforms-broader-214502479.html",
+      "publisher": "Zacks",
+      "ts": 1789163102.0
+    },
+    {
+      "ticker": "GS",
+      "title": "Corning stock dips on filing for $2 billion equity distribution program",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/corning-stock-dips-filing-2-214442457.html",
+      "publisher": "Investing.com",
+      "ts": 1789163082.0
     },
     {
       "ticker": "NVDA",
-      "title": "Options Greeks explained: A trader's guide to all five",
-      "link": "https://finance.yahoo.com/personal-finance/investing/article/options-greeks-181341422.html",
-      "publisher": "Yahoo Personal Finance",
-      "ts": 1789150421.0
+      "title": "1 Popular Cryptocurrency Cathie Wood of Ark Invest Sees Soaring in Value by 1,490%",
+      "link": "https://finance.yahoo.com/markets/crypto/articles/1-popular-cryptocurrency-cathie-wood-213900213.html",
+      "publisher": "Motley Fool",
+      "ts": 1789162740.0
+    },
+    {
+      "ticker": "AAPL",
+      "title": "Fidelity’s Answer to JEPI Pays Out Again on Sept 18. Here’s What $100K Has Collected This Year",
+      "link": "https://finance.yahoo.com/markets/options/articles/fidelity-answer-jepi-pays-again-213559587.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789162559.0
+    },
+    {
+      "ticker": "AAPL",
+      "title": "Most Income Investors Have Never Heard of These 3 ETFs Paying Up to 14 Percent Every Month",
+      "link": "https://finance.yahoo.com/markets/options/articles/most-income-investors-never-heard-212537911.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789161937.0
+    },
+    {
+      "ticker": "META",
+      "title": "Top Stock Reports for Meta Platforms, Marvell & Amphenol",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/top-stock-reports-meta-platforms-212300174.html",
+      "publisher": "Zacks",
+      "ts": 1789161780.0
+    },
+    {
+      "ticker": "MSFT",
+      "title": "How Far Could Take-Two Stock Fall In A Market Shock, With Grand Theft Auto VI Still To Come?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/far-could-two-stock-fall-211743965.html",
+      "publisher": "Trefis",
+      "ts": 1789161463.0
+    },
+    {
+      "ticker": "PWR",
+      "title": "3 Big Reasons to Love Quanta (PWR)",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/3-big-reasons-love-quanta-211505537.html",
+      "publisher": "StockStory",
+      "ts": 1789161305.0
     },
     {
       "ticker": "ORCL",
-      "title": "Stocks to Watch Friday: Oracle, Adobe, RH",
-      "link": "https://www.wsj.com/livecoverage/stock-market-cpi-inflation-09-11-2026/card/stocks-to-watch-friday-oracle-adobe-rh-3NJBIbPdpbEJYyWbh8EC?siteid=yhoof2&yptr=yahoo",
-      "publisher": "The Wall Street Journal",
-      "ts": 1789150378.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "What a $10,000 Investment in Walmart Could Be Worth by September 2027",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/10-000-investment-walmart-could-181100400.html",
-      "publisher": "Motley Fool",
-      "ts": 1789150260.0
-    },
-    {
-      "ticker": "^IXIC",
-      "title": "Stocks Are Trading Near Highs. So Are Bond Yields.",
-      "link": "https://www.barrons.com/livecoverage/stock-market-news-today-091126/card/stocks-are-trading-near-highs-so-are-bond-yields--DCyr1QiZZAGRDeA8bWbR?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1789150045.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "CDC Declares Cyclospora Outbreak Linked to Iceberg Lettuce as Over",
-      "link": "https://www.wsj.com/us-news/cdc-says-cyclospora-outbreak-is-over-30c6bba2?siteid=yhoof2&yptr=yahoo",
-      "publisher": "The Wall Street Journal",
-      "ts": 1789149900.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Dell stock hits all-time high on RBC Capital outperform rating",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/dell-stock-hits-time-high-180415513.html",
-      "publisher": "Quartz",
-      "ts": 1789149855.0
-    },
-    {
-      "ticker": "MU",
-      "title": "Why Micron Stock Is on Pace for a Weekly Decline",
-      "link": "https://www.barrons.com/articles/micron-stock-oracle-ai-242830db?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1789149840.0
-    },
-    {
-      "ticker": "TSLA",
-      "title": "Morgan Stanley Sees $80 Billion Tesla Semi Opportunity as Diesel Hits Record $6.06",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/morgan-stanley-sees-80-billion-180304662.html",
-      "publisher": "Benzinga Prediction Markets",
-      "ts": 1789149784.0
-    },
-    {
-      "ticker": "XLE",
-      "title": "Sector Update: Energy Stocks Advance Friday Afternoon",
-      "link": "https://finance.yahoo.com/energy/articles/sector-energy-stocks-advance-friday-180102714.html",
-      "publisher": "MT Newswires",
-      "ts": 1789149662.0
-    },
-    {
-      "ticker": "ADBE",
-      "title": "Price Prediction: Adobe Stock Could Hit $300 Sooner Than You Think",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/price-prediction-adobe-stock-could-180030086.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789149630.0
+      "title": "Oracle to Spend an Additional $700 Million on More Job Cuts",
+      "link": "https://finance.yahoo.com/technology/ai/articles/oracle-spend-additional-700-million-211329828.html",
+      "publisher": "Bloomberg",
+      "ts": 1789161209.0
     }
   ]
 }
