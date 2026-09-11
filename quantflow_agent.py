@@ -128,8 +128,11 @@ TRENDING_COUNT_PER_SCREENER = 15
 
 MACRO_TICKERS = ["^GSPC", "^IXIC", "^DJI", "^VIX"]
 
-NUM_POSITIONS = 10
-ALLOCATION_PER_POSITION = 5000.0  # EUR, fiktives Kapital pro Slot
+NUM_POSITIONS = 10  # Ziel-/Startgröße beim allerersten Lauf (10 x 5.000 EUR = 50.000 EUR Startkapital)
+MAX_POSITIONS = 15  # harte Obergrenze an gleichzeitig gehaltenen Positionen — danach nur noch Aufstockungen
+ALLOCATION_PER_POSITION = 5000.0  # EUR, maximaler Kauf pro Transaktion/Slot
+MIN_NEW_BUY = 4000.0  # unter diesem Cash-Betrag wird KEINE neue Position eröffnet (keine Mini-Käufe) — stattdessen Aufstockung
+SWAP_MIN_MARGIN = 2.0  # Mindest-Score-Vorsprung, den ein unheld-Kandidat gegenüber der schwächsten gehaltenen Position braucht, damit getauscht wird (verhindert Tausch bei Rauschen)
 KEST_RATE = 0.26
 NEWS_RETENTION_DAYS = 7
 NEWS_MAX_PER_TICKER = 15
@@ -516,56 +519,129 @@ def update_score_history(score_history, symbol, new_score):
 
 
 def rebalance(scored, state, price_lookup, timestamp):
-    top = scored[:NUM_POSITIONS]
-    top_symbols = {c["symbol"] for c in top}
+    """Kein Komplett-Neuranking mehr pro Lauf. Stattdessen:
+
+    1. TAUSCH: gehaltene Positionen (schwächste zuerst) werden paarweise gegen
+       nicht gehaltene Kandidaten (stärkste zuerst) verglichen. Nur wenn ein
+       Kandidat die gehaltene Position um mehr als SWAP_MIN_MARGIN übertrifft,
+       wird getauscht (verkauft + Kaufkandidat vorgemerkt). Sobald ein Paar
+       den Puffer nicht mehr überschreitet, wird abgebrochen — die Listen sind
+       sortiert, ein späteres Paar kann nur noch ungünstiger sein.
+    2. CASH-EINSATZ: der durch Verkäufe (und ggf. schon vorhandener) Cash wird
+       eingesetzt — zuerst für die durch den Tausch vorgemerkten Kandidaten,
+       danach für weitere gute unheld-Kandidaten, solange Cash >= MIN_NEW_BUY
+       und die Positionsobergrenze (MAX_POSITIONS) nicht erreicht ist. Ein
+       einzelner Kauf ist auf ALLOCATION_PER_POSITION gedeckelt.
+    3. REST-CASH: was übrig bleibt (zu wenig für einen neuen Kauf, oder die
+       Obergrenze ist erreicht) fließt als Aufstockung in die aktuell am
+       besten bewertete GEHALTENE Position (Durchschnittskurs wird neu
+       berechnet), nicht planlos in eine zufällige Position.
+
+    Steuer (KESt) wird direkt bei jedem Verkauf auf den tatsächlichen
+    Gewinn dieses einen Verkaufs fällig und mindert den Netto-Zufluss ins
+    Cash-Konto — das ist die reale Grundlage fürs Nachkaufen, nicht nur eine
+    Anzeige-Schätzung.
+    """
     old_positions = state.get("positions", {})
-    old_symbols = set(old_positions.keys())
+    positions = {sym: dict(pos) for sym, pos in old_positions.items()}
+    cash_balance = state.get("cash_balance", NUM_POSITIONS * ALLOCATION_PER_POSITION)
 
-    new_positions = {}
-    events = []
-
-    for c in top:
-        sym = c["symbol"]
-        if sym in old_positions:
-            pos = dict(old_positions[sym])
+    scored_by_symbol = {c["symbol"]: c for c in scored}
+    for sym, pos in positions.items():
+        c = scored_by_symbol.get(sym)
+        if c is not None:
             pos["category"] = c["category"]
             pos["type"] = c["type"]
             pos["last_score"] = c["score"]
-            new_positions[sym] = pos
-        else:
-            entry_price = c["price_m"]["current_price"]
-            shares = ALLOCATION_PER_POSITION / entry_price if entry_price else 0.0
-            new_positions[sym] = {
-                "entry_price": entry_price,
-                "entry_date": timestamp,
-                "shares": shares,
-                "category": c["category"],
-                "type": c["type"],
-                "last_score": c["score"],
-            }
+        # falls Daten für diesen Ticker in diesem Lauf fehlten: alten Score
+        # behalten statt abzustürzen — wird beim nächsten Lauf aktualisiert.
+
+    events = []
+    realized_delta = 0.0
+    tax_delta = 0.0
+
+    held_sorted = sorted(positions.items(), key=lambda kv: kv[1]["last_score"])  # schwächste zuerst
+    held_symbols = set(positions.keys())
+    unheld_sorted = [c for c in scored if c["symbol"] not in held_symbols]  # bereits Score-absteigend sortiert
+
+    swap_buy_symbols = set()
+    sold_this_run = set()
+    for (weak_sym, weak_pos), cand in zip(held_sorted, unheld_sorted):
+        if cand["score"] > weak_pos["last_score"] + SWAP_MIN_MARGIN:
+            exit_price = price_lookup.get(weak_sym, {}).get("current_price", weak_pos["entry_price"])
+            shares = weak_pos.get("shares", 0.0)
+            proceeds = exit_price * shares
+            realized_gain = (exit_price - weak_pos["entry_price"]) * shares
+            tax = KEST_RATE * max(0.0, realized_gain)
+            net_proceeds = proceeds - tax
+            cash_balance += net_proceeds
+            realized_delta += realized_gain
+            tax_delta += tax
             events.append({
-                "aktion": "KAUF", "ticker": sym, "kategorie": c["category"],
-                "preis": entry_price, "shares": shares, "realized_pnl": None,
-                "grund": f"Neu in Top {NUM_POSITIONS} (Score {c['score']:.2f})",
+                "aktion": "VERKAUF", "ticker": weak_sym, "kategorie": weak_pos.get("category", ""),
+                "preis": exit_price, "shares": shares, "realized_pnl": realized_gain, "steuer": tax,
+                "grund": f"Durch besseren Kandidaten ersetzt (Score {weak_pos['last_score']:.2f} "
+                         f"vs. {cand['symbol']} {cand['score']:.2f})",
             })
+            sold_this_run.add(weak_sym)
+            swap_buy_symbols.add(cand["symbol"])
+        else:
+            break
 
-    dropped = old_symbols - top_symbols
-    for sym in dropped:
-        pos = old_positions[sym]
-        exit_price = price_lookup[sym]["current_price"] if sym in price_lookup else pos["entry_price"]
-        realized = (exit_price - pos["entry_price"]) * pos.get("shares", 0.0)
-        events.append({
-            "aktion": "VERKAUF", "ticker": sym, "kategorie": pos.get("category", ""),
-            "preis": exit_price, "shares": pos.get("shares", 0.0), "realized_pnl": realized,
-            "grund": "Aus Top 10 gefallen / durch besseren Kandidaten ersetzt",
-        })
+    for sym in sold_this_run:
+        del positions[sym]
 
-    by_score = sorted(new_positions.items(), key=lambda kv: kv[1]["last_score"])
+    idx = 0
+    while cash_balance >= 0.01 and idx < len(unheld_sorted):
+        cand = unheld_sorted[idx]
+        sym = cand["symbol"]
+        idx += 1
+        if sym in positions:
+            continue
+        if cash_balance >= MIN_NEW_BUY and len(positions) < MAX_POSITIONS:
+            buy_amount = min(cash_balance, ALLOCATION_PER_POSITION)
+            entry_price = cand["price_m"]["current_price"]
+            shares = buy_amount / entry_price if entry_price else 0.0
+            positions[sym] = {
+                "entry_price": entry_price, "entry_date": timestamp, "shares": shares,
+                "category": cand["category"], "type": cand["type"], "last_score": cand["score"],
+            }
+            cash_balance -= buy_amount
+            if sym in swap_buy_symbols:
+                grund = f"Tausch: ersetzt schwächere Position (Score {cand['score']:.2f})"
+            else:
+                grund = f"Neuer Kauf aus verfügbarem Cash (Score {cand['score']:.2f})"
+            events.append({
+                "aktion": "KAUF", "ticker": sym, "kategorie": cand["category"],
+                "preis": entry_price, "shares": shares, "realized_pnl": None, "steuer": 0.0,
+                "grund": grund,
+            })
+        else:
+            break  # zu wenig Cash für einen weiteren Neukauf oder Positions-Limit erreicht
+
+    if cash_balance >= 0.01 and positions:
+        best_sym, best_pos = max(positions.items(), key=lambda kv: kv[1]["last_score"])
+        price_now = price_lookup.get(best_sym, {}).get("current_price", best_pos["entry_price"])
+        if price_now:
+            add_shares = cash_balance / price_now
+            old_cost_basis = best_pos["entry_price"] * best_pos["shares"]
+            new_shares = best_pos["shares"] + add_shares
+            new_cost_basis = old_cost_basis + cash_balance
+            events.append({
+                "aktion": "AUFSTOCKUNG", "ticker": best_sym, "kategorie": best_pos.get("category", ""),
+                "preis": price_now, "shares": add_shares, "realized_pnl": None, "steuer": 0.0,
+                "grund": f"Aufstockung der stärksten gehaltenen Position mit Cash-Rest ({fmt_eur(cash_balance)})",
+            })
+            best_pos["entry_price"] = new_cost_basis / new_shares if new_shares else best_pos["entry_price"]
+            best_pos["shares"] = new_shares
+            cash_balance = 0.0
+
+    by_score = sorted(positions.items(), key=lambda kv: kv[1]["last_score"])
     dispose_symbols = {sym for sym, _ in by_score[:NUM_DISPOSE_CANDIDATES]}
-    for sym, pos in new_positions.items():
+    for sym, pos in positions.items():
         pos["risk_flag"] = sym in dispose_symbols
 
-    return new_positions, events
+    return positions, events, cash_balance, realized_delta, tax_delta
 
 
 def build_watchlist(scored, held_symbols, limit=NUM_WATCHLIST):
@@ -693,7 +769,7 @@ def build_week_summary(price_lookup, positions):
             best_row = None
             best_diff = None
             for row in rows:
-                if len(row) < 6:
+                if len(row) < 9:
                     continue
                 try:
                     row_ts = datetime.strptime(row[0], "%Y-%m-%d %H:%M:%S UTC").replace(
@@ -703,9 +779,12 @@ def build_week_summary(price_lookup, positions):
                 diff = abs(row_ts - target_ts)
                 if row_ts <= target_ts and (best_diff is None or diff < best_diff):
                     best_row, best_diff = row, diff
-            if best_row:
-                summary["netto_week_ago"] = float(best_row[5])
-                summary["netto_now"] = float(rows[-1][5])
+            # Index 8 = Netto_bei_Verkauf_heute (Gesamtwert abzüglich hypothetischer KESt) im neuen 9-Spalten-Format.
+            # Alte Zeilen mit nur 6 Spalten werden oben bereits per len(row) < 9 aussortiert.
+            last_row = rows[-1] if len(rows[-1]) >= 9 else None
+            if best_row and last_row:
+                summary["netto_week_ago"] = float(best_row[8])
+                summary["netto_now"] = float(last_row[8])
                 summary["change_abs"] = summary["netto_now"] - summary["netto_week_ago"]
                 if summary["netto_week_ago"]:
                     summary["change_pct"] = summary["change_abs"] / summary["netto_week_ago"] * 100
@@ -733,13 +812,14 @@ def log_trades(events, timestamp):
     is_new = not os.path.exists(TRADE_LOG_FILE)
     with open(TRADE_LOG_FILE, "a", encoding="utf-8") as f:
         if is_new:
-            f.write("Zeitstempel,Aktion,Ticker,Kategorie,Preis,Shares,Realisierter_GewinnVerlust,Grund\n")
+            f.write("Zeitstempel,Aktion,Ticker,Kategorie,Preis,Shares,Realisierter_GewinnVerlust,Steuer,Grund\n")
         for e in events:
             realized = "" if e["realized_pnl"] is None else f"{e['realized_pnl']:.2f}"
+            steuer = f"{e.get('steuer', 0.0):.2f}"
             grund = e["grund"].replace(",", ";")
             f.write(
                 f"{timestamp},{e['aktion']},{e['ticker']},{e['kategorie']},"
-                f"{e['preis']:.2f},{e['shares']:.4f},{realized},{grund}\n"
+                f"{e['preis']:.2f},{e['shares']:.4f},{realized},{steuer},{grund}\n"
             )
 
 
@@ -753,17 +833,19 @@ def read_prev_snapshot():
     return lines[-1].split(",")
 
 
-def log_snapshot(timestamp, total_brutto, total_unrealized, realized_total, kest, total_netto):
+def log_snapshot(timestamp, total_brutto, cash_balance, gesamtwert, total_unrealized,
+                  realized_total, tax_paid_total, hypothetical_kest, total_netto):
     is_new = not os.path.exists(PORTFOLIO_LOG_FILE)
     with open(PORTFOLIO_LOG_FILE, "a", encoding="utf-8") as f:
         if is_new:
             f.write(
-                "Zeitstempel,Brutto_Wert,Unrealisierter_GewinnVerlust,"
-                "Realisierter_GewinnVerlust_Kumuliert,Steuer_Rueckstellung,Netto_Wert\n"
+                "Zeitstempel,Positionswert,Cash,Gesamtwert,Unrealisierter_GewinnVerlust,"
+                "Realisierter_GewinnVerlust_Kumuliert,Steuer_Gezahlt_Kumuliert,"
+                "Hypothetische_KESt_bei_Verkauf_heute,Netto_bei_Verkauf_heute\n"
             )
         f.write(
-            f"{timestamp},{total_brutto:.2f},{total_unrealized:.2f},"
-            f"{realized_total:.2f},{kest:.2f},{total_netto:.2f}\n"
+            f"{timestamp},{total_brutto:.2f},{cash_balance:.2f},{gesamtwert:.2f},{total_unrealized:.2f},"
+            f"{realized_total:.2f},{tax_paid_total:.2f},{hypothetical_kest:.2f},{total_netto:.2f}\n"
         )
 
 
@@ -957,15 +1039,24 @@ def render_trade_log_html(events_history, name_cache, limit=10):
     rows = ""
     for row in events_history[-limit:][::-1]:
         cols = row.split(",")
-        if len(cols) < 8:
+        if len(cols) >= 9:
+            ts, aktion, ticker, kategorie, preis, shares, realized, steuer, grund = cols[:9]
+        elif len(cols) == 8:
+            # abwärtskompatibel zu Zeilen aus vor der Steuer-Spalte (v6.1 und früher)
+            ts, aktion, ticker, kategorie, preis, shares, realized, grund = cols[:8]
+            steuer = "0.00"
+        else:
             continue
-        ts, aktion, ticker, kategorie, preis, shares, realized, grund = cols[:8]
-        cls = "buy" if aktion == "KAUF" else ""
-        realized_txt = f" · Realisiert: {float(realized):+.2f} €" if realized else ""
+        cls = "buy" if aktion in ("KAUF", "AUFSTOCKUNG") else ""
+        realized_txt = ""
+        if realized:
+            steuer_txt = f", davon Steuer: {float(steuer):.2f} €" if float(steuer or 0) > 0 else ""
+            realized_txt = f" · Realisiert: {float(realized):+.2f} €{steuer_txt}"
         name = get_company_name(ticker, name_cache)
+        action_label = {"KAUF": "KAUF", "VERKAUF": "VERKAUF", "AUFSTOCKUNG": "AUFSTOCKUNG"}.get(aktion, aktion)
         rows += (
             f'<div class="signal-item {cls}">'
-            f'<div class="signal-title">{aktion}: {name} ({ticker}) @ {float(preis):.2f} €{realized_txt}</div>'
+            f'<div class="signal-title">{action_label}: {name} ({ticker}) @ {float(preis):.2f} €{realized_txt}</div>'
             f'<div class="news-meta">{ts} · {grund}</div>'
             f'</div>\n'
         )
@@ -1056,7 +1147,8 @@ LEGEND_HTML = '''    <details class="legend-box">
 
 def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, score_history,
                  name_cache, events, watchlist, musterdepot_rows, week_summary,
-                 total_brutto, total_unrealized, realized_total, kest, total_netto,
+                 total_brutto, cash_balance, gesamtwert, total_unrealized, realized_total,
+                 tax_paid_total, hypothetical_kest, total_netto,
                  prev_run_html, trade_log_html):
 
     now_ts = time.time()
@@ -1099,8 +1191,11 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
 
     val_brutto = fmt_eur(total_brutto)
     val_unrealized = fmt_eur(total_unrealized, signed=True)
+    val_cash = fmt_eur(cash_balance)
+    val_gesamtwert = fmt_eur(gesamtwert)
     val_realized = fmt_eur(realized_total, signed=True)
-    val_kest = fmt_eur(-kest)
+    val_tax_paid = fmt_eur(-tax_paid_total) if tax_paid_total else fmt_eur(0.0)
+    val_hyp_kest = fmt_eur(-hypothetical_kest)
     val_netto = fmt_eur(total_netto)
 
     topic_overview_html = render_topic_overview_html(macro_cache, now_ts)
@@ -1111,7 +1206,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuantFlow Tech Agent Dashboard v6.1</title>
+    <title>QuantFlow Tech Agent Dashboard v6.2</title>
     <style>
         :root {{
             --bg-dark: #0f111a;--bg-card: #161925;--text-main: #f0f2f5;--text-muted: #8a92b2;--green: #00e676;--red: #ff3d00;--blue: #00b0ff;--border: #22273d;--purple: #b388ff;--orange: #ffab40;
@@ -1135,7 +1230,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
         .legend-body {{ margin-top: 10px; color: var(--text-muted); display: flex; flex-direction: column; gap: 8px; }}
         .legend-body strong {{ color: var(--text-main); }}
 
-        .accounting-bar {{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-bottom: 25px; }}
+        .accounting-bar {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 25px; }}
         .acc-item {{ background-color: var(--bg-card); padding: 12px 20px; border-radius: 8px; border: 1px solid var(--border); }}
         .acc-item label {{ font-size: 11px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; display: block; margin-bottom: 4px; }}
         .acc-item .val {{ font-size: 18px; font-weight: 700; }}
@@ -1226,12 +1321,19 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
     </header>
 
     <section class="accounting-bar">
-        <div class="acc-item"><label>Gesamtwert Depot (Brutto)</label><div class="val">{val_brutto}</div></div>
+        <div class="acc-item"><label>Positionswert</label><div class="val">{val_brutto}</div></div>
+        <div class="acc-item"><label>Cash (verfügbar)</label><div class="val">{val_cash}</div></div>
+        <div class="acc-item"><label>Gesamtwert Depot</label><div class="val">{val_gesamtwert}</div></div>
         <div class="acc-item"><label>Unrealisierter Gewinn/Verlust</label><div class="val {'pos' if total_unrealized >= 0 else 'neg'}">{val_unrealized}</div></div>
         <div class="acc-item"><label>Realisiert (kumuliert)</label><div class="val {'pos' if realized_total >= 0 else 'neg'}">{val_realized}</div></div>
-        <div class="acc-item"><label>Rückstellung KESt (26%)</label><div class="val neg">{val_kest}</div></div>
-        <div class="acc-item"><label>Netto-Wert</label><div class="val">{val_netto}</div></div>
+        <div class="acc-item"><label>Bereits gezahlte KESt (kumuliert)</label><div class="val neg">{val_tax_paid}</div></div>
+        <div class="acc-item"><label>Netto bei Verkauf heute (hypoth.)</label><div class="val">{val_netto}</div></div>
     </section>
+    <div class="footer-note" style="margin-top:-15px; margin-bottom:20px;">
+        ℹ️ "Netto bei Verkauf heute" ist eine Momentaufnahme: Gesamtwert abzüglich der hypothetischen KESt (26&nbsp;%),
+        die bei einem sofortigen Verkauf ALLER offenen Positionen zum aktuellen Kurs anfallen würde ({val_hyp_kest}).
+        Tatsächlich fällig wird Steuer erst bei einem echten Verkauf – "Bereits gezahlte KESt" zeigt, was davon schon real abgeführt wurde.
+    </div>
 
 {LEGEND_HTML}
 
@@ -1266,7 +1368,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
         <div class="hist-grid">
             <div class="hist-box">
                 <h4>Aktueller Lauf</h4>
-                {timestamp}<br>Brutto: {val_brutto}<br>Netto: {val_netto}
+                {timestamp}<br>Gesamtwert: {val_gesamtwert}<br>Netto (hypoth.): {val_netto}
             </div>
             <div class="hist-box">
                 <h4>Vorheriger Lauf</h4>
@@ -1310,7 +1412,10 @@ def run_agent_update():
     candidate_pool = build_candidate_pool()
     print(f"   {len(candidate_pool)} Kandidaten im Pool.")
 
-    state = load_json(STATE_FILE, {"positions": {}, "realized_pnl_total": 0.0, "score_history": {}})
+    state = load_json(STATE_FILE, {
+        "positions": {}, "realized_pnl_total": 0.0, "score_history": {},
+        "cash_balance": NUM_POSITIONS * ALLOCATION_PER_POSITION, "tax_paid_total": 0.0,
+    })
     news_cache = load_json(NEWS_CACHE_FILE, {})
     macro_cache = load_json(MACRO_NEWS_CACHE_FILE, {})
     name_cache = load_json(NAME_CACHE_FILE, {})
@@ -1358,8 +1463,13 @@ def run_agent_update():
         print("⚠️ Keine Kandidaten-Daten verfügbar — Portfolio bleibt unverändert, überspringe Rebalancing.")
         new_positions = state.get("positions", {})
         events = []
+        cash_balance = state.get("cash_balance", NUM_POSITIONS * ALLOCATION_PER_POSITION)
+        realized_delta = 0.0
+        tax_delta = 0.0
     else:
-        new_positions, events = rebalance(scored, state, price_lookup, timestamp)
+        new_positions, events, cash_balance, realized_delta, tax_delta = rebalance(
+            scored, state, price_lookup, timestamp
+        )
 
     # Score-Historie für ALLE bewerteten Kandidaten fortschreiben (nicht nur
     # gehaltene Positionen), damit Watchlist und Musterdepot ab dem zweiten
@@ -1373,10 +1483,11 @@ def run_agent_update():
     cutoff_score = scored[NUM_POSITIONS - 1]["score"] if len(scored) >= NUM_POSITIONS else None
     musterdepot_rows = build_musterdepot_view(scored, cutoff_score)
 
-    realized_total = state.get("realized_pnl_total", 0.0)
-    for e in events:
-        if e["aktion"] == "VERKAUF" and e.get("realized_pnl") is not None:
-            realized_total += e["realized_pnl"]
+    # realized_delta/tax_delta kommen bereits fertig aus rebalance() (Summe aller
+    # VERKAUF-Events dieses Laufs); realized_total/tax_paid_total sind die über
+    # alle Läufe hinweg kumulierten Werte, die im State fortgeschrieben werden.
+    realized_total = state.get("realized_pnl_total", 0.0) + realized_delta
+    tax_paid_total = state.get("tax_paid_total", 0.0) + tax_delta
 
     news_cache = prune_cache_fully(news_cache, now_ts)
     macro_cache = build_macro_topic_overview(all_fetched_news, macro_cache, now_ts)
@@ -1384,6 +1495,7 @@ def run_agent_update():
 
     new_state = {
         "positions": new_positions, "realized_pnl_total": realized_total,
+        "cash_balance": cash_balance, "tax_paid_total": tax_paid_total,
         "last_run": timestamp, "score_history": new_score_history,
     }
     save_json(STATE_FILE, new_state)
@@ -1400,19 +1512,36 @@ def run_agent_update():
         total_brutto += value
         total_unrealized += (current_price - pos["entry_price"]) * pos["shares"]
 
-    kest = max(0.0, (total_unrealized + realized_total) * KEST_RATE)
-    total_netto = total_brutto - kest
+    # Gesamtwert = tatsächlicher Depotwert inkl. Cash (real, kein Konjunktiv).
+    # Die hypothetische KESt/Netto-Zeile zeigt nur: "wenn ich HEUTE alle offenen
+    # Positionen verkaufen würde" — bereits gezahlte Steuer aus echten Verkäufen
+    # steckt getrennt in tax_paid_total (kumuliert) und NICHT hier mit drin.
+    gesamtwert = total_brutto + cash_balance
+    hypothetical_kest = max(0.0, total_unrealized) * KEST_RATE
+    total_netto = gesamtwert - hypothetical_kest
 
-    log_snapshot(timestamp, total_brutto, total_unrealized, realized_total, kest, total_netto)
+    log_snapshot(
+        timestamp, total_brutto, cash_balance, gesamtwert, total_unrealized,
+        realized_total, tax_paid_total, hypothetical_kest, total_netto,
+    )
 
     week_summary = build_week_summary(price_lookup, new_positions)
 
-    if prev_snapshot_cols and len(prev_snapshot_cols) >= 6:
+    if prev_snapshot_cols and len(prev_snapshot_cols) >= 9:
+        (prev_ts, prev_brutto, prev_cash, prev_gesamt, prev_unreal,
+         prev_real, _prev_tax_paid, _prev_hyp_kest, prev_netto) = prev_snapshot_cols[:9]
+        prev_run_html = (
+            f"{prev_ts}<br>Gesamtwert: {fmt_eur(float(prev_gesamt))}<br>"
+            f"Unrealisiert: {fmt_eur(float(prev_unreal), signed=True)}<br>"
+            f"Netto (hypoth.): {fmt_eur(float(prev_netto))}"
+        )
+    elif prev_snapshot_cols and len(prev_snapshot_cols) >= 6:
+        # Alte 6-Spalten-Zeile aus der Zeit vor der Cash-/Steuer-Logik.
         prev_ts, prev_brutto, prev_unreal, prev_real, _prev_kest, prev_netto = prev_snapshot_cols[:6]
         prev_run_html = (
-            f"{prev_ts}<br>Brutto: {fmt_eur(float(prev_brutto))}<br>"
+            f"{prev_ts}<br>Brutto (alt): {fmt_eur(float(prev_brutto))}<br>"
             f"Unrealisiert: {fmt_eur(float(prev_unreal), signed=True)}<br>"
-            f"Netto: {fmt_eur(float(prev_netto))}"
+            f"Netto (alt): {fmt_eur(float(prev_netto))}"
         )
     else:
         prev_run_html = "Noch keine vorherigen Daten vorhanden."
@@ -1429,7 +1558,8 @@ def run_agent_update():
     html = render_html(
         timestamp, new_positions, price_lookup, news_cache, macro_cache, score_history, name_cache,
         events, watchlist, musterdepot_rows, week_summary,
-        total_brutto, total_unrealized, realized_total, kest, total_netto,
+        total_brutto, cash_balance, gesamtwert, total_unrealized, realized_total,
+        tax_paid_total, hypothetical_kest, total_netto,
         prev_run_html, trade_log_html,
     )
 
