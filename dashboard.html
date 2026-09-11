@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantFlow Tech Agent Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-main: #0B0F19;
+            --bg-card: #151D30;
+            --border-color: #222F4D;
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --bullish: #10B981;
+            --bearish: #EF4444;
+            --accent: #3B82F6;
+            --warning: #F59E0B;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-main); color: var(--text-main); padding: 1.5rem; }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 2px solid var(--border-color); padding-bottom: 1rem; }
+        h1 { font-size: 1.5rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+        h2 { font-size: 1.1rem; margin-bottom: 0.75rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem; }
+        .controls { display: flex; gap: 0.75rem; align-items: center; }
+        select, button { background-color: var(--bg-card); color: var(--text-main); border: 1px solid var(--border-color); padding: 0.4rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem; }
+        select:hover, button:hover { border-color: var(--accent); }
+        
+        /* Grid Layout */
+        .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+        .full-width { grid-column: span 2; }
+        .card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.25rem; position: relative; }
+        
+        /* Top Banner Style Components */
+        .compact-accounting-bar { display: flex; justify-content: space-between; align-items: center; background: linear-gradient(90deg, #1E293B, #151D30); padding: 0.75rem 1.25rem; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 1.5rem; }
+        .acc-item { display: flex; flex-direction: column; }
+        .acc-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+        .acc-value { font-size: 1.1rem; font-weight: bold; color: var(--text-main); }
+        .acc-value.bull { color: var(--bullish); }
+        
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; }
+        th { color: var(--text-muted); font-weight: 500; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border-color); }
+        td { padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border-color); vertical-align: middle; }
+        tr:hover { background-color: rgba(255,255,255,0.02); }
+        
+        /* Badges & Signals */
+        .badge { padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; display: inline-block; }
+        .badge-bull { background-color: rgba(16, 185, 129, 0.15); color: var(--bullish); }
+        .badge-bear { background-color: rgba(239, 68, 68, 0.15); color: var(--bearish); }
+        .badge-warn { background-color: rgba(245, 158, 11, 0.15); color: var(--warning); }
+        .tendency { font-weight: bold; font-size: 0.9rem; }
+        
+        /* News & Signals side-by-side elements */
+        .flex-container { display: flex; gap: 1.25rem; height: 280px; }
+        .flex-child-news { flex: 1.4; overflow-y: auto; padding-right: 0.5rem; }
+        .flex-child-signals { flex: 1; overflow-y: auto; border-left: 1px solid var(--border-color); padding-left: 1.25rem; }
+        
+        .news-item { margin-bottom: 0.85rem; padding-bottom: 0.6rem; border-bottom: 1px dashed var(--border-color); }
+        .news-time { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 0.15rem; }
+        .news-title { font-size: 0.85rem; font-weight: 500; margin-bottom: 0.2rem; }
+        .news-summary { font-size: 0.75rem; color: var(--text-muted); line-height: 1.3; }
+        
+        .signal-box { background-color: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 6px; padding: 0.65rem; margin-bottom: 0.65rem; }
+        .signal-title { font-size: 0.8rem; font-weight: bold; margin-bottom: 0.2rem; display: flex; align-items: center; gap: 0.3rem; }
+        .signal-desc { font-size: 0.75rem; color: var(--text-muted); }
+        
+        /* Forecast section */
+        .forecast-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
+        .forecast-box { background: rgba(255,255,255,0.01); border: 1px solid var(--border-color); border-radius: 6px; padding: 0.85rem; }
+        .forecast-title { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.4rem; text-transform: uppercase; }
+        .forecast-text { font-size: 0.8rem; line-height: 1.4; }
+        
+        /* Visibility Toggles */
+        .toggle-btn { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--text-muted); font-size: 0.9rem; padding: 0; }
+        .toggle-btn:hover { color: var(--text-main); }
+        .hidden-content { display: none !important; }
+        
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>📊 QuantFlow Tech Agent Dashboard <span style="font-size:0.8rem; color:var(--accent); font-weight:normal;">[v2.0 - Live Option Flow & Macro Engine]</span></h1>
+        <div class="controls">
+            <span style="font-size:0.8rem; color:var(--text-muted);">Zeithorizont wechseln (Archiv):</span>
+            <select id="timeframe-select" onchange="switchArchive()">
+                <option value="w0">Aktuelle Woche (KW 37 - 2026)</option>
+                <option value="w1">Vor 1 Woche (KW 36 - 2026)</option>
+                <option value="w2">Vor 2 Wochen (KW 35 - 2026)</option>
+                <option value="w3">Vor 3 Wochen (KW 34 - 2026)</option>
+            </select>
+            <button onclick="alert('Lade frische 4-Stunden-Daten über Python Core...')">🔄 Daten-Refresh</button>
+        </div>
+    </header>
+
+    <!-- COMPACT ACCOUNTING BAR (Optimierte Platznutzung am Top-Banner) -->
+    <div class="compact-accounting-bar" id="accounting-bar">
+        <div class="acc-item">
+            <span class="acc-label">Gesamtwert Depot (Brutto)</span>
+            <span class="acc-value" id="acc-brutto">51.482,50 €</span>
+        </div>
+        <div class="acc-item">
+            <span class="acc-label">Nicht realisierter Gewinn</span>
+            <span class="acc-value bull" id="acc-profit">+1.482,50 €</span>
+        </div>
+        <div class="acc-item">
+            <span class="acc-label">Rückstellung KESt (26%)</span>
+            <span class="acc-value" id="acc-tax" style="color:var(--bearish);">-385,45 €</span>
+        </div>
+        <div class="acc-item">
+            <span class="acc-label">Depotwert (Netto nach Steuern)</span>
+            <span class="acc-value" id="acc-netto" style="color:var(--bullish);">51.097,05 €</span>
+        </div>
+        <div class="acc-item">
+            <span class="acc-label">Turnaround-Gewichtung (Limit 20%)</span>
+            <span class="acc-value" id="acc-turnaround">14,2 % <span class="badge badge-bull" style="font-size:0.65rem; margin-left:0.25rem;">OK</span></span>
+        </div>
+        <button class="toggle-btn" style="position:static; margin-left:1rem;" onclick="toggleSection('accounting-bar')">👁</button>
+    </div>
+
+    <div class="dashboard-grid">
+        
+        <!-- LINKS OBEN: DIE PORTFOLIO POSITIONEN MATRIX -->
+        <div class="card" id="portfolio-card">
+            <h2>📌 Live Portfolio & Multi-Performance Matrix</h2>
+            <button class="toggle-btn" onclick="toggleSection('portfolio-table')">👁</button>
+            <div id="portfolio-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ticker</th>
+                            <th>Typ</th>
+                            <th>Typ Perf</th>
+                            <th>3 Tage Tendenz</th>
+                            <th>1 Woche Perf</th>
+                            <th>4 Wochen Perf</th>
+                        </tr>
+                    </thead>
+                    <tbody id="portfolio-body">
+                        <!-- Wird dynamisch durch JavaScript geladen -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- RECHTS OBEN: NEWS & UMSCHICHTUNGSSIGNALE (SIDE BY SIDE) -->
+        <div class="card" id="news-signals-card">
+            <h2>📰 4h Wirtschaftspresse & 🔄 Umschichtungssignale</h2>
+            <button class="toggle-btn" onclick="toggleSection('flex-container')">👁</button>
+            
+            <div class="flex-container" id="flex-container">
+                <!-- Linker Teil: Schlagzeilen -->
+                <div class="flex-child-news" id="news-container">
+                    <!-- Dynamischer Inhalt -->
+                </div>
+                
+                <!-- Rechter Teil: Signale -->
+                <div class="flex-child-signals" id="signals-container">
+                    <!-- Dynamischer Inhalt -->
+                </div>
+            </div>
+        </div>
+
+        <!-- UNTEN: SENTIMENT, RÜCKSCHAU & VORSCHAU -->
+        <div class="card full-width" id="macro-card">
+            <h2>💡 Makroökonomische Sentiment- & Vorschau-Engine</h2>
+            <button class="toggle-btn" onclick="toggleSection('forecast-grid')">👁</button>
+            
+            <div class="forecast-grid" id="forecast-grid">
+                <div class="forecast-box">
+                    <div class="forecast-title">📊 Tagessentiment Analysis</div>
+                    <div class="forecast-text" id="macro-day">Lade...</div>
+                </div>
+                <div class="forecast-box">
+                    <div class="forecast-title">🗓 Wochen-Rückschau (Sentiment)</div>
+                    <div class="forecast-text" id="macro-week">Lade...</div>
+                </div>
+                <div class="forecast-box">
+                    <div class="forecast-title">🔮 Strategische Wochen-Vorschau</div>
+                    <div class="forecast-text" id="macro-preview">Lade...</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Vollständiger Datensatz für 4 historische Wochen zur nahtlosen Offline-Präsentation im HTML
+        const archiveData = {
+            w0: {
+                brutto: "51.482,50 €", profit: "+1.482,50 €", tax: "-385,45 €", netto: "51.097,05 €", turn: "14,2 %",
+                portfolio: [
+                    { t: "AAPL", cat: "Core Tech", d: "+0,85%", t3: "▲ ▲ ▼", w: "+2,10%", w4: "+5,40%" },
+                    { t: "META", cat: "Core Tech", d: "+2,40%", t3: "▲ ▲ ▲", w: "+6,55%", w4: "+11,60%" },
+                    { t: "ORCL", cat: "Cloud Tech", d: "+4,12%", t3: "▲ ▲ ▲", w: "+5,20%", w4: "+8,90%" },
+                    { t: "PANW", cat: "Cyber Tech", d: "-0,15%", t3: "▼ ▲ ▲", w: "+1,45%", w4: "+4,10%" },
+                    { t: "NVDA", cat: "Halbleiter", d: "-2,33%", t3: "▼ ▼ ▼", w: "-4,10%", w4: "-8,45%" },
+                    { t: "XLE", cat: "Energie Hedge", d: "+1,10%", t3: "▲ ▼ ▲", w: "+3,90%", w4: "+2,80%" },
+                    { t: "INTC", cat: "Turnaround", d: "-0,45%", t3: "▼ ▲ ▼", w: "-0,90%", w4: "-2,10%" },
+                    { t: "PYPL", cat: "Turnaround", d: "+0,20%", t3: "▲ ▼ ▲", w: "+1,15%", w4: "+3,40%" },
+                    { t: "DIS", cat: "Turnaround", d: "-0,10%", t3: "▼ ▼ ▲", w: "-0,50%", w4: "+1,20%" },
+                    { t: "PFE", cat: "Value Hedge", d: "+0,35%", t3: "▲ ▲ ▼", w: "+0,80%", w4: "-0,40%" }
+                ],
+                news: [
+                    { time: "Vor 1 Stunde (08:15)", title: "US-Erzeugerpreise (PPI) steigen überraschend auf +5,4%", desc: "Erhöhter Inflationsdruck schürt die Angst vor einer restriktiven Fed-Sitzung in der kommenden Woche." },
+                    { time: "Vor 4 Stunden (05:15)", title: "WTI-Rohöl knackt die 102 USD-Marke", desc: "Zunehmende Lieferengpässe im Nahen Osten treiben den Sektor an. XLE fängt Tech-Verluste teilweise auf." }
+                ],
+                signals: [
+                    { title: "🚨 LIQUIDIERUNG: NVDA", desc: "Halbleiter-Schwäche setzt sich fort. Bruch der lokalen Unterstützung an der Put-Wall (215 USD)." },
+                    { title: "➡️ UMSCHICHTUNG: KAUF MSFT", desc: "Nutze das freigewordene NVDA-Kapital (ca. 5.000 €) für stabilen Cloud-Zufluss bei Microsoft." }
+                ],
+                macroDay: "Neutral bis Bearisch. Big Tech korrigiert leicht infolge der PPI-Daten, während Value & Rohstoffe signifikante relative Stärke zeigen.",
+                macroWeek: "Eine von Makrodaten getriebene Woche. Meta stützt den Tech-Sektor nach Produktlaunches, Halbleiter korrigieren gesund, Energie erwacht zum Leben.",
+                macroPreview: "Fokus liegt zu 100% auf der Fed-Zinsentscheidung. Wir erwarten hohe Volatilität. Absicherungen über XLE und PFE bleiben vorerst bestehen."
+            },
+            w1: {
+                brutto: "49.850,00 €", profit: "-150,00 €", tax: "0,00 €", netto: "49.850,00 €", turn: "14,8 %",
+                portfolio: [
+                    { t: "AAPL", cat: "Core Tech", d: "-0,20%", t3: "▼ ▲ ▼", w: "+0,45%", w4: "+2,10%" },
+                    { t: "META", cat: "Core Tech", d: "+1,10%", t3: "▲ ▼ ▲", w: "+3,20%", w4: "+6,80%" },
+                    { t: "ORCL", cat: "Cloud Tech", d: "+0,50%", t3: "▲ ▲ ▼", w: "+1,10%", w4: "+3,50%" },
+                    { t: "PANW", cat: "Cyber Tech", d: "+0,80%", t3: "▲ ▲ ▲", w: "+2,30%", w4: "+3,15%" },
+                    { t: "NVDA", cat: "Halbleiter", d: "-1,80%", t3: "▼ ▼ ▲", w: "-3,50%", w4: "-4,10%" },
+                    { t: "XLE", cat: "Energie Hedge", d: "+0,40%", t3: "▲ ▼ ▼", w: "+0,90%", w4: "-1,20%" },
+                    { t: "INTC", cat: "Turnaround", d: "-1,10%", t3: "▼ ▼ ▼", w: "-2,30%", w4: "-5,40%" },
+                    { t: "PYPL", cat: "Turnaround", d: "-0,30%", t3: "▼ ▲ ▼", w: "+0,40%", w4: "+1,10%" },
+                    { t: "DIS", cat: "Turnaround", d: "+0,20%", t3: "▲ ▼ ▲", w: "+0,60%", w4: "-0,80%" },
+                    { t: "PFE", cat: "Value Hedge", d: "-0,10%", t3: "▼ ▲ ▲", w: "-0,20%", w4: "-1,50%" }
+                ],
+                news: [
+                    { time: "Vor 1 Woche", title: "Tech-Sektor atmet nach Arbeitsmarktdaten auf", desc: "Die US-Arbeitslosenquote verbleibt stabil, was Ängste vor einer schnellen Rezession dämpft." }
+                ],
+                signals: [
+                    { title: "📌 KEINE GEPLANTEN POSITIONSTRENNUNGEN", desc: "Das Gesamtportfolio konsolidiert innerhalb der erwarteten statistischen Standardabweichung." }
+                ],
+                macroDay: "Leicht positiv. Der Markt stabilisiert sich nach der jüngsten Tech-Korrektur.",
+                macroWeek: "Konsolidierung auf hohem Niveau. Volumen ging im Vorfeld des Feiertags spürbar zurück.",
+                macroPreview: "Erzeugerpreise und Rohöllagerbestände werden den Ton für die kommende Woche angeben."
+            },
+            w2: { brutto: "50.200,00 €", profit: "+200,00 €", tax: "-52,00 €", netto: "50.148,00 €", turn: "14,5 %", portfolio: [], news: [], signals: [], macroDay: "Stabil", macroWeek: "Ruhig", macroPreview: "Nichts" },
+            w3: { brutto: "50.000,00 €", profit: "0,00 €", tax: "0,00 €", netto: "50.000,00 €", turn: "14,6 %", portfolio: [], news: [], signals: [], macroDay: "Initial", macroWeek: "Initial", macroPreview: "Nichts" }
+        };
+
+        function toggleSection(id) {
+            document.getElementById(id).classList.toggle('hidden-content');
+        }
+
+        function switchArchive() {
+            const val = document.getElementById('timeframe-select').value;
+            const data = archiveData[val] || archiveData['w0'];
+            
+            // Update Accounting
+            document.getElementById('acc-brutto').innerText = data.brutto;
+            document.getElementById('acc-profit').innerText = data.profit;
+            document.getElementById('acc-tax').innerText = data.tax;
+            document.getElementById('acc-netto').innerText = data.netto;
+            document.getElementById('acc-turnaround').innerHTML = data.turn + ` <span class="badge badge-bull" style="font-size:0.65rem; margin-left:0.25rem;">OK</span>`;
+            
+            if(data.profit.startsWith('-')) {
+                document.getElementById('acc-profit').className = "acc-value bearish";
+                document.getElementById('acc-tax').style.color = "var(--text-muted)";
+            } else {
+                document.getElementById('acc-profit').className = "acc-value bullish";
+                document.getElementById('acc-tax').style.color = "var(--bearish)";
+            }
+
+            // Update Table
+            const tbody = document.getElementById('portfolio-body');
+            tbody.innerHTML = "";
+            
+            // Fallback generation for empty weeks in mock
+            const list = data.portfolio.length ? data.portfolio : archiveData['w0'].portfolio;
+            
+            list.forEach(item => {
+                const isBull = !item.d.startsWith('-');
+                const badg = isBull ? 'badge-bull' : 'badge-bear';
+                
+                let trendSpan = "";
+                item.t3.split(" ").forEach(arrow => {
+                    const color = arrow === '▲' ? 'var(--bullish)' : 'var(--bearish)';
+                    trendSpan += `<span style="color:${color}; margin-right:2px;">${arrow}</span> `;
+                });
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td><strong>${item.t}</strong></td>
+                        <td><span class="text-muted">${item.cat}</span></td>
+                        <td><span class="badge ${badg}">${item.d}</span></td>
+                        <td class="tendency">${trendSpan}</td>
+                        <td style="color:${item.w.startsWith('-')?'var(--bearish)':'var(--bullish)'}">${item.w}</td>
+                        <td style="color:${item.w4.startsWith('-')?'var(--bearish)':'var(--bullish)'}">${item.w4}</td>
+                    </tr>
+                `;
+            });
+
+            // Update News
+            const newsBox = document.getElementById('news-container');
+            newsBox.innerHTML = "";
+            const nList = data.news.length ? data.news : archiveData['w0'].news;
+            nList.forEach(n => {
+                newsBox.innerHTML += `
+                    <div class="news-item">
+                        <div class="news-time">${n.time}</div>
+                        <div class="news-title">${n.title}</div>
+                        <div class="news-summary">${n.desc}</div>
+                    </div>
+                `;
+            });
+
+            // Update Signals
+            const sigBox = document.getElementById('signals-container');
+            sigBox.innerHTML = "";
+            const sList = data.signals.length ? data.signals : archiveData['w0'].signals;
+            sList.forEach(s => {
+                const color = s.title.includes('VERKAUF') || s.title.includes('LIQUIDIERUNG') ? 'var(--bearish)' : 'var(--accent)';
+                sigBox.innerHTML += `
+                    <div class="signal-box">
+                        <div class="signal-title" style="color:${color};">${s.title}</div>
+                        <div class="signal-desc">${s.desc}</div>
+                    </div>
+                `;
+            });
+
+            // Update Macro Boxen
+            document.getElementById('macro-day').innerText = data.macroDay;
+            document.getElementById('macro-week').innerText = data.macroWeek;
+            document.getElementById('macro-preview').innerText = data.macroPreview;
+        }
+
+        // Init Setup
+        switchArchive();
+    </script>
+</body>
+</html>
