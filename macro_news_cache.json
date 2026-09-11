@@ -1,6 +1,13 @@
 {
   "Politik/Makro": [
     {
+      "ticker": "^DJI",
+      "title": "Fed rate hike odds rise to 90% after August CPI report",
+      "link": "https://finance.yahoo.com/economy/policy/articles/fed-rate-hike-odds-rise-132908040.html",
+      "publisher": "Quartz",
+      "ts": 1789133348.0
+    },
+    {
       "ticker": "^IXIC",
       "title": "Stock Market Today (Sept. 11, 2026): Nasdaq futures edge higher ahead of key inflation report",
       "link": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-11-131905180.html",
@@ -86,6 +93,13 @@
     },
     {
       "ticker": "AAPL",
+      "title": "Dow Jones Futures Rise, Oil Prices Fall, Oracle Jumps; CPI Inflation Data To Inform Fed",
+      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-sp500-oil-prices-treasury-yields-cpi-inflation-oracle-earnings/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789128110.0
+    },
+    {
+      "ticker": "AAPL",
       "title": "What a Republican 'wipeout' in the midterm elections means for investors",
       "link": "https://finance.yahoo.com/video/republican-wipeout-midterm-elections-means-120000609.html",
       "publisher": "Yahoo Finance Video",
@@ -125,23 +139,16 @@
       "link": "https://finance.yahoo.com/economy/policy/articles/stock-futures-rise-ahead-august-112731701.html",
       "publisher": "Quartz",
       "ts": 1789126051.0
-    },
-    {
-      "ticker": "^GSPC",
-      "title": "Dow Futures Pop as Markets Rebound Ahead of Crucial CPI Inflation Report",
-      "link": "https://www.barrons.com/livecoverage/stock-market-news-today-091126/card/markets-rebound-with-crucial-cpi-inflation-report-in-focus-16GM9jtIX1404eFQvXdl?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1789125992.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Treasury Secretary Scott Bessent Is Tripling the Government's Bond-Buying Program, but the Bond Market Doesn't Care (and With Good Reason)",
-      "link": "https://finance.yahoo.com/economy/policy/articles/treasury-secretary-scott-bessent-tripling-112601376.html",
-      "publisher": "Motley Fool",
-      "ts": 1789125961.0
     }
   ],
   "Wirtschaft": [
+    {
+      "ticker": "NIO",
+      "title": "NIO’s European Push Stalls Even as China Business Shows Real Profitability Progress",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/nio-european-push-stalls-even-133600808.html",
+      "publisher": "Insider Monkey",
+      "ts": 1789133760.0
+    },
     {
       "ticker": "^GSPC",
       "title": "Stock Market News for Sep 11, 2026",
@@ -274,16 +281,37 @@
       "link": "https://finance.yahoo.com/markets/live/stock-market-today-friday-september-11-dow-sp-500-nasdaq-cpi-inflation-082201751.html",
       "publisher": "Yahoo Finance",
       "ts": 1789114921.0
-    },
-    {
-      "ticker": "VRT",
-      "title": "1 Big Reason Vertiv's New Acquisition Could Supercharge Its AI Dominance",
-      "link": "https://finance.yahoo.com/technology/ai/articles/1-big-reason-vertivs-acquisition-062500023.html",
-      "publisher": "Motley Fool",
-      "ts": 1789107900.0
     }
   ],
   "Technologie": [
+    {
+      "ticker": "CRWD",
+      "title": "CRWD Stock Leads Wedbush’s Cybersecurity Bets: Check Point, Fortinet, Varonis, Telos Downgraded",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/crwd-stock-leads-wedbush-cybersecurity-133907180.html",
+      "publisher": "Stocktwits",
+      "ts": 1789133947.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Nvidia CEO Jensen Huang Calls AI Cybersecurity Panic a Sales Pitch",
+      "link": "https://finance.yahoo.com/technology/ai/articles/nvidia-ceo-jensen-huang-calls-133816461.html",
+      "publisher": "BeInCrypto",
+      "ts": 1789133896.0
+    },
+    {
+      "ticker": "ORCL",
+      "title": "Oracle Surges 7% as AI Cloud Backlog Hits $664B, CoreWeave and Nebius Climb 4%",
+      "link": "https://finance.yahoo.com/technology/ai/articles/oracle-surges-7-ai-cloud-133140688.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789133500.0
+    },
+    {
+      "ticker": "INTC",
+      "title": "Why the driverless company Intel controls just bet on a Florida shuttle startup",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/why-driverless-company-intel-controls-132924374.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789133364.0
+    },
     {
       "ticker": "GOOGL",
       "title": "Google Cloud Launches AI Agents for Banking, With Deutsche Bank as Its Proving Ground",
@@ -395,37 +423,58 @@
       "link": "https://finance.yahoo.com/technology/articles/qualcomm-chip-deal-samsung-hits-120833823.html",
       "publisher": "GuruFocus.com",
       "ts": 1789128513.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Nvidia Rival Enflame Jumps 206% on Its Shanghai Debut",
-      "link": "https://finance.yahoo.com/technology/ai/articles/nvidia-rival-enflame-jumps-206-120755584.html",
-      "publisher": "GuruFocus.com",
-      "ts": 1789128475.0
-    },
-    {
-      "ticker": "ORCL",
-      "title": "Oracle's RPO Reaches $664 Billion With Cloud Infrastructure Up 121%",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/oracles-rpo-reaches-664-billion-120716523.html",
-      "publisher": "GuruFocus.com",
-      "ts": 1789128436.0
-    },
-    {
-      "ticker": "SPCX",
-      "title": "SpaceX signs $1.1B-per-month AI computing deal in September 2026",
-      "link": "https://finance.yahoo.com/technology/ai/articles/spacex-signs-1-1b-per-120459286.html",
-      "publisher": "Quartz",
-      "ts": 1789128299.0
-    },
-    {
-      "ticker": "RDDT",
-      "title": "It's 2026 and Gurus Are Still Promising $10K a Month From Low-Effort AI Side Hustles. It Feels Like 99% of the Money Is ‘About Selling the Shovel’",
-      "link": "https://finance.yahoo.com/technology/ai/articles/2026-gurus-still-promising-10k-120013941.html",
-      "publisher": "Benzinga",
-      "ts": 1789128013.0
     }
   ],
   "Sonstiges": [
+    {
+      "ticker": "FTNT",
+      "title": "Chewy downgraded, Shopify initiated: Wall Street's top analyst calls",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/chewy-downgraded-shopify-initiated-wall-134036018.html",
+      "publisher": "The Fly",
+      "ts": 1789134036.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "I'm Buying Occidental on This Dip -- Not Because of Oil, but Because of This",
+      "link": "https://finance.yahoo.com/energy/articles/im-buying-occidental-dip-not-133500605.html",
+      "publisher": "Motley Fool",
+      "ts": 1789133700.0
+    },
+    {
+      "ticker": "V",
+      "title": "MoneyGram Launches Stablecoin-Backed Card",
+      "link": "https://finance.yahoo.com/markets/crypto/articles/moneygram-launches-stablecoin-backed-card-133100248.html",
+      "publisher": "CryptoProwl",
+      "ts": 1789133460.0
+    },
+    {
+      "ticker": "ASTS",
+      "title": "Price Prediction: Rocket Lab’s Next Leg Higher Could Be Massive, 95% Upside Ahead",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/price-prediction-rocket-lab-next-133042699.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789133442.0
+    },
+    {
+      "ticker": "JPM",
+      "title": "Is JPMorgan Chase & Co. (JPM) a Buy as Wall Street Analysts Look Optimistic?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/jpmorgan-chase-co-jpm-buy-133002591.html",
+      "publisher": "Zacks",
+      "ts": 1789133402.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Why Alight Stock Is Plummeting This Week",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/why-alight-stock-plummeting-week-132908331.html",
+      "publisher": "Motley Fool",
+      "ts": 1789133348.0
+    },
+    {
+      "ticker": "XLE",
+      "title": "Sector Update: Energy Stocks Decline Premarket Friday",
+      "link": "https://finance.yahoo.com/energy/articles/sector-energy-stocks-decline-premarket-132850294.html",
+      "publisher": "MT Newswires",
+      "ts": 1789133330.0
+    },
     {
       "ticker": "^GSPC",
       "title": "Should You Buy Walmart Stock After a 14% Decline in Six Months?",
@@ -434,10 +483,52 @@
       "ts": 1789133220.0
     },
     {
+      "ticker": "META",
+      "title": "Meta at $645: Recent Momentum Makes One Thing Very Clear",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/meta-645-recent-momentum-makes-132659029.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789133219.0
+    },
+    {
+      "ticker": "TSLA",
+      "title": "Should You Buy Ford Motor Stock Because It Is Selling Fewer Vehicles At Better Prices?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/buy-ford-motor-stock-because-132631392.html",
+      "publisher": "Trefis",
+      "ts": 1789133191.0
+    },
+    {
+      "ticker": "SMR",
+      "title": "NuScale Power Drops 5% as UBS Cuts to Sell on Timeline and Cash Burn, Oklo Slips",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/nuscale-power-drops-5-ubs-132537938.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789133137.0
+    },
+    {
+      "ticker": "AAPL",
+      "title": "Company News for Sep 11, 2026",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/company-news-sep-11-2026-132500285.html",
+      "publisher": "Zacks",
+      "ts": 1789133100.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "Sector Update: Financial Stocks Advance Pre-Bell Friday",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/sector-financial-stocks-advance-pre-132121056.html",
+      "publisher": "MT Newswires",
+      "ts": 1789132881.0
+    },
+    {
       "ticker": "AMZN",
       "title": "Polymarket Appoints First Chief Financial Officer",
       "link": "https://finance.yahoo.com/markets/stocks/articles/polymarket-appoints-first-chief-financial-132100789.html",
       "publisher": "CryptoProwl",
+      "ts": 1789132860.0
+    },
+    {
+      "ticker": "SEI",
+      "title": "Magnolia Oil & Gas Closes Transformative WildFire Energy Deal",
+      "link": "https://finance.yahoo.com/energy/articles/magnolia-oil-gas-closes-transformative-132100465.html",
+      "publisher": "Zacks",
       "ts": 1789132860.0
     },
     {
@@ -474,97 +565,6 @@
       "link": "https://finance.yahoo.com/healthcare/articles/jpmorgan-cautious-hims-hers-glp-131423295.html",
       "publisher": "Investing.com",
       "ts": 1789132463.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Why Did Casey's General Stores Stock Tank This Week?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/why-did-caseys-general-stores-130932169.html",
-      "publisher": "Motley Fool",
-      "ts": 1789132172.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "OpenAI’s $122B Capital Raise Signals a Definitive Transition to Infrastructure Utility",
-      "link": "https://finance.yahoo.com/technology/ai/articles/openai-122b-capital-raise-signals-130644500.html",
-      "publisher": "Forkast News",
-      "ts": 1789132004.0
-    },
-    {
-      "ticker": "V",
-      "title": "Why Visa’s Agentic Commerce Play Isn’t the Threat Wall Street Thinks It Is",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/why-visa-agentic-commerce-play-130542438.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789131942.0
-    },
-    {
-      "ticker": "PLTR",
-      "title": "Inovio Nears FDA Decision on INO-3107 as Oct. 30 PDUFA Date Looms",
-      "link": "https://finance.yahoo.com/healthcare/articles/inovio-nears-fda-decision-ino-130216948.html",
-      "publisher": "MarketBeat",
-      "ts": 1789131736.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "How Top Fidelity Manager Beats The Herd With 'Overanalyzed' Stocks",
-      "link": "https://www.investors.com/etfs-and-funds/mutual-funds/top-fund-fidelity-manager-beats-the-herd-with-overanalyzed-stocks/?src=A00220&yptr=yahoo",
-      "publisher": "Investor's Business Daily",
-      "ts": 1789131643.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "Amazon vs. Alphabet: If I Could Buy Only One, I’d Choose This Stock",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/amazon-vs-alphabet-could-buy-130038552.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789131638.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "Alphabet Inc. (GOOGL) Is a Trending Stock: Facts to Know Before Betting on It",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/alphabet-inc-googl-trending-stock-130007889.html",
-      "publisher": "Zacks",
-      "ts": 1789131607.0
-    },
-    {
-      "ticker": "CRWD",
-      "title": "Here is What to Know Beyond Why CrowdStrike (CRWD) is a Trending Stock",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/know-beyond-why-crowdstrike-crwd-130006516.html",
-      "publisher": "Zacks",
-      "ts": 1789131606.0
-    },
-    {
-      "ticker": "CVX",
-      "title": "Chevron Corporation (CVX) is Attracting Investor Attention: Here is What You Should Know",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/chevron-corporation-cvx-attracting-investor-130006899.html",
-      "publisher": "Zacks",
-      "ts": 1789131606.0
-    },
-    {
-      "ticker": "GRAB",
-      "title": "Investors Heavily Search Grab Holdings Limited (GRAB): Here is What You Need to Know",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/investors-heavily-search-grab-holdings-130006056.html",
-      "publisher": "Zacks",
-      "ts": 1789131606.0
-    },
-    {
-      "ticker": "XOM",
-      "title": "Here is What to Know Beyond Why ExxonMobil Holdings Corporation (XOM) is a Trending Stock",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/know-beyond-why-exxonmobil-holdings-130005831.html",
-      "publisher": "Zacks",
-      "ts": 1789131605.0
-    },
-    {
-      "ticker": "CRM",
-      "title": "Salesforce, Inc. (CRM) Is a Trending Stock: Facts to Know Before Betting on It",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/salesforce-inc-crm-trending-stock-130004289.html",
-      "publisher": "Zacks",
-      "ts": 1789131604.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "Alphabet Inc. (GOOG) is Attracting Investor Attention: Here is What You Should Know",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/alphabet-inc-goog-attracting-investor-130003136.html",
-      "publisher": "Zacks",
-      "ts": 1789131603.0
     }
   ]
 }
