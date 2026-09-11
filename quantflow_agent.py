@@ -1089,7 +1089,7 @@ def render_master_table(rows, score_history):
     return f'''    <div class="table-wrap">
     <table class="overview-table">
         <thead>
-            <tr><th>Position</th><th>Segment(e)</th><th>Kategorie</th><th>Score</th><th>Buchgewinn/-verlust (Hauptdepot)</th><th>W-4</th><th>W-3</th><th>W-2</th><th>W-1</th><th>Tag</th><th>Kurstrend</th><th>Score-Trend</th></tr>
+            <tr><th>Position</th><th>Segment(e)</th><th>Kategorie</th><th>Score</th><th title="Buchgewinn/-verlust seit Kauf, nur Hauptdepot">EUR +/-</th><th>W-4</th><th>W-3</th><th>W-2</th><th>W-1</th><th>Tag</th><th>Kurstrend</th><th>Score-Trend</th></tr>
         </thead>
         <tbody>
 {"".join(trs)}
@@ -1193,10 +1193,14 @@ LEGEND_HTML = '''    <details class="legend-box">
             gewichtet), einen Rebound-Bonus (wie nah/fern vom 52-Wochen-Hoch, gedeckelt), das News-Sentiment
             (simple Keyword-Zählung, -5 bis +5) und eine Options-Kennzahl (Put/Call-Verhältnis, -1/0/+1).</p>
             <p>Ein höherer Score heißt nur: <em>im Vergleich zu den anderen Kandidaten dieses Laufs</em> gerade
-            stärkeres Momentum/Sentiment. Es gibt keinen absoluten "ab X ist es gut"-Wert — es zählt allein die
-            Rangfolge (die zehn höchsten Scores kommen ins Hauptdepot). Ein negativer Score ist nicht automatisch
-            "schlecht", wenn er trotzdem unter den Top 10 liegt; ein positiver Score reicht nicht, wenn zehn
-            andere Kandidaten noch höher liegen.</p>
+            stärkeres Momentum/Sentiment. Es gibt keinen absoluten "ab X ist es gut"-Wert — es zählt die Rangfolge.
+            Das Hauptdepot wird aber NICHT bei jedem Lauf neu nach Score sortiert: eine gehaltene Position wird nur
+            ausgetauscht, wenn ein nicht gehaltener Kandidat sie um mehr als die Tausch-Schwelle übertrifft — sonst
+            bleibt sie liegen, auch wenn andere Kandidaten kurzzeitig höher stehen. Das <strong>✅ erfüllt
+            Kriterium</strong>-Abzeichen bei Watchlist/Musterdepot-Titeln zeigt nur an: dieser Score würde
+            rechnerisch gerade unter die Top 10 aller bewerteten Kandidaten fallen — er ist damit "Hauptdepot-Niveau
+            wert", wird aber automatisch NUR dann tatsächlich gekauft, wenn er im Tausch-Mechanismus eine bestehende
+            Position tatsächlich schlägt. Es ist also eine reine Beobachtungs-Info, kein automatischer Kauf-Trigger.</p>
             <p><strong>Quick Win</strong> wird vergeben, wenn der reine Momentum-Anteil (Tag/Woche/Monat) den
             Rebound-Anteil übersteigt — also ein Titel, der gerade aktiv nach oben läuft.
             <strong>Long</strong> wird vergeben, wenn der Rebound-Anteil (Erholung/Abstand vom Hoch) überwiegt —
@@ -1206,6 +1210,10 @@ LEGEND_HTML = '''    <details class="legend-box">
             den aktuellen Score mit dem Score desselben Titels beim letzten Lauf (4h zuvor) — keine Kursprognose,
             nur "wird der Kandidat gerade relativ stärker oder schwächer bewertet". Der <strong>Kurstrend</strong>
             (▲▼▲) daneben zeigt dagegen die reine Kursrichtung der letzten drei Handelstage.</p>
+            <p>Die Spalte <strong>EUR +/-</strong> in der Gesamtübersicht zeigt den nominalen Buchgewinn/-verlust
+            seit Kauf in Euro — und zwar NUR für tatsächlich gehaltene Hauptdepot-Positionen, da dort echtes
+            (simuliertes) Kapital investiert ist. Bei Watchlist- und Musterdepot-Titeln steht dort bewusst ein
+            "–", weil dort kein Kauf stattgefunden hat, es also auch keinen Buchgewinn geben kann.</p>
         </div>
     </details>'''
 
