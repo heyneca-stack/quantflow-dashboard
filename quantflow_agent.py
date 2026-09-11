@@ -814,6 +814,10 @@ def render_week_table(pm):
         cls = "pos" if (val or 0) >= 0 else "neg"
         parts.append(f'<div class="week-cell"><span class="week-label">{label}</span>'
                       f'<span class="{cls}">{pct_str(val)}</span></div>')
+    tendency = pm.get("tendency", "–")
+    tendency_class = pm.get("tendency_class", "neutral")
+    parts.append(f'<div class="week-cell"><span class="week-label">Trend</span>'
+                  f'<span class="tendency {tendency_class}">{tendency}</span></div>')
     return '<div class="week-table">' + "".join(parts) + '</div>'
 
 
@@ -821,11 +825,9 @@ def render_card(symbol, name, category, sec_type, price_m, news_cache, score_his
                  now_ts, mode="watchlist", pos=None, score=None, risk_flag=False,
                  qualifies=None, note=""):
     """Gemeinsamer Karten-Renderer für gehaltene Positionen, Watchlist und
-    Musterdepot. Der Score wird IMMER angezeigt (unabhängig vom Modus)."""
-    day_perf = price_m["day_perf"] if price_m else 0.0
-    tendency = price_m["tendency"] if price_m else "–"
-    tendency_class = price_m["tendency_class"] if price_m else "neutral"
-    day_cls = "pos" if day_perf >= 0 else "neg"
+    Musterdepot. Der Score wird IMMER angezeigt (unabhängig vom Modus). Der
+    aktuelle Kurs steht direkt neben dem Klarnamen; Kurstrend (▲▼▲) sitzt in
+    derselben Zeile wie die 4-Wochen-Werte, nicht mehr separat im Fließtext."""
     cat_cls = "buy" if category == "Quick Win" else ""
 
     if mode == "held" and pos is not None:
@@ -858,36 +860,35 @@ def render_card(symbol, name, category, sec_type, price_m, news_cache, score_his
         )
 
     score_html = f'<span class="badge">Score {score_value:.2f}</span>'
+    price_inline = f'<span class="current-price-inline">· {fmt_eur(price_m["current_price"])}</span>' if price_m else ""
 
     news_html = render_news_html(symbol, news_cache, now_ts)
     week_table = render_week_table(price_m)
 
-    entry_meta = ""
-    if mode == "held" and pos and price_m:
-        entry_meta = (
-            f'Einstieg: {pos.get("entry_date", "–")} @ {fmt_eur(pos["entry_price"])} · '
-            f'Aktuell: {fmt_eur(price_m["current_price"])} · '
-        )
-
-    meta_line = (
-        f'{entry_meta}Tag <span class="{day_cls}">{day_perf:+.2f}%</span> · '
-        f'Kurstrend <span class="tendency {tendency_class}">{tendency}</span>'
-        if price_m else "Keine Kursdaten verfügbar."
-    )
+    extra_meta = ""
+    if mode == "held" and pos:
+        extra_meta = f'Kaufkurs: {fmt_eur(pos["entry_price"])}'
+    meta_html = f'<div class="position-meta">{extra_meta}</div>' if extra_meta else ""
 
     return f'''            <details class="position-card" open>
                 <summary class="position-header">
-                    <div>
-                        <span class="ticker-name">{symbol}</span>
-                        <span class="company-name">{name}</span><br>
-                        <span class="badge">{sec_type}</span>
-                        <span class="badge category-badge {cat_cls}">{category}</span>
-                        {risk_badge}{qualifies_badge}{score_html}
-                        <span class="badge score-arrow {arrow_cls}" title="Score-Trend ggü. vorigem Lauf">{arrow}</span>
+                    <div class="header-main">
+                        <div class="header-title">
+                            <span class="ticker-name">{symbol}</span>
+                            <span class="company-name">{name}</span>
+                            {price_inline}
+                            <span class="disclosure-arrow">▸</span>
+                        </div>
+                        <div class="header-badges">
+                            <span class="badge">{sec_type}</span>
+                            <span class="badge category-badge {cat_cls}">{category}</span>
+                            {risk_badge}{qualifies_badge}{score_html}
+                            <span class="badge score-arrow {arrow_cls}">Score-Trend {arrow}</span>
+                        </div>
                     </div>
                     {value_html}
                 </summary>
-                <div class="position-meta">{meta_line}</div>
+                {meta_html}
                 {note_html}
                 {week_table}
                 <details class="news-toggle">
@@ -1110,7 +1111,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuantFlow Tech Agent Dashboard v6.0</title>
+    <title>QuantFlow Tech Agent Dashboard v6.1</title>
     <style>
         :root {{
             --bg-dark: #0f111a;--bg-card: #161925;--text-main: #f0f2f5;--text-muted: #8a92b2;--green: #00e676;--red: #ff3d00;--blue: #00b0ff;--border: #22273d;--purple: #b388ff;--orange: #ffab40;
@@ -1154,10 +1155,16 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
 
         .positions-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; }}
         .position-card {{ background-color: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); padding: 16px; }}
-        .position-header {{ display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; cursor: pointer; list-style: none; }}
+        .position-header {{ display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; cursor: pointer; list-style: none; gap: 10px; }}
         .position-header::-webkit-details-marker {{ display: none; }}
-        .position-value {{ text-align: right; }}
-        .position-meta {{ font-size: 12px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.8; white-space: nowrap; overflow-x: auto; }}
+        .header-main {{ display: flex; flex-direction: column; gap: 6px; min-width: 0; }}
+        .header-title {{ display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }}
+        .header-badges {{ display: flex; flex-wrap: wrap; gap: 4px; }}
+        .current-price-inline {{ font-size: 12px; color: var(--text-muted); font-weight: 600; }}
+        .disclosure-arrow {{ display: inline-block; color: var(--text-muted); font-size: 11px; transition: transform 0.15s; margin-left: auto; }}
+        details[open] > summary .disclosure-arrow {{ transform: rotate(90deg); }}
+        .position-value {{ text-align: right; flex-shrink: 0; }}
+        .position-meta {{ font-size: 12px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.8; }}
         .ticker-name {{ font-weight: 700; font-size: 15px; margin-right: 6px; }}
         .company-name {{ font-size: 11px; color: var(--text-muted); }}
         .badge {{ padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; background: #22273d; margin-right: 4px; display: inline-block; margin-top: 4px; white-space: nowrap; }}
@@ -1206,7 +1213,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
 <body>
     <header>
         <div class="logo-area">
-            <h1>QuantFlow Tech Agent Dashboard <span style="color:var(--blue); font-size:14px;">v6.0</span></h1>
+            <h1>QuantFlow Tech Agent Dashboard <span style="color:var(--blue); font-size:14px;">v6.1</span></h1>
             <span>Simuliertes Momentum-/News-/Options-Portfolio (Paper Trading) — Letztes Update: {timestamp}</span>
         </div>
         <div class="controls-area">
