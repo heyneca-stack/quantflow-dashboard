@@ -1,0 +1,38 @@
+name: Run QuantFlow Agent Every 4 Hours
+
+on:
+  schedule:
+    # Startet alle 4 Stunden (00:00, 04:00, 08:00, 12:00, 16:00, 20:00 UTC)
+    - cron: '0 */4 * * *'
+  workflow_dispatch: # Erlaubt es dir, den Agenten jederzeit manuell per Klick zu starten
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Erlaubt dem Bot, das aktualisierte HTML zurückzuspeichern
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install yfinance pandas beautifulsoup4
+
+    - name: Run Trading Agent
+      run: python quantflow_agent.py
+
+    - name: Commit and Push changes
+      run: |
+        git config --global user.name "QuantFlow Bot"
+        git config --global user.email "bot@quantflow.local"
+        git add dashboard.html
+        git diff-index --quiet HEAD || git commit -m "🤖 Dashboard 4h-Update [$(date '+%Y-%m-%d %H:%M:%S')]"
+        git push
