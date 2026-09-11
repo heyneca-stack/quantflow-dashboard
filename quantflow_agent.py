@@ -30,6 +30,7 @@ v6.0 Erweiterungen:
 """
 
 import json
+import math
 import os
 import time
 from datetime import datetime, timezone
@@ -531,11 +532,18 @@ def rebalance(scored, state, price_lookup, timestamp):
        eingesetzt — zuerst für die durch den Tausch vorgemerkten Kandidaten,
        danach für weitere gute unheld-Kandidaten, solange Cash >= MIN_NEW_BUY
        und die Positionsobergrenze (MAX_POSITIONS) nicht erreicht ist. Ein
-       einzelner Kauf ist auf ALLOCATION_PER_POSITION gedeckelt.
+       einzelner Kauf ist auf ALLOCATION_PER_POSITION gedeckelt UND wird immer
+       in GANZEN Stücken/Aktien getätigt (wie im echten Handel) — der
+       tatsächliche Kaufbetrag liegt also "round about" bei ALLOCATION_PER_POSITION,
+       je nachdem, was sich mit ganzen Stücken am nächsten erreichen lässt,
+       nie exakt und nie mehr als das Budget.
     3. REST-CASH: was übrig bleibt (zu wenig für einen neuen Kauf, oder die
-       Obergrenze ist erreicht) fließt als Aufstockung in die aktuell am
-       besten bewertete GEHALTENE Position (Durchschnittskurs wird neu
-       berechnet), nicht planlos in eine zufällige Position.
+       Obergrenze ist erreicht) fließt als Aufstockung in die bestbewerteten
+       GEHALTENEN Positionen — der Reihe nach nach Score sortiert, aber JEDE
+       einzelne Aufstockung ist ebenfalls auf ALLOCATION_PER_POSITION gedeckelt
+       und in ganzen Stücken. So kann eine einzelne Position nicht unbegrenzt
+       überproportional wachsen, nur weil sie zufällig mehrfach hintereinander
+       die beste war.
 
     Steuer (KESt) wird direkt bei jedem Verkauf auf den tatsächlichen
     Gewinn dieses einen Verkaufs fällig und mindert den Netto-Zufluss ins
@@ -544,7 +552,20 @@ def rebalance(scored, state, price_lookup, timestamp):
     """
     old_positions = state.get("positions", {})
     positions = {sym: dict(pos) for sym, pos in old_positions.items()}
-    cash_balance = state.get("cash_balance", NUM_POSITIONS * ALLOCATION_PER_POSITION)
+
+    if "cash_balance" in state:
+        cash_balance = state["cash_balance"]
+    elif not old_positions:
+        # Echter Erststart: es gibt noch keinerlei Positionen -> Startkapital
+        # wird einmalig bereitgestellt.
+        cash_balance = NUM_POSITIONS * ALLOCATION_PER_POSITION
+    else:
+        # Migration von einem älteren State-Format (vor Einführung der
+        # Cash-Logik), das bereits Positionen enthält: deren Kaufwert IST
+        # bereits das investierte Kapital — hier zusätzlich ein volles
+        # Startkapital anzunehmen würde die Bilanz verdoppeln. Also kein
+        # frei erfundenes Zusatz-Cash bei der Migration.
+        cash_balance = 0.0
 
     scored_by_symbol = {c["symbol"]: c for c in scored}
     for sym, pos in positions.items():
@@ -592,49 +613,69 @@ def rebalance(scored, state, price_lookup, timestamp):
         del positions[sym]
 
     idx = 0
-    while cash_balance >= 0.01 and idx < len(unheld_sorted):
+    while cash_balance >= MIN_NEW_BUY and idx < len(unheld_sorted) and len(positions) < MAX_POSITIONS:
         cand = unheld_sorted[idx]
         sym = cand["symbol"]
         idx += 1
         if sym in positions:
             continue
-        if cash_balance >= MIN_NEW_BUY and len(positions) < MAX_POSITIONS:
-            buy_amount = min(cash_balance, ALLOCATION_PER_POSITION)
-            entry_price = cand["price_m"]["current_price"]
-            shares = buy_amount / entry_price if entry_price else 0.0
-            positions[sym] = {
-                "entry_price": entry_price, "entry_date": timestamp, "shares": shares,
-                "category": cand["category"], "type": cand["type"], "last_score": cand["score"],
-            }
-            cash_balance -= buy_amount
-            if sym in swap_buy_symbols:
-                grund = f"Tausch: ersetzt schwächere Position (Score {cand['score']:.2f})"
-            else:
-                grund = f"Neuer Kauf aus verfügbarem Cash (Score {cand['score']:.2f})"
-            events.append({
-                "aktion": "KAUF", "ticker": sym, "kategorie": cand["category"],
-                "preis": entry_price, "shares": shares, "realized_pnl": None, "steuer": 0.0,
-                "grund": grund,
-            })
+        budget = min(cash_balance, ALLOCATION_PER_POSITION)
+        entry_price = cand["price_m"]["current_price"]
+        if not entry_price or entry_price <= 0:
+            continue
+        shares = math.floor(budget / entry_price)
+        if shares < 1:
+            # Dieser Kandidat ist pro Stück teurer als das verfügbare Budget —
+            # nicht abbrechen, sondern beim nächsten (etwas schwächeren, aber
+            # vielleicht günstigeren) Kandidaten weiterprobieren.
+            continue
+        buy_amount = shares * entry_price  # tatsächlicher Kaufbetrag in GANZEN Stücken, "round about" ALLOCATION_PER_POSITION
+        positions[sym] = {
+            "entry_price": entry_price, "entry_date": timestamp, "shares": shares,
+            "category": cand["category"], "type": cand["type"], "last_score": cand["score"],
+        }
+        cash_balance -= buy_amount
+        if sym in swap_buy_symbols:
+            grund = f"Tausch: ersetzt schwächere Position (Score {cand['score']:.2f})"
         else:
-            break  # zu wenig Cash für einen weiteren Neukauf oder Positions-Limit erreicht
+            grund = f"Neuer Kauf aus verfügbarem Cash (Score {cand['score']:.2f})"
+        events.append({
+            "aktion": "KAUF", "ticker": sym, "kategorie": cand["category"],
+            "preis": entry_price, "shares": shares, "realized_pnl": None, "steuer": 0.0,
+            "grund": grund,
+        })
 
-    if cash_balance >= 0.01 and positions:
-        best_sym, best_pos = max(positions.items(), key=lambda kv: kv[1]["last_score"])
-        price_now = price_lookup.get(best_sym, {}).get("current_price", best_pos["entry_price"])
-        if price_now:
-            add_shares = cash_balance / price_now
-            old_cost_basis = best_pos["entry_price"] * best_pos["shares"]
-            new_shares = best_pos["shares"] + add_shares
-            new_cost_basis = old_cost_basis + cash_balance
+    # Aufstockung: Rest-Cash geht in Tranchen von je maximal
+    # ALLOCATION_PER_POSITION (ganze Stücke) an die bestbewerteten GEHALTENEN
+    # Positionen der Reihe nach — nie alles auf einen Schlag in nur eine
+    # Position, damit keine einzelne Position unkontrolliert überproportional
+    # wächst, nur weil sie mehrfach hintereinander die beste war.
+    made_progress = True
+    while cash_balance >= 0.01 and positions and made_progress:
+        made_progress = False
+        for sym, pos in sorted(positions.items(), key=lambda kv: kv[1]["last_score"], reverse=True):
+            if cash_balance < 0.01:
+                break
+            price_now = price_lookup.get(sym, {}).get("current_price", pos["entry_price"])
+            if not price_now or price_now <= 0:
+                continue
+            budget = min(cash_balance, ALLOCATION_PER_POSITION)
+            add_shares = math.floor(budget / price_now)
+            if add_shares < 1:
+                continue  # für DIESE Position reicht der Rest-Cash nicht für ein ganzes Stück
+            spend = add_shares * price_now
+            old_cost_basis = pos["entry_price"] * pos["shares"]
+            new_shares = pos["shares"] + add_shares
+            new_cost_basis = old_cost_basis + spend
             events.append({
-                "aktion": "AUFSTOCKUNG", "ticker": best_sym, "kategorie": best_pos.get("category", ""),
+                "aktion": "AUFSTOCKUNG", "ticker": sym, "kategorie": pos.get("category", ""),
                 "preis": price_now, "shares": add_shares, "realized_pnl": None, "steuer": 0.0,
-                "grund": f"Aufstockung der stärksten gehaltenen Position mit Cash-Rest ({fmt_eur(cash_balance)})",
+                "grund": f"Aufstockung einer bestbewerteten gehaltenen Position mit Cash ({fmt_eur(spend)})",
             })
-            best_pos["entry_price"] = new_cost_basis / new_shares if new_shares else best_pos["entry_price"]
-            best_pos["shares"] = new_shares
-            cash_balance = 0.0
+            pos["entry_price"] = new_cost_basis / new_shares if new_shares else pos["entry_price"]
+            pos["shares"] = new_shares
+            cash_balance -= spend
+            made_progress = True
 
     by_score = sorted(positions.items(), key=lambda kv: kv[1]["last_score"])
     dispose_symbols = {sym for sym, _ in by_score[:NUM_DISPOSE_CANDIDATES]}
