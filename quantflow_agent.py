@@ -36,6 +36,7 @@ def run_agent_update():
             current_price = hist['Close'].iloc[-1]
             prev_price = hist['Close'].iloc[-2]
             
+            # 3-Handelstage-Tendenz
             t_list = []
             for i in range(-3, 0):
                 if hist['Close'].iloc[i] > hist['Close'].iloc[i-1]:
@@ -71,7 +72,7 @@ def run_agent_update():
         except Exception as e:
             print(f"Fehler bei Ticker {ticker_symbol}: {e}")
 
-    # 2. FINANZEN & STEUERN BERECHNEN
+    # 2. FINANZEN & STEUERN BERECHNEN (26% KESt)
     kest_return = max(0, total_gain * 0.26)
     total_netto = total_brutto - kest_return
     turnaround_weight = (turnaround_val / total_brutto) * 100 if total_brutto > 0 else 0
@@ -91,8 +92,8 @@ def run_agent_update():
     with open(csv_file, "a", encoding="utf-8") as f:
         f.write(f"{timestamp},{total_brutto:.2f},{total_gain:.2f},{kest_return:.2f},{total_netto:.2f},{turnaround_weight:.1f}\n")
 
-    # 3. HTML DASHBOARD GENERIEREN (Direkt und ohne Risiko aus Python)
-    html_part_1 = f"""<!DOCTYPE html>
+    # 3. DAS GESAMTE DASHBOARD-HTML ABSOLUT STABIL GENERIEREN
+    full_html = f"""<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
@@ -159,4 +160,3 @@ def run_agent_update():
         <div class="acc-item"><label>Gesamtwert Depot (Brutto)</label><div class="val">{val_brutto}</div></div>
         <div class="acc-item"><label>Nicht realisierter Gewinn</label><div class="val pos">{val_gain}</div></div>
         <div class="acc-item"><label>Rückstellung KESt (26%)</label><div class="val neg">{val_kest}</div></div>
-        <div class="acc-item"><label>Depotwert (Netto nach Steuern)</label><div class="val" style="color: var(--green);">{val_netto}</div></div>
