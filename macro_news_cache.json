@@ -1,6 +1,27 @@
 {
   "Politik/Makro": [
     {
+      "ticker": "PFE",
+      "title": "The 10-Year Treasury Pays Nearly 5% These 6 Dividend Stocks Still Pay More",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/10-treasury-pays-nearly-5-124744815.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789130864.0
+    },
+    {
+      "ticker": "ORCL",
+      "title": "CPI Inflation Likely Seals Fed Rate Hike, But Stocks Rise (Live Coverage)",
+      "link": "https://www.investors.com/news/cpi-inflation-aug-federal-reserve-rate-hike-oil-prices-sp-500/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789130549.0
+    },
+    {
+      "ticker": "ORCL",
+      "title": "Stock Market Today: Dow Rises On Surprise Inflation Data; AI Name Oracle Jumps On Earnings (Live Coverage)",
+      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-oracle-stock-orcl/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789130533.0
+    },
+    {
       "ticker": "MU",
       "title": "Micron Stock in Focus -- Unveils Massive Employee Rewards After Record Profits",
       "link": "https://finance.yahoo.com/markets/stocks/articles/micron-stock-focus-unveils-massive-121339678.html",
@@ -118,30 +139,16 @@
       "link": "https://finance.yahoo.com/markets/live/stock-market-today-friday-september-11-dow-sp-500-nasdaq-cpi-inflation-082201751.html",
       "publisher": "Yahoo Finance",
       "ts": 1789114921.0
-    },
-    {
-      "ticker": "ASML",
-      "title": "European Indexes Rise as Banks Gain, Software Stocks Fall",
-      "link": "https://www.wsj.com/finance/stocks/nikkei-falls-2-8-dragged-by-chip-stocks-abb86523?siteid=yhoof2&yptr=yahoo",
-      "publisher": "The Wall Street Journal",
-      "ts": 1789111560.0
-    },
-    {
-      "ticker": "MU",
-      "title": "The New Chip Rally Comes With a Warning Attached",
-      "link": "https://www.barrons.com/articles/new-chip-rally-warning-c35195a2?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1789104600.0
-    },
-    {
-      "ticker": "AAPL",
-      "title": "Crumbs: Robinhood Chain Backed Startup Pushes Stock Tokenization Into Shopping Rewards",
-      "link": "https://finance.yahoo.com/markets/crypto/articles/crumbs-robinhood-chain-backed-startup-050341021.html",
-      "publisher": "CoinGape",
-      "ts": 1789103021.0
     }
   ],
   "Wirtschaft": [
+    {
+      "ticker": "MU",
+      "title": "Micron Bets on Long-Term SCA Deals: Can It Lower Earnings Cyclicality?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/micron-bets-long-term-sca-123400284.html",
+      "publisher": "Zacks",
+      "ts": 1789130040.0
+    },
     {
       "ticker": "ADBE",
       "title": "Adobe Stock Slips Despite Higher 2026 Earnings Outlook",
@@ -234,6 +241,13 @@
       "ts": 1789115632.0
     },
     {
+      "ticker": "ORCL",
+      "title": "Stock market today: Dow, S&P 500, Nasdaq rise as CPI remains sticky",
+      "link": "https://finance.yahoo.com/markets/live/stock-market-today-friday-september-11-dow-sp-500-nasdaq-cpi-inflation-082201751.html",
+      "publisher": "Yahoo Finance",
+      "ts": 1789114921.0
+    },
+    {
       "ticker": "VRT",
       "title": "1 Big Reason Vertiv's New Acquisition Could Supercharge Its AI Dominance",
       "link": "https://finance.yahoo.com/technology/ai/articles/1-big-reason-vertivs-acquisition-062500023.html",
@@ -267,23 +281,23 @@
       "link": "https://finance.yahoo.com/technology/ai/articles/salesforce-closed-3-6b-fin-230918074.html",
       "publisher": "Forkast News",
       "ts": 1789081758.0
-    },
-    {
-      "ticker": "GRAB",
-      "title": "Stock Market Today, Sept. 10: Grab Holdings Slips on Atome Fintech Acquisition Reports",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-10-214707380.html",
-      "publisher": "Motley Fool",
-      "ts": 1789076827.0
-    },
-    {
-      "ticker": "JBL",
-      "title": "Adobe Systems (ADBE) Q3 Earnings and Revenues Beat Estimates",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/adobe-systems-adbe-q3-earnings-212501160.html",
-      "publisher": "Zacks",
-      "ts": 1789075501.0
     }
   ],
   "Technologie": [
+    {
+      "ticker": "IONQ",
+      "title": "IonQ Advances Quantum Computing With Superion 256: What's Ahead?",
+      "link": "https://finance.yahoo.com/technology/ai/articles/ionq-advances-quantum-computing-superion-123700551.html",
+      "publisher": "Zacks",
+      "ts": 1789130220.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "The Next Phase of the AI Boom Could Be Great News for NVIDIA, Micron, and SanDisk",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/next-phase-ai-boom-could-123037531.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789129837.0
+    },
     {
       "ticker": "SPCX",
       "title": "SpaceX Just Secured a Monster AI Contract Worth $13 Billion Annually",
@@ -409,23 +423,23 @@
       "link": "https://www.barrons.com/articles/oracle-stock-openai-proxy-40a34df2?siteid=yhoof2&yptr=yahoo",
       "publisher": "Barrons.com",
       "ts": 1789123980.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Prediction: Broadcom and Nvidia Will Be 2027's Best Performing AI Stocks",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/prediction-broadcom-nvidia-2027s-best-105000899.html",
-      "publisher": "Motley Fool",
-      "ts": 1789123800.0
-    },
-    {
-      "ticker": "META",
-      "title": "Meta Trending After Unveiling Muse, Its First Personal AI Agent",
-      "link": "https://tech.yahoo.com/ai/meta-ai/articles/meta-trending-unveiling-muse-first-100009008.html",
-      "publisher": "Benzinga",
-      "ts": 1789120809.0
     }
   ],
   "Sonstiges": [
+    {
+      "ticker": "INTC",
+      "title": "Applied Materials vs. Intel: Which Tech Stock Is a Better Buy in 2026?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/applied-materials-vs-intel-tech-123501609.html",
+      "publisher": "Motley Fool",
+      "ts": 1789130101.0
+    },
+    {
+      "ticker": "ADBE",
+      "title": "Adobe Stock In Penalty Box As Investors Await New CEO's Strategy",
+      "link": "https://www.investors.com/news/technology/adobe-stock-adbe-fiscal-q3-2026-earnings/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789129769.0
+    },
     {
       "ticker": "INTC",
       "title": "Investors Should Know Exactly What to Do With Intel",
@@ -439,6 +453,13 @@
       "link": "https://finance.yahoo.com/technology/ai/articles/nebius-heavy-capex-push-customer-122200284.html",
       "publisher": "Zacks",
       "ts": 1789129320.0
+    },
+    {
+      "ticker": "JPM",
+      "title": "Chewy Shares Fall 1.9% as JPMorgan Cuts Rating to Neutral",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/chewy-shares-fall-1-9-122135703.html",
+      "publisher": "InvestorsHub",
+      "ts": 1789129295.0
     },
     {
       "ticker": "BRK-B",
@@ -532,39 +553,18 @@
       "ts": 1789126621.0
     },
     {
+      "ticker": "SPCX",
+      "title": "Elon Musk's SpaceX Just Gave Starlink a Major Wi-Fi Upgrade With Its New 4th-Gen Router",
+      "link": "https://tech.yahoo.com/transportation/articles/elon-musks-spacex-just-gave-113037472.html",
+      "publisher": "Benzinga",
+      "ts": 1789126237.0
+    },
+    {
       "ticker": "NVDA",
       "title": "Bitmine Just Made Its Largest Ethereum Purchase Since June. Here's Why That Matters For Ethereum Investors.",
       "link": "https://finance.yahoo.com/markets/crypto/articles/bitmine-just-made-largest-ethereum-113000644.html",
       "publisher": "Motley Fool",
       "ts": 1789126200.0
-    },
-    {
-      "ticker": "CRM",
-      "title": "The Agent Measurement Problem: Five Competing Metrics, No Standard",
-      "link": "https://finance.yahoo.com/technology/ai/articles/agent-measurement-problem-five-competing-112833222.html",
-      "publisher": "Forkast News",
-      "ts": 1789126113.0
-    },
-    {
-      "ticker": "MSFT",
-      "title": "Amazon Dropped Last Month: A Wall Street Pro Says It’s Going to Provide 60% Returns",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/amazon-dropped-last-month-wall-112307550.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789125787.0
-    },
-    {
-      "ticker": "ORCL",
-      "title": "Oracle, Adobe, Copart, RH, Chevron, and More Stocks That Explain Today’s Market",
-      "link": "https://www.barrons.com/articles/stock-movers-23a24cef?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1789125660.0
-    },
-    {
-      "ticker": "TSLA",
-      "title": "Tesla’s Electric Semi Could Win From High Diesel Prices",
-      "link": "https://www.barrons.com/articles/tesla-stock-electric-semi-truck-diesel-prices-8b3f9bea?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1789125360.0
     }
   ]
 }
