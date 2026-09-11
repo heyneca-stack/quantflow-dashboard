@@ -33,6 +33,6 @@ jobs:
       run: |
         git config --global user.name "QuantFlow Bot"
         git config --global user.email "bot@quantflow.local"
-        git add dashboard.html portfolio_state.json news_cache.json trade_log.csv portfolio_log.csv
+        git add dashboard.html portfolio_state.json news_cache.json macro_news_cache.json trade_log.csv portfolio_log.csv
         git diff-index --quiet HEAD || git commit -m "🤖 Dashboard 4h-Update [$(date '+%Y-%m-%d %H:%M:%S')]"
         git push
