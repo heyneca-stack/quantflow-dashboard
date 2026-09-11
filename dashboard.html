@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuantFlow Tech Agent Dashboard v3.0</title>
+    <title>QuantFlow Tech Agent Dashboard v4.0</title>
     <style>
         :root {
             --bg-dark: #0f111a;--bg-card: #161925;--text-main: #f0f2f5;--text-muted: #8a92b2;--green: #00e676;--red: #ff3d00;--blue: #00b0ff;--border: #22273d;
@@ -33,15 +33,22 @@
         .position-card { background-color: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); padding: 16px; }
         .position-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
         .position-value { text-align: right; }
-        .position-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.8; }
+        .position-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.8; }
         .ticker-name { font-weight: 700; font-size: 15px; margin-right: 6px; }
-        .badge { padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; background: #22273d; margin-right: 4px; display: inline-block; }
+        .company-name { font-size: 11px; color: var(--text-muted); }
+        .badge { padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; background: #22273d; margin-right: 4px; display: inline-block; margin-top: 4px; }
         .category-badge { background: #3a2a1a; color: #ffb74d; }
         .category-badge.buy { background: #1b251f; color: var(--green); }
+        .category-badge.dispose { background: #3a1a1a; color: var(--red); }
+        .score-arrow { font-family: monospace; font-size: 12px; }
         .pos { color: var(--green); }
         .neg { color: var(--red); }
         .neutral { color: var(--text-muted); }
         .tendency { font-family: monospace; letter-spacing: 2px; }
+
+        .week-table { display: flex; justify-content: space-between; background: #1c2030; border-radius: 6px; padding: 6px 8px; margin-bottom: 8px; }
+        .week-cell { display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 2px; }
+        .week-label { color: var(--text-muted); font-size: 9px; text-transform: uppercase; }
 
         .news-list { display: flex; flex-direction: column; gap: 6px; max-height: 220px; overflow-y: auto; padding-right: 4px; border-top: 1px solid var(--border); padding-top: 8px; }
         .news-item { background: #1c2030; padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--text-muted); }
@@ -62,6 +69,8 @@
         .hist-box { background: #1c2030; padding: 15px; border-radius: 8px; font-size: 13px; }
         .hist-box h4 { margin-bottom: 8px; font-size: 14px; color: var(--blue); }
 
+        .topic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+
         @media (max-width: 700px) {
             .accounting-bar { grid-template-columns: repeat(2, 1fr); }
             .hist-grid { grid-template-columns: 1fr; }
@@ -71,8 +80,8 @@
 <body>
     <header>
         <div class="logo-area">
-            <h1>QuantFlow Tech Agent Dashboard <span style="color:var(--blue); font-size:14px;">v3.0</span></h1>
-            <span>Simuliertes Momentum-/News-/Options-Portfolio (Paper Trading) — Letztes Update: 2026-09-11 10:42:08 UTC</span>
+            <h1>QuantFlow Tech Agent Dashboard <span style="color:var(--blue); font-size:14px;">v4.0</span></h1>
+            <span>Simuliertes Momentum-/News-/Options-Portfolio (Paper Trading) — Letztes Update: 2026-09-11 11:37:09 UTC</span>
         </div>
         <div class="controls-area">
             <button id="refresh-btn" onclick="triggerManualUpdate()" class="btn-refresh">🔄 Jetzt aktualisieren</button>
@@ -86,6 +95,7 @@
         Kursdaten, Schlagzeilen und Optionskennzahlen stammen aus kostenlosen, teils verzögerten Quellen (Yahoo Finance).
         Die "Sentiment"-Einschätzung ist eine simple Keyword-Heuristik, keine echte KI-Textanalyse. Die Options-Kennzahlen
         basieren auf öffentlichen Volumen-/Open-Interest-Daten, nicht auf echtem institutionellem Order-Flow.
+        Die Score-Pfeile (↑/↓/→) zeigen nur die Richtung ggü. dem letzten Lauf — keine Kursprognose.
     </div>
 
     <section class="accounting-bar">
@@ -102,8 +112,11 @@
                 <div class="position-header">
                     <div>
                         <span class="ticker-name">MRNA</span>
+                        <span class="company-name">Moderna Inc.</span><br>
                         <span class="badge">Pharma</span>
                         <span class="badge category-badge buy">Quick Win</span>
+                        
+                        <span class="badge score-arrow neutral" title="Score-Richtung ggü. vorigem Lauf">→</span>
                     </div>
                     <div class="position-value">
                         <div class="val">5.000,00 €</div>
@@ -118,8 +131,9 @@
                     Monat <span class="pos">+125.56%</span> ·
                     Trend <span class="tendency pos">▼ ▼ ▲</span>
                 </div>
+                <div class="week-table"><div class="week-cell"><span class="week-label">W-4</span><span class="pos">+173.88%</span></div><div class="week-cell"><span class="week-label">W-3</span><span class="neg">-14.18%</span></div><div class="week-cell"><span class="week-label">W-2</span><span class="pos">+0.77%</span></div><div class="week-cell"><span class="week-label">W-1</span><span class="neg">-9.41%</span></div><div class="week-cell"><span class="week-label">Tag</span><span class="pos">+0.74%</span></div></div>
                 <div class="news-list">
-<div class="news-item sentiment-neutral"><div class="news-meta">⚪ Motley Fool · vor 18 Std.</div><a class="news-title" href="https://finance.yahoo.com/healthcare/articles/amgen-vs-moderna-healthcare-stock-162124362.html" target="_blank" rel="noopener">Amgen vs. Moderna: Which Healthcare Stock Is a Better Buy in 2026?</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ Motley Fool · vor 19 Std.</div><a class="news-title" href="https://finance.yahoo.com/healthcare/articles/amgen-vs-moderna-healthcare-stock-162124362.html" target="_blank" rel="noopener">Amgen vs. Moderna: Which Healthcare Stock Is a Better Buy in 2026?</a></div>
 <div class="news-item sentiment-neutral"><div class="news-meta">⚪ Pharma Voice · vor 1 Tag(en)</div><a class="news-title" href="https://finance.yahoo.com/healthcare/articles/mrna-cancer-vaccines-biggest-barriers-091733906.html" target="_blank" rel="noopener">mRNA cancer vaccines’ biggest barriers to market</a></div>
 <div class="news-item sentiment-neutral"><div class="news-meta">⚪ MarketBeat · vor 1 Tag(en)</div><a class="news-title" href="https://finance.yahoo.com/healthcare/articles/abbvie-highlights-skyrizi-rinvoq-growth-160528474.html" target="_blank" rel="noopener">AbbVie Highlights SKYRIZI, RINVOQ Growth and Pipeline Catalysts at Wells Fargo Conference</a></div>
 <div class="news-item sentiment-neutral"><div class="news-meta">⚪ Zacks · vor 2 Tag(en)</div><a class="news-title" href="https://finance.yahoo.com/healthcare/articles/ai-cancer-vaccines-next-gen-205000377.html" target="_blank" rel="noopener">AI, Cancer Vaccines, and Next-Gen Medicine</a></div>
@@ -131,8 +145,11 @@
                 <div class="position-header">
                     <div>
                         <span class="ticker-name">SWKS</span>
+                        <span class="company-name">SWKS</span><br>
                         <span class="badge">Trend-Kandidat</span>
                         <span class="badge category-badge buy">Quick Win</span>
+                        
+                        <span class="badge score-arrow neutral" title="Score-Richtung ggü. vorigem Lauf">→</span>
                     </div>
                     <div class="position-value">
                         <div class="val">5.000,00 €</div>
@@ -147,9 +164,10 @@
                     Monat <span class="pos">+22.98%</span> ·
                     Trend <span class="tendency pos">▲ ▲ ▲</span>
                 </div>
+                <div class="week-table"><div class="week-cell"><span class="week-label">W-4</span><span class="neg">-1.72%</span></div><div class="week-cell"><span class="week-label">W-3</span><span class="neg">-2.72%</span></div><div class="week-cell"><span class="week-label">W-2</span><span class="pos">+7.58%</span></div><div class="week-cell"><span class="week-label">W-1</span><span class="pos">+17.25%</span></div><div class="week-cell"><span class="week-label">Tag</span><span class="pos">+9.79%</span></div></div>
                 <div class="news-list">
 <div class="news-item sentiment-neutral"><div class="news-meta">⚪ Insider Monkey · vor 9 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/skyworks-swks-rockets-9-8-014200183.html" target="_blank" rel="noopener">Skyworks (SWKS) Rockets 9.8% on Looming $22B Qorvo Merger Nod</a></div>
-<div class="news-item sentiment-pos"><div class="news-meta">🟢 24/7 Wall St. · vor 17 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/skyworks-solutions-surges-10-qorvo-164726893.html" target="_blank" rel="noopener">Skyworks Solutions Surges 10%, Qorvo Climbs 6% While Chip Stocks Fall: Is the Merger Finally Clearing?</a></div>
+<div class="news-item sentiment-pos"><div class="news-meta">🟢 24/7 Wall St. · vor 18 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/skyworks-solutions-surges-10-qorvo-164726893.html" target="_blank" rel="noopener">Skyworks Solutions Surges 10%, Qorvo Climbs 6% While Chip Stocks Fall: Is the Merger Finally Clearing?</a></div>
                 </div>
             </div>
 
@@ -157,8 +175,11 @@
                 <div class="position-header">
                     <div>
                         <span class="ticker-name">ASO</span>
+                        <span class="company-name">ASO</span><br>
                         <span class="badge">Trend-Kandidat</span>
                         <span class="badge category-badge buy">Quick Win</span>
+                        
+                        <span class="badge score-arrow neutral" title="Score-Richtung ggü. vorigem Lauf">→</span>
                     </div>
                     <div class="position-value">
                         <div class="val">5.000,00 €</div>
@@ -173,8 +194,9 @@
                     Monat <span class="pos">+9.39%</span> ·
                     Trend <span class="tendency pos">▼ ▲ ▲</span>
                 </div>
+                <div class="week-table"><div class="week-cell"><span class="week-label">W-4</span><span class="neg">-3.35%</span></div><div class="week-cell"><span class="week-label">W-3</span><span class="neg">-8.49%</span></div><div class="week-cell"><span class="week-label">W-2</span><span class="pos">+0.11%</span></div><div class="week-cell"><span class="week-label">W-1</span><span class="pos">+24.35%</span></div><div class="week-cell"><span class="week-label">Tag</span><span class="pos">+5.99%</span></div></div>
                 <div class="news-list">
-<div class="news-item sentiment-neutral"><div class="news-meta">⚪ Motley Fool · vor 20 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/academy-sports-aso-q2-2027-141319777.html" target="_blank" rel="noopener">Academy Sports (ASO) Q2 2027 Earnings Call Transcript</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ Motley Fool · vor 21 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/academy-sports-aso-q2-2027-141319777.html" target="_blank" rel="noopener">Academy Sports (ASO) Q2 2027 Earnings Call Transcript</a></div>
 <div class="news-item sentiment-neutral"><div class="news-meta">⚪ Benzinga · vor 1 Tag(en)</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/academy-sports-ceo-flags-pressure-100006274.html" target="_blank" rel="noopener">Academy Sports CEO Flags Pressure on Lower-Income Shoppers</a></div>
 <div class="news-item sentiment-neutral"><div class="news-meta">⚪ Insider Monkey · vor 1 Tag(en)</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/academy-sports-aso-rockets-14-004715929.html" target="_blank" rel="noopener">Academy Sports (ASO) Rockets 14% on Solid Q2 Despite Consumer Spending Tests</a></div>
 <div class="news-item sentiment-neutral"><div class="news-meta">⚪ Zacks · vor 1 Tag(en)</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/compared-estimates-academy-sports-outdoors-220003293.html" target="_blank" rel="noopener">Compared to Estimates, Academy Sports and Outdoors (ASO) Q2 Earnings: A Look at Key Metrics</a></div>
@@ -186,8 +208,11 @@
                 <div class="position-header">
                     <div>
                         <span class="ticker-name">QRVO</span>
+                        <span class="company-name">QRVO</span><br>
                         <span class="badge">Trend-Kandidat</span>
                         <span class="badge category-badge buy">Quick Win</span>
+                        
+                        <span class="badge score-arrow neutral" title="Score-Richtung ggü. vorigem Lauf">→</span>
                     </div>
                     <div class="position-value">
                         <div class="val">5.000,00 €</div>
@@ -202,9 +227,10 @@
                     Monat <span class="pos">+16.22%</span> ·
                     Trend <span class="tendency pos">▲ ▲ ▲</span>
                 </div>
+                <div class="week-table"><div class="week-cell"><span class="week-label">W-4</span><span class="neg">-1.46%</span></div><div class="week-cell"><span class="week-label">W-3</span><span class="neg">-1.73%</span></div><div class="week-cell"><span class="week-label">W-2</span><span class="pos">+5.78%</span></div><div class="week-cell"><span class="week-label">W-1</span><span class="pos">+11.66%</span></div><div class="week-cell"><span class="week-label">Tag</span><span class="pos">+6.77%</span></div></div>
                 <div class="news-list">
 <div class="news-item sentiment-neutral"><div class="news-meta">⚪ Insider Monkey · vor 9 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/skyworks-swks-rockets-9-8-014200183.html" target="_blank" rel="noopener">Skyworks (SWKS) Rockets 9.8% on Looming $22B Qorvo Merger Nod</a></div>
-<div class="news-item sentiment-pos"><div class="news-meta">🟢 24/7 Wall St. · vor 17 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/skyworks-solutions-surges-10-qorvo-164726893.html" target="_blank" rel="noopener">Skyworks Solutions Surges 10%, Qorvo Climbs 6% While Chip Stocks Fall: Is the Merger Finally Clearing?</a></div>
+<div class="news-item sentiment-pos"><div class="news-meta">🟢 24/7 Wall St. · vor 18 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/skyworks-solutions-surges-10-qorvo-164726893.html" target="_blank" rel="noopener">Skyworks Solutions Surges 10%, Qorvo Climbs 6% While Chip Stocks Fall: Is the Merger Finally Clearing?</a></div>
                 </div>
             </div>
 
@@ -212,8 +238,11 @@
                 <div class="position-header">
                     <div>
                         <span class="ticker-name">VEON</span>
+                        <span class="company-name">VEON</span><br>
                         <span class="badge">Trend-Kandidat</span>
                         <span class="badge category-badge buy">Quick Win</span>
+                        
+                        <span class="badge score-arrow neutral" title="Score-Richtung ggü. vorigem Lauf">→</span>
                     </div>
                     <div class="position-value">
                         <div class="val">5.000,00 €</div>
@@ -228,6 +257,7 @@
                     Monat <span class="pos">+22.17%</span> ·
                     Trend <span class="tendency pos">▲ ▲ ▲</span>
                 </div>
+                <div class="week-table"><div class="week-cell"><span class="week-label">W-4</span><span class="neg">-0.97%</span></div><div class="week-cell"><span class="week-label">W-3</span><span class="pos">+7.17%</span></div><div class="week-cell"><span class="week-label">W-2</span><span class="pos">+8.85%</span></div><div class="week-cell"><span class="week-label">W-1</span><span class="pos">+5.15%</span></div><div class="week-cell"><span class="week-label">Tag</span><span class="pos">+6.40%</span></div></div>
                 <div class="news-list">
 <div class="news-summary">Keine aktuellen Schlagzeilen im 7-Tage-Fenster gefunden.</div>
                 </div>
@@ -237,8 +267,11 @@
                 <div class="position-header">
                     <div>
                         <span class="ticker-name">QCOM</span>
+                        <span class="company-name">Qualcomm Inc.</span><br>
                         <span class="badge">Halbleiter</span>
                         <span class="badge category-badge buy">Quick Win</span>
+                        
+                        <span class="badge score-arrow neutral" title="Score-Richtung ggü. vorigem Lauf">→</span>
                     </div>
                     <div class="position-value">
                         <div class="val">5.000,00 €</div>
@@ -253,12 +286,13 @@
                     Monat <span class="pos">+9.32%</span> ·
                     Trend <span class="tendency pos">▲ ▲ ▲</span>
                 </div>
+                <div class="week-table"><div class="week-cell"><span class="week-label">W-4</span><span class="neg">-0.71%</span></div><div class="week-cell"><span class="week-label">W-3</span><span class="pos">+1.12%</span></div><div class="week-cell"><span class="week-label">W-2</span><span class="pos">+3.81%</span></div><div class="week-cell"><span class="week-label">W-1</span><span class="pos">+4.64%</span></div><div class="week-cell"><span class="week-label">Tag</span><span class="pos">+0.27%</span></div></div>
                 <div class="news-list">
-<div class="news-item sentiment-neutral"><div class="news-meta">⚪ Trefis · vor 14 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/qualcomm-stock-looks-cheap-discount-195733709.html" target="_blank" rel="noopener">Qualcomm Stock Looks Cheap, But Is The Discount Deserved?</a></div>
-<div class="news-item sentiment-neutral"><div class="news-meta">⚪ Trefis · vor 17 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/marvell-stock-money-hyperscaler-deal-173255900.html" target="_blank" rel="noopener">Can Marvell Stock Make You Money Before Its Hyperscaler Deal Pays Off?</a></div>
-<div class="news-item sentiment-neutral"><div class="news-meta">⚪ Barchart · vor 17 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/qualcomm-stock-spikes-bags-massive-170834318.html" target="_blank" rel="noopener">Qualcomm Stock Spikes as It Bags Massive Data Center Deal With Amazon</a></div>
-<div class="news-item sentiment-pos"><div class="news-meta">🟢 24/7 Wall St. · vor 17 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/skyworks-solutions-surges-10-qorvo-164726893.html" target="_blank" rel="noopener">Skyworks Solutions Surges 10%, Qorvo Climbs 6% While Chip Stocks Fall: Is the Merger Finally Clearing?</a></div>
-<div class="news-item sentiment-pos"><div class="news-meta">🟢 The Fly · vor 20 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/meta-platforms-upgraded-okta-downgraded-134312557.html" target="_blank" rel="noopener">Meta upgraded, Nvidia initiated: Wall Street's top analyst calls</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ Trefis · vor 15 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/qualcomm-stock-looks-cheap-discount-195733709.html" target="_blank" rel="noopener">Qualcomm Stock Looks Cheap, But Is The Discount Deserved?</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ Trefis · vor 18 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/marvell-stock-money-hyperscaler-deal-173255900.html" target="_blank" rel="noopener">Can Marvell Stock Make You Money Before Its Hyperscaler Deal Pays Off?</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ Barchart · vor 18 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/qualcomm-stock-spikes-bags-massive-170834318.html" target="_blank" rel="noopener">Qualcomm Stock Spikes as It Bags Massive Data Center Deal With Amazon</a></div>
+<div class="news-item sentiment-pos"><div class="news-meta">🟢 24/7 Wall St. · vor 18 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/skyworks-solutions-surges-10-qorvo-164726893.html" target="_blank" rel="noopener">Skyworks Solutions Surges 10%, Qorvo Climbs 6% While Chip Stocks Fall: Is the Merger Finally Clearing?</a></div>
+<div class="news-item sentiment-pos"><div class="news-meta">🟢 The Fly · vor 21 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/meta-platforms-upgraded-okta-downgraded-134312557.html" target="_blank" rel="noopener">Meta upgraded, Nvidia initiated: Wall Street's top analyst calls</a></div>
                 </div>
             </div>
 
@@ -266,8 +300,11 @@
                 <div class="position-header">
                     <div>
                         <span class="ticker-name">NOK</span>
+                        <span class="company-name">NOK</span><br>
                         <span class="badge">Trend-Kandidat</span>
                         <span class="badge category-badge buy">Quick Win</span>
+                        
+                        <span class="badge score-arrow neutral" title="Score-Richtung ggü. vorigem Lauf">→</span>
                     </div>
                     <div class="position-value">
                         <div class="val">5.000,00 €</div>
@@ -282,8 +319,9 @@
                     Monat <span class="pos">+12.50%</span> ·
                     Trend <span class="tendency neg">▲ ▲ ▼</span>
                 </div>
+                <div class="week-table"><div class="week-cell"><span class="week-label">W-4</span><span class="neg">-1.84%</span></div><div class="week-cell"><span class="week-label">W-3</span><span class="pos">+2.76%</span></div><div class="week-cell"><span class="week-label">W-2</span><span class="neg">-5.48%</span></div><div class="week-cell"><span class="week-label">W-1</span><span class="pos">+7.93%</span></div><div class="week-cell"><span class="week-label">Tag</span><span class="neg">-1.30%</span></div></div>
                 <div class="news-list">
-<div class="news-item sentiment-neutral"><div class="news-meta">⚪ Zacks · vor 19 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/ciena-convert-8-5b-backlog-152200638.html" target="_blank" rel="noopener">Can Ciena Convert Its $8.5B Backlog Despite Supply Constraints?</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ Zacks · vor 20 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/ciena-convert-8-5b-backlog-152200638.html" target="_blank" rel="noopener">Can Ciena Convert Its $8.5B Backlog Despite Supply Constraints?</a></div>
 <div class="news-item sentiment-neutral"><div class="news-meta">⚪ MT Newswires · vor 1 Tag(en)</div><a class="news-title" href="https://finance.yahoo.com/markets/world-indices/articles/european-equities-traded-us-american-153037230.html" target="_blank" rel="noopener">European Equities Traded in the US as American Depositary Receipts Decline in Wednesday Trading</a></div>
 <div class="news-item sentiment-neutral"><div class="news-meta">⚪ Stocktwits · vor 1 Tag(en)</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/nok-stock-eyes-third-winning-123134200.html" target="_blank" rel="noopener">NOK Stock Eyes Third Winning Session Amid Google $15B AI Bet, Euro Stoxx 50 Return</a></div>
 <div class="news-item sentiment-neutral"><div class="news-meta">⚪ InvestorsHub · vor 2 Tag(en)</div><a class="news-title" href="https://finance.yahoo.com/technology/articles/google-plans-13-billion-finland-101142370.html" target="_blank" rel="noopener">Google plans €13 billion Finland infrastructure investment for 2027-2028</a></div>
@@ -295,8 +333,11 @@
                 <div class="position-header">
                     <div>
                         <span class="ticker-name">VIST</span>
+                        <span class="company-name">VIST</span><br>
                         <span class="badge">Trend-Kandidat</span>
                         <span class="badge category-badge buy">Quick Win</span>
+                        
+                        <span class="badge score-arrow neutral" title="Score-Richtung ggü. vorigem Lauf">→</span>
                     </div>
                     <div class="position-value">
                         <div class="val">5.000,00 €</div>
@@ -311,6 +352,7 @@
                     Monat <span class="pos">+19.39%</span> ·
                     Trend <span class="tendency pos">▲ ▼ ▲</span>
                 </div>
+                <div class="week-table"><div class="week-cell"><span class="week-label">W-4</span><span class="pos">+3.65%</span></div><div class="week-cell"><span class="week-label">W-3</span><span class="pos">+0.35%</span></div><div class="week-cell"><span class="week-label">W-2</span><span class="pos">+12.19%</span></div><div class="week-cell"><span class="week-label">W-1</span><span class="pos">+2.49%</span></div><div class="week-cell"><span class="week-label">Tag</span><span class="pos">+5.87%</span></div></div>
                 <div class="news-list">
 <div class="news-item sentiment-neutral"><div class="news-meta">⚪ Simply Wall St. · vor 5 Tag(en)</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/vista-energy-bmv-vista-stock-141234501.html" target="_blank" rel="noopener">Vista Energy (BMV:VISTA A) Stock Gets Fair Value Trim After Analysts Refresh Targets</a></div>
                 </div>
@@ -319,35 +361,12 @@
             <div class="position-card">
                 <div class="position-header">
                     <div>
-                        <span class="ticker-name">CRUS</span>
-                        <span class="badge">Trend-Kandidat</span>
-                        <span class="badge category-badge buy">Quick Win</span>
-                    </div>
-                    <div class="position-value">
-                        <div class="val">5.000,00 €</div>
-                        <div class="val pos" style="font-size:13px;">+0,00 €</div>
-                    </div>
-                </div>
-                <div class="position-meta">
-                    Einstieg: 2026-09-11 10:42:08 UTC @ 116,48 € ·
-                    Aktuell: 116,48 € ·
-                    Tag <span class="pos">+5.20%</span> ·
-                    Woche <span class="pos">+3.02%</span> ·
-                    Monat <span class="neg">-4.52%</span> ·
-                    Trend <span class="tendency pos">▼ ▼ ▲</span>
-                </div>
-                <div class="news-list">
-<div class="news-item sentiment-neutral"><div class="news-meta">⚪ Zacks · vor 6 Tag(en)</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/cirrus-logic-crus-down-8-153007101.html" target="_blank" rel="noopener">Cirrus Logic (CRUS) Down 8.4% Since Last Earnings Report: Can It Rebound?</a></div>
-<div class="news-item sentiment-pos"><div class="news-meta">🟢 Insider Monkey · vor 6 Tag(en)</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/cirrus-logic-crus-record-quarter-112552516.html" target="_blank" rel="noopener">Cirrus Logic’s (CRUS) Record Quarter Meets PC Headwinds</a></div>
-                </div>
-            </div>
-
-            <div class="position-card">
-                <div class="position-header">
-                    <div>
                         <span class="ticker-name">INTR</span>
+                        <span class="company-name">INTR</span><br>
                         <span class="badge">Trend-Kandidat</span>
                         <span class="badge category-badge buy">Quick Win</span>
+                        <span class="badge category-badge dispose">⚠️ Potential Dispose</span>
+                        <span class="badge score-arrow neutral" title="Score-Richtung ggü. vorigem Lauf">→</span>
                     </div>
                     <div class="position-value">
                         <div class="val">5.000,00 €</div>
@@ -362,25 +381,115 @@
                     Monat <span class="pos">+11.15%</span> ·
                     Trend <span class="tendency pos">▼ ▼ ▲</span>
                 </div>
+                <div class="week-table"><div class="week-cell"><span class="week-label">W-4</span><span class="pos">+5.35%</span></div><div class="week-cell"><span class="week-label">W-3</span><span class="pos">+3.95%</span></div><div class="week-cell"><span class="week-label">W-2</span><span class="pos">+6.33%</span></div><div class="week-cell"><span class="week-label">W-1</span><span class="neg">-1.70%</span></div><div class="week-cell"><span class="week-label">Tag</span><span class="pos">+5.47%</span></div></div>
                 <div class="news-list">
 <div class="news-summary">Keine aktuellen Schlagzeilen im 7-Tage-Fenster gefunden.</div>
                 </div>
             </div>
 
+            <div class="position-card">
+                <div class="position-header">
+                    <div>
+                        <span class="ticker-name">SPCX</span>
+                        <span class="company-name">SPCX</span><br>
+                        <span class="badge">Trend-Kandidat</span>
+                        <span class="badge category-badge buy">Quick Win</span>
+                        <span class="badge category-badge dispose">⚠️ Potential Dispose</span>
+                        <span class="badge score-arrow neutral" title="Score-Richtung ggü. vorigem Lauf">→</span>
+                    </div>
+                    <div class="position-value">
+                        <div class="val">5.000,00 €</div>
+                        <div class="val pos" style="font-size:13px;">+0,00 €</div>
+                    </div>
+                </div>
+                <div class="position-meta">
+                    Einstieg: 2026-09-11 11:37:09 UTC @ 148,18 € ·
+                    Aktuell: 148,18 € ·
+                    Tag <span class="pos">+0.43%</span> ·
+                    Woche <span class="pos">+5.31%</span> ·
+                    Monat <span class="pos">+11.17%</span> ·
+                    Trend <span class="tendency pos">▲ ▼ ▲</span>
+                </div>
+                <div class="week-table"><div class="week-cell"><span class="week-label">W-4</span><span class="neg">-4.45%</span></div><div class="week-cell"><span class="week-label">W-3</span><span class="neg">-0.01%</span></div><div class="week-cell"><span class="week-label">W-2</span><span class="pos">+0.77%</span></div><div class="week-cell"><span class="week-label">W-1</span><span class="pos">+5.31%</span></div><div class="week-cell"><span class="week-label">Tag</span><span class="pos">+0.43%</span></div></div>
+                <div class="news-list">
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ Investor's Business Daily · vor <1 Std.</div><a class="news-title" href="https://www.investors.com/news/spacex-tesla-merger-elon-musk-stock-holders-impact/?src=A00220&yptr=yahoo" target="_blank" rel="noopener">In A SpaceX-Tesla Merger, Elon Musk May Be The Big Winner. What It May Mean For Other Investors.</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ 24/7 Wall St. · vor <1 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/spacex-148-single-metric-investors-110129066.html" target="_blank" rel="noopener">SpaceX at $148: The Single Metric Investors Must Follow</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ MT Newswires · vor 1 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/social-buzz-wallstreetbets-stocks-mixed-103802922.html" target="_blank" rel="noopener">Social Buzz: Wallstreetbets Stocks Mixed Premarket Friday; Oracle to Rise, Adobe to Fall</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ Forkast News · vor 1 Std.</div><a class="news-title" href="https://finance.yahoo.com/technology/ai/articles/spacex-undisclosed-13-3b-tenant-102502352.html" target="_blank" rel="noopener">SpaceX’s Undisclosed $13.3B Tenant: Who Is the Compute Landlord’s Largest New Customer?</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ Motley Fool · vor 1 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/spacex-stock-back-above-150-102002492.html" target="_blank" rel="noopener">SpaceX Stock Is Back Above $150. Here’s Where The Stock Could Be by the End of 2027</a></div>
+                </div>
+            </div>
+
     </div>
+
+    <div class="section-title">👀 Watchlist – nächste Kandidaten (nicht gehalten)</div>
+    <div class="trade-log">
+<div class="signal-item buy"><div class="signal-title">XP (XP) · Score 13.23 · <span class="badge category-badge buy">Quick Win</span></div><div class="news-meta">Tag <span class="pos">+4.88%</span> · Woche -0.10% · Trend-Kandidat</div></div>
+<div class="signal-item buy"><div class="signal-title">STNE (STNE) · Score 12.90 · <span class="badge category-badge buy">Quick Win</span></div><div class="news-meta">Tag <span class="pos">+4.89%</span> · Woche -0.68% · Trend-Kandidat</div></div>
+<div class="signal-item buy"><div class="signal-title">CRUS (CRUS) · Score 12.90 · <span class="badge category-badge buy">Quick Win</span></div><div class="news-meta">Tag <span class="pos">+5.20%</span> · Woche +3.02% · Trend-Kandidat</div></div>
+<div class="signal-item buy"><div class="signal-title">SKHY (SKHY) · Score 12.44 · <span class="badge category-badge buy">Quick Win</span></div><div class="news-meta">Tag <span class="neg">-5.20%</span> · Woche +14.14% · Trend-Kandidat</div></div>
+<div class="signal-item "><div class="signal-title">RDDT (RDDT) · Score 12.37 · <span class="badge category-badge ">Long</span></div><div class="news-meta">Tag <span class="pos">+6.08%</span> · Woche -1.75% · Trend-Kandidat</div></div>
+<div class="signal-item buy"><div class="signal-title">ELV (ELV) · Score 11.70 · <span class="badge category-badge buy">Quick Win</span></div><div class="news-meta">Tag <span class="pos">+5.41%</span> · Woche +3.08% · Trend-Kandidat</div></div>
+<div class="signal-item buy"><div class="signal-title">PAGS (PAGS) · Score 11.40 · <span class="badge category-badge buy">Quick Win</span></div><div class="news-meta">Tag <span class="pos">+5.41%</span> · Woche +2.95% · Trend-Kandidat</div></div>
+<div class="signal-item buy"><div class="signal-title">Meta Platforms Inc. (META) · Score 10.63 · <span class="badge category-badge buy">Quick Win</span></div><div class="news-meta">Tag <span class="neg">-1.42%</span> · Woche +8.69% · Core Tech</div></div>
+<div class="signal-item buy"><div class="signal-title">Snowflake Inc. (SNOW) · Score 9.88 · <span class="badge category-badge buy">Quick Win</span></div><div class="news-meta">Tag <span class="neg">-0.53%</span> · Woche +7.81% · Cloud Tech</div></div>
+<div class="signal-item "><div class="signal-title">SMCI (SMCI) · Score 9.57 · <span class="badge category-badge ">Long</span></div><div class="news-meta">Tag <span class="neg">-3.98%</span> · Woche +1.03% · Trend-Kandidat</div></div>
+    </div>
+
+    <div class="section-title">🌍 Markt-Sentiment Überblick (Politik/Wirtschaft/Technologie/Sonstiges)</div>
+    <div class="topic-grid">            <div class="hist-box">
+                <h4>Politik/Makro</h4>
+                <div class="news-list" style="max-height:200px;">
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ ^GSPC · vor <1 Std.</div><a class="news-title" href="https://finance.yahoo.com/economy/policy/articles/stock-futures-rise-ahead-august-112731701.html" target="_blank" rel="noopener">Stock futures rise ahead of August CPI inflation report</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ ^GSPC · vor <1 Std.</div><a class="news-title" href="https://www.barrons.com/livecoverage/stock-market-news-today-091126/card/markets-rebound-with-crucial-cpi-inflation-report-in-focus-16GM9jtIX1404eFQvXdl?siteid=yhoof2&yptr=yahoo" target="_blank" rel="noopener">Dow Futures Pop as Markets Rebound Ahead of Crucial CPI Inflation Report</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ AAPL · vor <1 Std.</div><a class="news-title" href="https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-sp500-oil-prices-treasury-yields-cpi-inflation-oracle-earnings/?src=A00220&yptr=yahoo" target="_blank" rel="noopener">Dow Jones Futures Rise, Oil Prices Fall, Oracle Jumps; CPI Inflation Data To Inform Fed</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ AMZN · vor 1 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/2-hardware-leaders-cash-next-095000171.html" target="_blank" rel="noopener">These 2 Hardware Leaders Will Cash In on the Next Data Center Memory Crunch</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ ^IXIC · vor 3 Std.</div><a class="news-title" href="https://finance.yahoo.com/economy/policy/articles/forget-todays-inflation-report-fed-082601737.html" target="_blank" rel="noopener">Forget Today's Inflation Report: Fed Chair Kevin Warsh and His Colleagues Have Likely Already Made Up Their Mind for the Sept. 16 FOMC Meeting</a></div>
+                </div>
+            </div>
+            <div class="hist-box">
+                <h4>Wirtschaft</h4>
+                <div class="news-list" style="max-height:200px;">
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ TSLA · vor <1 Std.</div><a class="news-title" href="https://www.investors.com/news/spacex-tesla-merger-elon-musk-stock-holders-impact/?src=A00220&yptr=yahoo" target="_blank" rel="noopener">In A SpaceX-Tesla Merger, Elon Musk May Be The Big Winner. What It May Mean For Other Investors.</a></div>
+<div class="news-item sentiment-pos"><div class="news-meta">🟢 ADBE · vor <1 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/adobe-q3-2026-earnings-1-110958223.html" target="_blank" rel="noopener">Adobe Q3 2026 earnings: 1 billion users, raised guidance</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ MSFT · vor <1 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/adobe-issues-weak-revenue-outlook-110034036.html" target="_blank" rel="noopener">Adobe Issues Weak Revenue Outlook, Maintains Full-Year ARR Growth Guidance</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ ORCL · vor <1 Std.</div><a class="news-title" href="https://finance.yahoo.com/technology/articles/oracle-fq1-revenue-reaches-19-110016661.html" target="_blank" rel="noopener">Oracle FQ1 Revenue Reaches $19.35 Billion as FY2027 Profit Guidance Rises</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ ADBE · vor <1 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/adobe-q3-revenue-rises-13-105839953.html" target="_blank" rel="noopener">Adobe Q3 Revenue Rises 13% as Q4 Guidance Comes in Below Consensus</a></div>
+                </div>
+            </div>
+            <div class="hist-box">
+                <h4>Technologie</h4>
+                <div class="news-list" style="max-height:200px;">
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ META · vor <1 Std.</div><a class="news-title" href="https://finance.yahoo.com/technology/ai/articles/meta-reversing-course-flat-org-112028964.html" target="_blank" rel="noopener">Meta reversing course on flat org structure in Applied AI division</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ NVDA · vor <1 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/not-ionq-not-rigetti-computing-112000437.html" target="_blank" rel="noopener">Not IonQ, Not Rigetti Computing. This Quantum Computing Stock Could Be September's Biggest Winner.</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ NVDA · vor <1 Std.</div><a class="news-title" href="https://finance.yahoo.com/technology/articles/relatively-unknown-cloud-provider-gets-110300155.html" target="_blank" rel="noopener">Relatively unknown cloud provider gets Nvidia's stamp of approval</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ ADBE · vor <1 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/adobe-q3-uneventful-even-ai-105617392.html" target="_blank" rel="noopener">Adobe Q3 ‘Uneventful’ Even As AI ARR Tops $650M, Jefferies Says — Citi Flags Slowing Growth</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ ORCL · vor <1 Std.</div><a class="news-title" href="https://www.barrons.com/articles/oracle-stock-openai-proxy-40a34df2?siteid=yhoof2&yptr=yahoo" target="_blank" rel="noopener">Why Oracle Stock Is So Much More Than an OpenAI Proxy</a></div>
+                </div>
+            </div>
+            <div class="hist-box">
+                <h4>Sonstiges</h4>
+                <div class="news-list" style="max-height:200px;">
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ CRM · vor <1 Std.</div><a class="news-title" href="https://finance.yahoo.com/technology/ai/articles/agent-measurement-problem-five-competing-112833222.html" target="_blank" rel="noopener">The Agent Measurement Problem: Five Competing Metrics, No Standard</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ MSFT · vor <1 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/amazon-dropped-last-month-wall-112307550.html" target="_blank" rel="noopener">Amazon Dropped Last Month: A Wall Street Pro Says It’s Going to Provide 60% Returns</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ ORCL · vor <1 Std.</div><a class="news-title" href="https://www.barrons.com/articles/stock-movers-23a24cef?siteid=yhoof2&yptr=yahoo" target="_blank" rel="noopener">Oracle, Adobe, Copart, RH, Chevron, and More Stocks That Explain Today’s Market</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ TSLA · vor <1 Std.</div><a class="news-title" href="https://www.barrons.com/articles/tesla-stock-electric-semi-truck-diesel-prices-8b3f9bea?siteid=yhoof2&yptr=yahoo" target="_blank" rel="noopener">Tesla’s Electric Semi Could Win From High Diesel Prices</a></div>
+<div class="news-item sentiment-neutral"><div class="news-meta">⚪ NVDA · vor <1 Std.</div><a class="news-title" href="https://finance.yahoo.com/markets/stocks/articles/3-stocks-berkshire-hathaway-owns-111401400.html" target="_blank" rel="noopener">3 Stocks Berkshire Hathaway Owns That I'd Buy Right Now, Including One It's Selling</a></div>
+                </div>
+            </div></div>
 
     <div class="section-title">🔄 Letzte Umschichtungen</div>
     <div class="trade-log">
-<div class="signal-item buy"><div class="signal-title">KAUF: INTR @ 5.78 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 13.80)</div></div>
-<div class="signal-item buy"><div class="signal-title">KAUF: CRUS @ 116.48 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 14.40)</div></div>
-<div class="signal-item buy"><div class="signal-title">KAUF: VIST @ 78.95 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 15.24)</div></div>
-<div class="signal-item buy"><div class="signal-title">KAUF: NOK @ 10.62 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 16.25)</div></div>
-<div class="signal-item buy"><div class="signal-title">KAUF: QCOM @ 176.88 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 16.68)</div></div>
-<div class="signal-item buy"><div class="signal-title">KAUF: VEON @ 69.16 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 18.14)</div></div>
-<div class="signal-item buy"><div class="signal-title">KAUF: QRVO @ 112.36 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 22.12)</div></div>
-<div class="signal-item buy"><div class="signal-title">KAUF: ASO @ 54.22 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 30.05)</div></div>
-<div class="signal-item buy"><div class="signal-title">KAUF: SWKS @ 84.03 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 30.53)</div></div>
-<div class="signal-item buy"><div class="signal-title">KAUF: MRNA @ 136.62 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 39.51)</div></div>
+<div class="signal-item "><div class="signal-title">VERKAUF: CRUS (CRUS) @ 116.48 € · Realisiert: +0.00 €</div><div class="news-meta">2026-09-11 11:37:09 UTC · Aus Top 10 gefallen / durch besseren Kandidaten ersetzt</div></div>
+<div class="signal-item buy"><div class="signal-title">KAUF: SPCX (SPCX) @ 148.18 €</div><div class="news-meta">2026-09-11 11:37:09 UTC · Neu in Top 10 (Score 13.45)</div></div>
+<div class="signal-item buy"><div class="signal-title">KAUF: INTR (INTR) @ 5.78 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 13.80)</div></div>
+<div class="signal-item buy"><div class="signal-title">KAUF: CRUS (CRUS) @ 116.48 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 14.40)</div></div>
+<div class="signal-item buy"><div class="signal-title">KAUF: VIST (VIST) @ 78.95 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 15.24)</div></div>
+<div class="signal-item buy"><div class="signal-title">KAUF: NOK (NOK) @ 10.62 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 16.25)</div></div>
+<div class="signal-item buy"><div class="signal-title">KAUF: Qualcomm Inc. (QCOM) @ 176.88 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 16.68)</div></div>
+<div class="signal-item buy"><div class="signal-title">KAUF: VEON (VEON) @ 69.16 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 18.14)</div></div>
+<div class="signal-item buy"><div class="signal-title">KAUF: QRVO (QRVO) @ 112.36 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 22.12)</div></div>
+<div class="signal-item buy"><div class="signal-title">KAUF: ASO (ASO) @ 54.22 €</div><div class="news-meta">2026-09-11 10:42:08 UTC · Neu in Top 10 (Score 30.05)</div></div>
 
     </div>
 
@@ -389,12 +498,16 @@
         <div class="hist-grid">
             <div class="hist-box">
                 <h4>Aktueller Lauf</h4>
-                2026-09-11 10:42:08 UTC<br>Brutto: 50.000,00 €<br>Netto: 50.000,00 €
+                2026-09-11 11:37:09 UTC<br>Brutto: 50.000,00 €<br>Netto: 50.000,00 €
             </div>
             <div class="hist-box">
                 <h4>Vorheriger Lauf</h4>
-                Noch keine vorherigen Daten vorhanden.
+                2026-09-11 10:42:08 UTC<br>Brutto: 50.000,00 €<br>Unrealisiert: +0,00 €<br>Netto: 50.000,00 €
             </div>
+        </div>
+                <div class="hist-box" style="margin-top:15px;">
+            <h4>📅 Wochenzusammenfassung (statistisch, nicht KI-generiert)</h4>
+            <div style="font-size:13px; line-height:1.8;">Noch keine Vergleichsdaten von vor 7 Tagen vorhanden (Historie wird mit jedem Lauf länger).<br>Bester Wochen-Performer: <strong>ASO (ASO)</strong> <span class="pos">+24.35%</span> · Schwächster: <strong>Moderna Inc. (MRNA)</strong> <span class="neg">-9.41%</span></div>
         </div>
     </div>
 
