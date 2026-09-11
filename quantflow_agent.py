@@ -12,17 +12,21 @@ Läuft alle 4 Stunden per GitHub Actions (siehe .github/workflows/run_agent.yml)
 Zustand (Positionen, News-Cache, Score-Historie, Namens-Cache) wird in
 JSON-Dateien zwischen den Läufen persistiert und vom Workflow zurückcommitet.
 
-v5.0 Erweiterungen:
-  - Dynamische Klarnamen-Auflösung (statische Liste -> Cache -> Live-Abruf),
-    damit Namen nicht mehr nur das Kürzel wiederholen
-  - Konsolidierte Depot-Übersichtstabelle (4-Wochen-Werte + Trend, tabellarisch)
-  - Auf-/zuklappbare Kacheln (gesamte Karte + News-Bereich separat)
-  - Watchlist mit denselben Informationen wie gehaltene Positionen (inkl. News)
-  - "Musterdepot"-Abschnitt: Titel (Ticker/Name) einer zweiten Beobachtungsliste,
-    OHNE jegliche Beträge/Stückzahlen — nach denselben Maßstäben analysiert wie
-    das Hauptdepot, mit farblicher Kennzeichnung, welche Titel die Kriterien
-    des Hauptdepots (Top-10-Schwelle) aktuell erfüllen oder übertreffen würden
-  - Minimaler Fußnoten-Hinweis statt großem Disclaimer-Banner
+v6.0 Erweiterungen:
+  - Score-Historie wird jetzt für ALLE bewerteten Kandidaten geführt (nicht
+    nur gehaltene Positionen) UND korrekt gegen den Stand VOR diesem Lauf
+    verglichen (vorher verglich sich der Score fälschlich mit sich selbst,
+    daher zeigte fast alles nur "→")
+  - Score wird jetzt überall angezeigt (Positionen, Watchlist, Musterdepot)
+  - Kurstrend (▲▼▲) bricht nicht mehr um; klar von Score-Trend (↑/↓/→) getrennt
+  - Eine einzige Gesamtübersichtstabelle (Hauptdepot + Watchlist + Musterdepot)
+    mit Score, 4-Wochen-Werten, Kurstrend, Score-Trend und farblichen
+    Segment-Badges, wer wo vertreten ist (inkl. Mehrfachzugehörigkeit)
+    — engere Zeilenabstände
+  - Kurze, aufklappbare Erklärung, was der Score bedeutet und was Quick Win
+    vs. Long unterscheidet
+  - News-Bereiche sind jetzt standardmäßig zugeklappt, mit "Alle auf/zu"-
+    Schaltflächen
 """
 
 import json
@@ -37,8 +41,6 @@ import yfinance as yf
 # KONFIGURATION
 # ---------------------------------------------------------------------------
 
-# Basis-Kandidatenliste (Sicherheitsnetz, falls die dynamische Trend-Abfrage
-# mal ausfällt). Tech-Schwerpunkt mit etwas Streuung in andere Sektoren.
 BASE_UNIVERSE = {
     "AAPL": "Core Tech", "MSFT": "Core Tech", "GOOGL": "Core Tech", "AMZN": "Core Tech", "META": "Core Tech",
     "NVDA": "Halbleiter", "AMD": "Halbleiter", "AVGO": "Halbleiter", "TSM": "Halbleiter",
@@ -53,9 +55,6 @@ BASE_UNIVERSE = {
     "JPM": "Finanzwerte", "GS": "Finanzwerte",
 }
 
-# Statische Klarnamen für die bekanntesten Ticker (schneller Pfad, kein
-# API-Aufruf nötig). Für alles andere wird zuerst der Namens-Cache, dann ein
-# Live-Abruf über yfinance versucht (siehe get_company_name()).
 NAME_MAP = {
     "AAPL": "Apple Inc.", "MSFT": "Microsoft Corp.", "GOOGL": "Alphabet Inc. (Google) Cl. A",
     "AMZN": "Amazon.com Inc.", "META": "Meta Platforms Inc.", "NVDA": "NVIDIA Corp.",
@@ -124,14 +123,9 @@ MUSTERDEPOT = {
     "WDC": {"name": "Western Digital Corp."},
 }
 
-# Freie Yahoo-Finance-Screener, die zusätzlich zur Basisliste abgefragt werden,
-# damit tagesaktuell auffällige Werte (die gerade in den News/im Markt
-# auftauchen) automatisch mit ins Scoring rutschen können.
 TRENDING_SCREENER_IDS = ("day_gainers", "growth_technology_stocks", "most_actives")
 TRENDING_COUNT_PER_SCREENER = 15
 
-# Makro-Ticker für den allgemeinen Presse-/Sentiment-Überblick (nicht Teil
-# des Handels-Universums, nur Nachrichtenquelle für den Marktüberblick).
 MACRO_TICKERS = ["^GSPC", "^IXIC", "^DJI", "^VIX"]
 
 NUM_POSITIONS = 10
@@ -139,17 +133,15 @@ ALLOCATION_PER_POSITION = 5000.0  # EUR, fiktives Kapital pro Slot
 KEST_RATE = 0.26
 NEWS_RETENTION_DAYS = 7
 NEWS_MAX_PER_TICKER = 15
-NEWS_MAX_FETCH = 8  # wie viele Artikel pro Ticker/Lauf neu abgerufen werden
-NUM_DISPOSE_CANDIDATES = 2  # schwächste gehaltene Positionen -> "Potential Dispose"
-NUM_WATCHLIST = 10  # nächste Kandidaten außerhalb der Top 10
-SCORE_HISTORY_LENGTH = 10  # wie viele Scores pro Ticker aufgehoben werden
+NEWS_MAX_FETCH = 8
+NUM_DISPOSE_CANDIDATES = 2
+NUM_WATCHLIST = 10
+SCORE_HISTORY_LENGTH = 10
 
-# Scoring-Gewichte (bewusst als Konstanten, damit sie später leicht angepasst
-# werden können)
 W_DAY = 1.0
 W_WEEK = 0.6
 W_MONTH = 0.3
-W_REBOUND = 0.15   # je % Abstand vom 52W-Hoch (gedeckelt)
+W_REBOUND = 0.15
 W_NEWS = 1.5
 W_OPTIONS = 2.0
 
@@ -174,8 +166,6 @@ NEGATIVE_KEYWORDS = [
     "selloff", "underperform", "probe", "fine", "bankruptcy", "resigns",
 ]
 
-# Themen-Zuordnung für den allgemeinen Presse-Überblick. Reihenfolge zählt:
-# ein Artikel wird dem ersten passenden Thema zugeordnet.
 TOPIC_KEYWORDS = [
     ("Politik/Makro", [
         "election", "president", "senate", "congress", "white house", "regulation",
@@ -202,6 +192,13 @@ HTTP_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                   "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 }
+
+SEGMENT_BADGES = {
+    "Hauptdepot": ("segment-haupt", "🏆 Hauptdepot"),
+    "Watchlist": ("segment-watch", "👀 Watchlist"),
+    "Musterdepot": ("segment-muster", "🗂️ Musterdepot"),
+}
+SEGMENT_ORDER = ["Hauptdepot", "Watchlist", "Musterdepot"]
 
 
 # ---------------------------------------------------------------------------
@@ -260,10 +257,6 @@ def get_company_name(symbol, name_cache):
 # ---------------------------------------------------------------------------
 
 def get_dynamic_trending():
-    """Fragt Yahoo Finances kostenlose Screener ab, um tagesaktuell auffällige
-    Ticker zu finden. Bei jedem Fehler (Timeout, geänderte API, Rate-Limit)
-    wird einfach eine leere Menge zurückgegeben — der Agent läuft dann nur
-    mit der Basisliste weiter, statt komplett zu scheitern."""
     trending = set()
     for scr_id in TRENDING_SCREENER_IDS:
         try:
@@ -286,10 +279,6 @@ def get_dynamic_trending():
 
 
 def build_candidate_pool():
-    """Basisliste + dynamische Trends + Musterdepot-Titel. Das Musterdepot
-    fließt bewusst mit ins reguläre Scoring ein — Titel daraus können also
-    auch tatsächlich ins simulierte Top-10-Hauptdepot aufgenommen werden,
-    wenn sie die Kriterien erfüllen (gleiche Maßstäbe für beide Listen)."""
     pool = dict(BASE_UNIVERSE)
     for sym in get_dynamic_trending():
         if sym not in pool:
@@ -327,8 +316,6 @@ def fetch_price_metrics(symbol):
             else:
                 t_list.append("▼")
 
-        # 4-Wochen-Block-Performance (Woche -4 bis Woche -1), unabhängig vom
-        # Scoring nur zur Anzeige gedacht — je Woche 5 Handelstage angenommen.
         def week_block(n_back_start, n_back_end):
             if len(closes) <= n_back_start:
                 return None
@@ -372,8 +359,6 @@ def parse_timestamp(value):
 
 
 def fetch_news(symbol, max_items=NEWS_MAX_FETCH):
-    """Nutzt yfinance's eingebautes Ticker.news (kostenlose Yahoo-Finance-
-    Schlagzeilen) statt fragilem RSS-/Webseiten-Scraping."""
     articles = []
     try:
         raw_news = yf.Ticker(symbol).news or []
@@ -447,13 +432,6 @@ def score_sentiment(articles):
 
 
 def fetch_options_metrics(symbol):
-    """Rudimentäre, aber echte (kostenlose) Optionsdaten über yfinances
-    Options-Chain: Put/Call-Volumenverhältnis der nächsten Verfallsserie
-    sowie die Strikes mit dem höchsten Open Interest als grobe Näherung
-    für 'Call-Wand' / 'Put-Wand'. Kein echter institutioneller Order-Flow
-    (Sweeps/Blocks) — dafür gibt es keine stabile kostenlose Quelle. Für
-    viele europäische Titel/ETFs gibt es ohnehin keine Optionsdaten über
-    Yahoo — das wird hier einfach als 'nicht verfügbar' (None) behandelt."""
     try:
         tk = yf.Ticker(symbol)
         expirations = tk.options
@@ -513,10 +491,12 @@ def compute_score(price_m, news_score, options_m):
 
 
 def score_arrow(symbol, new_score, score_history):
-    """Vergleicht den aktuellen Score nur mit dem letzten gespeicherten Score
-    desselben Tickers — bewusst KEINE numerische Kursprognose, nur eine
-    Richtungsangabe ('wird der Kandidat gerade relativ stärker oder
-    schwächer bewertet als beim letzten Lauf')."""
+    """Vergleicht den aktuellen Score mit dem beim LETZTEN Lauf gespeicherten
+    Score desselben Tickers (score_history muss der Stand VOR diesem Lauf
+    sein — siehe run_agent_update, wo bewusst zwischen "alter" und "neuer"
+    Score-Historie unterschieden wird, damit hier nicht der Score mit sich
+    selbst verglichen wird). Bewusst KEINE numerische Kursprognose, nur eine
+    Richtungsangabe."""
     history = score_history.get(symbol, [])
     if not history:
         return "–", None
@@ -530,7 +510,7 @@ def score_arrow(symbol, new_score, score_history):
 
 def update_score_history(score_history, symbol, new_score):
     history = score_history.get(symbol, [])
-    history.append(round(new_score, 4))
+    history = history + [round(new_score, 4)]
     score_history[symbol] = history[-SCORE_HISTORY_LENGTH:]
     return score_history
 
@@ -580,9 +560,6 @@ def rebalance(scored, state, price_lookup, timestamp):
             "grund": "Aus Top 10 gefallen / durch besseren Kandidaten ersetzt",
         })
 
-    # "Potential Dispose": innerhalb der aktuell gehaltenen Top-10 werden die
-    # schwächsten NUM_DISPOSE_CANDIDATES Scores zusätzlich markiert — reine
-    # Beobachtungs-Info, keine automatische Verkaufsaktion.
     by_score = sorted(new_positions.items(), key=lambda kv: kv[1]["last_score"])
     dispose_symbols = {sym for sym, _ in by_score[:NUM_DISPOSE_CANDIDATES]}
     for sym, pos in new_positions.items():
@@ -597,9 +574,6 @@ def build_watchlist(scored, held_symbols, limit=NUM_WATCHLIST):
 
 
 def build_musterdepot_view(scored, cutoff_score):
-    """Baut die Musterdepot-Ansicht: für jeden Musterdepot-Ticker, der
-    erfolgreich bewertet werden konnte, wird geprüft, ob sein Score die
-    aktuelle Top-10-Schwelle des Hauptdepots erreicht oder übertrifft."""
     scored_by_symbol = {c["symbol"]: c for c in scored}
     rows = []
     for sym, meta in MUSTERDEPOT.items():
@@ -616,6 +590,47 @@ def build_musterdepot_view(scored, cutoff_score):
             "available": True, "qualifies": qualifies, "entry": c,
         })
     return rows
+
+
+def build_master_rows(positions, price_lookup, watchlist, musterdepot_rows, name_cache):
+    """Konsolidiert Hauptdepot, Watchlist und Musterdepot zu EINER Zeilenliste
+    pro Ticker (ein Ticker kann mehreren Segmenten gleichzeitig angehören,
+    z.B. ein Musterdepot-Titel, der gerade auch im Hauptdepot gehalten wird)."""
+    rows = {}
+
+    for sym, pos in positions.items():
+        pm = price_lookup.get(sym)
+        r = rows.setdefault(sym, {
+            "symbol": sym, "name": get_company_name(sym, name_cache),
+            "category": pos.get("category", ""), "score": pos.get("last_score", 0.0),
+            "price_m": pm, "segments": set(), "qualifies": False,
+        })
+        r["segments"].add("Hauptdepot")
+
+    for c in watchlist:
+        sym = c["symbol"]
+        r = rows.setdefault(sym, {
+            "symbol": sym, "name": get_company_name(sym, name_cache),
+            "category": c["category"], "score": c["score"],
+            "price_m": c["price_m"], "segments": set(), "qualifies": False,
+        })
+        r["segments"].add("Watchlist")
+
+    for row in musterdepot_rows:
+        if not row["available"]:
+            continue
+        sym = row["symbol"]
+        c = row["entry"]
+        r = rows.setdefault(sym, {
+            "symbol": sym, "name": row["name"],
+            "category": c["category"], "score": c["score"],
+            "price_m": c["price_m"], "segments": set(), "qualifies": False,
+        })
+        r["segments"].add("Musterdepot")
+        if row["qualifies"]:
+            r["qualifies"] = True
+
+    return sorted(rows.values(), key=lambda r: r["score"], reverse=True)
 
 
 def update_cache_generic(cache, key, new_articles, now_ts, max_items=NEWS_MAX_PER_TICKER):
@@ -642,8 +657,6 @@ def update_news_cache(cache, symbol, new_articles, now_ts):
 
 
 def prune_cache_fully(cache, now_ts):
-    """Entfernt Ticker/Themen komplett, deren News alle älter als das
-    Retention-Fenster sind (hält den Cache über die Zeit klein)."""
     cutoff = now_ts - NEWS_RETENTION_DAYS * 86400
     pruned = {}
     for key, articles in cache.items():
@@ -654,10 +667,6 @@ def prune_cache_fully(cache, now_ts):
 
 
 def build_macro_topic_overview(all_fetched_news, macro_cache, now_ts):
-    """Baut den generellen Politik/Wirtschaft/Technologie/Sonstiges-Überblick
-    aus (a) den News der Makro-Indizes und (b) allen ohnehin abgerufenen
-    Kandidaten-Schlagzeilen. Rein Keyword-basierte Zuordnung, 7-Tage-Fenster
-    wie beim Ticker-News-Cache."""
     buckets = {topic: [] for topic in TOPIC_ORDER}
     for article in all_fetched_news:
         topic = classify_topic(article["title"])
@@ -670,9 +679,6 @@ def build_macro_topic_overview(all_fetched_news, macro_cache, now_ts):
 
 
 def build_week_summary(price_lookup, positions):
-    """Rein statistische (nicht KI-generierte) Wochenzusammenfassung: Wert-
-    Entwicklung gegenüber vor ~7 Tagen (aus portfolio_log.csv) sowie bester/
-    schwächster Wochen-Performer unter den aktuell gehaltenen Positionen."""
     summary = {
         "netto_now": None, "netto_week_ago": None, "change_abs": None, "change_pct": None,
         "best": None, "worst": None,
@@ -815,18 +821,19 @@ def render_card(symbol, name, category, sec_type, price_m, news_cache, score_his
                  now_ts, mode="watchlist", pos=None, score=None, risk_flag=False,
                  qualifies=None, note=""):
     """Gemeinsamer Karten-Renderer für gehaltene Positionen, Watchlist und
-    Musterdepot — alle drei zeigen dieselben Basis-Infos (Name, Kategorie,
-    4-Wochen-Tabelle, Trend/Score-Pfeil, News), nur gehaltene Positionen
-    zeigen zusätzlich Wert/Gewinn-Verlust. Die ganze Karte sowie der
-    News-Bereich darin sind über <details> auf-/zuklappbar."""
+    Musterdepot. Der Score wird IMMER angezeigt (unabhängig vom Modus)."""
     day_perf = price_m["day_perf"] if price_m else 0.0
     tendency = price_m["tendency"] if price_m else "–"
     tendency_class = price_m["tendency_class"] if price_m else "neutral"
     day_cls = "pos" if day_perf >= 0 else "neg"
     cat_cls = "buy" if category == "Quick Win" else ""
 
-    score_for_arrow = pos.get("last_score", 0.0) if pos else (score if score is not None else 0.0)
-    arrow, _prev = score_arrow(symbol, score_for_arrow, score_history)
+    if mode == "held" and pos is not None:
+        score_value = pos.get("last_score", 0.0)
+    else:
+        score_value = score if score is not None else 0.0
+
+    arrow, _prev = score_arrow(symbol, score_value, score_history)
     arrow_cls = {"↑": "pos", "↓": "neg", "→": "neutral", "–": "neutral"}[arrow]
 
     risk_badge = ""
@@ -850,9 +857,7 @@ def render_card(symbol, name, category, sec_type, price_m, news_cache, score_his
             f'<div class="val {gain_cls}" style="font-size:13px;">{fmt_eur(gain, signed=True)}</div></div>'
         )
 
-    score_html = ""
-    if mode != "held" and score is not None:
-        score_html = f'<span class="badge">Score {score:.2f}</span>'
+    score_html = f'<span class="badge">Score {score_value:.2f}</span>'
 
     news_html = render_news_html(symbol, news_cache, now_ts)
     week_table = render_week_table(price_m)
@@ -866,7 +871,7 @@ def render_card(symbol, name, category, sec_type, price_m, news_cache, score_his
 
     meta_line = (
         f'{entry_meta}Tag <span class="{day_cls}">{day_perf:+.2f}%</span> · '
-        f'Trend <span class="tendency {tendency_class}">{tendency}</span>'
+        f'Kurstrend <span class="tendency {tendency_class}">{tendency}</span>'
         if price_m else "Keine Kursdaten verfügbar."
     )
 
@@ -878,14 +883,14 @@ def render_card(symbol, name, category, sec_type, price_m, news_cache, score_his
                         <span class="badge">{sec_type}</span>
                         <span class="badge category-badge {cat_cls}">{category}</span>
                         {risk_badge}{qualifies_badge}{score_html}
-                        <span class="badge score-arrow {arrow_cls}" title="Score-Richtung ggü. vorigem Lauf">{arrow}</span>
+                        <span class="badge score-arrow {arrow_cls}" title="Score-Trend ggü. vorigem Lauf">{arrow}</span>
                     </div>
                     {value_html}
                 </summary>
                 <div class="position-meta">{meta_line}</div>
                 {note_html}
                 {week_table}
-                <details class="news-toggle" open>
+                <details class="news-toggle">
                     <summary>Aktuelle News</summary>
                     <div class="news-list">
 {news_html}
@@ -895,16 +900,18 @@ def render_card(symbol, name, category, sec_type, price_m, news_cache, score_his
 '''
 
 
-def render_overview_table(positions, price_lookup, score_history):
-    rows = []
-    for sym, pos in positions.items():
-        pm = price_lookup.get(sym)
-        name = pos.get("_display_name", sym)
-        arrow, _ = score_arrow(sym, pos.get("last_score", 0.0), score_history)
-        arrow_cls = {"↑": "pos", "↓": "neg", "→": "neutral", "–": "neutral"}[arrow]
-        cat = pos.get("category", "")
-        cat_cls = "buy" if cat == "Quick Win" else ""
-        risk_txt = " ⚠️" if pos.get("risk_flag") else ""
+def render_master_table(rows, score_history):
+    trs = []
+    for r in rows:
+        segs = "".join(
+            f'<span class="segment-badge {SEGMENT_BADGES[s][0]}">{SEGMENT_BADGES[s][1]}</span>'
+            for s in SEGMENT_ORDER if s in r["segments"]
+        )
+        if r.get("qualifies"):
+            segs += '<span class="segment-badge segment-qualifies">✅ erfüllt Kriterium</span>'
+
+        pm = r["price_m"]
+        cat_cls = "buy" if r["category"] == "Quick Win" else ""
 
         def cell(val):
             cls = "pos" if (val or 0) >= 0 else "neg"
@@ -915,21 +922,29 @@ def render_overview_table(positions, price_lookup, score_history):
         w2 = cell(pm.get("week2")) if pm else "<td>–</td>"
         w1 = cell(pm.get("week1")) if pm else "<td>–</td>"
         day = cell(pm.get("day_perf")) if pm else "<td>–</td>"
+        tendency = pm.get("tendency", "–") if pm else "–"
+        tendency_class = pm.get("tendency_class", "neutral") if pm else "neutral"
 
-        rows.append(
-            f'<tr><td>{name} ({sym}){risk_txt}</td>'
-            f'<td><span class="badge category-badge {cat_cls}">{cat}</span></td>'
+        arrow, _ = score_arrow(r["symbol"], r["score"], score_history)
+        arrow_cls = {"↑": "pos", "↓": "neg", "→": "neutral", "–": "neutral"}[arrow]
+
+        trs.append(
+            f'<tr><td>{r["name"]} ({r["symbol"]})</td>'
+            f'<td>{segs}</td>'
+            f'<td><span class="badge category-badge {cat_cls}">{r["category"]}</span></td>'
+            f'<td>{r["score"]:.2f}</td>'
             f'{w4}{w3}{w2}{w1}{day}'
+            f'<td class="tendency {tendency_class}" style="white-space:nowrap;">{tendency}</td>'
             f'<td class="{arrow_cls}" style="font-family:monospace;">{arrow}</td></tr>'
         )
 
     return f'''    <div class="table-wrap">
     <table class="overview-table">
         <thead>
-            <tr><th>Position</th><th>Kategorie</th><th>W-4</th><th>W-3</th><th>W-2</th><th>W-1</th><th>Tag</th><th>Trend</th></tr>
+            <tr><th>Position</th><th>Segment(e)</th><th>Kategorie</th><th>Score</th><th>W-4</th><th>W-3</th><th>W-2</th><th>W-1</th><th>Tag</th><th>Kurstrend</th><th>Score-Trend</th></tr>
         </thead>
         <tbody>
-{"".join(rows)}
+{"".join(trs)}
         </tbody>
     </table>
     </div>'''
@@ -1014,15 +1029,36 @@ def render_week_summary_html(summary, name_cache):
         </div>'''
 
 
+LEGEND_HTML = '''    <details class="legend-box">
+        <summary>ℹ️ Wie funktioniert der Score, und was bedeutet Quick Win vs. Long?</summary>
+        <div class="legend-body">
+            <p>Der <strong>Score</strong> kombiniert vier Bausteine: Kursmomentum (Tag/Woche/Monat, am stärksten
+            gewichtet), einen Rebound-Bonus (wie nah/fern vom 52-Wochen-Hoch, gedeckelt), das News-Sentiment
+            (simple Keyword-Zählung, -5 bis +5) und eine Options-Kennzahl (Put/Call-Verhältnis, -1/0/+1).</p>
+            <p>Ein höherer Score heißt nur: <em>im Vergleich zu den anderen Kandidaten dieses Laufs</em> gerade
+            stärkeres Momentum/Sentiment. Es gibt keinen absoluten "ab X ist es gut"-Wert — es zählt allein die
+            Rangfolge (die zehn höchsten Scores kommen ins Hauptdepot). Ein negativer Score ist nicht automatisch
+            "schlecht", wenn er trotzdem unter den Top 10 liegt; ein positiver Score reicht nicht, wenn zehn
+            andere Kandidaten noch höher liegen.</p>
+            <p><strong>Quick Win</strong> wird vergeben, wenn der reine Momentum-Anteil (Tag/Woche/Monat) den
+            Rebound-Anteil übersteigt — also ein Titel, der gerade aktiv nach oben läuft.
+            <strong>Long</strong> wird vergeben, wenn der Rebound-Anteil (Erholung/Abstand vom Hoch) überwiegt —
+            eher ein Titel, der von einem Tief kommt und länger angelegt betrachtet wird. Beides sind reine
+            Heuristik-Label zur Einordnung, keine Kauf- oder Verkaufsempfehlung.</p>
+            <p>Der kleine Pfeil (↑/↓/→) neben jedem Score ist der <strong>Score-Trend</strong>: er vergleicht nur
+            den aktuellen Score mit dem Score desselben Titels beim letzten Lauf (4h zuvor) — keine Kursprognose,
+            nur "wird der Kandidat gerade relativ stärker oder schwächer bewertet". Der <strong>Kurstrend</strong>
+            (▲▼▲) daneben zeigt dagegen die reine Kursrichtung der letzten drei Handelstage.</p>
+        </div>
+    </details>'''
+
+
 def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, score_history,
                  name_cache, events, watchlist, musterdepot_rows, week_summary,
                  total_brutto, total_unrealized, realized_total, kest, total_netto,
                  prev_run_html, trade_log_html):
 
     now_ts = time.time()
-
-    for sym, pos in positions.items():
-        pos["_display_name"] = get_company_name(sym, name_cache)
 
     position_cards = "\n".join(
         render_card(
@@ -1057,7 +1093,8 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
         ))
     musterdepot_html = "\n".join(musterdepot_cards_list)
 
-    overview_table_html = render_overview_table(positions, price_lookup, score_history)
+    master_rows = build_master_rows(positions, price_lookup, watchlist, musterdepot_rows, name_cache)
+    master_table_html = render_master_table(master_rows, score_history)
 
     val_brutto = fmt_eur(total_brutto)
     val_unrealized = fmt_eur(total_unrealized, signed=True)
@@ -1067,31 +1104,35 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
 
     topic_overview_html = render_topic_overview_html(macro_cache, now_ts)
     week_summary_html = render_week_summary_html(week_summary, name_cache)
-    trade_log_html_resolved = trade_log_html
 
     return f"""<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuantFlow Tech Agent Dashboard v5.0</title>
+    <title>QuantFlow Tech Agent Dashboard v6.0</title>
     <style>
         :root {{
-            --bg-dark: #0f111a;--bg-card: #161925;--text-main: #f0f2f5;--text-muted: #8a92b2;--green: #00e676;--red: #ff3d00;--blue: #00b0ff;--border: #22273d;
+            --bg-dark: #0f111a;--bg-card: #161925;--text-main: #f0f2f5;--text-muted: #8a92b2;--green: #00e676;--red: #ff3d00;--blue: #00b0ff;--border: #22273d;--purple: #b388ff;--orange: #ffab40;
         }}
         * {{ box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }}
         body {{ background-color: var(--bg-dark); color: var(--text-main); padding: 20px; line-height: 1.5; }}
         header {{ display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }}
         .logo-area h1 {{ font-size: 24px; font-weight: 700; color: var(--text-main); }}
         .logo-area span {{ color: var(--text-muted); font-size: 12px; }}
-        .controls-area {{ display: flex; align-items: center; gap: 15px; }}
-        .btn-refresh {{ background-color: var(--blue); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: background 0.3s; display: flex; align-items: center; gap: 8px; text-decoration: none; }}
-        .btn-refresh:hover {{ background-color: #0091ea; }}
+        .controls-area {{ display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }}
+        .btn-refresh {{ background-color: var(--blue); color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 12px; transition: background 0.3s; display: flex; align-items: center; gap: 6px; text-decoration: none; }}
+        .btn-refresh:hover {{ opacity: 0.85; }}
 
         @keyframes blink {{ 0% {{ opacity: 0.4; }} 50% {{ opacity: 1; }} 100% {{ opacity: 0.4; }} }}
         .loading-active {{ background-color: #ff9100 !important; animation: blink 1.2s infinite; }}
 
         .footer-note {{ color: var(--text-muted); font-size: 11px; margin-top: 30px; padding-top: 12px; border-top: 1px solid var(--border); }}
+
+        .legend-box {{ background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin-bottom: 20px; font-size: 12px; }}
+        .legend-box summary {{ cursor: pointer; font-weight: 600; color: var(--blue); }}
+        .legend-body {{ margin-top: 10px; color: var(--text-muted); display: flex; flex-direction: column; gap: 8px; }}
+        .legend-body strong {{ color: var(--text-main); }}
 
         .accounting-bar {{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-bottom: 25px; }}
         .acc-item {{ background-color: var(--bg-card); padding: 12px 20px; border-radius: 8px; border: 1px solid var(--border); }}
@@ -1101,19 +1142,25 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
         .section-title {{ font-size: 16px; font-weight: 600; margin: 25px 0 15px; display: flex; align-items: center; gap: 10px; }}
 
         .table-wrap {{ overflow-x: auto; margin-bottom: 20px; }}
-        .overview-table {{ width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 12px; overflow: hidden; font-size: 13px; }}
-        .overview-table th, .overview-table td {{ padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }}
-        .overview-table th {{ color: var(--text-muted); font-size: 11px; text-transform: uppercase; }}
+        .overview-table {{ width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 12px; overflow: hidden; font-size: 12px; }}
+        .overview-table th, .overview-table td {{ padding: 5px 10px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }}
+        .overview-table th {{ color: var(--text-muted); font-size: 10px; text-transform: uppercase; }}
+
+        .segment-badge {{ padding: 1px 6px; border-radius: 4px; font-size: 9px; font-weight: bold; margin-right: 3px; display: inline-block; white-space: nowrap; }}
+        .segment-haupt {{ background: #1b251f; color: var(--green); }}
+        .segment-watch {{ background: #1a2530; color: var(--blue); }}
+        .segment-muster {{ background: #241a30; color: var(--purple); }}
+        .segment-qualifies {{ background: #123321; color: var(--green); }}
 
         .positions-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; }}
         .position-card {{ background-color: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); padding: 16px; }}
         .position-header {{ display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; cursor: pointer; list-style: none; }}
         .position-header::-webkit-details-marker {{ display: none; }}
         .position-value {{ text-align: right; }}
-        .position-meta {{ font-size: 12px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.8; }}
+        .position-meta {{ font-size: 12px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.8; white-space: nowrap; overflow-x: auto; }}
         .ticker-name {{ font-weight: 700; font-size: 15px; margin-right: 6px; }}
         .company-name {{ font-size: 11px; color: var(--text-muted); }}
-        .badge {{ padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; background: #22273d; margin-right: 4px; display: inline-block; margin-top: 4px; }}
+        .badge {{ padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; background: #22273d; margin-right: 4px; display: inline-block; margin-top: 4px; white-space: nowrap; }}
         .category-badge {{ background: #3a2a1a; color: #ffb74d; }}
         .category-badge.buy {{ background: #1b251f; color: var(--green); }}
         .category-badge.dispose {{ background: #3a1a1a; color: var(--red); }}
@@ -1122,7 +1169,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
         .pos {{ color: var(--green); }}
         .neg {{ color: var(--red); }}
         .neutral {{ color: var(--text-muted); }}
-        .tendency {{ font-family: monospace; letter-spacing: 2px; }}
+        .tendency {{ font-family: monospace; letter-spacing: 2px; white-space: nowrap; }}
 
         .week-table {{ display: flex; justify-content: space-between; background: #1c2030; border-radius: 6px; padding: 6px 8px; margin-bottom: 8px; }}
         .week-cell {{ display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 2px; }}
@@ -1134,7 +1181,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
         .news-item.sentiment-pos {{ border-left-color: var(--green); }}
         .news-item.sentiment-neg {{ border-left-color: var(--red); }}
         .news-meta {{ font-size: 10px; color: var(--text-muted); margin-bottom: 2px; }}
-        .news-title {{ font-size: 12px; font-weight: 600; color: var(--text-main); text-decoration: none; display: block; }}
+        .news-title {{ font-size: 12px; font-weight: 600; color: var(--text-main); text-decoration: none; display: block; white-space: normal; }}
         .news-title:hover {{ color: var(--blue); }}
         .news-summary {{ font-size: 12px; color: var(--text-muted); padding: 8px 0; }}
 
@@ -1159,11 +1206,13 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
 <body>
     <header>
         <div class="logo-area">
-            <h1>QuantFlow Tech Agent Dashboard <span style="color:var(--blue); font-size:14px;">v5.0</span></h1>
+            <h1>QuantFlow Tech Agent Dashboard <span style="color:var(--blue); font-size:14px;">v6.0</span></h1>
             <span>Simuliertes Momentum-/News-/Options-Portfolio (Paper Trading) — Letztes Update: {timestamp}</span>
         </div>
         <div class="controls-area">
             <button id="refresh-btn" onclick="triggerManualUpdate()" class="btn-refresh">🔄 Jetzt aktualisieren</button>
+            <button onclick="toggleAllNews(true)" class="btn-refresh" style="background-color:#495867;">📰 News alle auf</button>
+            <button onclick="toggleAllNews(false)" class="btn-refresh" style="background-color:#495867;">📰 News alle zu</button>
             <a href="portfolio_log.csv" download class="btn-refresh" style="background-color: #28a745;">📊 Wert-Historie</a>
             <a href="trade_log.csv" download class="btn-refresh" style="background-color: #6c5ce7;">🔄 Trade-Log</a>
         </div>
@@ -1177,8 +1226,10 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
         <div class="acc-item"><label>Netto-Wert</label><div class="val">{val_netto}</div></div>
     </section>
 
-    <div class="section-title">📋 Depot-Übersicht</div>
-{overview_table_html}
+{LEGEND_HTML}
+
+    <div class="section-title">📋 Gesamtübersicht (Hauptdepot · Watchlist · Musterdepot)</div>
+{master_table_html}
 
     <div class="section-title">📈 Aktuelle Positionen ({len(positions)})</div>
     <div class="positions-grid">
@@ -1200,7 +1251,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
 
     <div class="section-title">🔄 Letzte Umschichtungen</div>
     <div class="trade-log">
-{trade_log_html_resolved}
+{trade_log_html}
     </div>
 
     <div class="historical-view">
@@ -1220,7 +1271,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
 
     <div class="footer-note">
         Automatisiertes, simuliertes Paper-Trading-Tool zu Testzwecken · Kurs-/News-/Optionsdaten aus kostenlosen,
-        teils verzögerten Quellen · Sentiment = einfache Keyword-Heuristik · Score-Pfeile zeigen nur die Richtung
+        teils verzögerten Quellen · Sentiment = einfache Keyword-Heuristik · Score-Trend zeigt nur die Richtung
         ggü. dem letzten Lauf, keine Kursprognose · Musterdepot zeigt nur Titel, keine Beträge.
     </div>
 
@@ -1230,6 +1281,9 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
             btn.classList.add('loading-active');
             btn.innerText = '⏳ Aktualisiere...';
             setTimeout(function () {{ location.reload(true); }}, 800);
+        }}
+        function toggleAllNews(openState) {{
+            document.querySelectorAll('.news-toggle').forEach(function (d) {{ d.open = openState; }});
         }}
     </script>
 </body>
@@ -1253,6 +1307,11 @@ def run_agent_update():
     news_cache = load_json(NEWS_CACHE_FILE, {})
     macro_cache = load_json(MACRO_NEWS_CACHE_FILE, {})
     name_cache = load_json(NAME_CACHE_FILE, {})
+
+    # WICHTIG: score_history hier ist bewusst der Stand VOR diesem Lauf und
+    # bleibt für die Score-Trend-Pfeile beim Rendern unverändert. Erst danach
+    # wird eine separate, aktualisierte Kopie für den nächsten Lauf gebaut —
+    # sonst würde sich jeder Score nur mit sich selbst vergleichen.
     score_history = state.get("score_history", {})
     prev_snapshot_cols = read_prev_snapshot()
 
@@ -1281,8 +1340,6 @@ def run_agent_update():
         })
         time.sleep(0.3)
 
-    # Zusätzliche Makro-Ticker-News nur für den Markt-Sentiment-Überblick
-    # (kein Einfluss auf Trading-Scoring/Portfolio-Auswahl).
     for macro_sym in MACRO_TICKERS:
         macro_articles = fetch_news(macro_sym, max_items=5)
         all_fetched_news.extend(macro_articles)
@@ -1297,8 +1354,12 @@ def run_agent_update():
     else:
         new_positions, events = rebalance(scored, state, price_lookup, timestamp)
 
-    for sym, pos in new_positions.items():
-        score_history = update_score_history(score_history, sym, pos.get("last_score", 0.0))
+    # Score-Historie für ALLE bewerteten Kandidaten fortschreiben (nicht nur
+    # gehaltene Positionen), damit Watchlist und Musterdepot ab dem zweiten
+    # Lauf ebenfalls sinnvolle Score-Trend-Pfeile zeigen.
+    new_score_history = {k: list(v) for k, v in score_history.items()}
+    for c in scored:
+        new_score_history = update_score_history(new_score_history, c["symbol"], c["score"])
 
     watchlist = build_watchlist(scored, set(new_positions.keys())) if scored else []
 
@@ -1316,12 +1377,11 @@ def run_agent_update():
 
     new_state = {
         "positions": new_positions, "realized_pnl_total": realized_total,
-        "last_run": timestamp, "score_history": score_history,
+        "last_run": timestamp, "score_history": new_score_history,
     }
     save_json(STATE_FILE, new_state)
     save_json(NEWS_CACHE_FILE, news_cache)
     save_json(MACRO_NEWS_CACHE_FILE, macro_cache)
-    save_json(NAME_CACHE_FILE, name_cache)
 
     log_trades(events, timestamp)
 
@@ -1356,6 +1416,9 @@ def run_agent_update():
             trade_history = [line for line in f.read().splitlines()[1:] if line.strip()]
     trade_log_html = render_trade_log_html(trade_history, name_cache)
 
+    # Für die Score-Trend-Pfeile beim Rendern wird bewusst die ALTE
+    # score_history (Stand vor diesem Lauf) übergeben — new_score_history
+    # wird erst mit dem nächsten Lauf zur Vergleichsbasis.
     html = render_html(
         timestamp, new_positions, price_lookup, news_cache, macro_cache, score_history, name_cache,
         events, watchlist, musterdepot_rows, week_summary,
