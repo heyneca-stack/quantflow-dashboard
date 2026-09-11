@@ -1,6 +1,6 @@
 import yfinance as yf
-import os
 from datetime import datetime
+import os
 
 # DEIN DIVERSIFIZIERTES PORTFOLIO (Tech-Kern + Hedges + Turnarounds)
 CURRENT_PORTFOLIO = {
@@ -17,7 +17,7 @@ CURRENT_PORTFOLIO = {
 }
 
 def run_agent_update():
-    print("🚀 Starte QuantFlow v2.5 Engine (Live-Kurse + CSV-History)...")
+    print("🚀 Berechne Live-Marktdaten und generiere sauberes HTML-Dashboard...")
     
     table_rows = ""
     total_brutto = 0
@@ -36,7 +36,6 @@ def run_agent_update():
             current_price = hist['Close'].iloc[-1]
             prev_price = hist['Close'].iloc[-2]
             
-            # 3-Handelstage-Tendenz
             t_list = []
             for i in range(-3, 0):
                 if hist['Close'].iloc[i] > hist['Close'].iloc[i-1]:
@@ -61,15 +60,20 @@ def run_agent_update():
             if data['type'] == "Turnaround":
                 turnaround_val += position_value
                 
-            table_rows += f'                    <tr><td class="ticker-name">{ticker_symbol}</td><td><span class="badge">{data["type"]}</span></td><td class="{p_cl}">{day_perf:+.2f}%</td><td class="tendency {tendency_class}">{tendency_str}</td><td class="{w_cl}">{week_perf:+.2f}%</td><td class="{m_cl}">{month_perf:+.2f}%</td></tr>\n'
+            table_rows += f'''                    <tr>
+                        <td class="ticker-name">{ticker_symbol}</td>
+                        <td><span class="badge">{data["type"]}</span></td>
+                        <td class="{p_cl}">{day_perf:+.2f}%</td>
+                        <td class="tendency {tendency_class}">{tendency_str}</td>
+                        <td class="{w_cl}">{week_perf:+.2f}%</td>
+                        <td class="{m_cl}">{month_perf:+.2f}%</td>
+                    </tr>\n'''
         except Exception as e:
             print(f"Fehler bei Ticker {ticker_symbol}: {e}")
 
-    # 2. FINANZEN & STEUERN BERECHNEN (26% KESt)
+    # 2. FINANZEN & STEUERN BERECHNEN
     kest_return = max(0, total_gain * 0.26)
     total_netto = total_brutto - kest_return
-    
-    # Exakte mathematische Gewichtung der Turnarounds ermitteln
     turnaround_weight = (turnaround_val / total_brutto) * 100 if total_brutto > 0 else 0
     ta_badge = "OK" if turnaround_weight <= 20 else "LIMIT EXCEEDED"
     ta_badge_bg = "var(--green)" if turnaround_weight <= 20 else "var(--red)"
@@ -79,56 +83,80 @@ def run_agent_update():
     val_kest = f"-{kest_return:,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".")
     val_netto = f"{total_netto:,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".")
 
-    # -------------------------------------------------------------
-    # HISTORISCHER CSV-LOG (Schreibt fortlaufend Daten in eine Datei)
-    # -------------------------------------------------------------
+    # CSV-Historie loggen
     csv_file = "portfolio_log.csv"
     if not os.path.exists(csv_file):
         with open(csv_file, "w", encoding="utf-8") as f:
             f.write("Zeitstempel,Brutto_Wert,Gewinn_Verlust,Steuer_Rueckstellung,Netto_Wert,Turnaround_Anteil_Prozent\n")
-            
     with open(csv_file, "a", encoding="utf-8") as f:
         f.write(f"{timestamp},{total_brutto:.2f},{total_gain:.2f},{kest_return:.2f},{total_netto:.2f},{turnaround_weight:.1f}\n")
-    print("📈 Historischer CSV-Eintrag erfolgreich geschrieben!")
 
-    # 3. DASHBOARD-HTML RESTRUKTURIEREN
-    new_bar = f"""    <section class="accounting-bar">
+    # 3. HTML DASHBOARD GENERIEREN (Direkt und ohne Risiko aus Python)
+    html_part_1 = f"""<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantFlow Tech Agent Dashboard v2.0</title>
+    <style>
+        :root {{
+            --bg-dark: #0f111a;--bg-card: #161925;--text-main: #f0f2f5;--text-muted: #8a92b2;--green: #00e676;--red: #ff3d00;--blue: #00b0ff;--border: #22273d;
+        }}
+        * {{ box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }}
+        body {{ background-color: var(--bg-dark); color: var(--text-main); padding: 20px; line-height: 1.5; }}
+        header {{ display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }}
+        .logo-area h1 {{ font-size: 24px; font-weight: 700; color: var(--text-main); }}
+        .logo-area span {{ color: var(--text-muted); font-size: 12px; }}
+        .controls-area {{ display: flex; align-items: center; gap: 15px; }}
+        .btn-refresh {{ background-color: var(--blue); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: background 0.3s; display: flex; align-items: center; gap: 8px; text-decoration: none; }}
+        .btn-refresh:hover {{ background-color: #0091ea; }}
+        
+        @keyframes blink {{ 0% {{ opacity: 0.4; }} 50% {{ opacity: 1; }} 100% {{ opacity: 0.4; }} }}
+        .loading-active {{ background-color: #ff9100 !important; animation: blink 1.2s infinite; }}
+
+        .accounting-bar {{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-bottom: 25px; }}
+        .acc-item {{ background-color: var(--bg-card); padding: 12px 20px; border-radius: 8px; border: 1px solid var(--border); }}
+        .acc-item label {{ font-size: 11px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; display: block; margin-bottom: 4px; }}
+        .acc-item .val {{ font-size: 18px; font-weight: 700; }}
+        .main-layout {{ display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; }}
+        .card {{ background-color: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); padding: 20px; display: flex; flex-direction: column; }}
+        .card-title {{ font-size: 16px; font-weight: 600; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }}
+        table {{ width: 100%; border-collapse: collapse; text-align: left; }}
+        th {{ color: var(--text-muted); font-size: 12px; font-weight: 500; padding-bottom: 12px; border-bottom: 1px solid var(--border); }}
+        td {{ padding: 12px 0; border-bottom: 1px solid #1f2336; font-size: 14px; }}
+        .ticker-name {{ font-weight: 600; }}
+        .badge {{ padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: bold; background: #22273d; }}
+        .pos {{ color: var(--green); }}
+        .neg {{ color: var(--red); }}
+        .tendency {{ font-family: monospace; letter-spacing: 2px; }}
+        .side-panel {{ display: flex; flex-direction: column; gap: 15px; max-height: 520px; overflow-y: auto; padding-right: 5px; }}
+        .news-item {{ background: #1c2030; padding: 12px; border-radius: 8px; border-left: 4px solid var(--blue); margin-bottom: 10px; }}
+        .news-meta {{ font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }}
+        .news-title {{ font-size: 13px; font-weight: 600; margin-bottom: 4px; }}
+        .news-summary {{ font-size: 12px; color: var(--text-muted); }}
+        .signal-item {{ background: #251b22; padding: 12px; border-radius: 8px; border-left: 4px solid var(--red); margin-bottom: 10px; }}
+        .signal-item.buy {{ background: #1b251f; border-left: 4px solid var(--green); }}
+        .signal-title {{ font-size: 13px; font-weight: bold; margin-bottom: 4px; text-transform: uppercase; }}
+        .historical-view {{ margin-top: 25px; background-color: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); padding: 20px; }}
+        .hist-grid {{ display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }}
+        .hist-box {{ background: #1c2030; padding: 15px; border-radius: 8px; font-size: 13px; }}
+        .hist-box h4 {{ margin-bottom: 8px; font-size: 14px; color: var(--blue); }}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-area">
+            <h1>QuantFlow Tech Agent Dashboard <span style="color:var(--blue); font-size:14px;">v2.0</span></h1>
+            <span>Live Option Flow & Macro Engine — Letztes Update: {timestamp}</span>
+        </div>
+        <div class="controls-area">
+            <button id="refresh-btn" onclick="triggerManualUpdate()" class="btn-refresh">🔄 Jetzt aktualisieren</button>
+            <a href="portfolio_log.csv" download class="btn-refresh" style="background-color: #28a745;">📊 CSV Historie</a>
+        </div>
+    </header>
+
+    <section class="accounting-bar">
         <div class="acc-item"><label>Gesamtwert Depot (Brutto)</label><div class="val">{val_brutto}</div></div>
         <div class="acc-item"><label>Nicht realisierter Gewinn</label><div class="val pos">{val_gain}</div></div>
         <div class="acc-item"><label>Rückstellung KESt (26%)</label><div class="val neg">{val_kest}</div></div>
         <div class="acc-item"><label>Depotwert (Netto nach Steuern)</label><div class="val" style="color: var(--green);">{val_netto}</div></div>
-        <div class="acc-item"><label>Turnaround-Gewichtung (Limit 20%)</label><div class="val" style="color: var(--blue);">{turnaround_weight:.1f} % <span class="badge" style="background:{ta_badge_bg}; color:#000;">{ta_badge}</span></div></div>
-    </section>"""
-
-    news_and_signals = """            <div class="side-panel">
-                <div class="signal-item"><div class="signal-title" style="color:var(--red);">🚨 EMPFEHLUNG: NVDA LIQUIDIEREN</div><div class="news-summary">Halbleiter-Schwäche setzt sich fort. Bruch der lokalen Unterstützung an der Put-Wall (215 USD). Tendenzen tiefrot.</div></div>
-                <div class="signal-item buy"><div class="signal-title" style="color:var(--green);">➕ NEUER KANDIDAT: MSFT KAUFEN</div><div class="news-summary">Nutze das freigewordene NVDA-Kapital (ca. 5.000 €) für stabilen Cloud-Zufluss bei Microsoft. Starker Option-Flow am Ask.</div></div>
-                <hr style="border: 0; border-top: 1px solid var(--border); margin: 5px 0;">
-                <div class="news-item"><div class="news-meta">Aktueller Status (11.09.2026)</div><div class="news-title">Öl-Ausbruch (>102 USD) treibt Energie-Hedge</div><div class="news-summary">Während Tech-Werte wegen der PPI-Inflationsdaten konsolidieren, zieht unser XLE-Slot stabil an und schützt das Gesamtdepot.</div></div>
-            </div>"""
-
-    with open("dashboard.html", "r", encoding="utf-8") as f:
-        html = f.read()
-
-    if "<!-- P_ACCOUNTING_BAR -->" in html:
-        top, bottom = html.split("<!-- P_ACCOUNTING_BAR -->", 1)
-        middle, rest = bottom.split("<!-- Main Workspace Dashboard Grid -->", 1)
-        html = top + "<!-- P_ACCOUNTING_BAR -->\n" + new_bar + "\n\n    <!-- Main Workspace Dashboard Grid -->" + rest
-
-    if "<!-- P_TABLE_BODY -->" in html:
-        top, bottom = html.split("<!-- P_TABLE_BODY -->", 1)
-        middle, rest = bottom.split("</table>", 1)
-        html = top + "<!-- P_TABLE_BODY -->\n                <tbody>\n" + table_rows + "                </tbody>\n            </table>" + rest
-
-    if "<!-- P_SIDE_PANEL -->" in html:
-        top, bottom = html.split("<!-- P_SIDE_PANEL -->", 1)
-        middle, rest = bottom.split("</section>", 1)
-        html = top + "<!-- P_SIDE_PANEL -->\n" + news_and_signals + "\n        </section>" + rest
-
-    with open("dashboard.html", "w", encoding="utf-8") as f:
-        f.write(html)
-        
-    print("✅ Dashboard erfolgreich aktualisiert und Logs geschrieben!")
-
-if __name__ == "__main__":
-    run_agent_update()
