@@ -682,6 +682,9 @@ def build_master_rows(positions, price_lookup, watchlist, musterdepot_rows, name
             "price_m": pm, "segments": set(), "qualifies": False,
         })
         r["segments"].add("Hauptdepot")
+        # Nur fürs Hauptdepot gibt es echtes investiertes Kapital — Watchlist/
+        # Musterdepot sind reine Beobachtung ohne Kaufbetrag/Buchgewinn.
+        r["pos"] = pos
 
     for c in watchlist:
         sym = c["symbol"]
@@ -933,12 +936,18 @@ def render_card(symbol, name, category, sec_type, price_m, news_cache, score_his
     value_html = ""
     if mode == "held" and pos and price_m:
         current_price = price_m["current_price"]
-        gain = (current_price - pos["entry_price"]) * pos["shares"]
+        kaufbetrag = pos["entry_price"] * pos["shares"]
         value = current_price * pos["shares"]
+        gain = value - kaufbetrag
+        gain_pct = (gain / kaufbetrag * 100) if kaufbetrag else None
         gain_cls = "pos" if gain >= 0 else "neg"
+        gain_pct_html = f" ({gain_pct:+.2f}%)" if gain_pct is not None else ""
         value_html = (
-            f'<div class="position-value"><div class="val">{fmt_eur(value)}</div>'
-            f'<div class="val {gain_cls}" style="font-size:13px;">{fmt_eur(gain, signed=True)}</div></div>'
+            f'<div class="position-value">'
+            f'<div class="val" style="font-size:11px; color: var(--text-muted); font-weight:400;">Kaufbetrag: {fmt_eur(kaufbetrag)}</div>'
+            f'<div class="val">{fmt_eur(value)}</div>'
+            f'<div class="val {gain_cls}" style="font-size:13px;">{fmt_eur(gain, signed=True)}{gain_pct_html}</div>'
+            f'</div>'
         )
 
     score_html = f'<span class="badge">Score {score_value:.2f}</span>'
@@ -1011,11 +1020,26 @@ def render_master_table(rows, score_history):
         arrow, _ = score_arrow(r["symbol"], r["score"], score_history)
         arrow_cls = {"↑": "pos", "↓": "neg", "→": "neutral", "–": "neutral"}[arrow]
 
+        # Buchgewinn/-verlust (nominaler EUR-Betrag seit Kauf) gibt es NUR für
+        # tatsächlich gehaltene Hauptdepot-Positionen — Watchlist und
+        # Musterdepot haben kein reales investiertes Kapital, daher dort "–".
+        pos = r.get("pos")
+        if "Hauptdepot" in r["segments"] and pos and pm:
+            current_price = pm["current_price"]
+            kaufbetrag = pos["entry_price"] * pos["shares"]
+            wert = current_price * pos["shares"]
+            buchgewinn = wert - kaufbetrag
+            bg_cls = "pos" if buchgewinn >= 0 else "neg"
+            buchgewinn_cell = f'<td class="{bg_cls}">{fmt_eur(buchgewinn, signed=True)}</td>'
+        else:
+            buchgewinn_cell = '<td>–</td>'
+
         trs.append(
             f'<tr><td>{r["name"]} ({r["symbol"]})</td>'
             f'<td>{segs}</td>'
             f'<td><span class="badge category-badge {cat_cls}">{r["category"]}</span></td>'
             f'<td>{r["score"]:.2f}</td>'
+            f'{buchgewinn_cell}'
             f'{w4}{w3}{w2}{w1}{day}'
             f'<td class="tendency {tendency_class}" style="white-space:nowrap;">{tendency}</td>'
             f'<td class="{arrow_cls}" style="font-family:monospace;">{arrow}</td></tr>'
@@ -1024,7 +1048,7 @@ def render_master_table(rows, score_history):
     return f'''    <div class="table-wrap">
     <table class="overview-table">
         <thead>
-            <tr><th>Position</th><th>Segment(e)</th><th>Kategorie</th><th>Score</th><th>W-4</th><th>W-3</th><th>W-2</th><th>W-1</th><th>Tag</th><th>Kurstrend</th><th>Score-Trend</th></tr>
+            <tr><th>Position</th><th>Segment(e)</th><th>Kategorie</th><th>Score</th><th>Buchgewinn/-verlust (Hauptdepot)</th><th>W-4</th><th>W-3</th><th>W-2</th><th>W-1</th><th>Tag</th><th>Kurstrend</th><th>Score-Trend</th></tr>
         </thead>
         <tbody>
 {"".join(trs)}
