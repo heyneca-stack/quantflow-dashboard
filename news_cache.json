@@ -216,6 +216,13 @@
   "GOOGL": [
     {
       "ticker": "GOOGL",
+      "title": "Alphabet vs. Meta: One Magnificent Seven Stock Is the Better Buy",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/alphabet-vs-meta-one-magnificent-143003119.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789137003.0
+    },
+    {
+      "ticker": "GOOGL",
       "title": "Forget the Capex Fears: Why Alphabet and Amazon Are Must-Buys",
       "link": "https://finance.yahoo.com/markets/stocks/articles/forget-capex-fears-why-alphabet-140500752.html",
       "publisher": "Motley Fool",
@@ -311,16 +318,16 @@
       "link": "https://finance.yahoo.com/technology/ai/articles/spacex-undisclosed-13-3b-tenant-102502352.html",
       "publisher": "Forkast News",
       "ts": 1789122302.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "The Zacks Analyst Blog Highlights D-Wave Quantum, Rigetti, IBM, Alphabet and Amazon",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-d-090200430.html",
-      "publisher": "Zacks",
-      "ts": 1789117320.0
     }
   ],
   "AMZN": [
+    {
+      "ticker": "AMZN",
+      "title": "Amazon to invest $230m in Whole Foods staff benefits",
+      "link": "https://finance.yahoo.com/healthcare/articles/amazon-invest-230m-whole-foods-143420963.html",
+      "publisher": "Retail Insight Network",
+      "ts": 1789137260.0
+    },
     {
       "ticker": "AMZN",
       "title": "Forget the Capex Fears: Why Alphabet and Amazon Are Must-Buys",
@@ -418,16 +425,23 @@
       "link": "https://finance.yahoo.com/technology/ai/articles/andy-jassy-just-made-move-082300892.html",
       "publisher": "Motley Fool",
       "ts": 1789114980.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "Amazon Triples Its NVIDIA GPU Orders to 3 Million Chips as AI Demand Surges",
-      "link": "https://finance.yahoo.com/technology/ai/articles/amazon-triples-nvidia-gpu-orders-050739503.html",
-      "publisher": "Insider Monkey",
-      "ts": 1789103259.0
     }
   ],
   "META": [
+    {
+      "ticker": "META",
+      "title": "Alphabet vs. Meta: One Magnificent Seven Stock Is the Better Buy",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/alphabet-vs-meta-one-magnificent-143003119.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789137003.0
+    },
+    {
+      "ticker": "META",
+      "title": "Meta Meets With European Credit Investors in Non-Deal Roadshow",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/meta-meets-european-credit-investors-140841178.html",
+      "publisher": "Bloomberg",
+      "ts": 1789135721.0
+    },
     {
       "ticker": "META",
       "title": "Fidji Simo joins Nscale board ahead of IPO",
@@ -518,29 +532,29 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/jpmorgan-resets-meta-stock-price-030700520.html",
       "publisher": "TheStreet",
       "ts": 1789096020.0
-    },
-    {
-      "ticker": "META",
-      "title": "Meta’s $18 Billion Settlement Removes a Massive Risk, But May Reshape Teen Engagement",
-      "link": "https://finance.yahoo.com/technology/articles/meta-18-billion-settlement-removes-012812562.html",
-      "publisher": "Insider Monkey",
-      "ts": 1789090092.0
-    },
-    {
-      "ticker": "META",
-      "title": "People Inc. CEO on rebranding, AI challenges",
-      "link": "https://finance.yahoo.com/video/people-inc-ceo-rebranding-ai-205700002.html",
-      "publisher": "Yahoo Finance Video",
-      "ts": 1789073820.0
     }
   ],
   "NVDA": [
+    {
+      "ticker": "NVDA",
+      "title": "Stock Market Today: Dow Rallies On Surprise Inflation Data; This Tech Icon Eyes A Breakout (Live Coverage)",
+      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-oracle-stock-orcl/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789136557.0
+    },
     {
       "ticker": "NVDA",
       "title": "Jensen Huang Mocks Nvidia ‘Circular Financing’ Fears: ‘If That Is, Let’s Do More of That’",
       "link": "https://finance.yahoo.com/markets/stocks/articles/jensen-huang-mocks-nvidia-circular-141958748.html",
       "publisher": "Benzinga Prediction Markets",
       "ts": 1789136398.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "3 E Network Mikkeli AI Data Center Blueprint Targets NVIDIA Vera Rubin-Ready Infrastructure",
+      "link": "https://finance.yahoo.com/technology/ai/articles/3-e-network-mikkeli-ai-140850828.html",
+      "publisher": "InvestorsHub",
+      "ts": 1789135730.0
     },
     {
       "ticker": "NVDA",
@@ -625,20 +639,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/why-did-caseys-general-stores-130932169.html",
       "publisher": "Motley Fool",
       "ts": 1789132172.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "OpenAI’s $122B Capital Raise Signals a Definitive Transition to Infrastructure Utility",
-      "link": "https://finance.yahoo.com/technology/ai/articles/openai-122b-capital-raise-signals-130644500.html",
-      "publisher": "Forkast News",
-      "ts": 1789132004.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "How Top Fidelity Manager Beats The Herd With 'Overanalyzed' Stocks",
-      "link": "https://www.investors.com/etfs-and-funds/mutual-funds/top-fund-fidelity-manager-beats-the-herd-with-overanalyzed-stocks/?src=A00220&yptr=yahoo",
-      "publisher": "Investor's Business Daily",
-      "ts": 1789131643.0
     }
   ],
   "AMD": [
@@ -1037,6 +1037,13 @@
   "QCOM": [
     {
       "ticker": "QCOM",
+      "title": "Stock Market Today: Dow Rallies On Surprise Inflation Data; This Tech Icon Eyes A Breakout (Live Coverage)",
+      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-oracle-stock-orcl/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789136557.0
+    },
+    {
+      "ticker": "QCOM",
       "title": "Skyworks Rises 7%, Qorvo Gains 5% as CEO Says $22B Merger Is in Final Stages; Qualcomm Ticks Up",
       "link": "https://finance.yahoo.com/markets/stocks/articles/skyworks-rises-7-qorvo-gains-141101962.html",
       "publisher": "24/7 Wall St.",
@@ -1137,6 +1144,13 @@
   "INTC": [
     {
       "ticker": "INTC",
+      "title": "Stock Market Today: Dow Rallies On Surprise Inflation Data; This Tech Icon Eyes A Breakout (Live Coverage)",
+      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-oracle-stock-orcl/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789136557.0
+    },
+    {
+      "ticker": "INTC",
       "title": "Intel Climbs 3% on Chip Price Hike Report a Day After Piper Sandler Went Neutral; AMD Rises 2%, Taiwan Semiconductor Drifts",
       "link": "https://finance.yahoo.com/markets/stocks/articles/intel-climbs-3-chip-price-141744701.html",
       "publisher": "24/7 Wall St.",
@@ -1232,16 +1246,16 @@
       "link": "https://www.barrons.com/articles/micron-stock-price-memory-chips-intel-e84cd499?siteid=yhoof2&yptr=yahoo",
       "publisher": "Barrons.com",
       "ts": 1789053000.0
-    },
-    {
-      "ticker": "INTC",
-      "title": "Piper Sandler Says AMD's Biggest Growth Phase Is Just Beginning",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/piper-sandler-says-amd-enter-150621887.html",
-      "publisher": "GuruFocus.com",
-      "ts": 1789052781.0
     }
   ],
   "ORCL": [
+    {
+      "ticker": "ORCL",
+      "title": "Stock Market Today: Dow Rallies On Surprise Inflation Data; This Tech Icon Eyes A Breakout (Live Coverage)",
+      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-oracle-stock-orcl/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789136557.0
+    },
     {
       "ticker": "ORCL",
       "title": "Oracle Q1 Earnings Beat Estimates, Cloud Growth Accelerates",
@@ -1262,6 +1276,13 @@
       "link": "https://finance.yahoo.com/video/oracle-earnings-impress-investors-ignore-140857026.html",
       "publisher": "Yahoo Finance Video",
       "ts": 1789135737.0
+    },
+    {
+      "ticker": "ORCL",
+      "title": "Tech stocks rally as oil prices fall, inflation remains sticky: AlphaCheck",
+      "link": "https://finance.yahoo.com/markets/article/tech-stocks-rally-as-oil-prices-fall-inflation-remains-sticky-alphacheck-140509850.html",
+      "publisher": "Yahoo Finance",
+      "ts": 1789135509.0
     },
     {
       "ticker": "ORCL",
@@ -1332,20 +1353,6 @@
       "link": "https://finance.yahoo.com/markets/article/oracle-stock-surges-as-ai-cloud-demand-outpaces-supply-122103986.html",
       "publisher": "Yahoo Finance",
       "ts": 1789129263.0
-    },
-    {
-      "ticker": "ORCL",
-      "title": "Why Micron Stock Is Getting an AI Boost From Oracle Earnings",
-      "link": "https://www.barrons.com/articles/micron-stock-oracle-ai-242830db?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1789129020.0
-    },
-    {
-      "ticker": "ORCL",
-      "title": "Oracle Stock Jumps as AI Infrastructure Revenue Soars 121%",
-      "link": "https://finance.yahoo.com/technology/ai/articles/oracle-stock-jumps-ai-infrastructure-121115830.html",
-      "publisher": "GuruFocus.com",
-      "ts": 1789128675.0
     }
   ],
   "CRM": [
@@ -1444,6 +1451,13 @@
   "ADBE": [
     {
       "ticker": "ADBE",
+      "title": "Stock Market Today: Dow Rallies On Surprise Inflation Data; This Tech Icon Eyes A Breakout (Live Coverage)",
+      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-oracle-stock-orcl/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789136557.0
+    },
+    {
+      "ticker": "ADBE",
       "title": "Adobe Q3 Earnings Call Centers on Agentic AI and Freemium",
       "link": "https://finance.yahoo.com/technology/ai/articles/adobe-q3-earnings-call-centers-141000390.html",
       "publisher": "Zacks",
@@ -1539,13 +1553,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/stocks-rise-pre-bell-ahead-115746414.html",
       "publisher": "MT Newswires",
       "ts": 1789127866.0
-    },
-    {
-      "ticker": "ADBE",
-      "title": "Oracle, Adobe, Copart, RH, Chevron, and More Stocks That Explain Today’s Market",
-      "link": "https://www.barrons.com/articles/stock-movers-23a24cef?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1789125660.0
     }
   ],
   "NOW": [
@@ -2039,6 +2046,13 @@
     }
   ],
   "V": [
+    {
+      "ticker": "V",
+      "title": "Bill Ackman bets AI will make this old-school business stronger",
+      "link": "https://finance.yahoo.com/technology/ai/articles/bill-ackman-bets-ai-old-143700072.html",
+      "publisher": "TheStreet",
+      "ts": 1789137420.0
+    },
     {
       "ticker": "V",
       "title": "MoneyGram Launches Stablecoin-Backed Card",
@@ -2973,6 +2987,13 @@
     }
   ],
   "GS": [
+    {
+      "ticker": "GS",
+      "title": "Goldman Sachs names new co-heads of Investment Strategy Group",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/goldman-sachs-names-co-heads-143626654.html",
+      "publisher": "Private Banker International",
+      "ts": 1789137386.0
+    },
     {
       "ticker": "GS",
       "title": "Goldman Sachs and Billionaires Like These 2 AI Stocks",
@@ -4271,6 +4292,13 @@
   "HPE": [
     {
       "ticker": "HPE",
+      "title": "Stock Market Today: Dow Rallies On Surprise Inflation Data; This Tech Icon Eyes A Breakout (Live Coverage)",
+      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-oracle-stock-orcl/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789136557.0
+    },
+    {
+      "ticker": "HPE",
       "title": "Can HPE Sustain Its AI Infrastructure Momentum Amid the Capex Cycle?",
       "link": "https://finance.yahoo.com/technology/ai/articles/hpe-sustain-ai-infrastructure-momentum-134000627.html",
       "publisher": "Zacks",
@@ -5447,6 +5475,13 @@
   "MRVL": [
     {
       "ticker": "MRVL",
+      "title": "Stock Market Today: Dow Rallies On Surprise Inflation Data; This Tech Icon Eyes A Breakout (Live Coverage)",
+      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-oracle-stock-orcl/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789136557.0
+    },
+    {
+      "ticker": "MRVL",
       "title": "Stock Market Today: Dow Rallies On Surprise Inflation Data; Nvidia Rebounds, Oracle Jumps (Live Coverage)",
       "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-oracle-stock-orcl/?src=A00220&yptr=yahoo",
       "publisher": "Investor's Business Daily",
@@ -6368,15 +6403,6 @@
       "ts": 1788890037.0
     }
   ],
-  "HIMX": [
-    {
-      "ticker": "HIMX",
-      "title": "Asian Equities Traded in the US as American Depositary Receipts Edge Lower in Friday Trading",
-      "link": "https://finance.yahoo.com/markets/world-indices/articles/asian-equities-traded-us-american-144010981.html",
-      "publisher": "MT Newswires",
-      "ts": 1788532810.0
-    }
-  ],
   "BMNR": [
     {
       "ticker": "BMNR",
@@ -6732,6 +6758,89 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/wall-street-analysts-think-cleanspark-133003746.html",
       "publisher": "Zacks",
       "ts": 1788874203.0
+    }
+  ],
+  "CLS": [
+    {
+      "ticker": "CLS",
+      "title": "Celestica vs. Corning: Which AI Infrastructure Stock is a Better Buy?",
+      "link": "https://finance.yahoo.com/technology/ai/articles/celestica-vs-corning-ai-infrastructure-154300675.html",
+      "publisher": "Zacks",
+      "ts": 1789054980.0
+    },
+    {
+      "ticker": "CLS",
+      "title": "Can Jabil's Supply Chain Strength Sustain Its Growth Momentum?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/jabils-supply-chain-strength-sustain-153400530.html",
+      "publisher": "Zacks",
+      "ts": 1789054440.0
+    },
+    {
+      "ticker": "CLS",
+      "title": "How Far Can Fabrinet Stock Fall While Its Business Accelerates?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/far-fabrinet-stock-fall-while-225230131.html",
+      "publisher": "Trefis",
+      "ts": 1788994350.0
+    },
+    {
+      "ticker": "CLS",
+      "title": "Sanmina's Cash Flow Gains Momentum: Can the Trend Continue?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/sanminas-cash-flow-gains-momentum-155400621.html",
+      "publisher": "Zacks",
+      "ts": 1788969240.0
+    },
+    {
+      "ticker": "CLS",
+      "title": "Jabil Rises 36.2% Year to Date: Should You Buy the Stock?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/jabil-rises-36-2-date-152000660.html",
+      "publisher": "Zacks",
+      "ts": 1788794400.0
+    },
+    {
+      "ticker": "CLS",
+      "title": "Lundin Gold Heads These 3 Top Canadian Quality Stocks",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/lundin-gold-heads-3-top-161644359.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1788538604.0
+    }
+  ],
+  "CDW": [
+    {
+      "ticker": "CDW",
+      "title": "Why Is CDW (CDW) Up 8.4% Since Last Earnings Report?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/why-cdw-cdw-8-4-153027986.html",
+      "publisher": "Zacks",
+      "ts": 1788535827.0
+    }
+  ],
+  "FLEX": [
+    {
+      "ticker": "FLEX",
+      "title": "Flex Expands Data Center Power Portfolio With $4.4 Billion EPC Power Deal",
+      "link": "https://finance.yahoo.com/technology/articles/flex-expands-data-center-power-013020849.html",
+      "publisher": "Benzinga",
+      "ts": 1788831020.0
+    },
+    {
+      "ticker": "FLEX",
+      "title": "FLEX Makes a $4.4 Billion Bet on AI Power",
+      "link": "https://finance.yahoo.com/technology/ai/articles/flex-makes-4-4-billion-233153333.html",
+      "publisher": "Insider Monkey",
+      "ts": 1788823913.0
+    },
+    {
+      "ticker": "FLEX",
+      "title": "Jabil Rises 36.2% Year to Date: Should You Buy the Stock?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/jabil-rises-36-2-date-152000660.html",
+      "publisher": "Zacks",
+      "ts": 1788794400.0
+    },
+    {
+      "ticker": "FLEX",
+      "title": "1 Profitable Stock with Solid Fundamentals and 2 That Underwhelm",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/1-profitable-stock-solid-fundamentals-150210700.html",
+      "publisher": "StockStory",
+      "ts": 1788534130.0
     }
   ]
 }

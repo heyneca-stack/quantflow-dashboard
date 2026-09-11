@@ -1,6 +1,13 @@
 {
   "Politik/Makro": [
     {
+      "ticker": "NVDA",
+      "title": "Stock Market Today: Dow Rallies On Surprise Inflation Data; This Tech Icon Eyes A Breakout (Live Coverage)",
+      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-cpi-inflation-report-oracle-stock-orcl/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789136557.0
+    },
+    {
       "ticker": "AMD",
       "title": "Leopold Aschenbrenner's Situational Awareness buying options after collapse",
       "link": "https://finance.yahoo.com/markets/options/articles/leopold-aschenbrenners-situational-awareness-buying-142000009.html",
@@ -132,13 +139,6 @@
       "link": "https://finance.yahoo.com/video/republican-wipeout-midterm-elections-means-120000609.html",
       "publisher": "Yahoo Finance Video",
       "ts": 1789128000.0
-    },
-    {
-      "ticker": "ORCL",
-      "title": "Stocks Rise Pre-Bell Ahead of Key Consumer Inflation Report",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/stocks-rise-pre-bell-ahead-115746414.html",
-      "publisher": "MT Newswires",
-      "ts": 1789127866.0
     }
   ],
   "Wirtschaft": [
@@ -285,6 +285,13 @@
   ],
   "Technologie": [
     {
+      "ticker": "V",
+      "title": "Bill Ackman bets AI will make this old-school business stronger",
+      "link": "https://finance.yahoo.com/technology/ai/articles/bill-ackman-bets-ai-old-143700072.html",
+      "publisher": "TheStreet",
+      "ts": 1789137420.0
+    },
+    {
       "ticker": "AMD",
       "title": "Intel Climbs 3% on Chip Price Hike Report a Day After Piper Sandler Went Neutral; AMD Rises 2%, Taiwan Semiconductor Drifts",
       "link": "https://finance.yahoo.com/markets/stocks/articles/intel-climbs-3-chip-price-141744701.html",
@@ -297,6 +304,13 @@
       "link": "https://finance.yahoo.com/healthcare/articles/3-medical-systems-stocks-gain-141600289.html",
       "publisher": "Zacks",
       "ts": 1789136160.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "3 E Network Mikkeli AI Data Center Blueprint Targets NVIDIA Vera Rubin-Ready Infrastructure",
+      "link": "https://finance.yahoo.com/technology/ai/articles/3-e-network-mikkeli-ai-140850828.html",
+      "publisher": "InvestorsHub",
+      "ts": 1789135730.0
     },
     {
       "ticker": "CAT",
@@ -409,23 +423,30 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/intel-may-raise-chip-prices-125155244.html",
       "publisher": "24/7 Wall St.",
       "ts": 1789131115.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "Why Nvidia’s Chip Rivals Have Left It in the Dust This Week",
-      "link": "https://www.barrons.com/articles/nvidia-stock-price-chip-rivals-832fd133?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1789130640.0
-    },
-    {
-      "ticker": "IONQ",
-      "title": "IonQ Advances Quantum Computing With Superion 256: What's Ahead?",
-      "link": "https://finance.yahoo.com/technology/ai/articles/ionq-advances-quantum-computing-superion-123700551.html",
-      "publisher": "Zacks",
-      "ts": 1789130220.0
     }
   ],
   "Sonstiges": [
+    {
+      "ticker": "GS",
+      "title": "Goldman Sachs names new co-heads of Investment Strategy Group",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/goldman-sachs-names-co-heads-143626654.html",
+      "publisher": "Private Banker International",
+      "ts": 1789137386.0
+    },
+    {
+      "ticker": "AMZN",
+      "title": "Amazon to invest $230m in Whole Foods staff benefits",
+      "link": "https://finance.yahoo.com/healthcare/articles/amazon-invest-230m-whole-foods-143420963.html",
+      "publisher": "Retail Insight Network",
+      "ts": 1789137260.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "Alphabet vs. Meta: One Magnificent Seven Stock Is the Better Buy",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/alphabet-vs-meta-one-magnificent-143003119.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789137003.0
+    },
     {
       "ticker": "^GSPC",
       "title": "BR Stock Rises 16.1% in 3 Months: Here's What You Should Know",
@@ -460,6 +481,13 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/comfort-systems-modular-expansion-strengthen-140900072.html",
       "publisher": "Zacks",
       "ts": 1789135740.0
+    },
+    {
+      "ticker": "META",
+      "title": "Meta Meets With European Credit Investors in Non-Deal Roadshow",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/meta-meets-european-credit-investors-140841178.html",
+      "publisher": "Bloomberg",
+      "ts": 1789135721.0
     },
     {
       "ticker": "ADBE",
@@ -537,34 +565,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/far-could-intel-stock-fall-134423316.html",
       "publisher": "Trefis",
       "ts": 1789134263.0
-    },
-    {
-      "ticker": "FTNT",
-      "title": "Chewy downgraded, Shopify initiated: Wall Street's top analyst calls",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/chewy-downgraded-shopify-initiated-wall-134036018.html",
-      "publisher": "The Fly",
-      "ts": 1789134036.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "I'm Buying Occidental on This Dip -- Not Because of Oil, but Because of This",
-      "link": "https://finance.yahoo.com/energy/articles/im-buying-occidental-dip-not-133500605.html",
-      "publisher": "Motley Fool",
-      "ts": 1789133700.0
-    },
-    {
-      "ticker": "V",
-      "title": "MoneyGram Launches Stablecoin-Backed Card",
-      "link": "https://finance.yahoo.com/markets/crypto/articles/moneygram-launches-stablecoin-backed-card-133100248.html",
-      "publisher": "CryptoProwl",
-      "ts": 1789133460.0
-    },
-    {
-      "ticker": "ASTS",
-      "title": "Price Prediction: Rocket Lab’s Next Leg Higher Could Be Massive, 95% Upside Ahead",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/price-prediction-rocket-lab-next-133042699.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789133442.0
     }
   ]
 }
