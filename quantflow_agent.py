@@ -253,10 +253,10 @@ def run_agent_update():
 </body>
 </html>"""
 
-    with open("index.html", "w", encoding="utf-8") as f:
+    with open("dashboard.html", "w", encoding="utf-8") as f:
         f.write(full_html)
 
-    print("✅ Dashboard erfolgreich aktualisiert: index.html")
+    print("✅ Dashboard erfolgreich aktualisiert: dashboard.html")
 
 
 if __name__ == "__main__":
