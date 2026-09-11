@@ -1,7 +1,8 @@
 import yfinance as yf
+import os
 from datetime import datetime
 
-# DEIN ECHTES, DIVERSIFIZIERTES PORTFOLIO (Tech-Kern + Hedges + Turnarounds)
+# DEIN DIVERSIFIZIERTES PORTFOLIO (Tech-Kern + Hedges + Turnarounds)
 CURRENT_PORTFOLIO = {
     "AAPL": {"shares": 17, "entry_price": 326.57, "type": "Core Tech"},
     "META": {"shares": 9, "entry_price": 540.00, "type": "Core Tech"},
@@ -16,12 +17,13 @@ CURRENT_PORTFOLIO = {
 }
 
 def run_agent_update():
-    print("🚀 Berechne Live-Marktdaten für das gemischte Portfolio...")
+    print("🚀 Starte QuantFlow v2.5 Engine (Live-Kurse + CSV-History)...")
     
     table_rows = ""
     total_brutto = 0
     total_gain = 0
     turnaround_val = 0
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
     # 1. LIVE-KURSE UND ECHTE SEKTOR-TYPEN VERARBEITEN
     for ticker_symbol, data in CURRENT_PORTFOLIO.items():
@@ -56,7 +58,6 @@ def run_agent_update():
             total_brutto += position_value
             total_gain += (current_price - data['entry_price']) * data['shares']
             
-            # Wichtig: Trennung für die 20%-Schranke
             if data['type'] == "Turnaround":
                 turnaround_val += position_value
                 
@@ -64,7 +65,7 @@ def run_agent_update():
         except Exception as e:
             print(f"Fehler bei Ticker {ticker_symbol}: {e}")
 
-    # 2. FINANZEN BERECHNEN (Inkl. TR-Kosten & 26% KESt)
+    # 2. FINANZEN & STEUERN BERECHNEN (26% KESt)
     kest_return = max(0, total_gain * 0.26)
     total_netto = total_brutto - kest_return
     
@@ -78,6 +79,19 @@ def run_agent_update():
     val_kest = f"-{kest_return:,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".")
     val_netto = f"{total_netto:,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".")
 
+    # -------------------------------------------------------------
+    # HISTORISCHER CSV-LOG (Schreibt fortlaufend Daten in eine Datei)
+    # -------------------------------------------------------------
+    csv_file = "portfolio_log.csv"
+    if not os.path.exists(csv_file):
+        with open(csv_file, "w", encoding="utf-8") as f:
+            f.write("Zeitstempel,Brutto_Wert,Gewinn_Verlust,Steuer_Rueckstellung,Netto_Wert,Turnaround_Anteil_Prozent\n")
+            
+    with open(csv_file, "a", encoding="utf-8") as f:
+        f.write(f"{timestamp},{total_brutto:.2f},{total_gain:.2f},{kest_return:.2f},{total_netto:.2f},{turnaround_weight:.1f}\n")
+    print("📈 Historischer CSV-Eintrag erfolgreich geschrieben!")
+
+    # 3. DASHBOARD-HTML RESTRUKTURIEREN
     new_bar = f"""    <section class="accounting-bar">
         <div class="acc-item"><label>Gesamtwert Depot (Brutto)</label><div class="val">{val_brutto}</div></div>
         <div class="acc-item"><label>Nicht realisierter Gewinn</label><div class="val pos">{val_gain}</div></div>
@@ -87,13 +101,12 @@ def run_agent_update():
     </section>"""
 
     news_and_signals = """            <div class="side-panel">
-                <div class="signal-item"><div class="signal-title" style="color:var(--red);">🚨 EMPFEHLUNG: NVDA LIQUIDIEREN</div><div class="news-summary">Bruch der lokalen Unterstützung an der Put-Wall (215 USD). Institutionen schichten Kapital um. Momentum kurzfristig gefährdet.</div></div>
-                <div class="signal-item buy"><div class="signal-title" style="color:var(--green);">➕ NEUER KANDIDAT: MSFT KAUFEN</div><div class="news-summary">Aggressive Call-Sweeps am Ask detektiert. Microsoft zeigt starke relative Stärke zum schwächelnden Gesamtmarkt. Optimaler Tausch für den Tech-Slot.</div></div>
+                <div class="signal-item"><div class="signal-title" style="color:var(--red);">🚨 EMPFEHLUNG: NVDA LIQUIDIEREN</div><div class="news-summary">Halbleiter-Schwäche setzt sich fort. Bruch der lokalen Unterstützung an der Put-Wall (215 USD). Tendenzen tiefrot.</div></div>
+                <div class="signal-item buy"><div class="signal-title" style="color:var(--green);">➕ NEUER KANDIDAT: MSFT KAUFEN</div><div class="news-summary">Nutze das freigewordene NVDA-Kapital (ca. 5.000 €) für stabilen Cloud-Zufluss bei Microsoft. Starker Option-Flow am Ask.</div></div>
                 <hr style="border: 0; border-top: 1px solid var(--border); margin: 5px 0;">
                 <div class="news-item"><div class="news-meta">Aktueller Status (11.09.2026)</div><div class="news-title">Öl-Ausbruch (>102 USD) treibt Energie-Hedge</div><div class="news-summary">Während Tech-Werte wegen der PPI-Inflationsdaten konsolidieren, zieht unser XLE-Slot stabil an und schützt das Gesamtdepot.</div></div>
             </div>"""
 
-    # 3. TEXT-INJEKTION IN TEMPLATE
     with open("dashboard.html", "r", encoding="utf-8") as f:
         html = f.read()
 
@@ -115,7 +128,7 @@ def run_agent_update():
     with open("dashboard.html", "w", encoding="utf-8") as f:
         f.write(html)
         
-    print("✅ Dashboard erfolgreich aktualisiert und Sektor-Kriterien korrigiert!")
+    print("✅ Dashboard erfolgreich aktualisiert und Logs geschrieben!")
 
 if __name__ == "__main__":
     run_agent_update()
