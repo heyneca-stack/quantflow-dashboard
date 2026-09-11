@@ -16,15 +16,17 @@ CURRENT_PORTFOLIO = {
     "PFE":  {"shares": 185, "entry_price": 27.00, "type": "Value Hedge"}
 }
 
+
 def run_agent_update():
     print("🚀 Berechne Live-Marktdaten und generiere sauberes HTML-Dashboard...")
-    
+
     table_rows = ""
+    signals_list = []
     total_brutto = 0
     total_gain = 0
     turnaround_val = 0
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    
+
     # 1. LIVE-KURSE UND ECHTE SEKTOR-TYPEN VERARBEITEN
     for ticker_symbol, data in CURRENT_PORTFOLIO.items():
         try:
@@ -32,35 +34,35 @@ def run_agent_update():
             hist = ticker.history(period="10d")
             if len(hist) < 5:
                 continue
-                
+
             current_price = hist['Close'].iloc[-1]
             prev_price = hist['Close'].iloc[-2]
-            
+
             # 3-Handelstage-Tendenz
             t_list = []
             for i in range(-3, 0):
-                if hist['Close'].iloc[i] > hist['Close'].iloc[i-1]:
+                if hist['Close'].iloc[i] > hist['Close'].iloc[i - 1]:
                     t_list.append("▲")
                 else:
                     t_list.append("▼")
             tendency_str = " ".join(t_list)
             tendency_class = "pos" if t_list[-1] == "▲" else "neg"
-            
+
             day_perf = ((current_price - prev_price) / prev_price) * 100
-            week_perf = day_perf + 0.45  
+            week_perf = day_perf + 0.45
             month_perf = ((current_price - data['entry_price']) / data['entry_price']) * 100
-            
+
             p_cl = "pos" if day_perf >= 0 else "neg"
             w_cl = "pos" if week_perf >= 0 else "neg"
             m_cl = "pos" if month_perf >= 0 else "neg"
-            
+
             position_value = current_price * data['shares']
             total_brutto += position_value
             total_gain += (current_price - data['entry_price']) * data['shares']
-            
+
             if data['type'] == "Turnaround":
                 turnaround_val += position_value
-                
+
             table_rows += f'''                    <tr>
                         <td class="ticker-name">{ticker_symbol}</td>
                         <td><span class="badge">{data["type"]}</span></td>
@@ -69,6 +71,23 @@ def run_agent_update():
                         <td class="{w_cl}">{week_perf:+.2f}%</td>
                         <td class="{m_cl}">{month_perf:+.2f}%</td>
                     </tr>\n'''
+
+            # Auffällige Bewegungen fürs Seitenpanel sammeln (rein informativ, keine Anlageberatung)
+            if month_perf <= -10:
+                signals_list.append((
+                    "signal-item",
+                    f"{ticker_symbol}: {month_perf:+.1f}% seit Einstieg – größter Rücksetzer im Depot"
+                ))
+            elif day_perf >= 3:
+                signals_list.append((
+                    "signal-item buy",
+                    f"{ticker_symbol}: starker Tagesgewinn {day_perf:+.2f}%"
+                ))
+            elif day_perf <= -3:
+                signals_list.append((
+                    "signal-item",
+                    f"{ticker_symbol}: starker Tagesverlust {day_perf:+.2f}%"
+                ))
         except Exception as e:
             print(f"Fehler bei Ticker {ticker_symbol}: {e}")
 
@@ -84,15 +103,36 @@ def run_agent_update():
     val_kest = f"-{kest_return:,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".")
     val_netto = f"{total_netto:,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".")
 
-    # CSV-Historie loggen
+    # Panel mit auffälligen Bewegungen bauen
+    if signals_list:
+        signal_html = "\n".join(
+            f'                <div class="{css_cls}"><div class="signal-title">{title}</div></div>'
+            for css_cls, title in signals_list
+        )
+    else:
+        signal_html = '                <div class="news-summary">Keine auffälligen Bewegungen erkannt.</div>'
+
+    # 3. CSV-HISTORIE LESEN (für den Vorheriger-Lauf-Vergleich) UND LOGGEN
     csv_file = "portfolio_log.csv"
-    if not os.path.exists(csv_file):
+    prev_run_html = "Noch keine vorherigen Daten vorhanden."
+    if os.path.exists(csv_file):
+        with open(csv_file, "r", encoding="utf-8") as f:
+            existing_lines = [line for line in f.read().splitlines() if line.strip()]
+        if len(existing_lines) > 1:  # Header + mindestens ein Datensatz
+            last_fields = existing_lines[-1].split(",")
+            if len(last_fields) >= 5:
+                prev_ts, prev_brutto, _prev_gain, _prev_kest, prev_netto = last_fields[:5]
+                prev_brutto_fmt = f"{float(prev_brutto):,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".")
+                prev_netto_fmt = f"{float(prev_netto):,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".")
+                prev_run_html = f"{prev_ts}<br>Brutto: {prev_brutto_fmt}<br>Netto: {prev_netto_fmt}"
+    else:
         with open(csv_file, "w", encoding="utf-8") as f:
             f.write("Zeitstempel,Brutto_Wert,Gewinn_Verlust,Steuer_Rueckstellung,Netto_Wert,Turnaround_Anteil_Prozent\n")
+
     with open(csv_file, "a", encoding="utf-8") as f:
         f.write(f"{timestamp},{total_brutto:.2f},{total_gain:.2f},{kest_return:.2f},{total_netto:.2f},{turnaround_weight:.1f}\n")
 
-    # 3. DAS GESAMTE DASHBOARD-HTML ABSOLUT STABIL GENERIEREN
+    # 4. DAS GESAMTE DASHBOARD-HTML ABSOLUT STABIL GENERIEREN
     full_html = f"""<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -111,7 +151,7 @@ def run_agent_update():
         .controls-area {{ display: flex; align-items: center; gap: 15px; }}
         .btn-refresh {{ background-color: var(--blue); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: background 0.3s; display: flex; align-items: center; gap: 8px; text-decoration: none; }}
         .btn-refresh:hover {{ background-color: #0091ea; }}
-        
+
         @keyframes blink {{ 0% {{ opacity: 0.4; }} 50% {{ opacity: 1; }} 100% {{ opacity: 0.4; }} }}
         .loading-active {{ background-color: #ff9100 !important; animation: blink 1.2s infinite; }}
 
@@ -160,3 +200,64 @@ def run_agent_update():
         <div class="acc-item"><label>Gesamtwert Depot (Brutto)</label><div class="val">{val_brutto}</div></div>
         <div class="acc-item"><label>Nicht realisierter Gewinn</label><div class="val pos">{val_gain}</div></div>
         <div class="acc-item"><label>Rückstellung KESt (26%)</label><div class="val neg">{val_kest}</div></div>
+        <div class="acc-item"><label>Netto-Wert (nach Steuer)</label><div class="val">{val_netto}</div></div>
+        <div class="acc-item"><label>Turnaround-Anteil</label><div class="val" style="color:{ta_badge_bg};">{turnaround_weight:.1f}% <span class="badge" style="background:{ta_badge_bg}; color:#0f111a;">{ta_badge}</span></div></div>
+    </section>
+
+    <div class="main-layout">
+        <div class="card">
+            <div class="card-title">📈 Portfolio-Positionen</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Sektor</th>
+                        <th>Tag %</th>
+                        <th>Trend (3T)</th>
+                        <th>Woche %</th>
+                        <th>Seit Einstieg %</th>
+                    </tr>
+                </thead>
+                <tbody>
+{table_rows}                </tbody>
+            </table>
+        </div>
+        <div class="side-panel">
+            <div class="card-title">⚡ Auffällige Bewegungen</div>
+{signal_html}
+        </div>
+    </div>
+
+    <div class="historical-view">
+        <div class="card-title">🕓 Verlauf</div>
+        <div class="hist-grid">
+            <div class="hist-box">
+                <h4>Aktueller Lauf</h4>
+                {timestamp}<br>Brutto: {val_brutto}<br>Netto: {val_netto}
+            </div>
+            <div class="hist-box">
+                <h4>Vorheriger Lauf</h4>
+                {prev_run_html}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function triggerManualUpdate() {{
+            var btn = document.getElementById('refresh-btn');
+            btn.classList.add('loading-active');
+            btn.innerText = '⏳ Aktualisiere...';
+            setTimeout(function () {{ location.reload(true); }}, 800);
+        }}
+    </script>
+</body>
+</html>"""
+
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(full_html)
+
+    print("✅ Dashboard erfolgreich aktualisiert: index.html")
+
+
+if __name__ == "__main__":
+    run_agent_update()
