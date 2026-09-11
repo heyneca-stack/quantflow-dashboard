@@ -150,6 +150,13 @@
       "ts": 1789129128.0
     },
     {
+      "ticker": "ONDS",
+      "title": "Ondas Raises 2026 Revenue View: Can It Deliver the Required H2 Ramp?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/ondas-raises-2026-revenue-view-121800375.html",
+      "publisher": "Zacks",
+      "ts": 1789129080.0
+    },
+    {
       "ticker": "ORCL",
       "title": "Oracle Stock Jumps as AI Infrastructure Revenue Soars 121%",
       "link": "https://finance.yahoo.com/technology/ai/articles/oracle-stock-jumps-ai-infrastructure-121115830.html",
@@ -274,13 +281,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/adobe-systems-adbe-q3-earnings-212501160.html",
       "publisher": "Zacks",
       "ts": 1789075501.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "Oracle earnings: Do concentration risks fall on Oracle or the big AI firms?",
-      "link": "https://finance.yahoo.com/video/oracle-earnings-concentration-risks-fall-203751982.html",
-      "publisher": "Yahoo Finance Video",
-      "ts": 1789072671.0
     }
   ],
   "Technologie": [
@@ -427,6 +427,20 @@
   ],
   "Sonstiges": [
     {
+      "ticker": "INTC",
+      "title": "Investors Should Know Exactly What to Do With Intel",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/investors-know-exactly-intel-122516793.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789129516.0
+    },
+    {
+      "ticker": "MSFT",
+      "title": "Nebius' Heavy CapEx Push: Can Customer Prepayments Ease the Strain?",
+      "link": "https://finance.yahoo.com/technology/ai/articles/nebius-heavy-capex-push-customer-122200284.html",
+      "publisher": "Zacks",
+      "ts": 1789129320.0
+    },
+    {
       "ticker": "BRK-B",
       "title": "Berkshire Hathaway vs. Lemonade: Which Financial Stock Is a Better Buy in 2026?",
       "link": "https://finance.yahoo.com/markets/stocks/articles/berkshire-hathaway-vs-lemonade-financial-121101741.html",
@@ -551,20 +565,6 @@
       "link": "https://www.barrons.com/articles/tesla-stock-electric-semi-truck-diesel-prices-8b3f9bea?siteid=yhoof2&yptr=yahoo",
       "publisher": "Barrons.com",
       "ts": 1789125360.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "3 Stocks Berkshire Hathaway Owns That I'd Buy Right Now, Including One It's Selling",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/3-stocks-berkshire-hathaway-owns-111401400.html",
-      "publisher": "Motley Fool",
-      "ts": 1789125241.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "Weekly Lab Notes: The Week the Compute Landlord Thesis Went Global",
-      "link": "https://finance.yahoo.com/technology/ai/articles/weekly-lab-notes-week-compute-111115496.html",
-      "publisher": "Forkast News",
-      "ts": 1789125075.0
     }
   ]
 }
