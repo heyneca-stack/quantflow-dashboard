@@ -70,10 +70,9 @@
             </select>
             <button id="refresh-btn" onclick="triggerManualUpdate()" class="btn-refresh">
                 🔄 Jetzt aktualisieren
-                <!-- CSV_DOWNLOAD_MARKER -->
-                <a href="portfolio_log.csv" download class="btn-refresh" style="background-color: #28a745; text-decoration: none; font-size: 13px; margin-top: 5px; display: inline-block; text-align: center;">📊 CSV Historie herunterladen</a>
-
             </button>
+            <!-- CSV_DOWNLOAD_MARKER -->
+            <a href="portfolio_log.csv" download class="btn-refresh" style="background-color: #28a745; text-decoration: none;">📊 CSV Historie</a>
         </div>
     </header>
 
@@ -103,6 +102,15 @@
                 <!-- P_TABLE_BODY -->
                 <tbody>
                     <tr><td>AAPL</td><td><span class="badge">Core Tech</span></td><td class="pos">+0.85%</td><td class="tendency pos">▲ ▲ ▼</td><td class="pos">+2.10%</td><td class="pos">+5.40%</td></tr>
+                    <tr><td>META</td><td><span class="badge">Core Tech</span></td><td class="pos">+2.40%</td><td class="tendency pos">▲ ▲ ▲</td><td class="pos">+6.55%</td><td class="pos">+11.60%</td></tr>
+                    <tr><td>ORCL</td><td><span class="badge">Cloud Tech</span></td><td class="pos">+4.12%</td><td class="tendency pos">▲ ▲ ▲</td><td class="pos">+5.20%</td><td class="pos">+8.90%</td></tr>
+                    <tr><td>PANW</td><td><span class="badge">Cyber Tech</span></td><td class="neg">-0.15%</td><td class="tendency neg">▼ ▲ ▲</td><td class="pos">+1.45%</td><td class="pos">+4.10%</td></tr>
+                    <tr><td>NVDA</td><td><span class="badge">Halbleiter</span></td><td class="neg">-2.33%</td><td class="tendency neg">▼ ▼ ▼</td><td class="neg">-4.10%</td><td class="neg">-8.45%</td></tr>
+                    <tr><td>XLE</td><td><span class="badge">Energie Hedge</span></td><td class="pos">+1.10%</td><td class="tendency pos">▲ ▼ ▲</td><td class="pos">+3.90%</td><td class="pos">+2.80%</td></tr>
+                    <tr><td>INTC</td><td><span class="badge">Turnaround</span></td><td class="neg">-0.45%</td><td class="tendency neg">▼ ▲ ▼</td><td class="neg">-0.90%</td><td class="neg">-2.10%</td></tr>
+                    <tr><td>PYPL</td><td><span class="badge">Turnaround</span></td><td class="pos">+0.20%</td><td class="tendency pos">▲ ▼ ▲</td><td class="pos">+1.15%</td><td class="pos">+3.40%</td></tr>
+                    <tr><td>DIS</td><td><span class="badge">Turnaround</span></td><td class="neg">-0.10%</td><td class="tendency neg">▼ ▼ ▲</td><td class="neg">-0.50%</td><td class="pos">+1.20%</td></tr>
+                    <tr><td>PFE</td><td><span class="badge">Value Hedge</span></td><td class="pos">+0.35%</td><td class="tendency pos">▲ ▲ ▼</td><td class="pos">+0.80%</td><td class="neg">-0.40%</td></tr>
                 </tbody>
             </table>
         </section>
@@ -111,44 +119,6 @@
             <div class="card-title">📰 4h Wirtschaftspresse & 📊 Umschichtungssignale</div>
             <!-- P_SIDE_PANEL -->
             <div class="side-panel">
-                <div class="signal-item"><div class="signal-title" style="color:var(--red);">🚨 LIQUIDIERUNG: NVDA</div><div class="news-summary">Halbleiter-Schwäche setzt sich fort. Bruch der lokalen Unterstützung an der Put-Wall (215 USD). Tendenzen tiefrot.</div></div>
-                <div class="signal-item buy"><div class="signal-title" style="color:var(--green);">➕ UMSCHICHTUNG: KAUF MSFT</div><div class="news-summary">Nutze das freigewordene NVDA-Kapital (ca. 5.000 €) für stabilen Cloud-Zufluss bei Microsoft. Starker Option-Flow am Ask.</div></div>
+                <div class="signal-item"><div class="signal-title" style="color:var(--red);">🚨 EMPFEHLUNG: NVDA LIQUIDIEREN</div><div class="news-summary">Bruch der lokalen Unterstützung an der Put-Wall (215 USD). Institutionen schichten Kapital um. Momentum kurzfristig gefährdet.</div></div>
+                <div class="signal-item buy"><div class="signal-title" style="color:var(--green);">➕ NEUER KANDIDAT: MSFT KAUFEN</div><div class="news-summary">Aggressive Call-Sweeps am Ask detektiert. Microsoft zeigt starke relative Stärke zum schwächelnden Gesamtmarkt. Optimaler Tausch für den Tech-Slot.</div></div>
                 <hr style="border: 0; border-top: 1px solid var(--border); margin: 5px 0;">
-                <div class="news-item"><div class="news-meta">Vor 1 Stunde (08:15)</div><div class="news-title">US-Erzeugerpreise (PPI) steigen überraschend auf +5,4%</div><div class="news-summary">Erhöhter Inflationsdruck schürt die Angst vor einer restriktiven Fed-Sitzung in der kommenden Woche.</div></div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="historical-view">
-        <div class="card-title">🗓️ Perioden-Historie: Sentiment & Marktzyklus</div>
-        <div class="hist-grid">
-            <div class="hist-box"><h4>Wochen-Rückschau (KW 37)</h4><p style="color: var(--text-muted); margin-top: 5px;">Makro-Inflation drückte den Markt.</p></div>
-            <div class="hist-box"><h4>Wochen-Vorschau & Key Levels (KW 38)</h4><p style="color: var(--text-muted); margin-top: 5px;">Fokus auf den Fed-Zinsentscheid!</p></div>
-        </div>
-    </footer>
-
-    <script>
-    function triggerManualUpdate() {
-        const button = document.getElementById('refresh-btn');
-        button.innerHTML = "⏳ Bot wird gestartet...";
-        button.disabled = true;
-
-        // Absolut sicheres und anonymes Trigger-Signal via decentralisiertem Webhook (ch_trigger)
-        // Startet dein GitHub-Skript komplett ohne Passwort/Token im HTML!
-        fetch(`https://ch-trigger.com`, {
-            method: 'POST'
-        })
-        .then(() => {
-            button.innerHTML = "🚀 Bot läuft! (Warte 45s)";
-            button.style.backgroundColor = "#28a745";
-            setTimeout(() => { location.reload(); }, 45000);
-        })
-        .catch(() => {
-            // Ausfallsicherheit falls Webhook schläft: Einfach Seite neu laden
-            button.innerHTML = "🔄 Erneut versuchen";
-            button.disabled = false;
-        });
-    }
-    </script>
-</body>
-</html>
