@@ -1,26 +1,28 @@
 """
 QuantFlow Tech Agent — automatisiertes Paper-Trading-Dashboard.
 
-WICHTIG: Dies ist ein simuliertes ("Papier"-)Portfolio zu Test-/Beobachtungszwecken.
-Es wird kein echtes Geld gehandelt, keine Anlageberatung, keine Garantie auf
-Richtigkeit der Kurs-, News- oder Optionsdaten (kostenlose, teils verzögerte
-Quellen). Die Auswahl basiert auf einfachen, transparenten Heuristiken
-(Kursmomentum, Abstand vom 52-Wochen-Hoch, Schlagzeilen-Keywords,
-Options-Volumen/Open-Interest) — keine echte KI-Textanalyse und kein
-echter institutioneller Option-Flow.
+Simuliertes ("Papier"-)Portfolio zu Test-/Beobachtungszwecken. Kein echtes
+Geld, keine Anlageberatung, keine Garantie auf Richtigkeit der Kurs-, News-
+oder Optionsdaten (kostenlose, teils verzögerte Quellen). Die Auswahl basiert
+auf einfachen, transparenten Heuristiken (Kursmomentum, Abstand vom
+52-Wochen-Hoch, Schlagzeilen-Keywords, Options-Volumen/Open-Interest) —
+keine echte KI-Textanalyse und kein echter institutioneller Options-Flow.
 
 Läuft alle 4 Stunden per GitHub Actions (siehe .github/workflows/run_agent.yml).
-Zustand (aktuelle Positionen, News-Cache, Score-Historie) wird in JSON-Dateien
-zwischen den Läufen persistiert und vom Workflow mit zurückcommitet.
+Zustand (Positionen, News-Cache, Score-Historie, Namens-Cache) wird in
+JSON-Dateien zwischen den Läufen persistiert und vom Workflow zurückcommitet.
 
-v4.0 Erweiterungen:
-  - Klartext-Firmennamen statt nur Kürzel (NAME_MAP)
-  - 4-Wochen-Performance-Tabelle pro Position (Woche -4..-1, Tag, Trend)
-  - Genereller Politik/Wirtschaft/Technologie/Sonstiges-Presse-Überblick
-  - Statistische (nicht KI-generierte) Wochenzusammenfassung
-  - Score-Richtungspfeile (↑/↓/→) je Position, persistiert über Läufe hinweg
-  - Dritter Tag "Potential Dispose" für die schwächsten gehaltenen Positionen
-  - Watchlist der nächsten ~10 Kandidaten, die (noch) nicht gehalten werden
+v5.0 Erweiterungen:
+  - Dynamische Klarnamen-Auflösung (statische Liste -> Cache -> Live-Abruf),
+    damit Namen nicht mehr nur das Kürzel wiederholen
+  - Konsolidierte Depot-Übersichtstabelle (4-Wochen-Werte + Trend, tabellarisch)
+  - Auf-/zuklappbare Kacheln (gesamte Karte + News-Bereich separat)
+  - Watchlist mit denselben Informationen wie gehaltene Positionen (inkl. News)
+  - "Musterdepot"-Abschnitt: Titel (Ticker/Name) einer zweiten Beobachtungsliste,
+    OHNE jegliche Beträge/Stückzahlen — nach denselben Maßstäben analysiert wie
+    das Hauptdepot, mit farblicher Kennzeichnung, welche Titel die Kriterien
+    des Hauptdepots (Top-10-Schwelle) aktuell erfüllen oder übertreffen würden
+  - Minimaler Fußnoten-Hinweis statt großem Disclaimer-Banner
 """
 
 import json
@@ -51,9 +53,9 @@ BASE_UNIVERSE = {
     "JPM": "Finanzwerte", "GS": "Finanzwerte",
 }
 
-# Klartext-Firmennamen. Für Ticker, die nicht in dieser Liste stehen (z.B.
-# spontane Trend-Kandidaten aus dem Yahoo-Screener), wird einfach das Kürzel
-# selbst als Anzeigename verwendet (siehe name_for()).
+# Statische Klarnamen für die bekanntesten Ticker (schneller Pfad, kein
+# API-Aufruf nötig). Für alles andere wird zuerst der Namens-Cache, dann ein
+# Live-Abruf über yfinance versucht (siehe get_company_name()).
 NAME_MAP = {
     "AAPL": "Apple Inc.", "MSFT": "Microsoft Corp.", "GOOGL": "Alphabet Inc. (Google) Cl. A",
     "AMZN": "Amazon.com Inc.", "META": "Meta Platforms Inc.", "NVDA": "NVIDIA Corp.",
@@ -67,18 +69,60 @@ NAME_MAP = {
     "XLE": "Energy Select Sector SPDR Fund (ETF)", "XOM": "Exxon Mobil Corp.", "CVX": "Chevron Corp.",
     "PFE": "Pfizer Inc.", "MRNA": "Moderna Inc.", "DIS": "The Walt Disney Company", "BA": "Boeing Co.",
     "JPM": "JPMorgan Chase & Co.", "GS": "Goldman Sachs Group Inc.",
-    # Häufige dynamische Trend-Kandidaten
     "PLTR": "Palantir Technologies Inc.", "SOFI": "SoFi Technologies Inc.", "SHOP": "Shopify Inc.",
     "NET": "Cloudflare Inc.", "COIN": "Coinbase Global Inc.",
-    # Makro-Indizes für den Markt-Sentiment-Überblick
     "^GSPC": "S&P 500 Index", "^IXIC": "Nasdaq Composite Index", "^DJI": "Dow Jones Industrial Average",
     "^VIX": "CBOE Volatilitätsindex (VIX)",
 }
 
-
-def name_for(symbol):
-    return NAME_MAP.get(symbol, symbol)
-
+# "Musterdepot": eine zweite Beobachtungsliste, die nach denselben Maßstäben
+# analysiert wird wie das simulierte Hauptdepot. Bewusst OHNE jegliche
+# Beträge, Stückzahlen oder Kaufkurse — nur Ticker, Klarname und ggf. ein
+# informativer Hinweis (z.B. Datenqualität). Kandidaten hieraus fließen auch
+# regulär mit ins Scoring/Ranking des Hauptdepots ein.
+MUSTERDEPOT = {
+    "GOOGL": {"name": "Alphabet Inc. (Google) Cl. A"},
+    "AMZN": {"name": "Amazon.com Inc."},
+    "LYMS.DE": {"name": "Amundi Core Nasdaq-100 Swap UCITS ETF Acc", "note": "Ticker mit mittlerer Sicherheit zugeordnet"},
+    "AAPL": {"name": "Apple Inc."},
+    "ANET": {"name": "Arista Networks Inc."},
+    "ASML": {"name": "ASML Holding N.V."},
+    "BRK-B": {"name": "Berkshire Hathaway Inc. Cl. B"},
+    "BESI.AS": {"name": "BE Semiconductor Industries N.V."},
+    "BTCE.DE": {"name": "Bitwise Physical Bitcoin ETP"},
+    "AVGO": {"name": "Broadcom Inc."},
+    "CDNS": {"name": "Cadence Design Systems Inc."},
+    "CAT": {"name": "Caterpillar Inc."},
+    "FIX": {"name": "Comfort Systems USA Inc."},
+    "CMI": {"name": "Cummins Inc."},
+    "EME": {"name": "Emcor Group Inc."},
+    "EVR.L": {"name": "Evraz PLC", "note": "Seit März 2022 vom Handel ausgesetzt (Sanktionen) — kein Live-Kurs verfügbar"},
+    "GNRC": {"name": "Generac Holdings Inc."},
+    "HONA": {"name": "Honeywell Aerospace", "note": "Erst seit Juni 2026 notiert — kurze Kurshistorie"},
+    "HON": {"name": "Honeywell Technologies (vormals Honeywell International)"},
+    "SXR8.DE": {"name": "iShares Core S&P 500 UCITS ETF (Acc)"},
+    "SXRV.DE": {"name": "iShares NASDAQ 100 UCITS ETF (Acc)"},
+    "JBL": {"name": "Jabil Inc."},
+    "MRVL": {"name": "Marvell Technology Inc."},
+    "META": {"name": "Meta Platforms Inc."},
+    "MU": {"name": "Micron Technology Inc."},
+    "MSFT": {"name": "Microsoft Corp."},
+    "MRNA": {"name": "Moderna Inc."},
+    "NVDA": {"name": "NVIDIA Corp."},
+    "OCGN": {"name": "Ocugen Inc."},
+    "PANW": {"name": "Palo Alto Networks Inc."},
+    "PWR": {"name": "Quanta Services Inc."},
+    "RKLB": {"name": "Rocket Lab USA Inc."},
+    "SMSN.L": {"name": "Samsung Electronics Co. Ltd. (GDR)", "note": "GDR-Notierung, ggf. lückenhafte Datenqualität"},
+    "S": {"name": "SentinelOne Inc."},
+    "HY9H.F": {"name": "SK Hynix Inc. (GDR)", "note": "GDR-Notierung, ggf. lückenhafte Datenqualität"},
+    "SNPS": {"name": "Synopsys Inc."},
+    "TSM": {"name": "Taiwan Semiconductor Manufacturing Co. (ADR)"},
+    "VUAA.DE": {"name": "Vanguard S&P 500 UCITS ETF (Acc)"},
+    "VRT": {"name": "Vertiv Holdings Co."},
+    "DG.PA": {"name": "VINCI S.A."},
+    "WDC": {"name": "Western Digital Corp."},
+}
 
 # Freie Yahoo-Finance-Screener, die zusätzlich zur Basisliste abgefragt werden,
 # damit tagesaktuell auffällige Werte (die gerade in den News/im Markt
@@ -112,6 +156,7 @@ W_OPTIONS = 2.0
 STATE_FILE = "portfolio_state.json"
 NEWS_CACHE_FILE = "news_cache.json"
 MACRO_NEWS_CACHE_FILE = "macro_news_cache.json"
+NAME_CACHE_FILE = "name_cache.json"
 TRADE_LOG_FILE = "trade_log.csv"
 PORTFOLIO_LOG_FILE = "portfolio_log.csv"
 DASHBOARD_FILE = "dashboard.html"
@@ -188,6 +233,28 @@ def pct_str(value):
     return f"{value:+.2f}%" if value is not None else "–"
 
 
+def get_company_name(symbol, name_cache):
+    """Klarname-Auflösung in drei Stufen: (1) statische Listen (schnell, kein
+    API-Aufruf), (2) bereits einmal live aufgelöster Name aus dem Cache,
+    (3) Live-Abruf über yfinance's .info (longName/shortName). Erst wenn alle
+    drei nichts liefern, wird das Ticker-Kürzel selbst als Name verwendet."""
+    if symbol in NAME_MAP:
+        return NAME_MAP[symbol]
+    if symbol in MUSTERDEPOT and MUSTERDEPOT[symbol].get("name"):
+        return MUSTERDEPOT[symbol]["name"]
+    if name_cache.get(symbol):
+        return name_cache[symbol]
+    try:
+        info = yf.Ticker(symbol).info or {}
+        long_name = info.get("longName") or info.get("shortName")
+        if long_name:
+            name_cache[symbol] = long_name
+            return long_name
+    except Exception as e:
+        print(f"⚠️ Namens-Abruf für {symbol} fehlgeschlagen: {e}")
+    return symbol
+
+
 # ---------------------------------------------------------------------------
 # DATENBESCHAFFUNG: KURSE, TRENDING, NEWS, OPTIONEN
 # ---------------------------------------------------------------------------
@@ -219,10 +286,17 @@ def get_dynamic_trending():
 
 
 def build_candidate_pool():
+    """Basisliste + dynamische Trends + Musterdepot-Titel. Das Musterdepot
+    fließt bewusst mit ins reguläre Scoring ein — Titel daraus können also
+    auch tatsächlich ins simulierte Top-10-Hauptdepot aufgenommen werden,
+    wenn sie die Kriterien erfüllen (gleiche Maßstäbe für beide Listen)."""
     pool = dict(BASE_UNIVERSE)
     for sym in get_dynamic_trending():
         if sym not in pool:
             pool[sym] = "Trend-Kandidat"
+    for sym in MUSTERDEPOT:
+        if sym not in pool:
+            pool[sym] = "Musterdepot"
     return pool
 
 
@@ -377,7 +451,9 @@ def fetch_options_metrics(symbol):
     Options-Chain: Put/Call-Volumenverhältnis der nächsten Verfallsserie
     sowie die Strikes mit dem höchsten Open Interest als grobe Näherung
     für 'Call-Wand' / 'Put-Wand'. Kein echter institutioneller Order-Flow
-    (Sweeps/Blocks) — dafür gibt es keine stabile kostenlose Quelle."""
+    (Sweeps/Blocks) — dafür gibt es keine stabile kostenlose Quelle. Für
+    viele europäische Titel/ETFs gibt es ohnehin keine Optionsdaten über
+    Yahoo — das wird hier einfach als 'nicht verfügbar' (None) behandelt."""
     try:
         tk = yf.Ticker(symbol)
         expirations = tk.options
@@ -518,6 +594,28 @@ def rebalance(scored, state, price_lookup, timestamp):
 def build_watchlist(scored, held_symbols, limit=NUM_WATCHLIST):
     watchlist = [c for c in scored if c["symbol"] not in held_symbols]
     return watchlist[:limit]
+
+
+def build_musterdepot_view(scored, cutoff_score):
+    """Baut die Musterdepot-Ansicht: für jeden Musterdepot-Ticker, der
+    erfolgreich bewertet werden konnte, wird geprüft, ob sein Score die
+    aktuelle Top-10-Schwelle des Hauptdepots erreicht oder übertrifft."""
+    scored_by_symbol = {c["symbol"]: c for c in scored}
+    rows = []
+    for sym, meta in MUSTERDEPOT.items():
+        c = scored_by_symbol.get(sym)
+        if c is None:
+            rows.append({
+                "symbol": sym, "name": meta["name"], "note": meta.get("note", ""),
+                "available": False, "qualifies": False, "entry": None,
+            })
+            continue
+        qualifies = cutoff_score is not None and c["score"] >= cutoff_score
+        rows.append({
+            "symbol": sym, "name": meta["name"], "note": meta.get("note", ""),
+            "available": True, "qualifies": qualifies, "entry": c,
+        })
+    return rows
 
 
 def update_cache_generic(cache, key, new_articles, now_ts, max_items=NEWS_MAX_PER_TICKER):
@@ -698,6 +796,8 @@ def render_news_html(symbol, news_cache, now_ts, max_items=5):
 
 
 def render_week_table(pm):
+    if not pm:
+        return '<div class="news-summary">Keine Kursdaten verfügbar.</div>'
     cells = [
         ("W-4", pm.get("week4")), ("W-3", pm.get("week3")),
         ("W-2", pm.get("week2")), ("W-1", pm.get("week1")),
@@ -711,65 +811,131 @@ def render_week_table(pm):
     return '<div class="week-table">' + "".join(parts) + '</div>'
 
 
-def render_position_card(symbol, pos, price_lookup, news_cache, score_history, now_ts):
-    price_m = price_lookup.get(symbol)
-    current_price = price_m["current_price"] if price_m else pos["entry_price"]
+def render_card(symbol, name, category, sec_type, price_m, news_cache, score_history,
+                 now_ts, mode="watchlist", pos=None, score=None, risk_flag=False,
+                 qualifies=None, note=""):
+    """Gemeinsamer Karten-Renderer für gehaltene Positionen, Watchlist und
+    Musterdepot — alle drei zeigen dieselben Basis-Infos (Name, Kategorie,
+    4-Wochen-Tabelle, Trend/Score-Pfeil, News), nur gehaltene Positionen
+    zeigen zusätzlich Wert/Gewinn-Verlust. Die ganze Karte sowie der
+    News-Bereich darin sind über <details> auf-/zuklappbar."""
     day_perf = price_m["day_perf"] if price_m else 0.0
-    week_perf = price_m["week_perf"] if price_m else 0.0
-    month_perf = price_m["month_perf"] if price_m else 0.0
     tendency = price_m["tendency"] if price_m else "–"
     tendency_class = price_m["tendency_class"] if price_m else "neutral"
-
-    gain = (current_price - pos["entry_price"]) * pos["shares"]
-    value = current_price * pos["shares"]
-    gain_cls = "pos" if gain >= 0 else "neg"
     day_cls = "pos" if day_perf >= 0 else "neg"
-    week_cls = "pos" if week_perf >= 0 else "neg"
-    month_cls = "pos" if month_perf >= 0 else "neg"
-    cat_cls = "buy" if pos.get("category") == "Quick Win" else ""
+    cat_cls = "buy" if category == "Quick Win" else ""
 
-    arrow, _prev = score_arrow(symbol, pos.get("last_score", 0.0), score_history)
+    score_for_arrow = pos.get("last_score", 0.0) if pos else (score if score is not None else 0.0)
+    arrow, _prev = score_arrow(symbol, score_for_arrow, score_history)
     arrow_cls = {"↑": "pos", "↓": "neg", "→": "neutral", "–": "neutral"}[arrow]
 
     risk_badge = ""
-    if pos.get("risk_flag"):
+    if risk_flag:
         risk_badge = '<span class="badge category-badge dispose">⚠️ Potential Dispose</span>'
 
-    news_html = render_news_html(symbol, news_cache, now_ts)
-    week_table = render_week_table(price_m) if price_m else ""
+    qualifies_badge = ""
+    if qualifies is True:
+        qualifies_badge = '<span class="badge category-badge qualifies">✅ Erfüllt Hauptdepot-Kriterium</span>'
 
-    return f'''            <div class="position-card">
-                <div class="position-header">
+    note_html = f'<div class="position-meta" style="font-style:italic;">Hinweis: {note}</div>' if note else ""
+
+    value_html = ""
+    if mode == "held" and pos and price_m:
+        current_price = price_m["current_price"]
+        gain = (current_price - pos["entry_price"]) * pos["shares"]
+        value = current_price * pos["shares"]
+        gain_cls = "pos" if gain >= 0 else "neg"
+        value_html = (
+            f'<div class="position-value"><div class="val">{fmt_eur(value)}</div>'
+            f'<div class="val {gain_cls}" style="font-size:13px;">{fmt_eur(gain, signed=True)}</div></div>'
+        )
+
+    score_html = ""
+    if mode != "held" and score is not None:
+        score_html = f'<span class="badge">Score {score:.2f}</span>'
+
+    news_html = render_news_html(symbol, news_cache, now_ts)
+    week_table = render_week_table(price_m)
+
+    entry_meta = ""
+    if mode == "held" and pos and price_m:
+        entry_meta = (
+            f'Einstieg: {pos.get("entry_date", "–")} @ {fmt_eur(pos["entry_price"])} · '
+            f'Aktuell: {fmt_eur(price_m["current_price"])} · '
+        )
+
+    meta_line = (
+        f'{entry_meta}Tag <span class="{day_cls}">{day_perf:+.2f}%</span> · '
+        f'Trend <span class="tendency {tendency_class}">{tendency}</span>'
+        if price_m else "Keine Kursdaten verfügbar."
+    )
+
+    return f'''            <details class="position-card" open>
+                <summary class="position-header">
                     <div>
                         <span class="ticker-name">{symbol}</span>
-                        <span class="company-name">{name_for(symbol)}</span><br>
-                        <span class="badge">{pos.get("type", "")}</span>
-                        <span class="badge category-badge {cat_cls}">{pos.get("category", "")}</span>
-                        {risk_badge}
+                        <span class="company-name">{name}</span><br>
+                        <span class="badge">{sec_type}</span>
+                        <span class="badge category-badge {cat_cls}">{category}</span>
+                        {risk_badge}{qualifies_badge}{score_html}
                         <span class="badge score-arrow {arrow_cls}" title="Score-Richtung ggü. vorigem Lauf">{arrow}</span>
                     </div>
-                    <div class="position-value">
-                        <div class="val">{fmt_eur(value)}</div>
-                        <div class="val {gain_cls}" style="font-size:13px;">{fmt_eur(gain, signed=True)}</div>
-                    </div>
-                </div>
-                <div class="position-meta">
-                    Einstieg: {pos.get("entry_date", "–")} @ {fmt_eur(pos["entry_price"])} ·
-                    Aktuell: {fmt_eur(current_price)} ·
-                    Tag <span class="{day_cls}">{day_perf:+.2f}%</span> ·
-                    Woche <span class="{week_cls}">{week_perf:+.2f}%</span> ·
-                    Monat <span class="{month_cls}">{month_perf:+.2f}%</span> ·
-                    Trend <span class="tendency {tendency_class}">{tendency}</span>
-                </div>
+                    {value_html}
+                </summary>
+                <div class="position-meta">{meta_line}</div>
+                {note_html}
                 {week_table}
-                <div class="news-list">
+                <details class="news-toggle" open>
+                    <summary>Aktuelle News</summary>
+                    <div class="news-list">
 {news_html}
-                </div>
-            </div>
+                    </div>
+                </details>
+            </details>
 '''
 
 
-def render_trade_log_html(events_history, limit=10):
+def render_overview_table(positions, price_lookup, score_history):
+    rows = []
+    for sym, pos in positions.items():
+        pm = price_lookup.get(sym)
+        name = pos.get("_display_name", sym)
+        arrow, _ = score_arrow(sym, pos.get("last_score", 0.0), score_history)
+        arrow_cls = {"↑": "pos", "↓": "neg", "→": "neutral", "–": "neutral"}[arrow]
+        cat = pos.get("category", "")
+        cat_cls = "buy" if cat == "Quick Win" else ""
+        risk_txt = " ⚠️" if pos.get("risk_flag") else ""
+
+        def cell(val):
+            cls = "pos" if (val or 0) >= 0 else "neg"
+            return f'<td class="{cls}">{pct_str(val)}</td>'
+
+        w4 = cell(pm.get("week4")) if pm else "<td>–</td>"
+        w3 = cell(pm.get("week3")) if pm else "<td>–</td>"
+        w2 = cell(pm.get("week2")) if pm else "<td>–</td>"
+        w1 = cell(pm.get("week1")) if pm else "<td>–</td>"
+        day = cell(pm.get("day_perf")) if pm else "<td>–</td>"
+
+        rows.append(
+            f'<tr><td>{name} ({sym}){risk_txt}</td>'
+            f'<td><span class="badge category-badge {cat_cls}">{cat}</span></td>'
+            f'{w4}{w3}{w2}{w1}{day}'
+            f'<td class="{arrow_cls}" style="font-family:monospace;">{arrow}</td></tr>'
+        )
+
+    return f'''    <div class="table-wrap">
+    <table class="overview-table">
+        <thead>
+            <tr><th>Position</th><th>Kategorie</th><th>W-4</th><th>W-3</th><th>W-2</th><th>W-1</th><th>Tag</th><th>Trend</th></tr>
+        </thead>
+        <tbody>
+{"".join(rows)}
+        </tbody>
+    </table>
+    </div>'''
+
+
+def render_trade_log_html(events_history, name_cache, limit=10):
     if not events_history:
         return '<div class="news-summary">Noch keine Umschichtungen protokolliert.</div>'
     rows = ""
@@ -780,9 +946,10 @@ def render_trade_log_html(events_history, limit=10):
         ts, aktion, ticker, kategorie, preis, shares, realized, grund = cols[:8]
         cls = "buy" if aktion == "KAUF" else ""
         realized_txt = f" · Realisiert: {float(realized):+.2f} €" if realized else ""
+        name = get_company_name(ticker, name_cache)
         rows += (
             f'<div class="signal-item {cls}">'
-            f'<div class="signal-title">{aktion}: {name_for(ticker)} ({ticker}) @ {float(preis):.2f} €{realized_txt}</div>'
+            f'<div class="signal-title">{aktion}: {name} ({ticker}) @ {float(preis):.2f} €{realized_txt}</div>'
             f'<div class="news-meta">{ts} · {grund}</div>'
             f'</div>\n'
         )
@@ -818,7 +985,7 @@ def render_topic_overview_html(macro_cache, now_ts):
     return '<div class="topic-grid">' + "\n".join(boxes) + '</div>'
 
 
-def render_week_summary_html(summary):
+def render_week_summary_html(summary, name_cache):
     if summary["netto_now"] is None or summary["netto_week_ago"] is None:
         change_html = "Noch keine Vergleichsdaten von vor 7 Tagen vorhanden (Historie wird mit jedem Lauf länger)."
     else:
@@ -835,9 +1002,9 @@ def render_week_summary_html(summary):
         b_sym, b_val = summary["best"]
         w_sym, w_val = summary["worst"]
         movers_html = (
-            f'Bester Wochen-Performer: <strong>{name_for(b_sym)} ({b_sym})</strong> '
+            f'Bester Wochen-Performer: <strong>{get_company_name(b_sym, name_cache)} ({b_sym})</strong> '
             f'<span class="pos">{pct_str(b_val)}</span> · '
-            f'Schwächster: <strong>{name_for(w_sym)} ({w_sym})</strong> '
+            f'Schwächster: <strong>{get_company_name(w_sym, name_cache)} ({w_sym})</strong> '
             f'<span class="neg">{pct_str(w_val)}</span>'
         )
 
@@ -847,35 +1014,50 @@ def render_week_summary_html(summary):
         </div>'''
 
 
-def render_watchlist_html(watchlist):
-    if not watchlist:
-        return '<div class="news-summary">Aktuell keine weiteren Kandidaten außerhalb der Top 10.</div>'
-    rows = []
-    for c in watchlist:
-        sym = c["symbol"]
-        pm = c["price_m"]
-        cat_cls = "buy" if c["category"] == "Quick Win" else ""
-        day_cls = "pos" if pm["day_perf"] >= 0 else "neg"
-        rows.append(
-            f'<div class="signal-item {cat_cls}">'
-            f'<div class="signal-title">{name_for(sym)} ({sym}) · Score {c["score"]:.2f} · '
-            f'<span class="badge category-badge {cat_cls}">{c["category"]}</span></div>'
-            f'<div class="news-meta">Tag <span class="{day_cls}">{pm["day_perf"]:+.2f}%</span> · '
-            f'Woche {pct_str(pm.get("week1"))} · {c["type"]}</div>'
-            f'</div>'
-        )
-    return "\n".join(rows)
-
-
 def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, score_history,
-                 events, watchlist, week_summary,
+                 name_cache, events, watchlist, musterdepot_rows, week_summary,
                  total_brutto, total_unrealized, realized_total, kest, total_netto,
                  prev_run_html, trade_log_html):
 
+    now_ts = time.time()
+
+    for sym, pos in positions.items():
+        pos["_display_name"] = get_company_name(sym, name_cache)
+
     position_cards = "\n".join(
-        render_position_card(sym, pos, price_lookup, news_cache, score_history, time.time())
+        render_card(
+            sym, get_company_name(sym, name_cache), pos.get("category", ""), pos.get("type", ""),
+            price_lookup.get(sym), news_cache, score_history, now_ts,
+            mode="held", pos=pos, risk_flag=pos.get("risk_flag", False),
+        )
         for sym, pos in positions.items()
     )
+
+    watchlist_cards = "\n".join(
+        render_card(
+            c["symbol"], get_company_name(c["symbol"], name_cache), c["category"], c["type"],
+            c["price_m"], news_cache, score_history, now_ts,
+            mode="watchlist", score=c["score"],
+        )
+        for c in watchlist
+    ) or '<div class="news-summary">Aktuell keine weiteren Kandidaten außerhalb der Top 10.</div>'
+
+    musterdepot_cards_list = []
+    for row in musterdepot_rows:
+        if not row["available"]:
+            musterdepot_cards_list.append(
+                f'<div class="news-summary">⏸️ {row["name"]} ({row["symbol"]}): {row["note"] or "keine ausreichenden Daten verfügbar"}.</div>'
+            )
+            continue
+        c = row["entry"]
+        musterdepot_cards_list.append(render_card(
+            c["symbol"], row["name"], c["category"], c["type"],
+            c["price_m"], news_cache, score_history, now_ts,
+            mode="musterdepot", score=c["score"], qualifies=row["qualifies"], note=row["note"],
+        ))
+    musterdepot_html = "\n".join(musterdepot_cards_list)
+
+    overview_table_html = render_overview_table(positions, price_lookup, score_history)
 
     val_brutto = fmt_eur(total_brutto)
     val_unrealized = fmt_eur(total_unrealized, signed=True)
@@ -883,16 +1065,16 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
     val_kest = fmt_eur(-kest)
     val_netto = fmt_eur(total_netto)
 
-    topic_overview_html = render_topic_overview_html(macro_cache, time.time())
-    week_summary_html = render_week_summary_html(week_summary)
-    watchlist_html = render_watchlist_html(watchlist)
+    topic_overview_html = render_topic_overview_html(macro_cache, now_ts)
+    week_summary_html = render_week_summary_html(week_summary, name_cache)
+    trade_log_html_resolved = trade_log_html
 
     return f"""<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuantFlow Tech Agent Dashboard v4.0</title>
+    <title>QuantFlow Tech Agent Dashboard v5.0</title>
     <style>
         :root {{
             --bg-dark: #0f111a;--bg-card: #161925;--text-main: #f0f2f5;--text-muted: #8a92b2;--green: #00e676;--red: #ff3d00;--blue: #00b0ff;--border: #22273d;
@@ -909,7 +1091,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
         @keyframes blink {{ 0% {{ opacity: 0.4; }} 50% {{ opacity: 1; }} 100% {{ opacity: 0.4; }} }}
         .loading-active {{ background-color: #ff9100 !important; animation: blink 1.2s infinite; }}
 
-        .disclaimer {{ background: #1c2030; border-left: 4px solid var(--blue); padding: 12px 16px; border-radius: 8px; font-size: 12px; color: var(--text-muted); margin-bottom: 20px; }}
+        .footer-note {{ color: var(--text-muted); font-size: 11px; margin-top: 30px; padding-top: 12px; border-top: 1px solid var(--border); }}
 
         .accounting-bar {{ display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-bottom: 25px; }}
         .acc-item {{ background-color: var(--bg-card); padding: 12px 20px; border-radius: 8px; border: 1px solid var(--border); }}
@@ -918,9 +1100,15 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
 
         .section-title {{ font-size: 16px; font-weight: 600; margin: 25px 0 15px; display: flex; align-items: center; gap: 10px; }}
 
+        .table-wrap {{ overflow-x: auto; margin-bottom: 20px; }}
+        .overview-table {{ width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 12px; overflow: hidden; font-size: 13px; }}
+        .overview-table th, .overview-table td {{ padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }}
+        .overview-table th {{ color: var(--text-muted); font-size: 11px; text-transform: uppercase; }}
+
         .positions-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; }}
         .position-card {{ background-color: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); padding: 16px; }}
-        .position-header {{ display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }}
+        .position-header {{ display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; cursor: pointer; list-style: none; }}
+        .position-header::-webkit-details-marker {{ display: none; }}
         .position-value {{ text-align: right; }}
         .position-meta {{ font-size: 12px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.8; }}
         .ticker-name {{ font-weight: 700; font-size: 15px; margin-right: 6px; }}
@@ -929,6 +1117,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
         .category-badge {{ background: #3a2a1a; color: #ffb74d; }}
         .category-badge.buy {{ background: #1b251f; color: var(--green); }}
         .category-badge.dispose {{ background: #3a1a1a; color: var(--red); }}
+        .category-badge.qualifies {{ background: #123321; color: var(--green); }}
         .score-arrow {{ font-family: monospace; font-size: 12px; }}
         .pos {{ color: var(--green); }}
         .neg {{ color: var(--red); }}
@@ -939,7 +1128,8 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
         .week-cell {{ display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 2px; }}
         .week-label {{ color: var(--text-muted); font-size: 9px; text-transform: uppercase; }}
 
-        .news-list {{ display: flex; flex-direction: column; gap: 6px; max-height: 220px; overflow-y: auto; padding-right: 4px; border-top: 1px solid var(--border); padding-top: 8px; }}
+        .news-toggle summary {{ font-size: 11px; color: var(--text-muted); cursor: pointer; padding: 4px 0; border-top: 1px solid var(--border); }}
+        .news-list {{ display: flex; flex-direction: column; gap: 6px; max-height: 220px; overflow-y: auto; padding-right: 4px; padding-top: 8px; }}
         .news-item {{ background: #1c2030; padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--text-muted); }}
         .news-item.sentiment-pos {{ border-left-color: var(--green); }}
         .news-item.sentiment-neg {{ border-left-color: var(--red); }}
@@ -969,7 +1159,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
 <body>
     <header>
         <div class="logo-area">
-            <h1>QuantFlow Tech Agent Dashboard <span style="color:var(--blue); font-size:14px;">v4.0</span></h1>
+            <h1>QuantFlow Tech Agent Dashboard <span style="color:var(--blue); font-size:14px;">v5.0</span></h1>
             <span>Simuliertes Momentum-/News-/Options-Portfolio (Paper Trading) — Letztes Update: {timestamp}</span>
         </div>
         <div class="controls-area">
@@ -979,14 +1169,6 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
         </div>
     </header>
 
-    <div class="disclaimer">
-        ⚠️ <strong>Keine Anlageberatung.</strong> Dies ist ein automatisiertes, simuliertes Papier-Portfolio zu Test-/Beobachtungszwecken.
-        Kursdaten, Schlagzeilen und Optionskennzahlen stammen aus kostenlosen, teils verzögerten Quellen (Yahoo Finance).
-        Die "Sentiment"-Einschätzung ist eine simple Keyword-Heuristik, keine echte KI-Textanalyse. Die Options-Kennzahlen
-        basieren auf öffentlichen Volumen-/Open-Interest-Daten, nicht auf echtem institutionellem Order-Flow.
-        Die Score-Pfeile (↑/↓/→) zeigen nur die Richtung ggü. dem letzten Lauf — keine Kursprognose.
-    </div>
-
     <section class="accounting-bar">
         <div class="acc-item"><label>Gesamtwert Depot (Brutto)</label><div class="val">{val_brutto}</div></div>
         <div class="acc-item"><label>Unrealisierter Gewinn/Verlust</label><div class="val {'pos' if total_unrealized >= 0 else 'neg'}">{val_unrealized}</div></div>
@@ -995,14 +1177,22 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
         <div class="acc-item"><label>Netto-Wert</label><div class="val">{val_netto}</div></div>
     </section>
 
+    <div class="section-title">📋 Depot-Übersicht</div>
+{overview_table_html}
+
     <div class="section-title">📈 Aktuelle Positionen ({len(positions)})</div>
     <div class="positions-grid">
 {position_cards}
     </div>
 
     <div class="section-title">👀 Watchlist – nächste Kandidaten (nicht gehalten)</div>
-    <div class="trade-log">
-{watchlist_html}
+    <div class="positions-grid">
+{watchlist_cards}
+    </div>
+
+    <div class="section-title">🗂️ Musterdepot – Beobachtungsliste (Titel &amp; Analyse, ohne Beträge)</div>
+    <div class="positions-grid">
+{musterdepot_html}
     </div>
 
     <div class="section-title">🌍 Markt-Sentiment Überblick (Politik/Wirtschaft/Technologie/Sonstiges)</div>
@@ -1010,7 +1200,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
 
     <div class="section-title">🔄 Letzte Umschichtungen</div>
     <div class="trade-log">
-{trade_log_html}
+{trade_log_html_resolved}
     </div>
 
     <div class="historical-view">
@@ -1026,6 +1216,12 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
             </div>
         </div>
         {week_summary_html}
+    </div>
+
+    <div class="footer-note">
+        Automatisiertes, simuliertes Paper-Trading-Tool zu Testzwecken · Kurs-/News-/Optionsdaten aus kostenlosen,
+        teils verzögerten Quellen · Sentiment = einfache Keyword-Heuristik · Score-Pfeile zeigen nur die Richtung
+        ggü. dem letzten Lauf, keine Kursprognose · Musterdepot zeigt nur Titel, keine Beträge.
     </div>
 
     <script>
@@ -1049,13 +1245,14 @@ def run_agent_update():
     now_ts = now.timestamp()
     timestamp = now.strftime("%Y-%m-%d %H:%M:%S UTC")
 
-    print("🚀 Baue Kandidaten-Pool auf (Basisliste + Trending)...")
+    print("🚀 Baue Kandidaten-Pool auf (Basisliste + Trending + Musterdepot)...")
     candidate_pool = build_candidate_pool()
     print(f"   {len(candidate_pool)} Kandidaten im Pool.")
 
     state = load_json(STATE_FILE, {"positions": {}, "realized_pnl_total": 0.0, "score_history": {}})
     news_cache = load_json(NEWS_CACHE_FILE, {})
     macro_cache = load_json(MACRO_NEWS_CACHE_FILE, {})
+    name_cache = load_json(NAME_CACHE_FILE, {})
     score_history = state.get("score_history", {})
     prev_snapshot_cols = read_prev_snapshot()
 
@@ -1105,6 +1302,9 @@ def run_agent_update():
 
     watchlist = build_watchlist(scored, set(new_positions.keys())) if scored else []
 
+    cutoff_score = scored[NUM_POSITIONS - 1]["score"] if len(scored) >= NUM_POSITIONS else None
+    musterdepot_rows = build_musterdepot_view(scored, cutoff_score)
+
     realized_total = state.get("realized_pnl_total", 0.0)
     for e in events:
         if e["aktion"] == "VERKAUF" and e.get("realized_pnl") is not None:
@@ -1121,6 +1321,7 @@ def run_agent_update():
     save_json(STATE_FILE, new_state)
     save_json(NEWS_CACHE_FILE, news_cache)
     save_json(MACRO_NEWS_CACHE_FILE, macro_cache)
+    save_json(NAME_CACHE_FILE, name_cache)
 
     log_trades(events, timestamp)
 
@@ -1153,11 +1354,11 @@ def run_agent_update():
     if os.path.exists(TRADE_LOG_FILE):
         with open(TRADE_LOG_FILE, "r", encoding="utf-8") as f:
             trade_history = [line for line in f.read().splitlines()[1:] if line.strip()]
-    trade_log_html = render_trade_log_html(trade_history)
+    trade_log_html = render_trade_log_html(trade_history, name_cache)
 
     html = render_html(
-        timestamp, new_positions, price_lookup, news_cache, macro_cache, score_history,
-        events, watchlist, week_summary,
+        timestamp, new_positions, price_lookup, news_cache, macro_cache, score_history, name_cache,
+        events, watchlist, musterdepot_rows, week_summary,
         total_brutto, total_unrealized, realized_total, kest, total_netto,
         prev_run_html, trade_log_html,
     )
@@ -1165,9 +1366,11 @@ def run_agent_update():
     with open(DASHBOARD_FILE, "w", encoding="utf-8") as f:
         f.write(html)
 
+    save_json(NAME_CACHE_FILE, name_cache)  # ggf. während des Renderns neu aufgelöste Namen sichern
+
     print(f"✅ Dashboard aktualisiert: {DASHBOARD_FILE} "
           f"({len(new_positions)} Positionen, {len(events)} Umschichtungen, "
-          f"{len(watchlist)} Watchlist-Kandidaten)")
+          f"{len(watchlist)} Watchlist-Kandidaten, {len(musterdepot_rows)} Musterdepot-Titel)")
 
 
 if __name__ == "__main__":
