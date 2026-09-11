@@ -293,25 +293,103 @@ def build_candidate_pool():
     return pool
 
 
-def fetch_price_metrics(symbol):
+# ---------------------------------------------------------------------------
+# WÄHRUNGSUMRECHNUNG
+# ---------------------------------------------------------------------------
+# Yahoo Finance liefert Kurse in der jeweiligen Handelswährung des Börsenplatzes
+# (US-Werte in USD, London in GBp/Pence, Xetra/Paris/Amsterdam/Frankfurt i.d.R.
+# in EUR). Damit "€"-Beträge im Dashboard auch wirklich Euro sind, wird JEDER
+# Kurs vor der Weiterverarbeitung einmalig in EUR umgerechnet — die
+# Prozent-Kennzahlen (Tag/Woche/Monat) bleiben davon unberührt, da sie reine
+# Verhältnisse innerhalb derselben Währung sind und sich der Umrechnungsfaktor
+# dabei herauskürzt.
+FX_PAIR_FOR_CURRENCY = {
+    "USD": "EURUSD=X", "GBP": "EURGBP=X", "CHF": "EURCHF=X",
+    "JPY": "EURJPY=X", "CAD": "EURCAD=X", "AUD": "EURAUD=X", "HKD": "EURHKD=X",
+}
+
+
+def get_currency(symbol):
+    """Heuristische Ableitung der Handelswährung aus dem Ticker-Suffix — bewusst
+    OHNE zusätzlichen Live-API-Call pro Ticker (schont Rate-Limits bei ~70
+    Kandidaten pro Lauf). Deckt alle in diesem Universum vorkommenden Börsenplätze
+    ab. Bei Unsicherheit (z.B. GDRs auf .L) ist das nur eine Näherung — Standard
+    ist USD, weil das die große Mehrheit des Universums ist."""
+    if symbol.endswith((".DE", ".PA", ".AS", ".F")):
+        return "EUR"
+    if symbol.endswith(".L"):
+        return "GBp"  # Pence, NICHT Pfund — Faktor 100 wird beim Umrechnen berücksichtigt.
+    return "USD"
+
+
+def fetch_fx_rate(pair):
+    """Aktueller Kurs eines Yahoo-FX-Tickers wie 'EURUSD=X' (= wie viele Einheiten
+    der Gegenwährung kostet 1 EUR). None bei Fehler, statt eine Exception hochzureichen."""
+    try:
+        hist = yf.Ticker(pair).history(period="5d")
+        closes = hist["Close"].dropna()
+        if len(closes) == 0:
+            return None
+        return float(closes.iloc[-1])
+    except Exception as e:
+        print(f"⚠️ FX-Kurs {pair} nicht abrufbar ({e}).")
+        return None
+
+
+def build_fx_multipliers(currencies_needed):
+    """Holt JEDES benötigte Währungspaar nur EINMAL pro Lauf (nicht pro Ticker)
+    und liefert {Währung: Multiplikator}, mit dem ein Betrag in dieser Währung
+    mit EUR-Betrag = nativer_Betrag * Multiplikator umgerechnet wird.
+    Schlägt ein Abruf fehl, wird sicherheitshalber 1:1 (Multiplikator 1.0)
+    verwendet und eine Warnung ausgegeben — besser eine grobe Notlösung als ein
+    kompletter Laufabbruch."""
+    multipliers = {"EUR": 1.0}
+    for ccy in currencies_needed:
+        if ccy in multipliers:
+            continue
+        base_ccy = "GBP" if ccy == "GBp" else ccy
+        pair = FX_PAIR_FOR_CURRENCY.get(base_ccy)
+        if not pair:
+            print(f"⚠️ Keine FX-Paar-Zuordnung für Währung '{ccy}' hinterlegt — nutze Fallback 1:1 (vermutlich ungenau).")
+            multipliers[ccy] = 1.0
+            continue
+        rate = fetch_fx_rate(pair)  # z.B. EURUSD=X -> wie viele USD kostet 1 EUR
+        if not rate or rate <= 0:
+            print(f"⚠️ FX-Kurs für '{ccy}' nicht verfügbar — nutze Fallback 1:1 (vermutlich ungenau).")
+            multipliers[ccy] = 1.0
+            continue
+        mult = 1.0 / rate  # 1 Einheit Fremdwährung -> so viel EUR
+        if ccy == "GBp":
+            mult /= 100.0  # Pence -> Pfund vor der EUR-Umrechnung
+        multipliers[ccy] = mult
+    return multipliers
+
+
+def fetch_price_metrics(symbol, fx_multiplier=1.0, currency="EUR"):
     try:
         hist = yf.Ticker(symbol).history(period="1y")
         closes = hist["Close"].dropna()
         if len(closes) < 30:
             return None
 
-        current_price = float(closes.iloc[-1])
+        # WICHTIG: alle Prozent-Kennzahlen werden bewusst mit dem NATIVEN Kurs
+        # (native_price, unkonvertiert) berechnet — sie sind reine Verhältnisse
+        # zweier Zeitpunkte in DERSELBEN Währung, der Umrechnungsfaktor würde
+        # sich ohnehin herauskürzen. Nur der absolute current_price im
+        # Rückgabe-Dict wird am Ende einmalig in EUR umgerechnet, damit keine
+        # Mischung aus konvertiertem und nativem Wert in eine Ratio einfließt.
+        native_price = float(closes.iloc[-1])
         prev_price = float(closes.iloc[-2])
-        day_perf = (current_price - prev_price) / prev_price * 100
+        day_perf = (native_price - prev_price) / prev_price * 100
 
         week_ref = float(closes.iloc[-6]) if len(closes) >= 6 else prev_price
-        week_perf = (current_price - week_ref) / week_ref * 100 if week_ref else 0.0
+        week_perf = (native_price - week_ref) / week_ref * 100 if week_ref else 0.0
 
         month_ref = float(closes.iloc[-22]) if len(closes) >= 22 else week_ref
-        month_perf = (current_price - month_ref) / month_ref * 100 if month_ref else 0.0
+        month_perf = (native_price - month_ref) / month_ref * 100 if month_ref else 0.0
 
         high_52w = float(closes.max())
-        pct_below_high = (current_price - high_52w) / high_52w * 100 if high_52w else 0.0
+        pct_below_high = (native_price - high_52w) / high_52w * 100 if high_52w else 0.0
 
         t_list = []
         for i in range(-3, 0):
@@ -324,7 +402,7 @@ def fetch_price_metrics(symbol):
             if len(closes) <= n_back_start:
                 return None
             a = float(closes.iloc[-1 - n_back_start])
-            b = float(closes.iloc[-1 - n_back_end]) if n_back_end > 0 else current_price
+            b = float(closes.iloc[-1 - n_back_end]) if n_back_end > 0 else native_price
             return (b - a) / a * 100 if a else None
 
         week1 = week_block(5, 0)
@@ -334,7 +412,9 @@ def fetch_price_metrics(symbol):
 
         return {
             "symbol": symbol,
-            "current_price": current_price,
+            "current_price": native_price * fx_multiplier,  # EUR — für alle Geldbeträge (Kaufbetrag, Wert, Buchgewinn, ...)
+            "native_price": native_price,  # unkonvertiert, in "currency" — nur zur transparenten Anzeige
+            "currency": currency,
             "day_perf": day_perf,
             "week_perf": week_perf,
             "month_perf": month_perf,
@@ -992,7 +1072,17 @@ def render_card(symbol, name, category, sec_type, price_m, news_cache, score_his
         )
 
     score_html = f'<span class="badge">Score {score_value:.2f}</span>'
-    price_inline = f'<span class="current-price-inline">· {fmt_eur(price_m["current_price"])}</span>' if price_m else ""
+    price_inline = ""
+    if price_m:
+        native_hint = ""
+        native_ccy = price_m.get("currency", "EUR")
+        if native_ccy != "EUR" and price_m.get("native_price") is not None:
+            unit = "GBP-Pence" if native_ccy == "GBp" else native_ccy
+            native_hint = (
+                f' <span style="color:var(--text-muted); font-size:10px; font-weight:400;">'
+                f'({price_m["native_price"]:,.2f} {unit})</span>'
+            )
+        price_inline = f'<span class="current-price-inline">· {fmt_eur(price_m["current_price"])}{native_hint}</span>'
 
     news_html = render_news_html(symbol, news_cache, now_ts)
     week_table = render_week_table(price_m)
@@ -1222,9 +1312,23 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
                  name_cache, events, watchlist, musterdepot_rows, week_summary,
                  total_brutto, cash_balance, gesamtwert, total_unrealized, realized_total,
                  tax_paid_total, hypothetical_kest, total_netto,
-                 prev_run_html, trade_log_html):
+                 prev_run_html, trade_log_html, fx_multipliers=None):
 
     now_ts = time.time()
+
+    fx_note = ""
+    if fx_multipliers:
+        parts = []
+        for ccy, mult in sorted(fx_multipliers.items()):
+            if ccy == "EUR" or not mult:
+                continue
+            # mult rechnet 1 Einheit Fremdwährung -> EUR; zur Anzeige wieder
+            # in die gewohnte "1 EUR = X Fremdwährung"-Form zurückrechnen.
+            per_eur = (1.0 / mult) if ccy != "GBp" else (1.0 / mult) / 100.0
+            unit = "GBP" if ccy == "GBp" else ccy
+            parts.append(f"1 EUR = {per_eur:,.4f} {unit}")
+        if parts:
+            fx_note = " · Wechselkurse dieses Laufs (Yahoo Finance): " + ", ".join(parts)
 
     position_cards = "\n".join(
         render_card(
@@ -1454,7 +1558,8 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
     <div class="footer-note">
         Automatisiertes, simuliertes Paper-Trading-Tool zu Testzwecken · Kurs-/News-/Optionsdaten aus kostenlosen,
         teils verzögerten Quellen · Sentiment = einfache Keyword-Heuristik · Score-Trend zeigt nur die Richtung
-        ggü. dem letzten Lauf, keine Kursprognose · Musterdepot zeigt nur Titel, keine Beträge.
+        ggü. dem letzten Lauf, keine Kursprognose · Musterdepot zeigt nur Titel, keine Beträge · Kurse werden mit
+        dem jeweils aktuellen Yahoo-Finance-Wechselkurs in EUR umgerechnet, Original-Kurs steht klein daneben.{fx_note}
     </div>
 
     <script>
@@ -1500,12 +1605,22 @@ def run_agent_update():
     score_history = state.get("score_history", {})
     prev_snapshot_cols = read_prev_snapshot()
 
+    # Währungsumrechnung: einmal pro Lauf die tatsächlich benötigten FX-Kurse
+    # holen (nicht pro Ticker), dann in EUR umrechnen, damit "€"-Beträge im
+    # Dashboard auch wirklich Euro sind statt USD/GBp mit falschem Symbol.
+    symbol_currencies = {symbol: get_currency(symbol) for symbol in candidate_pool}
+    fx_multipliers = build_fx_multipliers(set(symbol_currencies.values()))
+    for ccy, mult in fx_multipliers.items():
+        if ccy != "EUR":
+            print(f"   FX {ccy}->EUR Multiplikator: {mult:.6f}")
+
     scored = []
     price_lookup = {}
     all_fetched_news = []
 
     for symbol, sec_type in candidate_pool.items():
-        price_m = fetch_price_metrics(symbol)
+        currency = symbol_currencies[symbol]
+        price_m = fetch_price_metrics(symbol, fx_multiplier=fx_multipliers.get(currency, 1.0), currency=currency)
         if price_m is None:
             continue
         price_lookup[symbol] = price_m
@@ -1633,7 +1748,7 @@ def run_agent_update():
         events, watchlist, musterdepot_rows, week_summary,
         total_brutto, cash_balance, gesamtwert, total_unrealized, realized_total,
         tax_paid_total, hypothetical_kest, total_netto,
-        prev_run_html, trade_log_html,
+        prev_run_html, trade_log_html, fx_multipliers,
     )
 
     with open(DASHBOARD_FILE, "w", encoding="utf-8") as f:
