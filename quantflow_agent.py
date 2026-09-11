@@ -10,8 +10,17 @@ Options-Volumen/Open-Interest) — keine echte KI-Textanalyse und kein
 echter institutioneller Option-Flow.
 
 Läuft alle 4 Stunden per GitHub Actions (siehe .github/workflows/run_agent.yml).
-Zustand (aktuelle Positionen, News-Cache) wird in JSON-Dateien zwischen den
-Läufen persistiert und vom Workflow mit zurückcommitet.
+Zustand (aktuelle Positionen, News-Cache, Score-Historie) wird in JSON-Dateien
+zwischen den Läufen persistiert und vom Workflow mit zurückcommitet.
+
+v4.0 Erweiterungen:
+  - Klartext-Firmennamen statt nur Kürzel (NAME_MAP)
+  - 4-Wochen-Performance-Tabelle pro Position (Woche -4..-1, Tag, Trend)
+  - Genereller Politik/Wirtschaft/Technologie/Sonstiges-Presse-Überblick
+  - Statistische (nicht KI-generierte) Wochenzusammenfassung
+  - Score-Richtungspfeile (↑/↓/→) je Position, persistiert über Läufe hinweg
+  - Dritter Tag "Potential Dispose" für die schwächsten gehaltenen Positionen
+  - Watchlist der nächsten ~10 Kandidaten, die (noch) nicht gehalten werden
 """
 
 import json
@@ -42,11 +51,44 @@ BASE_UNIVERSE = {
     "JPM": "Finanzwerte", "GS": "Finanzwerte",
 }
 
+# Klartext-Firmennamen. Für Ticker, die nicht in dieser Liste stehen (z.B.
+# spontane Trend-Kandidaten aus dem Yahoo-Screener), wird einfach das Kürzel
+# selbst als Anzeigename verwendet (siehe name_for()).
+NAME_MAP = {
+    "AAPL": "Apple Inc.", "MSFT": "Microsoft Corp.", "GOOGL": "Alphabet Inc. (Google) Cl. A",
+    "AMZN": "Amazon.com Inc.", "META": "Meta Platforms Inc.", "NVDA": "NVIDIA Corp.",
+    "AMD": "Advanced Micro Devices Inc.", "AVGO": "Broadcom Inc.",
+    "TSM": "Taiwan Semiconductor Manufacturing Co. (ADR)", "MU": "Micron Technology Inc.",
+    "QCOM": "Qualcomm Inc.", "INTC": "Intel Corp.", "ORCL": "Oracle Corp.",
+    "CRM": "Salesforce Inc.", "ADBE": "Adobe Inc.", "NOW": "ServiceNow Inc.", "SNOW": "Snowflake Inc.",
+    "PANW": "Palo Alto Networks Inc.", "CRWD": "CrowdStrike Holdings Inc.", "FTNT": "Fortinet Inc.",
+    "ZS": "Zscaler Inc.", "PYPL": "PayPal Holdings Inc.", "SQ": "Block Inc. (Square)",
+    "V": "Visa Inc.", "MA": "Mastercard Inc.", "TSLA": "Tesla Inc.", "NIO": "NIO Inc. (ADR)",
+    "XLE": "Energy Select Sector SPDR Fund (ETF)", "XOM": "Exxon Mobil Corp.", "CVX": "Chevron Corp.",
+    "PFE": "Pfizer Inc.", "MRNA": "Moderna Inc.", "DIS": "The Walt Disney Company", "BA": "Boeing Co.",
+    "JPM": "JPMorgan Chase & Co.", "GS": "Goldman Sachs Group Inc.",
+    # Häufige dynamische Trend-Kandidaten
+    "PLTR": "Palantir Technologies Inc.", "SOFI": "SoFi Technologies Inc.", "SHOP": "Shopify Inc.",
+    "NET": "Cloudflare Inc.", "COIN": "Coinbase Global Inc.",
+    # Makro-Indizes für den Markt-Sentiment-Überblick
+    "^GSPC": "S&P 500 Index", "^IXIC": "Nasdaq Composite Index", "^DJI": "Dow Jones Industrial Average",
+    "^VIX": "CBOE Volatilitätsindex (VIX)",
+}
+
+
+def name_for(symbol):
+    return NAME_MAP.get(symbol, symbol)
+
+
 # Freie Yahoo-Finance-Screener, die zusätzlich zur Basisliste abgefragt werden,
 # damit tagesaktuell auffällige Werte (die gerade in den News/im Markt
 # auftauchen) automatisch mit ins Scoring rutschen können.
 TRENDING_SCREENER_IDS = ("day_gainers", "growth_technology_stocks", "most_actives")
 TRENDING_COUNT_PER_SCREENER = 15
+
+# Makro-Ticker für den allgemeinen Presse-/Sentiment-Überblick (nicht Teil
+# des Handels-Universums, nur Nachrichtenquelle für den Marktüberblick).
+MACRO_TICKERS = ["^GSPC", "^IXIC", "^DJI", "^VIX"]
 
 NUM_POSITIONS = 10
 ALLOCATION_PER_POSITION = 5000.0  # EUR, fiktives Kapital pro Slot
@@ -54,6 +96,9 @@ KEST_RATE = 0.26
 NEWS_RETENTION_DAYS = 7
 NEWS_MAX_PER_TICKER = 15
 NEWS_MAX_FETCH = 8  # wie viele Artikel pro Ticker/Lauf neu abgerufen werden
+NUM_DISPOSE_CANDIDATES = 2  # schwächste gehaltene Positionen -> "Potential Dispose"
+NUM_WATCHLIST = 10  # nächste Kandidaten außerhalb der Top 10
+SCORE_HISTORY_LENGTH = 10  # wie viele Scores pro Ticker aufgehoben werden
 
 # Scoring-Gewichte (bewusst als Konstanten, damit sie später leicht angepasst
 # werden können)
@@ -66,6 +111,7 @@ W_OPTIONS = 2.0
 
 STATE_FILE = "portfolio_state.json"
 NEWS_CACHE_FILE = "news_cache.json"
+MACRO_NEWS_CACHE_FILE = "macro_news_cache.json"
 TRADE_LOG_FILE = "trade_log.csv"
 PORTFOLIO_LOG_FILE = "portfolio_log.csv"
 DASHBOARD_FILE = "dashboard.html"
@@ -82,6 +128,30 @@ NEGATIVE_KEYWORDS = [
     "warns", "warning", "bearish", "layoffs", "fraud", "delay", "delays", "sell-off",
     "selloff", "underperform", "probe", "fine", "bankruptcy", "resigns",
 ]
+
+# Themen-Zuordnung für den allgemeinen Presse-Überblick. Reihenfolge zählt:
+# ein Artikel wird dem ersten passenden Thema zugeordnet.
+TOPIC_KEYWORDS = [
+    ("Politik/Makro", [
+        "election", "president", "senate", "congress", "white house", "regulation",
+        "tariff", "sanction", "fed ", "federal reserve", "interest rate", "rate hike",
+        "rate cut", "inflation", "gdp", "central bank", "policy", "government shutdown",
+        "treasury", "geopolit", "war", "ukraine", "trade deal", "eu ", "brexit",
+    ]),
+    ("Wirtschaft", [
+        "earnings", "revenue", "profit", "ipo", "merger", "acquisition", "bankruptcy",
+        "layoffs", "stock market", "dow jones", "s&p 500", "nasdaq", "recession",
+        "unemployment", "jobs report", "consumer spending", "market rally", "market selloff",
+        "guidance", "quarterly",
+    ]),
+    ("Technologie", [
+        "ai ", " ai", "artificial intelligence", "chip", "semiconductor", "software",
+        "cloud", "data center", "robot", "quantum", "cybersecurity", "app ", "smartphone",
+        "electric vehicle", "autonomous", "startup",
+    ]),
+]
+DEFAULT_TOPIC = "Sonstiges"
+TOPIC_ORDER = ["Politik/Makro", "Wirtschaft", "Technologie", DEFAULT_TOPIC]
 
 HTTP_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -112,6 +182,10 @@ def save_json(path, data):
 def fmt_eur(value, signed=False):
     fmt = f"{value:+,.2f} €" if signed else f"{value:,.2f} €"
     return fmt.replace(",", "X").replace(".", ",").replace("X", ".")
+
+
+def pct_str(value):
+    return f"{value:+.2f}%" if value is not None else "–"
 
 
 # ---------------------------------------------------------------------------
@@ -179,12 +253,27 @@ def fetch_price_metrics(symbol):
             else:
                 t_list.append("▼")
 
+        # 4-Wochen-Block-Performance (Woche -4 bis Woche -1), unabhängig vom
+        # Scoring nur zur Anzeige gedacht — je Woche 5 Handelstage angenommen.
+        def week_block(n_back_start, n_back_end):
+            if len(closes) <= n_back_start:
+                return None
+            a = float(closes.iloc[-1 - n_back_start])
+            b = float(closes.iloc[-1 - n_back_end]) if n_back_end > 0 else current_price
+            return (b - a) / a * 100 if a else None
+
+        week1 = week_block(5, 0)
+        week2 = week_block(10, 5)
+        week3 = week_block(15, 10)
+        week4 = week_block(20, 15)
+
         return {
             "symbol": symbol,
             "current_price": current_price,
             "day_perf": day_perf,
             "week_perf": week_perf,
             "month_perf": month_perf,
+            "week1": week1, "week2": week2, "week3": week3, "week4": week4,
             "pct_below_high": pct_below_high,
             "tendency": " ".join(t_list),
             "tendency_class": "pos" if t_list[-1] == "▲" else "neg",
@@ -264,6 +353,14 @@ def classify_headline(title):
     return "neutral", "⚪"
 
 
+def classify_topic(title):
+    t = title.lower()
+    for topic, keywords in TOPIC_KEYWORDS:
+        if any(kw in t for kw in keywords):
+            return topic
+    return DEFAULT_TOPIC
+
+
 def score_sentiment(articles):
     score = 0
     for a in articles:
@@ -323,7 +420,7 @@ def fetch_options_metrics(symbol):
 
 
 # ---------------------------------------------------------------------------
-# SCORING & PORTFOLIO-REBALANCING
+# SCORING, RANKING-EXTRAS & PORTFOLIO-REBALANCING
 # ---------------------------------------------------------------------------
 
 def compute_score(price_m, news_score, options_m):
@@ -337,6 +434,29 @@ def compute_score(price_m, news_score, options_m):
     total = momentum_score + rebound_component + W_NEWS * news_score + W_OPTIONS * options_bias
     category = "Quick Win" if momentum_score >= rebound_component else "Long"
     return total, category
+
+
+def score_arrow(symbol, new_score, score_history):
+    """Vergleicht den aktuellen Score nur mit dem letzten gespeicherten Score
+    desselben Tickers — bewusst KEINE numerische Kursprognose, nur eine
+    Richtungsangabe ('wird der Kandidat gerade relativ stärker oder
+    schwächer bewertet als beim letzten Lauf')."""
+    history = score_history.get(symbol, [])
+    if not history:
+        return "–", None
+    prev = history[-1]
+    if new_score > prev + 0.05:
+        return "↑", prev
+    if new_score < prev - 0.05:
+        return "↓", prev
+    return "→", prev
+
+
+def update_score_history(score_history, symbol, new_score):
+    history = score_history.get(symbol, [])
+    history.append(round(new_score, 4))
+    score_history[symbol] = history[-SCORE_HISTORY_LENGTH:]
+    return score_history
 
 
 def rebalance(scored, state, price_lookup, timestamp):
@@ -384,38 +504,119 @@ def rebalance(scored, state, price_lookup, timestamp):
             "grund": "Aus Top 10 gefallen / durch besseren Kandidaten ersetzt",
         })
 
+    # "Potential Dispose": innerhalb der aktuell gehaltenen Top-10 werden die
+    # schwächsten NUM_DISPOSE_CANDIDATES Scores zusätzlich markiert — reine
+    # Beobachtungs-Info, keine automatische Verkaufsaktion.
+    by_score = sorted(new_positions.items(), key=lambda kv: kv[1]["last_score"])
+    dispose_symbols = {sym for sym, _ in by_score[:NUM_DISPOSE_CANDIDATES]}
+    for sym, pos in new_positions.items():
+        pos["risk_flag"] = sym in dispose_symbols
+
     return new_positions, events
 
 
-def update_news_cache(cache, symbol, new_articles, now_ts):
-    existing = cache.get(symbol, [])
+def build_watchlist(scored, held_symbols, limit=NUM_WATCHLIST):
+    watchlist = [c for c in scored if c["symbol"] not in held_symbols]
+    return watchlist[:limit]
+
+
+def update_cache_generic(cache, key, new_articles, now_ts, max_items=NEWS_MAX_PER_TICKER):
+    existing = cache.get(key, [])
     combined = existing + new_articles
     seen = set()
     deduped = []
     for a in combined:
-        key = (a.get("title"), a.get("link"))
-        if key in seen:
+        dedupe_key = (a.get("title"), a.get("link"))
+        if dedupe_key in seen:
             continue
-        seen.add(key)
+        seen.add(dedupe_key)
         deduped.append(a)
 
     cutoff = now_ts - NEWS_RETENTION_DAYS * 86400
     filtered = [a for a in deduped if a.get("ts") and a["ts"] >= cutoff]
     filtered.sort(key=lambda a: a["ts"], reverse=True)
-    cache[symbol] = filtered[:NEWS_MAX_PER_TICKER]
+    cache[key] = filtered[:max_items]
     return cache
 
 
+def update_news_cache(cache, symbol, new_articles, now_ts):
+    return update_cache_generic(cache, symbol, new_articles, now_ts, NEWS_MAX_PER_TICKER)
+
+
 def prune_cache_fully(cache, now_ts):
-    """Entfernt Ticker komplett, deren News alle älter als das Retention-
-    Fenster sind (hält den News-Cache über die Zeit klein)."""
+    """Entfernt Ticker/Themen komplett, deren News alle älter als das
+    Retention-Fenster sind (hält den Cache über die Zeit klein)."""
     cutoff = now_ts - NEWS_RETENTION_DAYS * 86400
     pruned = {}
-    for sym, articles in cache.items():
+    for key, articles in cache.items():
         fresh = [a for a in articles if a.get("ts") and a["ts"] >= cutoff]
         if fresh:
-            pruned[sym] = fresh
+            pruned[key] = fresh
     return pruned
+
+
+def build_macro_topic_overview(all_fetched_news, macro_cache, now_ts):
+    """Baut den generellen Politik/Wirtschaft/Technologie/Sonstiges-Überblick
+    aus (a) den News der Makro-Indizes und (b) allen ohnehin abgerufenen
+    Kandidaten-Schlagzeilen. Rein Keyword-basierte Zuordnung, 7-Tage-Fenster
+    wie beim Ticker-News-Cache."""
+    buckets = {topic: [] for topic in TOPIC_ORDER}
+    for article in all_fetched_news:
+        topic = classify_topic(article["title"])
+        buckets[topic].append(article)
+
+    for topic in TOPIC_ORDER:
+        macro_cache = update_cache_generic(macro_cache, topic, buckets[topic], now_ts, max_items=20)
+
+    return macro_cache
+
+
+def build_week_summary(price_lookup, positions):
+    """Rein statistische (nicht KI-generierte) Wochenzusammenfassung: Wert-
+    Entwicklung gegenüber vor ~7 Tagen (aus portfolio_log.csv) sowie bester/
+    schwächster Wochen-Performer unter den aktuell gehaltenen Positionen."""
+    summary = {
+        "netto_now": None, "netto_week_ago": None, "change_abs": None, "change_pct": None,
+        "best": None, "worst": None,
+    }
+
+    if os.path.exists(PORTFOLIO_LOG_FILE):
+        with open(PORTFOLIO_LOG_FILE, "r", encoding="utf-8") as f:
+            rows = [line.split(",") for line in f.read().splitlines()[1:] if line.strip()]
+        if rows:
+            now_ts = time.time()
+            target_ts = now_ts - 7 * 86400
+            best_row = None
+            best_diff = None
+            for row in rows:
+                if len(row) < 6:
+                    continue
+                try:
+                    row_ts = datetime.strptime(row[0], "%Y-%m-%d %H:%M:%S UTC").replace(
+                        tzinfo=timezone.utc).timestamp()
+                except Exception:
+                    continue
+                diff = abs(row_ts - target_ts)
+                if row_ts <= target_ts and (best_diff is None or diff < best_diff):
+                    best_row, best_diff = row, diff
+            if best_row:
+                summary["netto_week_ago"] = float(best_row[5])
+                summary["netto_now"] = float(rows[-1][5])
+                summary["change_abs"] = summary["netto_now"] - summary["netto_week_ago"]
+                if summary["netto_week_ago"]:
+                    summary["change_pct"] = summary["change_abs"] / summary["netto_week_ago"] * 100
+
+    movers = []
+    for sym in positions:
+        pm = price_lookup.get(sym)
+        if pm and pm.get("week1") is not None:
+            movers.append((sym, pm["week1"]))
+    if movers:
+        movers.sort(key=lambda x: x[1], reverse=True)
+        summary["best"] = movers[0]
+        summary["worst"] = movers[-1]
+
+    return summary
 
 
 # ---------------------------------------------------------------------------
@@ -496,7 +697,21 @@ def render_news_html(symbol, news_cache, now_ts, max_items=5):
     return "\n".join(rows)
 
 
-def render_position_card(symbol, pos, price_lookup, news_cache, now_ts):
+def render_week_table(pm):
+    cells = [
+        ("W-4", pm.get("week4")), ("W-3", pm.get("week3")),
+        ("W-2", pm.get("week2")), ("W-1", pm.get("week1")),
+        ("Tag", pm.get("day_perf")),
+    ]
+    parts = []
+    for label, val in cells:
+        cls = "pos" if (val or 0) >= 0 else "neg"
+        parts.append(f'<div class="week-cell"><span class="week-label">{label}</span>'
+                      f'<span class="{cls}">{pct_str(val)}</span></div>')
+    return '<div class="week-table">' + "".join(parts) + '</div>'
+
+
+def render_position_card(symbol, pos, price_lookup, news_cache, score_history, now_ts):
     price_m = price_lookup.get(symbol)
     current_price = price_m["current_price"] if price_m else pos["entry_price"]
     day_perf = price_m["day_perf"] if price_m else 0.0
@@ -513,14 +728,25 @@ def render_position_card(symbol, pos, price_lookup, news_cache, now_ts):
     month_cls = "pos" if month_perf >= 0 else "neg"
     cat_cls = "buy" if pos.get("category") == "Quick Win" else ""
 
+    arrow, _prev = score_arrow(symbol, pos.get("last_score", 0.0), score_history)
+    arrow_cls = {"↑": "pos", "↓": "neg", "→": "neutral", "–": "neutral"}[arrow]
+
+    risk_badge = ""
+    if pos.get("risk_flag"):
+        risk_badge = '<span class="badge category-badge dispose">⚠️ Potential Dispose</span>'
+
     news_html = render_news_html(symbol, news_cache, now_ts)
+    week_table = render_week_table(price_m) if price_m else ""
 
     return f'''            <div class="position-card">
                 <div class="position-header">
                     <div>
                         <span class="ticker-name">{symbol}</span>
+                        <span class="company-name">{name_for(symbol)}</span><br>
                         <span class="badge">{pos.get("type", "")}</span>
                         <span class="badge category-badge {cat_cls}">{pos.get("category", "")}</span>
+                        {risk_badge}
+                        <span class="badge score-arrow {arrow_cls}" title="Score-Richtung ggü. vorigem Lauf">{arrow}</span>
                     </div>
                     <div class="position-value">
                         <div class="val">{fmt_eur(value)}</div>
@@ -535,6 +761,7 @@ def render_position_card(symbol, pos, price_lookup, news_cache, now_ts):
                     Monat <span class="{month_cls}">{month_perf:+.2f}%</span> ·
                     Trend <span class="tendency {tendency_class}">{tendency}</span>
                 </div>
+                {week_table}
                 <div class="news-list">
 {news_html}
                 </div>
@@ -555,19 +782,98 @@ def render_trade_log_html(events_history, limit=10):
         realized_txt = f" · Realisiert: {float(realized):+.2f} €" if realized else ""
         rows += (
             f'<div class="signal-item {cls}">'
-            f'<div class="signal-title">{aktion}: {ticker} @ {float(preis):.2f} €{realized_txt}</div>'
+            f'<div class="signal-title">{aktion}: {name_for(ticker)} ({ticker}) @ {float(preis):.2f} €{realized_txt}</div>'
             f'<div class="news-meta">{ts} · {grund}</div>'
             f'</div>\n'
         )
     return rows or '<div class="news-summary">Noch keine Umschichtungen protokolliert.</div>'
 
 
-def render_html(timestamp, positions, price_lookup, news_cache, events,
+def render_topic_overview_html(macro_cache, now_ts):
+    boxes = []
+    for topic in TOPIC_ORDER:
+        articles = macro_cache.get(topic, [])[:5]
+        if not articles:
+            body = '<div class="news-summary">Keine aktuellen Schlagzeilen im 7-Tage-Fenster.</div>'
+        else:
+            rows = []
+            for a in articles:
+                cls, icon = classify_headline(a["title"])
+                rel = relative_time(a["ts"], now_ts)
+                title_safe = a["title"].replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+                link = a.get("link") or "#"
+                rows.append(
+                    f'<div class="news-item sentiment-{cls}">'
+                    f'<div class="news-meta">{icon} {a.get("ticker", "")} · {rel}</div>'
+                    f'<a class="news-title" href="{link}" target="_blank" rel="noopener">{title_safe}</a>'
+                    f'</div>'
+                )
+            body = "\n".join(rows)
+        boxes.append(f'''            <div class="hist-box">
+                <h4>{topic}</h4>
+                <div class="news-list" style="max-height:200px;">
+{body}
+                </div>
+            </div>''')
+    return '<div class="topic-grid">' + "\n".join(boxes) + '</div>'
+
+
+def render_week_summary_html(summary):
+    if summary["netto_now"] is None or summary["netto_week_ago"] is None:
+        change_html = "Noch keine Vergleichsdaten von vor 7 Tagen vorhanden (Historie wird mit jedem Lauf länger)."
+    else:
+        cls = "pos" if summary["change_abs"] >= 0 else "neg"
+        change_html = (
+            f'Netto-Wert vor 7 Tagen: {fmt_eur(summary["netto_week_ago"])} → heute: '
+            f'{fmt_eur(summary["netto_now"])} '
+            f'(<span class="{cls}">{fmt_eur(summary["change_abs"], signed=True)} / '
+            f'{summary["change_pct"]:+.2f}%</span>)'
+        )
+
+    movers_html = "Noch keine ausreichenden Wochendaten für Gewinner/Verlierer."
+    if summary["best"] and summary["worst"]:
+        b_sym, b_val = summary["best"]
+        w_sym, w_val = summary["worst"]
+        movers_html = (
+            f'Bester Wochen-Performer: <strong>{name_for(b_sym)} ({b_sym})</strong> '
+            f'<span class="pos">{pct_str(b_val)}</span> · '
+            f'Schwächster: <strong>{name_for(w_sym)} ({w_sym})</strong> '
+            f'<span class="neg">{pct_str(w_val)}</span>'
+        )
+
+    return f'''        <div class="hist-box" style="margin-top:15px;">
+            <h4>📅 Wochenzusammenfassung (statistisch, nicht KI-generiert)</h4>
+            <div style="font-size:13px; line-height:1.8;">{change_html}<br>{movers_html}</div>
+        </div>'''
+
+
+def render_watchlist_html(watchlist):
+    if not watchlist:
+        return '<div class="news-summary">Aktuell keine weiteren Kandidaten außerhalb der Top 10.</div>'
+    rows = []
+    for c in watchlist:
+        sym = c["symbol"]
+        pm = c["price_m"]
+        cat_cls = "buy" if c["category"] == "Quick Win" else ""
+        day_cls = "pos" if pm["day_perf"] >= 0 else "neg"
+        rows.append(
+            f'<div class="signal-item {cat_cls}">'
+            f'<div class="signal-title">{name_for(sym)} ({sym}) · Score {c["score"]:.2f} · '
+            f'<span class="badge category-badge {cat_cls}">{c["category"]}</span></div>'
+            f'<div class="news-meta">Tag <span class="{day_cls}">{pm["day_perf"]:+.2f}%</span> · '
+            f'Woche {pct_str(pm.get("week1"))} · {c["type"]}</div>'
+            f'</div>'
+        )
+    return "\n".join(rows)
+
+
+def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, score_history,
+                 events, watchlist, week_summary,
                  total_brutto, total_unrealized, realized_total, kest, total_netto,
                  prev_run_html, trade_log_html):
 
     position_cards = "\n".join(
-        render_position_card(sym, pos, price_lookup, news_cache, time.time())
+        render_position_card(sym, pos, price_lookup, news_cache, score_history, time.time())
         for sym, pos in positions.items()
     )
 
@@ -577,12 +883,16 @@ def render_html(timestamp, positions, price_lookup, news_cache, events,
     val_kest = fmt_eur(-kest)
     val_netto = fmt_eur(total_netto)
 
+    topic_overview_html = render_topic_overview_html(macro_cache, time.time())
+    week_summary_html = render_week_summary_html(week_summary)
+    watchlist_html = render_watchlist_html(watchlist)
+
     return f"""<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuantFlow Tech Agent Dashboard v3.0</title>
+    <title>QuantFlow Tech Agent Dashboard v4.0</title>
     <style>
         :root {{
             --bg-dark: #0f111a;--bg-card: #161925;--text-main: #f0f2f5;--text-muted: #8a92b2;--green: #00e676;--red: #ff3d00;--blue: #00b0ff;--border: #22273d;
@@ -612,15 +922,22 @@ def render_html(timestamp, positions, price_lookup, news_cache, events,
         .position-card {{ background-color: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); padding: 16px; }}
         .position-header {{ display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }}
         .position-value {{ text-align: right; }}
-        .position-meta {{ font-size: 12px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.8; }}
+        .position-meta {{ font-size: 12px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.8; }}
         .ticker-name {{ font-weight: 700; font-size: 15px; margin-right: 6px; }}
-        .badge {{ padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; background: #22273d; margin-right: 4px; display: inline-block; }}
+        .company-name {{ font-size: 11px; color: var(--text-muted); }}
+        .badge {{ padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; background: #22273d; margin-right: 4px; display: inline-block; margin-top: 4px; }}
         .category-badge {{ background: #3a2a1a; color: #ffb74d; }}
         .category-badge.buy {{ background: #1b251f; color: var(--green); }}
+        .category-badge.dispose {{ background: #3a1a1a; color: var(--red); }}
+        .score-arrow {{ font-family: monospace; font-size: 12px; }}
         .pos {{ color: var(--green); }}
         .neg {{ color: var(--red); }}
         .neutral {{ color: var(--text-muted); }}
         .tendency {{ font-family: monospace; letter-spacing: 2px; }}
+
+        .week-table {{ display: flex; justify-content: space-between; background: #1c2030; border-radius: 6px; padding: 6px 8px; margin-bottom: 8px; }}
+        .week-cell {{ display: flex; flex-direction: column; align-items: center; font-size: 11px; gap: 2px; }}
+        .week-label {{ color: var(--text-muted); font-size: 9px; text-transform: uppercase; }}
 
         .news-list {{ display: flex; flex-direction: column; gap: 6px; max-height: 220px; overflow-y: auto; padding-right: 4px; border-top: 1px solid var(--border); padding-top: 8px; }}
         .news-item {{ background: #1c2030; padding: 8px 10px; border-radius: 6px; border-left: 3px solid var(--text-muted); }}
@@ -641,6 +958,8 @@ def render_html(timestamp, positions, price_lookup, news_cache, events,
         .hist-box {{ background: #1c2030; padding: 15px; border-radius: 8px; font-size: 13px; }}
         .hist-box h4 {{ margin-bottom: 8px; font-size: 14px; color: var(--blue); }}
 
+        .topic-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }}
+
         @media (max-width: 700px) {{
             .accounting-bar {{ grid-template-columns: repeat(2, 1fr); }}
             .hist-grid {{ grid-template-columns: 1fr; }}
@@ -650,7 +969,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, events,
 <body>
     <header>
         <div class="logo-area">
-            <h1>QuantFlow Tech Agent Dashboard <span style="color:var(--blue); font-size:14px;">v3.0</span></h1>
+            <h1>QuantFlow Tech Agent Dashboard <span style="color:var(--blue); font-size:14px;">v4.0</span></h1>
             <span>Simuliertes Momentum-/News-/Options-Portfolio (Paper Trading) — Letztes Update: {timestamp}</span>
         </div>
         <div class="controls-area">
@@ -665,6 +984,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, events,
         Kursdaten, Schlagzeilen und Optionskennzahlen stammen aus kostenlosen, teils verzögerten Quellen (Yahoo Finance).
         Die "Sentiment"-Einschätzung ist eine simple Keyword-Heuristik, keine echte KI-Textanalyse. Die Options-Kennzahlen
         basieren auf öffentlichen Volumen-/Open-Interest-Daten, nicht auf echtem institutionellem Order-Flow.
+        Die Score-Pfeile (↑/↓/→) zeigen nur die Richtung ggü. dem letzten Lauf — keine Kursprognose.
     </div>
 
     <section class="accounting-bar">
@@ -679,6 +999,14 @@ def render_html(timestamp, positions, price_lookup, news_cache, events,
     <div class="positions-grid">
 {position_cards}
     </div>
+
+    <div class="section-title">👀 Watchlist – nächste Kandidaten (nicht gehalten)</div>
+    <div class="trade-log">
+{watchlist_html}
+    </div>
+
+    <div class="section-title">🌍 Markt-Sentiment Überblick (Politik/Wirtschaft/Technologie/Sonstiges)</div>
+    {topic_overview_html}
 
     <div class="section-title">🔄 Letzte Umschichtungen</div>
     <div class="trade-log">
@@ -697,6 +1025,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, events,
                 {prev_run_html}
             </div>
         </div>
+        {week_summary_html}
     </div>
 
     <script>
@@ -724,12 +1053,15 @@ def run_agent_update():
     candidate_pool = build_candidate_pool()
     print(f"   {len(candidate_pool)} Kandidaten im Pool.")
 
-    state = load_json(STATE_FILE, {"positions": {}, "realized_pnl_total": 0.0})
+    state = load_json(STATE_FILE, {"positions": {}, "realized_pnl_total": 0.0, "score_history": {}})
     news_cache = load_json(NEWS_CACHE_FILE, {})
+    macro_cache = load_json(MACRO_NEWS_CACHE_FILE, {})
+    score_history = state.get("score_history", {})
     prev_snapshot_cols = read_prev_snapshot()
 
     scored = []
     price_lookup = {}
+    all_fetched_news = []
 
     for symbol, sec_type in candidate_pool.items():
         price_m = fetch_price_metrics(symbol)
@@ -738,6 +1070,7 @@ def run_agent_update():
         price_lookup[symbol] = price_m
 
         articles = fetch_news(symbol)
+        all_fetched_news.extend(articles)
         news_cache = update_news_cache(news_cache, symbol, articles, now_ts)
         news_score = score_sentiment(news_cache.get(symbol, []))
 
@@ -751,6 +1084,12 @@ def run_agent_update():
         })
         time.sleep(0.3)
 
+    # Zusätzliche Makro-Ticker-News nur für den Markt-Sentiment-Überblick
+    # (kein Einfluss auf Trading-Scoring/Portfolio-Auswahl).
+    for macro_sym in MACRO_TICKERS:
+        macro_articles = fetch_news(macro_sym, max_items=5)
+        all_fetched_news.extend(macro_articles)
+
     scored.sort(key=lambda c: c["score"], reverse=True)
     print(f"   {len(scored)} Kandidaten erfolgreich bewertet.")
 
@@ -761,16 +1100,27 @@ def run_agent_update():
     else:
         new_positions, events = rebalance(scored, state, price_lookup, timestamp)
 
+    for sym, pos in new_positions.items():
+        score_history = update_score_history(score_history, sym, pos.get("last_score", 0.0))
+
+    watchlist = build_watchlist(scored, set(new_positions.keys())) if scored else []
+
     realized_total = state.get("realized_pnl_total", 0.0)
     for e in events:
         if e["aktion"] == "VERKAUF" and e.get("realized_pnl") is not None:
             realized_total += e["realized_pnl"]
 
     news_cache = prune_cache_fully(news_cache, now_ts)
+    macro_cache = build_macro_topic_overview(all_fetched_news, macro_cache, now_ts)
+    macro_cache = prune_cache_fully(macro_cache, now_ts)
 
-    new_state = {"positions": new_positions, "realized_pnl_total": realized_total, "last_run": timestamp}
+    new_state = {
+        "positions": new_positions, "realized_pnl_total": realized_total,
+        "last_run": timestamp, "score_history": score_history,
+    }
     save_json(STATE_FILE, new_state)
     save_json(NEWS_CACHE_FILE, news_cache)
+    save_json(MACRO_NEWS_CACHE_FILE, macro_cache)
 
     log_trades(events, timestamp)
 
@@ -786,6 +1136,8 @@ def run_agent_update():
     total_netto = total_brutto - kest
 
     log_snapshot(timestamp, total_brutto, total_unrealized, realized_total, kest, total_netto)
+
+    week_summary = build_week_summary(price_lookup, new_positions)
 
     if prev_snapshot_cols and len(prev_snapshot_cols) >= 6:
         prev_ts, prev_brutto, prev_unreal, prev_real, _prev_kest, prev_netto = prev_snapshot_cols[:6]
@@ -804,7 +1156,8 @@ def run_agent_update():
     trade_log_html = render_trade_log_html(trade_history)
 
     html = render_html(
-        timestamp, new_positions, price_lookup, news_cache, events,
+        timestamp, new_positions, price_lookup, news_cache, macro_cache, score_history,
+        events, watchlist, week_summary,
         total_brutto, total_unrealized, realized_total, kest, total_netto,
         prev_run_html, trade_log_html,
     )
@@ -813,7 +1166,8 @@ def run_agent_update():
         f.write(html)
 
     print(f"✅ Dashboard aktualisiert: {DASHBOARD_FILE} "
-          f"({len(new_positions)} Positionen, {len(events)} Umschichtungen)")
+          f"({len(new_positions)} Positionen, {len(events)} Umschichtungen, "
+          f"{len(watchlist)} Watchlist-Kandidaten)")
 
 
 if __name__ == "__main__":
