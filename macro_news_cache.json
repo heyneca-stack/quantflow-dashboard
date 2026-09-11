@@ -1,6 +1,20 @@
 {
   "Politik/Makro": [
     {
+      "ticker": "AAPL",
+      "title": "What a Republican 'wipeout' in the midterm elections means for investors",
+      "link": "https://finance.yahoo.com/video/republican-wipeout-midterm-elections-means-120000609.html",
+      "publisher": "Yahoo Finance Video",
+      "ts": 1789128000.0
+    },
+    {
+      "ticker": "PFE",
+      "title": "U.S. Stock Funds Rebound In August And Snub Bond Market Warning",
+      "link": "https://www.investors.com/etfs-and-funds/personal-finance/stock-market-funds-rebound-in-august-despite-rising-bond-yields/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789126543.0
+    },
+    {
       "ticker": "^GSPC",
       "title": "Stock futures rise ahead of August CPI inflation report",
       "link": "https://finance.yahoo.com/economy/policy/articles/stock-futures-rise-ahead-august-112731701.html",
@@ -15,11 +29,25 @@
       "ts": 1789125992.0
     },
     {
+      "ticker": "NVDA",
+      "title": "Treasury Secretary Scott Bessent Is Tripling the Government's Bond-Buying Program, but the Bond Market Doesn't Care (and With Good Reason)",
+      "link": "https://finance.yahoo.com/economy/policy/articles/treasury-secretary-scott-bessent-tripling-112601376.html",
+      "publisher": "Motley Fool",
+      "ts": 1789125961.0
+    },
+    {
       "ticker": "AAPL",
       "title": "Dow Jones Futures Rise, Oil Prices Fall, Oracle Jumps; CPI Inflation Data To Inform Fed",
       "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-sp500-oil-prices-treasury-yields-cpi-inflation-oracle-earnings/?src=A00220&yptr=yahoo",
       "publisher": "Investor's Business Daily",
       "ts": 1789125779.0
+    },
+    {
+      "ticker": "^IXIC",
+      "title": "Stock Market Today: Futures Rise Ahead of Key Inflation Reading as Oil Prices, Treasury Yields Pull Back; Oracle Stock Jumps",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-futures-rise-103943781.html",
+      "publisher": "Investopedia",
+      "ts": 1789123183.0
     },
     {
       "ticker": "AMZN",
@@ -29,11 +57,25 @@
       "ts": 1789120200.0
     },
     {
+      "ticker": "BRK-B",
+      "title": "Warren Buffett's Successor, Greg Abel, Has 82% of Berkshire's $360 Billion Portfolio Concentrated in 10 Superstar Stocks",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/warren-buffetts-successor-greg-abel-092601522.html",
+      "publisher": "Motley Fool",
+      "ts": 1789118761.0
+    },
+    {
       "ticker": "^IXIC",
       "title": "Forget Today's Inflation Report: Fed Chair Kevin Warsh and His Colleagues Have Likely Already Made Up Their Mind for the Sept. 16 FOMC Meeting",
       "link": "https://finance.yahoo.com/economy/policy/articles/forget-todays-inflation-report-fed-082601737.html",
       "publisher": "Motley Fool",
       "ts": 1789115161.0
+    },
+    {
+      "ticker": "ASML",
+      "title": "European Indexes Rise as Banks Gain, Software Stocks Fall",
+      "link": "https://www.wsj.com/finance/stocks/nikkei-falls-2-8-dragged-by-chip-stocks-abb86523?siteid=yhoof2&yptr=yahoo",
+      "publisher": "The Wall Street Journal",
+      "ts": 1789111560.0
     },
     {
       "ticker": "MU",
@@ -78,6 +120,13 @@
       "ts": 1789089739.0
     },
     {
+      "ticker": "BRK-B",
+      "title": "Warren Buffett’s $37B ‘mistake’ may now be worth $100B",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/warren-buffett-37b-mistake-may-211700722.html",
+      "publisher": "TheStreet",
+      "ts": 1789075020.0
+    },
+    {
       "ticker": "PLTR",
       "title": "Michael Burry Dumps Nvidia and Palantir Put Options in Fresh Risk Warning",
       "link": "https://finance.yahoo.com/markets/options/articles/michael-burry-dumps-nvidia-palantir-194635018.html",
@@ -90,55 +139,6 @@
       "link": "https://finance.yahoo.com/video/why-hardware-attract-buyers-apples-192906871.html",
       "publisher": "Yahoo Finance Video",
       "ts": 1789068546.0
-    },
-    {
-      "ticker": "IONQ",
-      "title": "Rigetti Secures $100 Million CHIPS Award to Advance Quantum Scaling",
-      "link": "https://finance.yahoo.com/technology/ai/articles/rigetti-secures-100-million-chips-165900381.html",
-      "publisher": "Zacks",
-      "ts": 1789059540.0
-    },
-    {
-      "ticker": "PYPL",
-      "title": "Trump promises $5,000 payout if Republicans win election",
-      "link": "https://finance.yahoo.com/video/trump-promises-5-000-payout-160339939.html",
-      "publisher": "Yahoo Finance Video",
-      "ts": 1789056219.0
-    },
-    {
-      "ticker": "GS",
-      "title": "Comcast and Charter Stocks Bounce Back After Broadband Warning Sparked Selloff",
-      "link": "https://www.barrons.com/articles/comcast-charter-stocks-telecommunications-broadband-a70d425e?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1789055220.0
-    },
-    {
-      "ticker": "JPM",
-      "title": "‘I Am the House Now,’ Bessent Warns — But Bond Traders Keep Raising Yields Anyway",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/am-house-now-bessent-warns-150914527.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789052954.0
-    },
-    {
-      "ticker": "F",
-      "title": "Can Ford Overcome Tariff and Commodity Cost Headwinds in 2026?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/ford-overcome-tariff-commodity-cost-142600509.html",
-      "publisher": "Zacks",
-      "ts": 1789050360.0
-    },
-    {
-      "ticker": "JPM",
-      "title": "AI Companies’ Debt Now Equals 68% of New Long-Term U.S. Treasury Borrowing This Year, JPMorgan Finds",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/ai-companies-debt-now-equals-140030154.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789048830.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Treasury yields rise as investors raise bets on Fed rate hike: AlphaCheck",
-      "link": "https://finance.yahoo.com/markets/article/treasury-yields-rise-as-investors-raise-bets-on-fed-rate-hike-alphacheck-135652896.html",
-      "publisher": "Yahoo Finance",
-      "ts": 1789048612.0
     }
   ],
   "Wirtschaft": [
@@ -185,6 +185,13 @@
       "ts": 1789123703.0
     },
     {
+      "ticker": "ADBE",
+      "title": "Adobe Stock Falls After Strong Earnings. What’s Keeping the Shares Under Pressure.",
+      "link": "https://www.barrons.com/articles/adobe-earnings-stock-price-d384388b?siteid=yhoof2&yptr=yahoo",
+      "publisher": "Barrons.com",
+      "ts": 1789120200.0
+    },
+    {
       "ticker": "^IXIC",
       "title": "The Stock Market Is Repeating a Pattern Not Seen Since the Dot-Com Bubble. History Says Investors Should Make This 1 Move Right Now.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/stock-market-repeating-pattern-not-092000221.html",
@@ -197,6 +204,13 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/nasdaq-dow-p-500-futures-083352033.html",
       "publisher": "Stocktwits",
       "ts": 1789115632.0
+    },
+    {
+      "ticker": "VRT",
+      "title": "1 Big Reason Vertiv's New Acquisition Could Supercharge Its AI Dominance",
+      "link": "https://finance.yahoo.com/technology/ai/articles/1-big-reason-vertivs-acquisition-062500023.html",
+      "publisher": "Motley Fool",
+      "ts": 1789107900.0
     },
     {
       "ticker": "META",
@@ -234,6 +248,13 @@
       "ts": 1789076827.0
     },
     {
+      "ticker": "JBL",
+      "title": "Adobe Systems (ADBE) Q3 Earnings and Revenues Beat Estimates",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/adobe-systems-adbe-q3-earnings-212501160.html",
+      "publisher": "Zacks",
+      "ts": 1789075501.0
+    },
+    {
       "ticker": "AMZN",
       "title": "Oracle earnings: Do concentration risks fall on Oracle or the big AI firms?",
       "link": "https://finance.yahoo.com/video/oracle-earnings-concentration-risks-fall-203751982.html",
@@ -260,30 +281,23 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/salesforce-just-gained-23-month-190115206.html",
       "publisher": "24/7 Wall St.",
       "ts": 1789066875.0
-    },
-    {
-      "ticker": "AMD",
-      "title": "NVIDIA vs. AMD After Earnings: Which AI Stock Should You Buy Now?",
-      "link": "https://finance.yahoo.com/technology/ai/articles/nvidia-vs-amd-earnings-ai-190000157.html",
-      "publisher": "Zacks",
-      "ts": 1789066800.0
-    },
-    {
-      "ticker": "AVGO",
-      "title": "Marvell Technology vs. Broadcom: Comparing Revenue Trends Between These Artificial Intelligence Companies",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/marvell-technology-vs-broadcom-comparing-181707428.html",
-      "publisher": "Motley Fool",
-      "ts": 1789064227.0
-    },
-    {
-      "ticker": "RDDT",
-      "title": "2 S&P 500 Stocks with Exciting Potential and 1 We Question",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/2-p-500-stocks-exciting-174504808.html",
-      "publisher": "StockStory",
-      "ts": 1789062304.0
     }
   ],
   "Technologie": [
+    {
+      "ticker": "TSM",
+      "title": "3 Top-Ranked AI Semiconductor Equipment Stocks Amid Huge Price Upside",
+      "link": "https://finance.yahoo.com/technology/ai/articles/3-top-ranked-ai-semiconductor-113500618.html",
+      "publisher": "Zacks",
+      "ts": 1789126500.0
+    },
+    {
+      "ticker": "AMZN",
+      "title": "Qualcomm Sold Server Chips Once Before and Quit Within a Year. History Says What Has to Be Different This Time.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/qualcomm-sold-server-chips-once-113401599.html",
+      "publisher": "Motley Fool",
+      "ts": 1789126441.0
+    },
     {
       "ticker": "META",
       "title": "Meta reversing course on flat org structure in Applied AI division",
@@ -304,6 +318,13 @@
       "link": "https://finance.yahoo.com/technology/articles/relatively-unknown-cloud-provider-gets-110300155.html",
       "publisher": "TheStreet",
       "ts": 1789124580.0
+    },
+    {
+      "ticker": "ANET",
+      "title": "Arista Networks Sees AI Demand Fueling 40% Growth, $9.6B in Supply Commitments",
+      "link": "https://finance.yahoo.com/technology/ai/articles/arista-networks-sees-ai-demand-110204747.html",
+      "publisher": "MarketBeat",
+      "ts": 1789124524.0
     },
     {
       "ticker": "ADBE",
@@ -332,6 +353,13 @@
       "link": "https://tech.yahoo.com/ai/meta-ai/articles/meta-trending-unveiling-muse-first-100009008.html",
       "publisher": "Benzinga",
       "ts": 1789120809.0
+    },
+    {
+      "ticker": "VRT",
+      "title": "Prediction: This Underrated AI Infrastructure Stock Will Continue Soaring Despite Doubling in a Year",
+      "link": "https://finance.yahoo.com/technology/ai/articles/prediction-underrated-ai-infrastructure-stock-094702819.html",
+      "publisher": "Motley Fool",
+      "ts": 1789120022.0
     },
     {
       "ticker": "GOOGL",
@@ -395,37 +423,58 @@
       "link": "https://finance.yahoo.com/technology/ai/articles/google-raises-investments-finland-support-033020422.html",
       "publisher": "Benzinga",
       "ts": 1789097420.0
-    },
-    {
-      "ticker": "MSFT",
-      "title": "Microsoft Eyes Massive Data Center Push To Triple Computing Power And Solve Capacity Bottlenecks, Says Report",
-      "link": "https://finance.yahoo.com/technology/articles/microsoft-eyes-massive-data-center-233026556.html",
-      "publisher": "Stocktwits",
-      "ts": 1789083026.0
-    },
-    {
-      "ticker": "PLTR",
-      "title": "Palantir Technologies Showcases Sovereign AI Wins With NVIDIA, Cisco and FAA",
-      "link": "https://finance.yahoo.com/technology/ai/articles/palantir-technologies-showcases-sovereign-ai-230311890.html",
-      "publisher": "MarketBeat",
-      "ts": 1789081391.0
-    },
-    {
-      "ticker": "MSFT",
-      "title": "Remain Bullish on AI Beneficiaries Like Bloom Energy",
-      "link": "https://finance.yahoo.com/technology/ai/articles/remain-bullish-ai-beneficiaries-bloom-225000093.html",
-      "publisher": "Zacks",
-      "ts": 1789080600.0
-    },
-    {
-      "ticker": "CIFR",
-      "title": "Fluidstack in talks for $5 billion Pentagon AI infrastructure loan: WSJ",
-      "link": "https://finance.yahoo.com/technology/ai/articles/fluidstack-talks-5-billion-pentagon-224816413.html",
-      "publisher": "Blockspace",
-      "ts": 1789080496.0
     }
   ],
   "Sonstiges": [
+    {
+      "ticker": "PLTR",
+      "title": "Top Funds Aren't Fooling Around. Witness Massive Bets On CrowdStrike And Beyond.",
+      "link": "https://www.investors.com/etfs-and-funds/mutual-funds/best-mutual-funds-bet-big-on-crowdstrike-marvell-and-more-palantir-stock-returns-to-list/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789128053.0
+    },
+    {
+      "ticker": "TSLA",
+      "title": "South Korean import sales rise 9% in August",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/south-korean-import-sales-rise-115809654.html",
+      "publisher": "Just Auto",
+      "ts": 1789127889.0
+    },
+    {
+      "ticker": "^GSPC",
+      "title": "FCX's Shares Up 20% in 6 Months: What Should Investors Do Now?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/fcxs-shares-20-6-months-115300623.html",
+      "publisher": "Zacks",
+      "ts": 1789127580.0
+    },
+    {
+      "ticker": "^GSPC",
+      "title": "Can Dogecoin Reach $1 by 2027? The Answer Might Shock You.",
+      "link": "https://finance.yahoo.com/markets/crypto/articles/dogecoin-reach-1-2027-answer-115000856.html",
+      "publisher": "Motley Fool",
+      "ts": 1789127400.0
+    },
+    {
+      "ticker": "XOM",
+      "title": "How Much Dividend Income Can You Buy With $250,000?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/much-dividend-income-buy-250-114741945.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789127261.0
+    },
+    {
+      "ticker": "^GSPC",
+      "title": "Should You Bet Big on Drugmakers? VanEck Pharmaceutical ETF vs. Invesco Healthcare ETF Compared.",
+      "link": "https://finance.yahoo.com/healthcare/articles/bet-big-drugmakers-vaneck-pharmaceutical-113701888.html",
+      "publisher": "Motley Fool",
+      "ts": 1789126621.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Bitmine Just Made Its Largest Ethereum Purchase Since June. Here's Why That Matters For Ethereum Investors.",
+      "link": "https://finance.yahoo.com/markets/crypto/articles/bitmine-just-made-largest-ethereum-113000644.html",
+      "publisher": "Motley Fool",
+      "ts": 1789126200.0
+    },
     {
       "ticker": "CRM",
       "title": "The Agent Measurement Problem: Five Competing Metrics, No Standard",
@@ -476,6 +525,13 @@
       "ts": 1789125067.0
     },
     {
+      "ticker": "RKLB",
+      "title": "Rocket Lab Completes 16th Electron Launch of 2026",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/rocket-lab-completes-16th-electron-110240627.html",
+      "publisher": "InvestorsHub",
+      "ts": 1789124560.0
+    },
+    {
       "ticker": "SPCX",
       "title": "SpaceX at $148: The Single Metric Investors Must Follow",
       "link": "https://finance.yahoo.com/markets/stocks/articles/spacex-148-single-metric-investors-110129066.html",
@@ -509,62 +565,6 @@
       "link": "https://finance.yahoo.com/technology/articles/mastercard-launches-wallet-pay-boost-103611074.html",
       "publisher": "Electronic Payments",
       "ts": 1789122971.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "SpaceX’s Undisclosed $13.3B Tenant: Who Is the Compute Landlord’s Largest New Customer?",
-      "link": "https://finance.yahoo.com/technology/ai/articles/spacex-undisclosed-13-3b-tenant-102502352.html",
-      "publisher": "Forkast News",
-      "ts": 1789122302.0
-    },
-    {
-      "ticker": "SPCX",
-      "title": "SpaceX Stock Is Back Above $150. Here’s Where The Stock Could Be by the End of 2027",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/spacex-stock-back-above-150-102002492.html",
-      "publisher": "Motley Fool",
-      "ts": 1789122002.0
-    },
-    {
-      "ticker": "SPCX",
-      "title": "He’s lost hundreds of thousands in stocks like SpaceX and Beyond Meat — and he’s not stopping. Is the ‘high’ worth it?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/lost-hundreds-thousands-stocks-spacex-101500008.html",
-      "publisher": "Moneywise",
-      "ts": 1789121700.0
-    },
-    {
-      "ticker": "AAPL",
-      "title": "Kalshi Eyes 24/7 Leveraged Bets on TSLA, NVDA and AAPL With New Perpetual Futures Push: Report",
-      "link": "https://finance.yahoo.com/markets/options/articles/kalshi-eyes-24-7-leveraged-101315727.html",
-      "publisher": "Benzinga Prediction Markets",
-      "ts": 1789121595.0
-    },
-    {
-      "ticker": "XOM",
-      "title": "Diesel Prices Soar to $6 for First Time. The Fed’s Rate Decision Is Getting Simpler.",
-      "link": "https://www.barrons.com/articles/diesel-prices-fed-rate-decision-c9076122?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1789120200.0
-    },
-    {
-      "ticker": "BA",
-      "title": "Elon Musk Backs Moving NASA SLS Workforce Elsewhere, Says ‘Better To Repurpose’ Workers As Multibillion-Dollar Rocket Faces Cost Questions",
-      "link": "https://www.yahoo.com/news/science/articles/elon-musk-backs-moving-nasa-094509368.html",
-      "publisher": "Benzinga",
-      "ts": 1789119909.0
-    },
-    {
-      "ticker": "BSP",
-      "title": "At Bending Spoons, the Numbers Are the Real Mind-Bender",
-      "link": "https://www.wsj.com/finance/investing/at-bending-spoons-the-numbers-are-the-real-mind-bender-43f10bee?siteid=yhoof2&yptr=yahoo",
-      "publisher": "The Wall Street Journal",
-      "ts": 1789119000.0
-    },
-    {
-      "ticker": "GS",
-      "title": "The Zacks Analyst Blog Highlights Goldman Sachs, RTX, Abbott, NLI and Precipio",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-goldman-092000522.html",
-      "publisher": "Zacks",
-      "ts": 1789118400.0
     }
   ]
 }

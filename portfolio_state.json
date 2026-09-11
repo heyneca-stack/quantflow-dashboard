@@ -36,6 +36,15 @@
       "last_score": 22.1249674039614,
       "risk_flag": false
     },
+    "HY9H.F": {
+      "entry_price": 1170.0,
+      "entry_date": "2026-09-11 12:01:35 UTC",
+      "shares": 4.273504273504273,
+      "category": "Quick Win",
+      "type": "Musterdepot",
+      "last_score": 18.814321684240294,
+      "risk_flag": false
+    },
     "VEON": {
       "entry_price": 69.16000366210938,
       "entry_date": "2026-09-11 10:42:08 UTC",
@@ -70,7 +79,7 @@
       "category": "Quick Win",
       "type": "Trend-Kandidat",
       "last_score": 15.241792249294255,
-      "risk_flag": false
+      "risk_flag": true
     },
     "INTR": {
       "entry_price": 5.78000020980835,
@@ -80,49 +89,52 @@
       "type": "Trend-Kandidat",
       "last_score": 13.800205125701561,
       "risk_flag": true
-    },
-    "SPCX": {
-      "entry_price": 148.17999267578125,
-      "entry_date": "2026-09-11 11:37:09 UTC",
-      "shares": 33.742746977589825,
-      "category": "Quick Win",
-      "type": "Trend-Kandidat",
-      "last_score": 13.44888662217242,
-      "risk_flag": true
     }
   },
   "realized_pnl_total": 0.0,
-  "last_run": "2026-09-11 11:37:09 UTC",
+  "last_run": "2026-09-11 12:01:35 UTC",
   "score_history": {
     "MRNA": [
+      39.5145,
       39.5145
     ],
     "SWKS": [
+      30.5262,
       30.5262
     ],
     "ASO": [
+      30.0495,
       30.0495
     ],
     "QRVO": [
+      22.125,
       22.125
     ],
     "VEON": [
+      18.1434,
       18.1434
     ],
     "QCOM": [
+      16.6846,
       16.6846
     ],
     "NOK": [
+      16.251,
       16.251
     ],
     "VIST": [
+      15.2418,
       15.2418
     ],
     "INTR": [
+      13.8002,
       13.8002
     ],
     "SPCX": [
       13.4489
+    ],
+    "HY9H.F": [
+      18.8143
     ]
   }
 }
