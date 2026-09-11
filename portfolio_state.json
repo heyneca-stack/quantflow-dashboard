@@ -1,1 +1,376 @@
-{}
+{
+  "positions": {
+    "MRNA": {
+      "entry_price": 146.6199951171875,
+      "entry_date": "2026-09-11 14:28:48 UTC",
+      "shares": 35,
+      "category": "Quick Win",
+      "type": "Pharma",
+      "last_score": 51.384971417675544,
+      "risk_flag": false
+    },
+    "SWKS": {
+      "entry_price": 91.33999633789062,
+      "entry_date": "2026-09-11 14:28:48 UTC",
+      "shares": 54,
+      "category": "Quick Win",
+      "type": "Trend-Kandidat",
+      "last_score": 39.67370546158803,
+      "risk_flag": false
+    },
+    "SBET": {
+      "entry_price": 9.289999961853027,
+      "entry_date": "2026-09-11 14:28:48 UTC",
+      "shares": 543,
+      "category": "Quick Win",
+      "type": "Trend-Kandidat",
+      "last_score": 35.370017136656436,
+      "risk_flag": false
+    },
+    "BMNR": {
+      "entry_price": 26.424999237060547,
+      "entry_date": "2026-09-11 14:28:48 UTC",
+      "shares": 189,
+      "category": "Quick Win",
+      "type": "Trend-Kandidat",
+      "last_score": 34.44995934282744,
+      "risk_flag": false
+    },
+    "PURR": {
+      "entry_price": 12.0600004196167,
+      "entry_date": "2026-09-11 14:28:48 UTC",
+      "shares": 414,
+      "category": "Quick Win",
+      "type": "Trend-Kandidat",
+      "last_score": 34.20107771525951,
+      "risk_flag": false
+    },
+    "INSP": {
+      "entry_price": 74.0199966430664,
+      "entry_date": "2026-09-11 14:28:48 UTC",
+      "shares": 67,
+      "category": "Quick Win",
+      "type": "Trend-Kandidat",
+      "last_score": 32.23431051562605,
+      "risk_flag": false
+    },
+    "MARA": {
+      "entry_price": 12.255000114440918,
+      "entry_date": "2026-09-11 14:28:48 UTC",
+      "shares": 407,
+      "category": "Quick Win",
+      "type": "Trend-Kandidat",
+      "last_score": 28.243741252343,
+      "risk_flag": false
+    },
+    "CLSK": {
+      "entry_price": 13.84000015258789,
+      "entry_date": "2026-09-11 14:28:48 UTC",
+      "shares": 361,
+      "category": "Quick Win",
+      "type": "Trend-Kandidat",
+      "last_score": 26.223209132175697,
+      "risk_flag": false
+    },
+    "HPQ": {
+      "entry_price": 35.959999084472656,
+      "entry_date": "2026-09-11 14:28:48 UTC",
+      "shares": 139,
+      "category": "Quick Win",
+      "type": "Trend-Kandidat",
+      "last_score": 23.800441708001816,
+      "risk_flag": true
+    },
+    "HUT": {
+      "entry_price": 99.08499908447266,
+      "entry_date": "2026-09-11 14:28:48 UTC",
+      "shares": 50,
+      "category": "Quick Win",
+      "type": "Trend-Kandidat",
+      "last_score": 23.429113196943273,
+      "risk_flag": true
+    }
+  },
+  "realized_pnl_total": 0.0,
+  "cash_balance": 8.250656127929688,
+  "tax_paid_total": 0.0,
+  "last_run": "2026-09-11 14:28:48 UTC",
+  "score_history": {
+    "MRNA": [
+      51.385
+    ],
+    "SWKS": [
+      39.6737
+    ],
+    "SBET": [
+      35.37
+    ],
+    "BMNR": [
+      34.45
+    ],
+    "PURR": [
+      34.2011
+    ],
+    "INSP": [
+      32.2343
+    ],
+    "MARA": [
+      28.2437
+    ],
+    "CLSK": [
+      26.2232
+    ],
+    "HPQ": [
+      23.8004
+    ],
+    "HUT": [
+      23.4291
+    ],
+    "DELL": [
+      23.2936
+    ],
+    "HPE": [
+      22.2456
+    ],
+    "QCOM": [
+      22.0213
+    ],
+    "NOK": [
+      21.9042
+    ],
+    "MRVL": [
+      21.6567
+    ],
+    "SMCI": [
+      20.9859
+    ],
+    "PHVS": [
+      20.2321
+    ],
+    "SKHY": [
+      18.9527
+    ],
+    "AMD": [
+      18.4338
+    ],
+    "HY9H.F": [
+      17.145
+    ],
+    "ORCL": [
+      16.1564
+    ],
+    "AXSM": [
+      15.3373
+    ],
+    "INTC": [
+      15.2448
+    ],
+    "IREN": [
+      14.4255
+    ],
+    "META": [
+      13.5809
+    ],
+    "BTCE.DE": [
+      13.1497
+    ],
+    "TSM": [
+      11.3604
+    ],
+    "MU": [
+      10.6459
+    ],
+    "CIFR": [
+      10.2668
+    ],
+    "FIX": [
+      10.1539
+    ],
+    "CVX": [
+      9.9875
+    ],
+    "JBL": [
+      9.5768
+    ],
+    "CRM": [
+      9.4541
+    ],
+    "CORZ": [
+      9.2828
+    ],
+    "SPCX": [
+      9.2467
+    ],
+    "ANET": [
+      9.1781
+    ],
+    "AAPL": [
+      8.8056
+    ],
+    "SNPS": [
+      8.7667
+    ],
+    "XOM": [
+      8.4702
+    ],
+    "TSLA": [
+      8.1238
+    ],
+    "SMSN.L": [
+      8.0013
+    ],
+    "BGSI": [
+      7.0998
+    ],
+    "CAT": [
+      7.0314
+    ],
+    "NVDA": [
+      7.0268
+    ],
+    "DIS": [
+      6.7587
+    ],
+    "HONA": [
+      6.7091
+    ],
+    "CMI": [
+      6.1051
+    ],
+    "GOOGL": [
+      6.0558
+    ],
+    "WDC": [
+      6.0077
+    ],
+    "GNRC": [
+      5.7199
+    ],
+    "LRCX": [
+      5.4352
+    ],
+    "MSFT": [
+      5.1128
+    ],
+    "EME": [
+      4.914
+    ],
+    "S": [
+      4.8318
+    ],
+    "AVGO": [
+      4.8153
+    ],
+    "ZS": [
+      4.7431
+    ],
+    "PWR": [
+      4.7154
+    ],
+    "AMZN": [
+      4.6699
+    ],
+    "APH": [
+      4.6281
+    ],
+    "RKLB": [
+      4.4292
+    ],
+    "VRT": [
+      3.7887
+    ],
+    "ASML": [
+      3.6033
+    ],
+    "BA": [
+      2.4271
+    ],
+    "NIO": [
+      2.0647
+    ],
+    "NOW": [
+      1.2668
+    ],
+    "IONQ": [
+      1.213
+    ],
+    "BESI.AS": [
+      1.1374
+    ],
+    "XLE": [
+      1.1114
+    ],
+    "PFE": [
+      0.9667
+    ],
+    "ASTS": [
+      0.9583
+    ],
+    "PYPL": [
+      0.5801
+    ],
+    "SNOW": [
+      0.1618
+    ],
+    "SXRV.DE": [
+      -0.01
+    ],
+    "JPM": [
+      -0.0598
+    ],
+    "LYMS.DE": [
+      -0.0841
+    ],
+    "SXR8.DE": [
+      -0.1269
+    ],
+    "DG.PA": [
+      -0.1422
+    ],
+    "VUAA.DE": [
+      -0.1794
+    ],
+    "BRK-B": [
+      -0.2093
+    ],
+    "V": [
+      -0.9144
+    ],
+    "CDNS": [
+      -1.3354
+    ],
+    "PANW": [
+      -1.6791
+    ],
+    "FTNT": [
+      -1.7208
+    ],
+    "GS": [
+      -2.039
+    ],
+    "ADBE": [
+      -2.2414
+    ],
+    "PLTR": [
+      -2.4654
+    ],
+    "MA": [
+      -3.9539
+    ],
+    "CRWD": [
+      -4.0258
+    ],
+    "HON": [
+      -4.1407
+    ],
+    "SMR": [
+      -8.3962
+    ],
+    "OCGN": [
+      -9.3483
+    ],
+    "GRAB": [
+      -9.9514
+    ]
+  }
+}
