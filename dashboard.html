@@ -6,14 +6,7 @@
     <title>QuantFlow Tech Agent Dashboard v2.0</title>
     <style>
         :root {
-            --bg-dark: #0f111a;
-            --bg-card: #161925;
-            --text-main: #f0f2f5;
-            --text-muted: #8a92b2;
-            --green: #00e676;
-            --red: #ff3d00;
-            --blue: #00b0ff;
-            --border: #22273d;
+            --bg-dark: #0f111a;--bg-card: #161925;--text-main: #f0f2f5;--text-muted: #8a92b2;--green: #00e676;--red: #ff3d00;--blue: #00b0ff;--border: #22273d;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-main); padding: 20px; line-height: 1.5; }
@@ -21,10 +14,12 @@
         .logo-area h1 { font-size: 24px; font-weight: 700; color: var(--text-main); }
         .logo-area span { color: var(--text-muted); font-size: 12px; }
         .controls-area { display: flex; align-items: center; gap: 15px; }
-        select { background-color: var(--bg-card); color: var(--text-main); border: 1px solid var(--border); padding: 8px 16px; border-radius: 6px; cursor: pointer; }
-        .btn-refresh { background-color: var(--blue); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: background 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn-refresh { background-color: var(--blue); color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-weight: bold; transition: background 0.3s; display: flex; align-items: center; gap: 8px; text-decoration: none; }
         .btn-refresh:hover { background-color: #0091ea; }
-        .btn-refresh:disabled { background-color: #5a6268; cursor: not-allowed; }
+
+        @keyframes blink { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+        .loading-active { background-color: #ff9100 !important; animation: blink 1.2s infinite; }
+
         .accounting-bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; margin-bottom: 25px; }
         .acc-item { background-color: var(--bg-card); padding: 12px 20px; border-radius: 8px; border: 1px solid var(--border); }
         .acc-item label { font-size: 11px; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; display: block; margin-bottom: 4px; }
@@ -55,70 +50,154 @@
     </style>
 </head>
 <body>
-
     <header>
         <div class="logo-area">
             <h1>QuantFlow Tech Agent Dashboard <span style="color:var(--blue); font-size:14px;">v2.0</span></h1>
-            <span>Live Option Flow & Macro Engine — 4-Stunden Taktung</span>
+            <span>Live Option Flow & Macro Engine — Letztes Update: 2026-09-11 09:29:44</span>
         </div>
         <div class="controls-area">
-            <select id="archive-select">
-                <option value="current">Aktuelle Woche (KW 37 - 2026)</option>
-                <option value="w-1">Vor 1 Woche (KW 36)</option>
-                <option value="w-2">Vor 2 Wochen (KW 35)</option>
-                <option value="w-3">Vor 3 Wochen (KW 34)</option>
-            </select>
-            <button id="refresh-btn" onclick="triggerManualUpdate()" class="btn-refresh">
-                🔄 Jetzt aktualisieren
-            </button>
-            <!-- CSV_DOWNLOAD_MARKER -->
-            <a href="portfolio_log.csv" download class="btn-refresh" style="background-color: #28a745; text-decoration: none;">📊 CSV Historie</a>
+            <button id="refresh-btn" onclick="triggerManualUpdate()" class="btn-refresh">🔄 Jetzt aktualisieren</button>
+            <a href="portfolio_log.csv" download class="btn-refresh" style="background-color: #28a745;">📊 CSV Historie</a>
         </div>
     </header>
 
-    <!-- P_ACCOUNTING_BAR -->
     <section class="accounting-bar">
-        <div class="acc-item"><label>Gesamtwert Depot (Brutto)</label><div class="val">51.482,50 €</div></div>
-        <div class="acc-item"><label>Nicht realisierter Gewinn</label><div class="val pos">+1.482,50 €</div></div>
-        <div class="acc-item"><label>Rückstellung KESt (26%)</label><div class="val neg">-385,45 €</div></div>
-        <div class="acc-item"><label>Depotwert (Netto nach Steuern)</label><div class="val" style="color: var(--green);">51.097,05 €</div></div>
-        <div class="acc-item"><label>Turnaround-Gewichtung (Limit 20%)</label><div class="val" style="color: var(--blue);">14,2 % <span class="badge" style="background:var(--green); color:#000;">OK</span></div></div>
+        <div class="acc-item"><label>Gesamtwert Depot (Brutto)</label><div class="val">64.274,27 €</div></div>
+        <div class="acc-item"><label>Nicht realisierter Gewinn</label><div class="val pos">+13.769,30 €</div></div>
+        <div class="acc-item"><label>Rückstellung KESt (26%)</label><div class="val neg">-3.580,02 €</div></div>
+        <div class="acc-item"><label>Netto-Wert (nach Steuer)</label><div class="val">60.694,25 €</div></div>
+        <div class="acc-item"><label>Turnaround-Anteil</label><div class="val" style="color:var(--red);">47.6% <span class="badge" style="background:var(--red); color:#0f111a;">LIMIT EXCEEDED</span></div></div>
     </section>
 
-    <main class="main-layout">
-        <section class="card">
-            <div class="card-title">📌 Live Portfolio & Multi-Performance Matrix</div>
+    <div class="main-layout">
+        <div class="card">
+            <div class="card-title">📈 Portfolio-Positionen</div>
             <table>
                 <thead>
                     <tr>
                         <th>Ticker</th>
-                        <th>Typ</th>
-                        <th>Tagesperf.</th>
-                        <th>3 Tage Tendenz</th>
-                        <th>1 Woche Perf</th>
-                        <th>4 Wochen Perf</th>
+                        <th>Sektor</th>
+                        <th>Tag %</th>
+                        <th>Trend (3T)</th>
+                        <th>Woche %</th>
+                        <th>Seit Einstieg %</th>
                     </tr>
                 </thead>
-                <!-- P_TABLE_BODY -->
                 <tbody>
-                    <tr><td>AAPL</td><td><span class="badge">Core Tech</span></td><td class="pos">+0.85%</td><td class="tendency pos">▲ ▲ ▼</td><td class="pos">+2.10%</td><td class="pos">+5.40%</td></tr>
-                    <tr><td>META</td><td><span class="badge">Core Tech</span></td><td class="pos">+2.40%</td><td class="tendency pos">▲ ▲ ▲</td><td class="pos">+6.55%</td><td class="pos">+11.60%</td></tr>
-                    <tr><td>ORCL</td><td><span class="badge">Cloud Tech</span></td><td class="pos">+4.12%</td><td class="tendency pos">▲ ▲ ▲</td><td class="pos">+5.20%</td><td class="pos">+8.90%</td></tr>
-                    <tr><td>PANW</td><td><span class="badge">Cyber Tech</span></td><td class="neg">-0.15%</td><td class="tendency neg">▼ ▲ ▲</td><td class="pos">+1.45%</td><td class="pos">+4.10%</td></tr>
-                    <tr><td>NVDA</td><td><span class="badge">Halbleiter</span></td><td class="neg">-2.33%</td><td class="tendency neg">▼ ▼ ▼</td><td class="neg">-4.10%</td><td class="neg">-8.45%</td></tr>
-                    <tr><td>XLE</td><td><span class="badge">Energie Hedge</span></td><td class="pos">+1.10%</td><td class="tendency pos">▲ ▼ ▲</td><td class="pos">+3.90%</td><td class="pos">+2.80%</td></tr>
-                    <tr><td>INTC</td><td><span class="badge">Turnaround</span></td><td class="neg">-0.45%</td><td class="tendency neg">▼ ▲ ▼</td><td class="neg">-0.90%</td><td class="neg">-2.10%</td></tr>
-                    <tr><td>PYPL</td><td><span class="badge">Turnaround</span></td><td class="pos">+0.20%</td><td class="tendency pos">▲ ▼ ▲</td><td class="pos">+1.15%</td><td class="pos">+3.40%</td></tr>
-                    <tr><td>DIS</td><td><span class="badge">Turnaround</span></td><td class="neg">-0.10%</td><td class="tendency neg">▼ ▼ ▲</td><td class="neg">-0.50%</td><td class="pos">+1.20%</td></tr>
-                    <tr><td>PFE</td><td><span class="badge">Value Hedge</span></td><td class="pos">+0.35%</td><td class="tendency pos">▲ ▲ ▼</td><td class="pos">+0.80%</td><td class="neg">-0.40%</td></tr>
+                    <tr>
+                        <td class="ticker-name">AAPL</td>
+                        <td><span class="badge">Core Tech</span></td>
+                        <td class="pos">+3.56%</td>
+                        <td class="tendency pos">▼ ▼ ▲</td>
+                        <td class="pos">+4.01%</td>
+                        <td class="pos">+0.00%</td>
+                    </tr>
+                    <tr>
+                        <td class="ticker-name">META</td>
+                        <td><span class="badge">Core Tech</span></td>
+                        <td class="neg">-1.42%</td>
+                        <td class="tendency neg">▼ ▲ ▼</td>
+                        <td class="neg">-0.97%</td>
+                        <td class="pos">+19.33%</td>
+                    </tr>
+                    <tr>
+                        <td class="ticker-name">ORCL</td>
+                        <td><span class="badge">Cloud Tech</span></td>
+                        <td class="neg">-5.38%</td>
+                        <td class="tendency neg">▲ ▼ ▼</td>
+                        <td class="neg">-4.93%</td>
+                        <td class="neg">-16.20%</td>
+                    </tr>
+                    <tr>
+                        <td class="ticker-name">PANW</td>
+                        <td><span class="badge">Cyber Tech</span></td>
+                        <td class="pos">+1.01%</td>
+                        <td class="tendency pos">▲ ▼ ▲</td>
+                        <td class="pos">+1.46%</td>
+                        <td class="neg">-9.03%</td>
+                    </tr>
+                    <tr>
+                        <td class="ticker-name">NVDA</td>
+                        <td><span class="badge">Halbleiter</span></td>
+                        <td class="neg">-2.26%</td>
+                        <td class="tendency neg">▼ ▼ ▼</td>
+                        <td class="neg">-1.81%</td>
+                        <td class="pos">+0.00%</td>
+                    </tr>
+                    <tr>
+                        <td class="ticker-name">XLE</td>
+                        <td><span class="badge">Energie Hedge</span></td>
+                        <td class="neg">-0.58%</td>
+                        <td class="tendency neg">▲ ▲ ▼</td>
+                        <td class="neg">-0.13%</td>
+                        <td class="neg">-31.51%</td>
+                    </tr>
+                    <tr>
+                        <td class="ticker-name">INTC</td>
+                        <td><span class="badge">Turnaround</span></td>
+                        <td class="neg">-5.57%</td>
+                        <td class="tendency neg">▲ ▲ ▼</td>
+                        <td class="neg">-5.12%</td>
+                        <td class="pos">+321.51%</td>
+                    </tr>
+                    <tr>
+                        <td class="ticker-name">PYPL</td>
+                        <td><span class="badge">Turnaround</span></td>
+                        <td class="pos">+2.19%</td>
+                        <td class="tendency pos">▼ ▼ ▲</td>
+                        <td class="pos">+2.64%</td>
+                        <td class="neg">-23.29%</td>
+                    </tr>
+                    <tr>
+                        <td class="ticker-name">DIS</td>
+                        <td><span class="badge">Turnaround</span></td>
+                        <td class="pos">+1.57%</td>
+                        <td class="tendency pos">▼ ▼ ▲</td>
+                        <td class="pos">+2.02%</td>
+                        <td class="pos">+14.28%</td>
+                    </tr>
+                    <tr>
+                        <td class="ticker-name">PFE</td>
+                        <td><span class="badge">Value Hedge</span></td>
+                        <td class="neg">-0.47%</td>
+                        <td class="tendency neg">▼ ▼ ▼</td>
+                        <td class="neg">-0.02%</td>
+                        <td class="pos">+2.41%</td>
+                    </tr>
                 </tbody>
             </table>
-        </section>
+        </div>
+        <div class="side-panel">
+            <div class="card-title">⚡ Auffällige Bewegungen</div>
+                <div class="signal-item buy"><div class="signal-title">AAPL: starker Tagesgewinn +3.56%</div></div>
+                <div class="signal-item"><div class="signal-title">ORCL: -16.2% seit Einstieg – größter Rücksetzer im Depot</div></div>
+                <div class="signal-item"><div class="signal-title">XLE: -31.5% seit Einstieg – größter Rücksetzer im Depot</div></div>
+                <div class="signal-item"><div class="signal-title">INTC: starker Tagesverlust -5.57%</div></div>
+                <div class="signal-item"><div class="signal-title">PYPL: -23.3% seit Einstieg – größter Rücksetzer im Depot</div></div>
+        </div>
+    </div>
 
-        <section class="card">
-            <div class="card-title">📰 4h Wirtschaftspresse & 📊 Umschichtungssignale</div>
-            <!-- P_SIDE_PANEL -->
-            <div class="side-panel">
-                <div class="signal-item"><div class="signal-title" style="color:var(--red);">🚨 EMPFEHLUNG: NVDA LIQUIDIEREN</div><div class="news-summary">Bruch der lokalen Unterstützung an der Put-Wall (215 USD). Institutionen schichten Kapital um. Momentum kurzfristig gefährdet.</div></div>
-                <div class="signal-item buy"><div class="signal-title" style="color:var(--green);">➕ NEUER KANDIDAT: MSFT KAUFEN</div><div class="news-summary">Aggressive Call-Sweeps am Ask detektiert. Microsoft zeigt starke relative Stärke zum schwächelnden Gesamtmarkt. Optimaler Tausch für den Tech-Slot.</div></div>
-                <hr style="border: 0; border-top: 1px solid var(--border); margin: 5px 0;">
+    <div class="historical-view">
+        <div class="card-title">🕓 Verlauf</div>
+        <div class="hist-grid">
+            <div class="hist-box">
+                <h4>Aktueller Lauf</h4>
+                2026-09-11 09:29:44<br>Brutto: 64.274,27 €<br>Netto: 60.694,25 €
+            </div>
+            <div class="hist-box">
+                <h4>Vorheriger Lauf</h4>
+                Noch keine vorherigen Daten vorhanden.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function triggerManualUpdate() {
+            var btn = document.getElementById('refresh-btn');
+            btn.classList.add('loading-active');
+            btn.innerText = '⏳ Aktualisiere...';
+            setTimeout(function () { location.reload(true); }, 800);
+        }
+    </script>
+</body>
+</html>
