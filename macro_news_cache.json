@@ -1,6 +1,20 @@
 {
   "Politik/Makro": [
     {
+      "ticker": "TSLA",
+      "title": "Ted Lieu Cites Poll, Says 'Blue Tsunami' Could Be Coming as Democrats Hold 11-Point Lead Over Republicans in 2026 House Election Poll",
+      "link": "https://www.yahoo.com/news/politics/articles/ted-lieu-cites-poll-says-203020851.html",
+      "publisher": "Benzinga",
+      "ts": 1789245020.0
+    },
+    {
+      "ticker": "^GSPC",
+      "title": "Investing in the Vanguard S&P 500 ETF (VOO)? Beware of This 1 Sneaky Risk.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/investing-vanguard-p-500-etf-192000849.html",
+      "publisher": "Motley Fool",
+      "ts": 1789240800.0
+    },
+    {
       "ticker": "BRK-B",
       "title": "Warren Buffett keeps turning to the same ETF for a reason",
       "link": "https://finance.yahoo.com/markets/stocks/articles/warren-buffett-keeps-turning-same-171700639.html",
@@ -64,6 +78,13 @@
       "ts": 1789202100.0
     },
     {
+      "ticker": "^DJI",
+      "title": "Is a Stock Market Crash Looming Under President Donald Trump? Nearly 156 Years of History Offers Up an Unpleasant Truth for Wall Street.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/stock-market-crash-looming-under-082601234.html",
+      "publisher": "Motley Fool",
+      "ts": 1789201561.0
+    },
+    {
       "ticker": "NVDA",
       "title": "Michael Burry Is Staying Short Nvidia, Palantir, and Tesla, Warning of a Possible \"1987-Type Fall\" for AI Stocks. Should Investors Take the Bet Seriously?",
       "link": "https://finance.yahoo.com/markets/stocks/articles/michael-burry-staying-short-nvidia-055000259.html",
@@ -118,30 +139,37 @@
       "link": "https://finance.yahoo.com/technology/ai/articles/adobe-beat-raised-fell-salesforce-224831574.html",
       "publisher": "Insider Monkey",
       "ts": 1789166911.0
-    },
-    {
-      "ticker": "TSLA",
-      "title": "Tesla Gains as Semi Opens a $17 Billion Software Door",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/tesla-gains-semi-opens-17-211218178.html",
-      "publisher": "GuruFocus.com",
-      "ts": 1789161138.0
-    },
-    {
-      "ticker": "DELL",
-      "title": "Update: Wall Street Rises at End of Losing Week Amid Inflation Worries",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/wall-street-rises-end-losing-205314084.html",
-      "publisher": "MT Newswires",
-      "ts": 1789159994.0
-    },
-    {
-      "ticker": "MRNA",
-      "title": "Dow Jones Futures: $100 Oil, Surging Yields Pressure Stocks With Fed Rate Hike Seen. Apple Leads New Buys.",
-      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-100-oil-surging-yields-pressure-stocks-with-fed-rate-hike-seen-apple-leads-new-buys/?src=A00220&yptr=yahoo",
-      "publisher": "Investor's Business Daily",
-      "ts": 1789159162.0
     }
   ],
   "Wirtschaft": [
+    {
+      "ticker": "NVDA",
+      "title": "Adobe: After Lifting Guidance, Is the Beaten-Down Stock Ready to Break Out?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/adobe-lifting-guidance-beaten-down-213500727.html",
+      "publisher": "Motley Fool",
+      "ts": 1789248900.0
+    },
+    {
+      "ticker": "MSFT",
+      "title": "Nvidia vs. AMD: Elon Musk Picked a Side on the SpaceX Earnings Call",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-vs-amd-elon-musk-212000632.html",
+      "publisher": "Motley Fool",
+      "ts": 1789248000.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "The Exit Path for AI Labs Is Bifurcating Again: $80B in Acquisitions vs. a Stalled IPO Pipeline",
+      "link": "https://finance.yahoo.com/technology/ai/articles/exit-path-ai-labs-bifurcating-203253879.html",
+      "publisher": "Forkast News",
+      "ts": 1789245173.0
+    },
+    {
+      "ticker": "SPCX",
+      "title": "SpaceX To Get Weighting Boost In Nasdaq 100 After Rebalance",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/spacex-weighting-boost-nasdaq-100-175851733.html",
+      "publisher": "Bloomberg",
+      "ts": 1789235931.0
+    },
     {
       "ticker": "NVDA",
       "title": "Dividend King Altria Recently Raised Its Quarterly Dividend by Nearly 5%. Is the Stock a Buy?",
@@ -253,37 +281,44 @@
       "link": "https://finance.yahoo.com/media-advertising/articles/meta-may-overtake-google-search-084633342.html",
       "publisher": "Insider Monkey",
       "ts": 1789202793.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Prediction: D-Wave Quantum's Revenue Triples Before 2030",
-      "link": "https://finance.yahoo.com/technology/ai/articles/prediction-d-wave-quantums-revenue-075401099.html",
-      "publisher": "Motley Fool",
-      "ts": 1789199641.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "3 Ways to Invest in Anthropic Pre-IPO",
-      "link": "https://finance.yahoo.com/technology/ai/articles/3-ways-invest-anthropic-pre-052000832.html",
-      "publisher": "Motley Fool",
-      "ts": 1789190400.0
-    },
-    {
-      "ticker": "ORCL",
-      "title": "How To Earn $500 A Month From Oracle Stock Ahead Of Q1 Earnings",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/earn-500-month-oracle-stock-033007408.html",
-      "publisher": "Benzinga",
-      "ts": 1789183807.0
-    },
-    {
-      "ticker": "ADBE",
-      "title": "ADBE Q3 Deep Dive: AI Product Momentum and Leadership Transition Anchor Guidance",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/adbe-q3-deep-dive-ai-025905907.html",
-      "publisher": "StockStory",
-      "ts": 1789181945.0
     }
   ],
   "Technologie": [
+    {
+      "ticker": "MA",
+      "title": "300 Million People Will Delegate Shopping to AI Agents by 2030 – Teen Adoption Runs Nearly Double the Adult Rate",
+      "link": "https://finance.yahoo.com/technology/ai/articles/300-million-people-delegate-shopping-202654060.html",
+      "publisher": "Forkast News",
+      "ts": 1789244814.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "This Artificial Intelligence Stock Is Down 71% and Could Be a Screaming Buy",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/artificial-intelligence-stock-down-71-202000751.html",
+      "publisher": "Motley Fool",
+      "ts": 1789244400.0
+    },
+    {
+      "ticker": "MSFT",
+      "title": "Zscaler Conference: AI Agents, Agentic SOC Fuel Zero-Trust Growth Ambitions",
+      "link": "https://finance.yahoo.com/technology/ai/articles/zscaler-conference-ai-agents-agentic-200201182.html",
+      "publisher": "MarketBeat",
+      "ts": 1789243321.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "Google's Historic 396 MW Clean Energy Deal Just Changed the Game for 1 AI Power Play",
+      "link": "https://finance.yahoo.com/energy/articles/googles-historic-396-mw-clean-190500123.html",
+      "publisher": "Motley Fool",
+      "ts": 1789239900.0
+    },
+    {
+      "ticker": "ZS",
+      "title": "Zscaler CEO Highlights AI Security Surge, Zero-Trust Momentum at Citi Conference",
+      "link": "https://finance.yahoo.com/technology/ai/articles/zscaler-ceo-highlights-ai-security-190159120.html",
+      "publisher": "MarketBeat",
+      "ts": 1789239719.0
+    },
     {
       "ticker": "ANET",
       "title": "Jim Cramer Doubles Down on This $252B AI Stock: “You Have to Buy” Every Dip",
@@ -388,44 +423,107 @@
       "link": "https://finance.yahoo.com/technology/ai/articles/jim-cramer-believes-stock-ai-105622520.html",
       "publisher": "Insider Monkey",
       "ts": 1789210582.0
-    },
-    {
-      "ticker": "SNOW",
-      "title": "Jim Cramer Said Snowflake Inc. (NYSE:SNOW)’s Q2 Was Great For AI",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-said-snowflake-inc-105109354.html",
-      "publisher": "Insider Monkey",
-      "ts": 1789210269.0
-    },
-    {
-      "ticker": "AAPL",
-      "title": "Apple's AI vision is tailored for the moment of AI panic",
-      "link": "https://finance.yahoo.com/technology/article/apples-ai-vision-is-tailored-for-the-moment-of-ai-panic-100000576.html",
-      "publisher": "Yahoo Finance",
-      "ts": 1789207200.0
-    },
-    {
-      "ticker": "SMCI",
-      "title": "Jim Cramer Favors Dell (DELL) Over Super Micro (SMCI) as AI Server Demand Surges",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-favors-dell-dell-093723056.html",
-      "publisher": "Insider Monkey",
-      "ts": 1789205843.0
-    },
-    {
-      "ticker": "META",
-      "title": "Mark Zuckerberg’s Meta bet that AI would shrink its management ranks. Now it’s quietly rebuilding them",
-      "link": "https://finance.yahoo.com/technology/ai/articles/mark-zuckerberg-meta-bet-ai-091600760.html",
-      "publisher": "Fortune",
-      "ts": 1789204560.0
-    },
-    {
-      "ticker": "WDC",
-      "title": "Western Digital Sees AI-Driven HDD Demand Outpacing Supply Through 2027",
-      "link": "https://finance.yahoo.com/technology/ai/articles/western-digital-sees-ai-driven-090156279.html",
-      "publisher": "MarketBeat",
-      "ts": 1789203716.0
     }
   ],
   "Sonstiges": [
+    {
+      "ticker": "GOOGL",
+      "title": "Agentic commerce: Is Payments the winner this time?",
+      "link": "https://finance.yahoo.com/technology/ai/articles/agentic-commerce-payments-winner-time-213309351.html",
+      "publisher": "Investing.com",
+      "ts": 1789248789.0
+    },
+    {
+      "ticker": "JPM",
+      "title": "J.P. Morgan Closes $1.1B US Industrial Net Lease Fund",
+      "link": "https://finance.yahoo.com/real-estate/articles/j-p-morgan-closes-1-213149032.html",
+      "publisher": "CRE Daily",
+      "ts": 1789248709.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Predicting the Value of a $10,000 Bet on SpaceX by 2030",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/predicting-value-10-000-bet-210700813.html",
+      "publisher": "Motley Fool",
+      "ts": 1789247220.0
+    },
+    {
+      "ticker": "ORCL",
+      "title": "Morgan Stanley revamps Oracle stock price target",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/morgan-stanley-revamps-oracle-stock-210300125.html",
+      "publisher": "TheStreet",
+      "ts": 1789246980.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Berkshire Hathaway Has Paid Exactly 1 Dividend Since 1965. Here's Where the Cash Goes Instead.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/berkshire-hathaway-paid-exactly-1-205000365.html",
+      "publisher": "Motley Fool",
+      "ts": 1789246200.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "3 Reasons I Think Cathie Wood Is Buying Robinhood Stock Again",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/3-reasons-think-cathie-wood-203201033.html",
+      "publisher": "Motley Fool",
+      "ts": 1789245121.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Is Toast Stock a Buy After a Record 9,500-Restaurant Quarter?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/toast-stock-buy-record-9-195000742.html",
+      "publisher": "Motley Fool",
+      "ts": 1789242600.0
+    },
+    {
+      "ticker": "ZS",
+      "title": "1 Magnificent Growth Stock Down 55% to Buy Right Now, According to Wall Street",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/1-magnificent-growth-stock-down-193500413.html",
+      "publisher": "Motley Fool",
+      "ts": 1789241700.0
+    },
+    {
+      "ticker": "META",
+      "title": "From LeBron James to Sydney Sweeney: Prediction Markets Launch NFL Ad Blitz",
+      "link": "https://www.barrons.com/articles/nfl-prediction-market-ads-sydney-sweeney-lebron-james-6df311c8?siteid=yhoof2&yptr=yahoo",
+      "publisher": "Barrons.com",
+      "ts": 1789239900.0
+    },
+    {
+      "ticker": "PFE",
+      "title": "How Concerned Should Income Investors Be About Pfizer's Dividend?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/concerned-income-investors-pfizers-dividend-183500090.html",
+      "publisher": "Motley Fool",
+      "ts": 1789238100.0
+    },
+    {
+      "ticker": "ORCL",
+      "title": "Oracle’s Ellison cancels plan to sell up to 50 mln shares",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/oracle-ellison-cancels-plan-sell-183328354.html",
+      "publisher": "Investing.com",
+      "ts": 1789238008.0
+    },
+    {
+      "ticker": "TSLA",
+      "title": "Elon Musk Says Autopilot Wasn’t in Use During Tesla Crash, Slams ‘Legacy Media’",
+      "link": "https://www.yahoo.com/news/us/articles/elon-musk-says-autopilot-wasn-183034805.html",
+      "publisher": "Benzinga",
+      "ts": 1789237834.0
+    },
+    {
+      "ticker": "TSLA",
+      "title": "Elon Musk Needs Tesla to Reach a $8.5 Trillion Market Cap to Cash In. Here's How Tesla Can Reach That Valuation.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/elon-musk-needs-tesla-reach-182500759.html",
+      "publisher": "Motley Fool",
+      "ts": 1789237500.0
+    },
+    {
+      "ticker": "AAPL",
+      "title": "Broadcom vs. Micron Technology: Which Technology Stock Is a Better Buy in 2026?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/broadcom-vs-micron-technology-technology-180822260.html",
+      "publisher": "Motley Fool",
+      "ts": 1789236502.0
+    },
     {
       "ticker": "META",
       "title": "From LeBron James to Sydney Sweeney: Prediction Markets Launch NFL Ad Blitz",
@@ -455,116 +553,18 @@
       "ts": 1789233940.0
     },
     {
+      "ticker": "ORCL",
+      "title": "Larry Ellison Ends Plan to Sell Up to $7.5 Billion in Oracle Stock",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/larry-ellison-ends-plan-sell-171853217.html",
+      "publisher": "Bloomberg",
+      "ts": 1789233533.0
+    },
+    {
       "ticker": "NVDA",
       "title": "Prediction: Nvidia Stock Could Be Worth This Much by January 2028",
       "link": "https://finance.yahoo.com/markets/stocks/articles/prediction-nvidia-stock-could-worth-171700541.html",
       "publisher": "Motley Fool",
       "ts": 1789233420.0
-    },
-    {
-      "ticker": "ORCL",
-      "title": "Larry Ellison Scraps Plan to Sell Up to $7.5 Billion Worth of Oracle Stock",
-      "link": "https://www.wsj.com/business/larry-ellison-scraps-plan-to-sell-up-to-7-5-billion-worth-of-oracle-stock-9f41edd2?siteid=yhoof2&yptr=yahoo",
-      "publisher": "The Wall Street Journal",
-      "ts": 1789233000.0
-    },
-    {
-      "ticker": "AAPL",
-      "title": "Jim Cramer Flips the Script: Why Older Investors Should Ditch Growth Stocks for 30-Year Treasuries",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-flips-script-why-163943096.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789231183.0
-    },
-    {
-      "ticker": "AAPL",
-      "title": "Apple, Taiwan Semi Lead Five Stocks Near Buy Points",
-      "link": "https://www.investors.com/news/apple-taiwan-semiconductor-lead-5-top-stocks-near-buy-points/?src=A00220&yptr=yahoo",
-      "publisher": "Investor's Business Daily",
-      "ts": 1789230125.0
-    },
-    {
-      "ticker": "AAPL",
-      "title": "Sirius XM CEO Highlights Cash Flow Growth, New Sports Plans and Ad Expansion at Conference",
-      "link": "https://finance.yahoo.com/media-advertising/articles/sirius-xm-ceo-highlights-cash-160158796.html",
-      "publisher": "MarketBeat",
-      "ts": 1789228918.0
-    },
-    {
-      "ticker": "PLTR",
-      "title": "Palantir's Growth Has Kept Accelerating, but Can the Rally Continue?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/palantirs-growth-kept-accelerating-rally-155500148.html",
-      "publisher": "Motley Fool",
-      "ts": 1789228500.0
-    },
-    {
-      "ticker": "SMR",
-      "title": "NuScale Power Stock Jumps 15% in 1 Day. Here's How Nuclear Energy Investors Should Respond.",
-      "link": "https://finance.yahoo.com/energy/articles/nuscale-power-stock-jumps-15-151500537.html",
-      "publisher": "Motley Fool",
-      "ts": 1789226100.0
-    },
-    {
-      "ticker": "ORCL",
-      "title": "Jim Cramer on Oracle: $664B Backlog Signals Major Shift in Company’s Growth Trajectory",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-oracle-664b-backlog-151328938.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789226008.0
-    },
-    {
-      "ticker": "AMD",
-      "title": "Cramer Asked Who Was Buying Gigantic Bloom Energy Calls. A Pelosi Filing Named Two of the Same Stocks Weeks Earlier.",
-      "link": "https://finance.yahoo.com/markets/options/articles/cramer-asked-buying-gigantic-bloom-145041797.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789224641.0
-    },
-    {
-      "ticker": "TSLA",
-      "title": "Elon Musk Says ‘Enormous, Free Fusion Reactor in the Sky’ Will Supply 100% of Energy Needs",
-      "link": "https://finance.yahoo.com/energy/articles/elon-musk-says-enormous-free-143857346.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789223937.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "3 High-Yield Dividend Stocks Worth Loading Up On This Month",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/3-high-yield-dividend-stocks-143500907.html",
-      "publisher": "Motley Fool",
-      "ts": 1789223700.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Greg Abel Is Betting on Homebuilders Even as the Pending Home Sales Index Sits Near Its Second-Lowest Reading Ever, Down 36% Since 2021. Is Berkshire Early to a Housing Recovery, or Just Early?",
-      "link": "https://finance.yahoo.com/real-estate/articles/greg-abel-betting-homebuilders-even-143500024.html",
-      "publisher": "Motley Fool",
-      "ts": 1789223700.0
-    },
-    {
-      "ticker": "PFE",
-      "title": "Medicus Pharma CEO on SkinJect and Pfizer partnership – ICYMI",
-      "link": "https://finance.yahoo.com/healthcare/articles/medicus-pharma-ceo-skinject-pfizer-143200321.html",
-      "publisher": "Proactive",
-      "ts": 1789223520.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Where Will SoFi Stock Be in 5 Years?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/where-sofi-stock-5-years-142000101.html",
-      "publisher": "Motley Fool",
-      "ts": 1789222800.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "4 No-Brainer Dividend ETFs to Build Lasting Passive Income",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/4-no-brainer-dividend-etfs-140500794.html",
-      "publisher": "Motley Fool",
-      "ts": 1789221900.0
-    },
-    {
-      "ticker": "AAPL",
-      "title": "Qualcomm Lost Apple’s Modem Business. Amazon Just Offered a $60 Billion Escape Route.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/qualcomm-lost-apple-modem-business-133709842.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789220229.0
     }
   ]
 }
