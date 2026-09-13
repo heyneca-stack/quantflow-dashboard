@@ -12,6 +12,18 @@ Läuft alle 4 Stunden per GitHub Actions (siehe .github/workflows/run_agent.yml)
 Zustand (Positionen, News-Cache, Score-Historie, Namens-Cache) wird in
 JSON-Dateien zwischen den Läufen persistiert und vom Workflow zurückcommitet.
 
+v6.3 Erweiterungen (Arbeitspapier-Phase 1, "Korb"-Neudefinition):
+  - Die alte, ungefilterte Yahoo-Trending-Ergänzung (get_dynamic_trending,
+    Root-Cause für kryptonahe Werte im Hauptdepot) ist komplett entfernt.
+  - Neues Kandidaten-Universum über echte Indexmitgliedschaft (S&P 500,
+    Nasdaq-100, Dow) inkl. GICS-Sektor-Zuordnung, siehe universe.py.
+  - Krypto-/Digital-Asset-nahe Aktien sind jetzt eine eigene, bewusst
+    wählbare, aber standardmäßig deaktivierte Kategorie statt zufällig
+    durchzurutschen.
+  - Erste Grundlage für das geplante Parameter-Modal: benannte, ladbare
+    JSON-Konfigurationen unter configs/, aktive Konfiguration in
+    active_config.json, siehe config.py.
+
 v6.0 Erweiterungen:
   - Score-Historie wird jetzt für ALLE bewerteten Kandidaten geführt (nicht
     nur gehaltene Positionen) UND korrekt gegen den Stand VOR diesem Lauf
@@ -38,23 +50,12 @@ from datetime import datetime, timezone
 import requests
 import yfinance as yf
 
+import config as korb_config
+import universe
+
 # ---------------------------------------------------------------------------
 # KONFIGURATION
 # ---------------------------------------------------------------------------
-
-BASE_UNIVERSE = {
-    "AAPL": "Core Tech", "MSFT": "Core Tech", "GOOGL": "Core Tech", "AMZN": "Core Tech", "META": "Core Tech",
-    "NVDA": "Halbleiter", "AMD": "Halbleiter", "AVGO": "Halbleiter", "TSM": "Halbleiter",
-    "MU": "Halbleiter", "QCOM": "Halbleiter", "INTC": "Halbleiter (Turnaround)",
-    "ORCL": "Cloud Tech", "CRM": "Cloud Tech", "ADBE": "Cloud Tech", "NOW": "Cloud Tech", "SNOW": "Cloud Tech",
-    "PANW": "Cyber Tech", "CRWD": "Cyber Tech", "FTNT": "Cyber Tech", "ZS": "Cyber Tech",
-    "PYPL": "Fintech (Turnaround)", "SQ": "Fintech", "V": "Fintech", "MA": "Fintech",
-    "TSLA": "Auto/EV", "NIO": "Auto/EV",
-    "XLE": "Energie Hedge", "XOM": "Energie Hedge", "CVX": "Energie Hedge",
-    "PFE": "Pharma (Value Hedge)", "MRNA": "Pharma",
-    "DIS": "Turnaround/Media", "BA": "Turnaround/Industrie",
-    "JPM": "Finanzwerte", "GS": "Finanzwerte",
-}
 
 NAME_MAP = {
     "AAPL": "Apple Inc.", "MSFT": "Microsoft Corp.", "GOOGL": "Alphabet Inc. (Google) Cl. A",
@@ -123,9 +124,6 @@ MUSTERDEPOT = {
     "DG.PA": {"name": "VINCI S.A."},
     "WDC": {"name": "Western Digital Corp."},
 }
-
-TRENDING_SCREENER_IDS = ("day_gainers", "growth_technology_stocks", "most_actives")
-TRENDING_COUNT_PER_SCREENER = 15
 
 MACRO_TICKERS = ["^GSPC", "^IXIC", "^DJI", "^VIX"]
 
@@ -260,33 +258,14 @@ def get_company_name(symbol, name_cache):
 # DATENBESCHAFFUNG: KURSE, TRENDING, NEWS, OPTIONEN
 # ---------------------------------------------------------------------------
 
-def get_dynamic_trending():
-    trending = set()
-    for scr_id in TRENDING_SCREENER_IDS:
-        try:
-            url = "https://query1.finance.yahoo.com/v1/finance/screener/predefined/saved"
-            params = {
-                "formatted": "true", "lang": "en-US", "region": "US",
-                "scrIds": scr_id, "count": TRENDING_COUNT_PER_SCREENER,
-            }
-            resp = requests.get(url, params=params, headers=HTTP_HEADERS, timeout=8)
-            resp.raise_for_status()
-            data = resp.json()
-            quotes = data["finance"]["result"][0]["quotes"]
-            for q in quotes:
-                sym = q.get("symbol")
-                if sym:
-                    trending.add(sym)
-        except Exception as e:
-            print(f"⚠️ Trending-Abruf '{scr_id}' fehlgeschlagen (nutze nur Basisliste): {e}")
-    return trending
-
-
 def build_candidate_pool():
-    pool = dict(BASE_UNIVERSE)
-    for sym in get_dynamic_trending():
-        if sym not in pool:
-            pool[sym] = "Trend-Kandidat"
+    """Kandidaten-Pool: {symbol: Sektor-/Kategorie-Label}. Ersetzt seit
+    Arbeitspapier-Phase 1 die alte, ungefilterte Yahoo-Trending-Ergänzung
+    durch ein index- und sektorbasiertes Universum (siehe universe.py) gemäß
+    der aktiven Konfiguration (siehe config.py). Das Musterdepot fließt wie
+    bisher immer vollständig mit ein, unabhängig von der Sektor-Auswahl."""
+    active_config = korb_config.load_active_config()
+    pool = universe.build_universe(active_config)
     for sym in MUSTERDEPOT:
         if sym not in pool:
             pool[sym] = "Musterdepot"
@@ -1383,7 +1362,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuantFlow Tech Agent Dashboard v6.2</title>
+    <title>QuantFlow Tech Agent Dashboard v6.3</title>
     <style>
         :root {{
             --bg-dark: #0f111a;--bg-card: #161925;--text-main: #f0f2f5;--text-muted: #8a92b2;--green: #00e676;--red: #ff3d00;--blue: #00b0ff;--border: #22273d;--purple: #b388ff;--orange: #ffab40;
@@ -1485,7 +1464,7 @@ def render_html(timestamp, positions, price_lookup, news_cache, macro_cache, sco
 <body>
     <header>
         <div class="logo-area">
-            <h1>QuantFlow Tech Agent Dashboard <span style="color:var(--blue); font-size:14px;">v6.1</span></h1>
+            <h1>QuantFlow Tech Agent Dashboard <span style="color:var(--blue); font-size:14px;">v6.3</span></h1>
             <span>Simuliertes Momentum-/News-/Options-Portfolio (Paper Trading) — Letztes Update: {timestamp}</span>
         </div>
         <div class="controls-area">
@@ -1586,7 +1565,7 @@ def run_agent_update():
     now_ts = now.timestamp()
     timestamp = now.strftime("%Y-%m-%d %H:%M:%S UTC")
 
-    print("🚀 Baue Kandidaten-Pool auf (Basisliste + Trending + Musterdepot)...")
+    print("🚀 Baue Kandidaten-Pool auf (Index-Universum inkl. Sektor-Filter + Musterdepot)...")
     candidate_pool = build_candidate_pool()
     print(f"   {len(candidate_pool)} Kandidaten im Pool.")
 
