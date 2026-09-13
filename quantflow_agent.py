@@ -1565,14 +1565,26 @@ def run_agent_update():
     now_ts = now.timestamp()
     timestamp = now.strftime("%Y-%m-%d %H:%M:%S UTC")
 
-    print("🚀 Baue Kandidaten-Pool auf (Index-Universum inkl. Sektor-Filter + Musterdepot)...")
-    candidate_pool = build_candidate_pool()
-    print(f"   {len(candidate_pool)} Kandidaten im Pool.")
-
     state = load_json(STATE_FILE, {
         "positions": {}, "realized_pnl_total": 0.0, "score_history": {},
         "cash_balance": NUM_POSITIONS * ALLOCATION_PER_POSITION, "tax_paid_total": 0.0,
     })
+
+    print("🚀 Baue Kandidaten-Pool auf (Index-Universum inkl. Sektor-Filter + Musterdepot)...")
+    candidate_pool = build_candidate_pool()
+    # WICHTIG: bereits gehaltene Positionen müssen JEDEN Lauf neu bepreist
+    # werden, auch wenn ihr Ticker nach einer Konfigurationsänderung nicht
+    # mehr im aktiven Universum steckt (z.B. eine schon gehaltene Krypto-
+    # Position, nachdem die Krypto-Kategorie deaktiviert wurde). Sonst
+    # bleiben genau solche Positionen mit eingefrorenem Einstandskurs stehen
+    # und ihr echter Gewinn/Verlust verschwindet stillschweigend aus der
+    # Gesamtwert-Berechnung. Der Universum-/Sektor-Filter steuert also nur,
+    # was NEU gekauft werden darf — nicht, was weiter bepreist/beobachtet wird.
+    for sym, pos in state.get("positions", {}).items():
+        if sym not in candidate_pool:
+            candidate_pool[sym] = pos.get("type") or "Gehalten (außerhalb Universum)"
+    print(f"   {len(candidate_pool)} Kandidaten im Pool.")
+
     news_cache = load_json(NEWS_CACHE_FILE, {})
     macro_cache = load_json(MACRO_NEWS_CACHE_FILE, {})
     name_cache = load_json(NAME_CACHE_FILE, {})
