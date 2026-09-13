@@ -1,0 +1,2019 @@
+{
+  "fetched_at": 1789285406.7667472,
+  "sp500": [
+    {
+      "symbol": "MMM",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "AOS",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "ABT",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "ABBV",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "ACN",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "ADBE",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "AMD",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "AES",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "AFL",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "A",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "APD",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "ABNB",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "AKAM",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "ALB",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "ARE",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "ALGN",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "ALLE",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "LNT",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "ALL",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "GOOGL",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "GOOG",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "MO",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "AMZN",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "AMCR",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "AEE",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "AEP",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "AXP",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "AIG",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "AMT",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "AWK",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "AMP",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "AME",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "AMGN",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "APH",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "ADI",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "AON",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "APA",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "APO",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "AAPL",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "AMAT",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "APP",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "APTV",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "ACGL",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "ADM",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "ARES",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "ANET",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "AJG",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "AIZ",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "T",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "ATO",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "ADSK",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "ADP",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "AZO",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "AVY",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "AXON",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "BKR",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "BALL",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "BAC",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "BAX",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "BDX",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "BRK-B",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "BBY",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "TECH",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "BIIB",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "BLK",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "BX",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "XYZ",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "BNY",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "BA",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "BKNG",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "BSX",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "BMY",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "AVGO",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "BR",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "BRO",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "BF-B",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "BLDR",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "BG",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "BXP",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "CHRW",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "CDNS",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "CPT",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "COF",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "CAH",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "CCL",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "CARR",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "CVNA",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "CASY",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "CAT",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "CBOE",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "CBRE",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "CDW",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "COR",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "CNC",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "CNP",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "CF",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "CRL",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "SCHW",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "CHTR",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "CVX",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "CMG",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "CB",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "CHD",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "CIEN",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "CI",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "CINF",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "CTAS",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "CSCO",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "C",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "CFG",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "CLX",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "CME",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "CMS",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "KO",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "CTSH",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "COHR",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "COIN",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "CL",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "CMCSA",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "FIX",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "COP",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "ED",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "STZ",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "CEG",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "COO",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "CPRT",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "GLW",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "CPAY",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "CTVA",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "CSGP",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "COST",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "CRH",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "CRWD",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "CCI",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "CSX",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "CMI",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "CVS",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "DHR",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "DRI",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "DDOG",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "DVA",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "DECK",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "DE",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "DELL",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "DAL",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "DVN",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "DXCM",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "FANG",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "DLR",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "DG",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "DLTR",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "D",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "DPZ",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "DASH",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "DOV",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "DOW",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "DHI",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "DTE",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "DUK",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "DD",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "ETN",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "EBAY",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "ECHO",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "ECL",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "EIX",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "EW",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "ELV",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "EME",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "EMR",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "ETR",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "EOG",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "EQT",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "EFX",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "EQIX",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "ERIE",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "ESS",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "EL",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "EG",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "EVRG",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "ES",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "EXC",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "EXE",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "EXPE",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "EXPD",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "EXR",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "XOM",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "FFIV",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "FDS",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "FICO",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "FAST",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "FRT",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "FDX",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "FDXF",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "FERG",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "FIS",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "FITB",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "FSLR",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "FE",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "FISV",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "FLEX",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "F",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "FTNT",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "FTV",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "FOXA",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "FOX",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "BEN",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "FCX",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "GRMN",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "IT",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "GE",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "GEHC",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "GEV",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "GEN",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "GNRC",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "GD",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "GIS",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "GM",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "GPC",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "GILD",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "GPN",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "GL",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "GDDY",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "GS",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "HAL",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "HIG",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "HAS",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "HCA",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "DOC",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "HSIC",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "HSY",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "HPE",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "HLT",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "HD",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "HONA",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "HON",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "HRL",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "HST",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "HWM",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "HPQ",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "HUBB",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "HUM",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "HBAN",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "HII",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "IBM",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "IEX",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "IDXX",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "ITW",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "INCY",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "IR",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "PODD",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "INTC",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "IBKR",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "ICE",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "IFF",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "IP",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "INTU",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "ISRG",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "IVZ",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "INVH",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "IQV",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "IRM",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "JBHT",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "JBL",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "JKHY",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "J",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "JNJ",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "JCI",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "JPM",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "KVUE",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "KDP",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "KEY",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "KEYS",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "KMB",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "KIM",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "KMI",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "KKR",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "KLAC",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "KHC",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "KR",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "LHX",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "LH",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "LRCX",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "LVS",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "LDOS",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "LEN",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "LII",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "LLY",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "LIN",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "LYV",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "LMT",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "L",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "LOW",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "LULU",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "LITE",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "LYB",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "MTB",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "MPC",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "MAR",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "MRSH",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "MLM",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "MRVL",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "MAS",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "MA",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "MKC",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "MCD",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "MCK",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "MDT",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "MRK",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "META",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "MET",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "MTD",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "MGM",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "MCHP",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "MU",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "MSFT",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "MAA",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "MRNA",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "TAP",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "MDLZ",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "MPWR",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "MNST",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "MCO",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "MS",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "MOS",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "MSI",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "MSCI",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "NDAQ",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "NTAP",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "NFLX",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "NEM",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "NWSA",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "NWS",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "NEE",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "NKE",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "NI",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "NDSN",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "NSC",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "NTRS",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "NOC",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "NCLH",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "NRG",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "NUE",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "NVDA",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "NVR",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "NXPI",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "ORLY",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "OXY",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "ODFL",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "OMC",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "ON",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "OKE",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "ORCL",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "OTIS",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "PCAR",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "PKG",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "PLTR",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "PANW",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "PSKY",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "PH",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "PAYX",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "PYPL",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "PNR",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "PEP",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "PFE",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "PCG",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "PM",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "PSX",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "PNW",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "PNC",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "PPG",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "PPL",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "PFG",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "PG",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "PGR",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "PLD",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "PRU",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "PEG",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "PTC",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "PSA",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "PHM",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "PWR",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "QCOM",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "DGX",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "Q",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "RL",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "RJF",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "RDDT",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "RTX",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "O",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "REG",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "REGN",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "RF",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "RSG",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "RMD",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "RVTY",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "HOOD",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "ROK",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "ROL",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "ROP",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "ROST",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "RCL",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "SPGI",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "CRM",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "SNDK",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "SBAC",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "SLB",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "STX",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "SRE",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "NOW",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "SHW",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "SPG",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "SWKS",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "SJM",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "SW",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "SNA",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "SOLV",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "SO",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "LUV",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "SWK",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "SBUX",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "STT",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "STLD",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "STE",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "SYK",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "SMCI",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "SYF",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "SNPS",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "SYY",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "TMUS",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "TROW",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "TTWO",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "TPR",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "TRGP",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "TGT",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "TEL",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "TDY",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "TER",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "TSLA",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "TXN",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "TPL",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "TXT",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "TMO",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "TJX",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "TKO",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "TTD",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "TSCO",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "TT",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "TDG",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "TRV",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "TRMB",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "TFC",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "TYL",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "TSN",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "USB",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "UBER",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "UDR",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "ULTA",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "UNP",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "UAL",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "UPS",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "URI",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "UNH",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "UHS",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "VLO",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "VEEV",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "VTR",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "VLTO",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "VRSN",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "VRSK",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "VZ",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "VRTX",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "VRT",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "VTRS",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "VICI",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "V",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "VST",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "VMRK",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "VMC",
+      "sector_raw": "Materials"
+    },
+    {
+      "symbol": "WRB",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "GWW",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "WAB",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "WMT",
+      "sector_raw": "Consumer Staples"
+    },
+    {
+      "symbol": "DIS",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "WBD",
+      "sector_raw": "Communication Services"
+    },
+    {
+      "symbol": "WM",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "WAT",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "WEC",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "WFC",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "WELL",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "WST",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "WDC",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "WY",
+      "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "WSM",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "WMB",
+      "sector_raw": "Energy"
+    },
+    {
+      "symbol": "WTW",
+      "sector_raw": "Financials"
+    },
+    {
+      "symbol": "WDAY",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "WYNN",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "XEL",
+      "sector_raw": "Utilities"
+    },
+    {
+      "symbol": "XYL",
+      "sector_raw": "Industrials"
+    },
+    {
+      "symbol": "YUM",
+      "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "ZBRA",
+      "sector_raw": "Information Technology"
+    },
+    {
+      "symbol": "ZBH",
+      "sector_raw": "Health Care"
+    },
+    {
+      "symbol": "ZTS",
+      "sector_raw": "Health Care"
+    }
+  ],
+  "nasdaq100": [],
+  "dow": []
+}
