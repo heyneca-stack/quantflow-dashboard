@@ -2,6 +2,41 @@
   "Politik/Makro": [
     {
       "ticker": "NVDA",
+      "title": "Can Your Retirement Plan Stand Up to Inflation? These 2 Tweaks Might Help.",
+      "link": "https://finance.yahoo.com/markets/articles/retirement-plan-stand-inflation-2-173800242.html",
+      "publisher": "Motley Fool",
+      "ts": 1789925880.0
+    },
+    {
+      "ticker": "AMZN",
+      "title": "President Trump to Create an “AI Force,” Appoint an AI Czar as AI Fears Grow",
+      "link": "https://finance.yahoo.com/technology/ai/articles/president-trump-create-ai-force-170313633.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789923793.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "The AI Agent Wars Just Got Personal: Google’s CC vs. Meta’s Muse",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/ai-agent-wars-just-got-161457832.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789920897.0
+    },
+    {
+      "ticker": "XYZ",
+      "title": "Visa Moves to Close Meme Coin Credit Card Rewards Loophole",
+      "link": "https://finance.yahoo.com/markets/crypto/articles/visa-moves-close-meme-coin-160103474.html",
+      "publisher": "decrypt",
+      "ts": 1789920063.0
+    },
+    {
+      "ticker": "AMD",
+      "title": "3 AI Hardware Stocks Linked To Nvidia And US China Trade Talks",
+      "link": "https://finance.yahoo.com/technology/ai/articles/3-ai-hardware-stocks-linked-151344773.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1789917224.0
+    },
+    {
+      "ticker": "NVDA",
       "title": "The Bond Market Is Rattled, and History Says That Could Be a Warning Signal to Investors",
       "link": "https://finance.yahoo.com/markets/stocks/articles/bond-market-rattled-history-says-143500219.html",
       "publisher": "Motley Fool",
@@ -104,44 +139,23 @@
       "link": "https://www.yahoo.com/news/world/articles/russia-ukraine-trade-major-drone-075415697.html",
       "publisher": "Investing.com",
       "ts": 1789890855.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "The Stock Market Has Been Sending a Quiet Warning Signal for Years. Here's What History Says Comes Next.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/stock-market-sending-quiet-warning-075000145.html",
-      "publisher": "Motley Fool",
-      "ts": 1789890600.0
-    },
-    {
-      "ticker": "BRK-B",
-      "title": "Berkshire Hathaway's CEO Now Has to Consult Howard Buffett Before Buying Back Stock",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/berkshire-hathaways-ceo-now-consult-065701651.html",
-      "publisher": "Motley Fool",
-      "ts": 1789887421.0
-    },
-    {
-      "ticker": "MU",
-      "title": "3 AI Infrastructure Stocks Riding The White House Push Into Data Centers",
-      "link": "https://finance.yahoo.com/technology/ai/articles/3-ai-infrastructure-stocks-riding-061415618.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1789884855.0
-    },
-    {
-      "ticker": "TSM",
-      "title": "TSMC Stock And 2 Manufacturers Building Around Tariff Shifts",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/tsmc-stock-2-manufacturers-building-042001917.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1789878001.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Fed Chair Kevin Warsh Defied President Donald Trump, and 17 Words From His Post-FOMC Meeting Press Conference Suggest He May Do So Again",
-      "link": "https://finance.yahoo.com/economy/policy/articles/fed-chair-kevin-warsh-defied-005000645.html",
-      "publisher": "Motley Fool",
-      "ts": 1789865400.0
     }
   ],
   "Wirtschaft": [
+    {
+      "ticker": "MU",
+      "title": "Prediction: Micron Will Earn More Profit Than Microsoft in Fiscal 2027",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/prediction-micron-earn-more-profit-173701623.html",
+      "publisher": "Motley Fool",
+      "ts": 1789925821.0
+    },
+    {
+      "ticker": "AMD",
+      "title": "Dow Jones Futures Due: Can The Market Take Flight? Robinhood, Sandisk, AMD, Moderna Surge Into Buy Areas",
+      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-robinhood-sandisk-amd-moderna-surge-buy-areas/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1789923875.0
+    },
     {
       "ticker": "BKR",
       "title": "Baker Hughes (BKR) Raises 2026 Guidance. But Investors Aren’t Impressed",
@@ -267,23 +281,23 @@
       "link": "https://www.investors.com/news/technology/anthropic-ipo-delayed-openai-expects-massive-cash-burn/?src=A00220&yptr=yahoo",
       "publisher": "Investor's Business Daily",
       "ts": 1789840121.0
-    },
-    {
-      "ticker": "^GSPC",
-      "title": "There Are Only a Handful of Nasdaq-100 Stocks That Yield Over 3%. Here's My Top Pick to Buy in September.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/only-handful-nasdaq-100-stocks-163500606.html",
-      "publisher": "Motley Fool",
-      "ts": 1789835700.0
-    },
-    {
-      "ticker": "AMD",
-      "title": "Dow Jones Futures: Can The Market Rally Take Flight? Robinhood, Sandisk, AMD, Moderna Surge Into Buy Areas",
-      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-robinhood-sandisk-amd-moderna-surge-buy-areas/?src=A00220&yptr=yahoo",
-      "publisher": "Investor's Business Daily",
-      "ts": 1789835691.0
     }
   ],
   "Technologie": [
+    {
+      "ticker": "NVDA",
+      "title": "Nvidia CEO has a blunt message for Americans fearing AI",
+      "link": "https://finance.yahoo.com/technology/ai/articles/nvidia-ceo-blunt-message-americans-173300093.html",
+      "publisher": "TheStreet",
+      "ts": 1789925580.0
+    },
+    {
+      "ticker": "META",
+      "title": "Analyst: Meta Needs Just 115 Million Users to Ignite a $28 Billion AI Gold Rush — But It’s Not Likely to Happen",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/analyst-meta-needs-just-115-160303165.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1789920183.0
+    },
     {
       "ticker": "BLK",
       "title": "BlackRock's US Equity ETF Head Says Bitcoin's Diversifier Role 'Still Very Much Holds' As AI's Best Bets Move 'Outside Of Tech'",
@@ -409,162 +423,148 @@
       "link": "https://finance.yahoo.com/technology/ai/articles/nvidia-nvda-forms-alliance-build-230932870.html",
       "publisher": "Simply Wall St.",
       "ts": 1789859372.0
-    },
-    {
-      "ticker": "DLR",
-      "title": "What It’s Like to Work in One of America’s Data Centers",
-      "link": "https://www.wsj.com/business/what-its-like-to-work-in-one-of-americas-data-centers-b4358003?siteid=yhoof2&yptr=yahoo",
-      "publisher": "The Wall Street Journal",
-      "ts": 1789858800.0
-    },
-    {
-      "ticker": "BNY",
-      "title": "BNY Sees Cross-Selling and AI Investments Fueling Its Next Growth Phase",
-      "link": "https://finance.yahoo.com/technology/ai/articles/bny-sees-cross-selling-ai-210204657.html",
-      "publisher": "MarketBeat",
-      "ts": 1789851724.0
     }
   ],
   "Sonstiges": [
+    {
+      "ticker": "AAPL",
+      "title": "Apple's new CEO wants the most private details of your life",
+      "link": "https://finance.yahoo.com/technology/ai/articles/apples-ceo-wants-most-private-180955480.html",
+      "publisher": "TheStreet",
+      "ts": 1789927795.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Dutch Bros and McDonald's Hit 52-Week Lows on the Same Day. Here's Why Only One Is a Buy Now.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/dutch-bros-mcdonalds-hit-52-180500609.html",
+      "publisher": "Motley Fool",
+      "ts": 1789927500.0
+    },
+    {
+      "ticker": "SCHW",
+      "title": "Crypto Scammers Stole 82-Year-Old’s $1.7M — Now Charles Schwab Must Pay",
+      "link": "https://finance.yahoo.com/markets/crypto/articles/crypto-scammers-stole-82-old-175147153.html",
+      "publisher": "CCN",
+      "ts": 1789926707.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Rigetti Turned $10,000 Into Over $81,000 in 3 Years -- and It's Still 73% Off Its High. Here's Why I Still Wouldn't Touch It.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/rigetti-turned-10-000-over-175001485.html",
+      "publisher": "Motley Fool",
+      "ts": 1789926601.0
+    },
+    {
+      "ticker": "AVGO",
+      "title": "Jim Cramer shares a strong verdict on Broadcom stock for investors",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-shares-strong-verdict-174700887.html",
+      "publisher": "TheStreet",
+      "ts": 1789926420.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "Billionaire Bill Ackman Dumps Alphabet and Loads Up On a Mega-Cap Stock Down 15% From Its Peak",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/billionaire-bill-ackman-dumps-alphabet-172300077.html",
+      "publisher": "Motley Fool",
+      "ts": 1789924980.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Is This Cryptocurrency Still a Millionaire Maker?",
+      "link": "https://finance.yahoo.com/markets/crypto/articles/cryptocurrency-still-millionaire-maker-170500826.html",
+      "publisher": "Motley Fool",
+      "ts": 1789923900.0
+    },
+    {
+      "ticker": "COIN",
+      "title": "Brian Armstrong Says Coinbase May Benefit After CLARITY Act Fails, Banks Face More Competition",
+      "link": "https://finance.yahoo.com/markets/crypto/articles/brian-armstrong-says-coinbase-may-165719051.html",
+      "publisher": "Stocktwits",
+      "ts": 1789923439.0
+    },
+    {
+      "ticker": "^GSPC",
+      "title": "If You Invest $10,000 in This Bond ETF Today, Here's What History Says It Could Deliver in 20 Years",
+      "link": "https://finance.yahoo.com/markets/options/articles/invest-10-000-bond-etf-165002215.html",
+      "publisher": "Motley Fool",
+      "ts": 1789923002.0
+    },
+    {
+      "ticker": "CVX",
+      "title": "Chevron CEO sends a strong message on oil price and the economy",
+      "link": "https://finance.yahoo.com/energy/articles/chevron-ceo-sends-strong-message-164700338.html",
+      "publisher": "TheStreet",
+      "ts": 1789922820.0
+    },
+    {
+      "ticker": "AAPL",
+      "title": "Prediction: Even With the $1,999 Price Tag, Apple's Foldable iPhone Duo Will Be a Hit and Apple Will Join Nvidia in the $5 Trillion Club.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/prediction-even-1-999-price-163700612.html",
+      "publisher": "Motley Fool",
+      "ts": 1789922220.0
+    },
+    {
+      "ticker": "AAPL",
+      "title": "Jim Cramer sends strong signal to Apple stock investors",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-sends-strong-signal-163300406.html",
+      "publisher": "TheStreet",
+      "ts": 1789921980.0
+    },
+    {
+      "ticker": "AMZN",
+      "title": "Why India's Big Tech Companies Are Betting on Hyderabad",
+      "link": "https://finance.yahoo.com/video/why-indias-big-tech-companies-162028038.html",
+      "publisher": "Bloomberg",
+      "ts": 1789921228.0
+    },
+    {
+      "ticker": "DASH",
+      "title": "DoorDash (DASH) Becomes Official On Demand Delivery Partner Across North America",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/doordash-dash-becomes-official-demand-161233128.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1789920753.0
+    },
+    {
+      "ticker": "AEP",
+      "title": "American Electric Power Company (AEP) Files Updated Niagara Project Documents With FERC",
+      "link": "https://finance.yahoo.com/energy/articles/american-electric-power-company-aep-161156407.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1789920716.0
+    },
+    {
+      "ticker": "COIN",
+      "title": "How Crypto Blew Its Big Moment",
+      "link": "https://www.wsj.com/articles/how-crypto-blew-its-big-moment-31f80b3c?siteid=yhoof2&yptr=yahoo",
+      "publisher": "The Wall Street Journal",
+      "ts": 1789919520.0
+    },
+    {
+      "ticker": "D",
+      "title": "NextEra (NEE) and Dominion (D) Unveil a Bigger Pitch for Virginia",
+      "link": "https://finance.yahoo.com/energy/articles/nextera-nee-dominion-d-unveil-153356972.html",
+      "publisher": "Insider Monkey",
+      "ts": 1789918436.0
+    },
+    {
+      "ticker": "CAT",
+      "title": "The Caterpillar Correction Shouldn't Last Much Longer",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/caterpillar-correction-shouldnt-last-much-152000520.html",
+      "publisher": "Motley Fool",
+      "ts": 1789917600.0
+    },
+    {
+      "ticker": "CVX",
+      "title": "Chevron (CVX) Supercharges its Venezuela Bet with More Oil Rigs",
+      "link": "https://finance.yahoo.com/energy/articles/chevron-cvx-supercharges-venezuela-bet-151837921.html",
+      "publisher": "Insider Monkey",
+      "ts": 1789917517.0
+    },
     {
       "ticker": "DG",
       "title": "Dollar General CEO raises major red flag about consumers",
       "link": "https://finance.yahoo.com/economy/articles/dollar-general-ceo-raises-major-151700186.html",
       "publisher": "TheStreet",
       "ts": 1789917420.0
-    },
-    {
-      "ticker": "AXP",
-      "title": "Is American Express Stock a Buy, Sell, or Hold With Shares Trading 20% Below Their 52-Week High?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/american-express-stock-buy-sell-142000703.html",
-      "publisher": "Motley Fool",
-      "ts": 1789914000.0
-    },
-    {
-      "ticker": "KO",
-      "title": "How Large Does Your Portfolio Need to Be to Generate $15,500 a Month?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/large-does-portfolio-generate-15-141117313.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789913477.0
-    },
-    {
-      "ticker": "COR",
-      "title": "Cencora (COR) Lifts EPS Outlook And Buyback, Is The Stock Still Below Fair Value?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/cencora-cor-lifts-eps-outlook-140824688.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1789913304.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Could $5,000 Invested in SpaceX Help You Retire a Millionaire?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/could-5-000-invested-spacex-132300546.html",
-      "publisher": "Motley Fool",
-      "ts": 1789910580.0
-    },
-    {
-      "ticker": "AAPL",
-      "title": "Turning 73 Forces a Withdrawal From This Stock Whether the Owner Wants the Cash or Not",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/turning-73-forces-withdrawal-stock-130022050.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1789909222.0
-    },
-    {
-      "ticker": "BMY",
-      "title": "Wall Street's Bull Case for Bristol Myers Squibb Is Getting Louder",
-      "link": "https://finance.yahoo.com/healthcare/articles/wall-streets-bull-case-bristol-125000772.html",
-      "publisher": "Motley Fool",
-      "ts": 1789908600.0
-    },
-    {
-      "ticker": "KO",
-      "title": "Coca-Cola’s $10B Buildout Fuels Industrial Demand",
-      "link": "https://finance.yahoo.com/real-estate/articles/coca-cola-10b-buildout-fuels-115042368.html",
-      "publisher": "CRE Daily",
-      "ts": 1789905042.0
-    },
-    {
-      "ticker": "ARES",
-      "title": "Ares, PSP Launch $2.4B US Logistics Joint Venture",
-      "link": "https://finance.yahoo.com/real-estate/articles/ares-psp-launch-2-4b-114801372.html",
-      "publisher": "CRE Daily",
-      "ts": 1789904881.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "FedEx Lease Rollover Raises Industrial CMBS Refi Risk",
-      "link": "https://finance.yahoo.com/real-estate/articles/fedex-lease-rollover-raises-industrial-114601022.html",
-      "publisher": "CRE Daily",
-      "ts": 1789904761.0
-    },
-    {
-      "ticker": "BRK-B",
-      "title": "‘High on Coke’: Elon Musk stunned by Berkshire’s dividend payout. Learn how to build your own passive income stream now",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/high-coke-elon-musk-stunned-113500789.html",
-      "publisher": "Moneywise",
-      "ts": 1789904100.0
-    },
-    {
-      "ticker": "^IXIC",
-      "title": "The \"September Effect\" Is in Full Swing, With Stocks Slumping Left and Right. Here's How History Says Investors Should Respond.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/september-effect-full-swing-stocks-113500352.html",
-      "publisher": "Motley Fool",
-      "ts": 1789904100.0
-    },
-    {
-      "ticker": "BX",
-      "title": "Blackstone Explores Exit Path for $11B Property Fund",
-      "link": "https://finance.yahoo.com/real-estate/articles/blackstone-explores-exit-path-11b-112917544.html",
-      "publisher": "CRE Daily",
-      "ts": 1789903757.0
-    },
-    {
-      "ticker": "AZO",
-      "title": "AutoZone (AZO) Could Be 26% Undervalued Following Its 8,000th Store Opening",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/autozone-azo-could-26-undervalued-111301524.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1789902781.0
-    },
-    {
-      "ticker": "KO",
-      "title": "Prediction: Here's What a $15,000 Investment in Coca-Cola (KO) Stock Could Be Worth in 5 Years",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/prediction-heres-15-000-investment-110500879.html",
-      "publisher": "Motley Fool",
-      "ts": 1789902300.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "Prediction: Here's What a $5,000 Investment in Amazon (AMZN) Stock Could Be Worth by 2036.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/prediction-heres-5-000-investment-105200570.html",
-      "publisher": "Motley Fool",
-      "ts": 1789901520.0
-    },
-    {
-      "ticker": "KO",
-      "title": "History Says This Is the Amount of Yearly Dividend Income a $25,000 Investment in Coca-Cola Stock Could Generate By 2036.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/history-says-amount-yearly-dividend-103500833.html",
-      "publisher": "Motley Fool",
-      "ts": 1789900500.0
-    },
-    {
-      "ticker": "^IXIC",
-      "title": "Jim Cramer Says the Upcoming Week Looks Quiet. Here's What He'll Still Be Watching",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-says-upcoming-week-102207412.html",
-      "publisher": "BeInCrypto",
-      "ts": 1789899727.0
-    },
-    {
-      "ticker": "DASH",
-      "title": "DoorDash (DASH) Stock May Look Overvalued Despite Fresh Campus Dining Deal",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/doordash-dash-stock-may-look-100956053.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1789898996.0
-    },
-    {
-      "ticker": "BDX",
-      "title": "Why Is Becton Dickinson (BDX) Facing Fresh SEC And Litigation Pressure?",
-      "link": "https://finance.yahoo.com/healthcare/articles/why-becton-dickinson-bdx-facing-100922632.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1789898962.0
     }
   ]
 }
