@@ -37,6 +37,13 @@
     },
     {
       "ticker": "AAPL",
+      "title": "Apple Eyes the Rapidly Growing Fitness Tracker Segment. What That Could Mean for AAPL Stock.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/apple-eyes-rapidly-growing-fitness-140002909.html",
+      "publisher": "Barchart",
+      "ts": 1790431202.0
+    },
+    {
+      "ticker": "AAPL",
       "title": "Most Investors Own All Seven Magnificent Seven Stocks. That's a Mistake.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/most-investors-own-seven-magnificent-130200138.html",
       "publisher": "Motley Fool",
@@ -97,13 +104,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/qualcomm-qcom-renews-global-patent-005320827.html",
       "publisher": "Insider Monkey",
       "ts": 1790384000.0
-    },
-    {
-      "ticker": "AAPL",
-      "title": "Italy’s Labor Dispute Added a Twist to Apple (AAPL)’s iPhone Launch",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/italy-labor-dispute-added-twist-002836230.html",
-      "publisher": "Insider Monkey",
-      "ts": 1790382516.0
     }
   ],
   "MSFT": [
@@ -216,6 +216,20 @@
   "GOOGL": [
     {
       "ticker": "GOOGL",
+      "title": "Elon Musk Responds With Two Emojis as Google CEO Sundar Pichai Says Project Suncatcher Heads to Space: 'Can Our TPUs Survive...'",
+      "link": "https://tech.yahoo.com/ai/gemini/articles/elon-musk-responds-two-emojis-203008182.html",
+      "publisher": "Benzinga",
+      "ts": 1790454608.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "‘Don’t Ship Products Until They’re in Control’: Nvidia’s Huang Weighs In on AI Safety Debate",
+      "link": "https://www.barrons.com/articles/nvidia-jensen-huang-ai-openai-anthropic-a9995f13?siteid=yhoof2&yptr=yahoo",
+      "publisher": "Barrons.com",
+      "ts": 1790452740.0
+    },
+    {
+      "ticker": "GOOGL",
       "title": "Google, OpenAI, and Anthropic just made a move on AI safety",
       "link": "https://finance.yahoo.com/technology/ai/articles/google-openai-anthropic-just-made-174700095.html",
       "publisher": "TheStreet",
@@ -304,20 +318,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-25-214549821.html",
       "publisher": "Motley Fool",
       "ts": 1790372749.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "Weekly Wrap: The Crypto Rally Continues",
-      "link": "https://finance.yahoo.com/markets/crypto/articles/weekly-wrap-crypto-rally-continues-201800965.html",
-      "publisher": "CryptoProwl",
-      "ts": 1790367480.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "The Case For and Against Fidelity’s Fundamental Large Cap Growth ETF",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/case-against-fidelity-fundamental-large-194526179.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1790365526.0
     }
   ],
   "AMZN": [
@@ -341,6 +341,13 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/generac-holdings-gnrc-amazon-deal-151314311.html",
       "publisher": "Simply Wall St.",
       "ts": 1790435594.0
+    },
+    {
+      "ticker": "AMZN",
+      "title": "What Musk’s Tesla and SpaceX Stocks Are Doing After That White House State Dinner",
+      "link": "https://www.barrons.com/articles/elon-musk-tesla-spacex-stock-trump-xi-a47adcbd?siteid=yhoof2&yptr=yahoo",
+      "publisher": "Barrons.com",
+      "ts": 1790432700.0
     },
     {
       "ticker": "AMZN",
@@ -418,13 +425,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/amazon-stocks-move-lower-anthropic-181534479.html",
       "publisher": "GuruFocus.com",
       "ts": 1790360134.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "Quantum Is a $850 Billion Dream. Microsoft and Amazon Are Betting Big on It.",
-      "link": "https://www.barrons.com/articles/microsoft-amazon-quantum-computing-536512fd?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1790359320.0
     }
   ],
   "META": [
@@ -537,6 +537,62 @@
   "NVDA": [
     {
       "ticker": "NVDA",
+      "title": "The Pentagon Is Buying eVTOLs. Here's Which Stock Wins the Defense Money.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/pentagon-buying-evtols-heres-stock-215000441.html",
+      "publisher": "Motley Fool",
+      "ts": 1790459400.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Prediction: Here's What a $10,000 Investment in Costco (COST) Stock Could Be Worth in 5 Years",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/prediction-heres-10-000-investment-212500579.html",
+      "publisher": "Motley Fool",
+      "ts": 1790457900.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Energy Transfer vs. MPLX: Which Pipeline Giant's High-Yield Dividend Is Actually Safer?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/energy-transfer-vs-mplx-pipeline-202500783.html",
+      "publisher": "Motley Fool",
+      "ts": 1790454300.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "UBS makes bold call as CoreWeave faces $35 billion problem",
+      "link": "https://finance.yahoo.com/technology/ai/articles/ubs-makes-bold-call-coreweave-202300727.html",
+      "publisher": "TheStreet",
+      "ts": 1790454180.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "2 Healthcare Stocks That Just Delivered Great News for Investors",
+      "link": "https://finance.yahoo.com/healthcare/articles/2-healthcare-stocks-just-delivered-202101167.html",
+      "publisher": "Motley Fool",
+      "ts": 1790454061.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "‘Don’t Ship Products Until They’re in Control’: Nvidia’s Huang Weighs In on AI Safety Debate",
+      "link": "https://www.barrons.com/articles/nvidia-jensen-huang-ai-openai-anthropic-a9995f13?siteid=yhoof2&yptr=yahoo",
+      "publisher": "Barrons.com",
+      "ts": 1790452740.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Nvidia Is Weighing a $10 Billion Stake in Anthropic's IPO. It Would Be Buying Its Own Demand.",
+      "link": "https://finance.yahoo.com/technology/ai/articles/nvidia-weighing-10-billion-stake-195701843.html",
+      "publisher": "Motley Fool",
+      "ts": 1790452621.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Should You Buy Nike Stock Before Oct. 1?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/buy-nike-stock-oct-1-194900068.html",
+      "publisher": "Motley Fool",
+      "ts": 1790452140.0
+    },
+    {
+      "ticker": "NVDA",
       "title": "Why Is PepsiCo's Stock Down 10% While the S&P 500 Is Up 13% in 2026? Here's the Only Answer I Can Think of.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/why-pepsicos-stock-down-10-183500475.html",
       "publisher": "Motley Fool",
@@ -583,62 +639,6 @@
       "link": "https://finance.yahoo.com/technology/ai/articles/1-agentic-ai-chip-stock-173600956.html",
       "publisher": "Motley Fool",
       "ts": 1790444160.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Prediction: Robotics Will Be the Biggest Opportunity Within the AI Supercycle. 1 Dividend Growth Stock to Own.",
-      "link": "https://finance.yahoo.com/technology/ai/articles/prediction-robotics-biggest-opportunity-within-153500117.html",
-      "publisher": "Motley Fool",
-      "ts": 1790436900.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "The Strategic Bitcoin Reserve Is Closer Than Ever to Being Signed Into Law. Is Bitcoin About to Soar in Value?",
-      "link": "https://finance.yahoo.com/markets/crypto/articles/strategic-bitcoin-closer-ever-being-153100846.html",
-      "publisher": "Motley Fool",
-      "ts": 1790436660.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Guess Which Group of Stocks Is Back at an All-Time High?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/guess-group-stocks-back-time-152700057.html",
-      "publisher": "Motley Fool",
-      "ts": 1790436420.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Where Will The Cryptocurrency XRP Be in 5 Years?",
-      "link": "https://finance.yahoo.com/markets/crypto/articles/where-cryptocurrency-xrp-5-years-151500559.html",
-      "publisher": "Motley Fool",
-      "ts": 1790435700.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Here's What 60 Years of History Tells Us About Stock Market Crashes",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/heres-60-years-history-tells-150300904.html",
-      "publisher": "Motley Fool",
-      "ts": 1790434980.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "What Every 67-Year-Old Should Know About Social Security",
-      "link": "https://finance.yahoo.com/markets/articles/every-67-old-know-social-145000413.html",
-      "publisher": "Motley Fool",
-      "ts": 1790434200.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Only a Handful of S&P 500 Stocks Can Match 10-Year Treasuries at 5%. Here's My Top Pick to Buy Now.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/only-handful-p-500-stocks-084500310.html",
-      "publisher": "Motley Fool",
-      "ts": 1790412300.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Amazon Has No Dividend. Here's Why Long-Term Investors Should Own It Anyway.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/amazon-no-dividend-heres-why-083500031.html",
-      "publisher": "Motley Fool",
-      "ts": 1790411700.0
     }
   ],
   "AMD": [
@@ -1607,6 +1607,27 @@
   "BA": [
     {
       "ticker": "BA",
+      "title": "A 737 MAX Software Glitch Gives Boeing Investors a Fresh Headache",
+      "link": "https://www.barrons.com/articles/boeing-737-max-software-glitch-stock-fee62a8f?siteid=yhoof2&yptr=yahoo",
+      "publisher": "Barrons.com",
+      "ts": 1790455140.0
+    },
+    {
+      "ticker": "BA",
+      "title": "Boeing finds 737 MAX software glitch that may affect automated navigation - WSJ",
+      "link": "https://www.yahoo.com/news/us/articles/boeing-finds-737-max-software-193146717.html",
+      "publisher": "Investing.com",
+      "ts": 1790451106.0
+    },
+    {
+      "ticker": "BA",
+      "title": "New Boeing 737 MAX Software Glitch Could Disrupt Navigation Feature",
+      "link": "https://www.wsj.com/business/airlines/new-boeing-737-max-software-glitch-could-disrupt-navigation-feature-d537b8d8?siteid=yhoof2&yptr=yahoo",
+      "publisher": "The Wall Street Journal",
+      "ts": 1790446560.0
+    },
+    {
+      "ticker": "BA",
       "title": "Boeing (BA) Reaches a Tentative Deal with Engineers. Will Higher Pay Help it Avoid a Strike?",
       "link": "https://finance.yahoo.com/markets/stocks/articles/boeing-ba-reaches-tentative-deal-030855576.html",
       "publisher": "Insider Monkey",
@@ -1688,27 +1709,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/archer-aviation-sends-strong-signal-194022068.html",
       "publisher": "GuruFocus.com",
       "ts": 1790278822.0
-    },
-    {
-      "ticker": "BA",
-      "title": "Is GE Aerospace's Lead Already In Its Stock Price?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/ge-aerospaces-lead-already-stock-192506936.html",
-      "publisher": "Trefis",
-      "ts": 1790277906.0
-    },
-    {
-      "ticker": "BA",
-      "title": "These Dow Jones Stocks Buck Index's Dud Performance",
-      "link": "https://www.investors.com/news/dow-jones-industrial-average-msft-aapl-cvx-ko-stock/?src=A00220&yptr=yahoo",
-      "publisher": "Investor's Business Daily",
-      "ts": 1790273699.0
-    },
-    {
-      "ticker": "BA",
-      "title": "Boeing Unlikely To Get More China Orders During Trump-XI Summit; Stock Falls",
-      "link": "https://www.investors.com/news/boeing-trumo-xi-summit-us-china-archer-aviation-airbus/?src=A00220&yptr=yahoo",
-      "publisher": "Investor's Business Daily",
-      "ts": 1790265739.0
     }
   ],
   "APH": [
@@ -2216,6 +2216,13 @@
   "BRK-B": [
     {
       "ticker": "BRK-B",
+      "title": "Warren Buffett Helps Berkshire Hathaway Make $848M From Coca-Cola Stock Each Year, Even if the Price Doesn’t Change",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/warren-buffett-helps-berkshire-hathaway-180021314.html",
+      "publisher": "Benzinga",
+      "ts": 1790445621.0
+    },
+    {
+      "ticker": "BRK-B",
       "title": "Apple, Berkshire, and Walmart All Have New CEOs. Which One Will Do Best?",
       "link": "https://www.barrons.com/articles/apple-berkshire-walmart-stock-new-ceos-outlook-02676898?siteid=yhoof2&yptr=yahoo",
       "publisher": "Barrons.com",
@@ -2311,13 +2318,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/berkshire-hathaway-stock-buy-hold-141522211.html",
       "publisher": "24/7 Wall St.",
       "ts": 1790345722.0
-    },
-    {
-      "ticker": "BRK-B",
-      "title": "Can AI Upstart Lemonade Topple Berkshire Hathaway?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/ai-upstart-lemonade-topple-berkshire-123201366.html",
-      "publisher": "Motley Fool",
-      "ts": 1790339521.0
     }
   ],
   "CDNS": [
@@ -2881,6 +2881,20 @@
     }
   ],
   "HON": [
+    {
+      "ticker": "HON",
+      "title": "Honeywell (HON) Stock May Be Undervalued After Marine Corps Security Win",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/honeywell-hon-stock-may-undervalued-220742842.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790460462.0
+    },
+    {
+      "ticker": "HON",
+      "title": "Why Honeywell International (HON) Is Back In The Spotlight",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/why-honeywell-international-hon-back-190811275.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790449691.0
+    },
     {
       "ticker": "HON",
       "title": "3M vs. Honeywell: Which Industrial Conglomerate is a Stronger Pick?",
@@ -3862,6 +3876,13 @@
   "WDC": [
     {
       "ticker": "WDC",
+      "title": "Top Quantum Computing Stocks For September 2026",
+      "link": "https://finance.yahoo.com/technology/ai/articles/top-quantum-computing-stocks-september-211247698.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790457167.0
+    },
+    {
+      "ticker": "WDC",
       "title": "Up 163% Year to Date, Is Western Digital Still a Buy?",
       "link": "https://finance.yahoo.com/markets/stocks/articles/163-date-western-digital-still-175400719.html",
       "publisher": "Motley Fool",
@@ -3957,13 +3978,6 @@
       "link": "https://finance.yahoo.com/technology/articles/own-semiconductor-ai-power-own-204109239.html",
       "publisher": "Trefis",
       "ts": 1790196069.0
-    },
-    {
-      "ticker": "WDC",
-      "title": "Micron (MU) vs Western Digital (WDC): Which is a Better Stock to Buy",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/micron-mu-vs-western-digital-194115071.html",
-      "publisher": "Insider Monkey",
-      "ts": 1790192475.0
     }
   ],
   "MMM": [
@@ -4382,13 +4396,6 @@
       "link": "https://finance.yahoo.com/healthcare/articles/research-tools-consumables-stocks-q2-135746032.html",
       "publisher": "StockStory",
       "ts": 1790085466.0
-    },
-    {
-      "ticker": "A",
-      "title": "Agilent (A) Wants Pathology Labs To Go Digital, 540 Slides At A Time",
-      "link": "https://finance.yahoo.com/healthcare/articles/agilent-wants-pathology-labs-digital-195217186.html",
-      "publisher": "Insider Monkey",
-      "ts": 1789847537.0
     }
   ],
   "APD": [
@@ -4791,6 +4798,20 @@
   "GOOG": [
     {
       "ticker": "GOOG",
+      "title": "Elon Musk Responds With Two Emojis as Google CEO Sundar Pichai Says Project Suncatcher Heads to Space: 'Can Our TPUs Survive...'",
+      "link": "https://tech.yahoo.com/ai/gemini/articles/elon-musk-responds-two-emojis-203008182.html",
+      "publisher": "Benzinga",
+      "ts": 1790454608.0
+    },
+    {
+      "ticker": "GOOG",
+      "title": "‘Don’t Ship Products Until They’re in Control’: Nvidia’s Huang Weighs In on AI Safety Debate",
+      "link": "https://www.barrons.com/articles/nvidia-jensen-huang-ai-openai-anthropic-a9995f13?siteid=yhoof2&yptr=yahoo",
+      "publisher": "Barrons.com",
+      "ts": 1790452740.0
+    },
+    {
+      "ticker": "GOOG",
       "title": "Google, OpenAI, and Anthropic just made a move on AI safety",
       "link": "https://finance.yahoo.com/technology/ai/articles/google-openai-anthropic-just-made-174700095.html",
       "publisher": "TheStreet",
@@ -4879,20 +4900,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-25-214549821.html",
       "publisher": "Motley Fool",
       "ts": 1790372749.0
-    },
-    {
-      "ticker": "GOOG",
-      "title": "Weekly Wrap: The Crypto Rally Continues",
-      "link": "https://finance.yahoo.com/markets/crypto/articles/weekly-wrap-crypto-rally-continues-201800965.html",
-      "publisher": "CryptoProwl",
-      "ts": 1790367480.0
-    },
-    {
-      "ticker": "GOOG",
-      "title": "The Case For and Against Fidelity’s Fundamental Large Cap Growth ETF",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/case-against-fidelity-fundamental-large-194526179.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1790365526.0
     }
   ],
   "MO": [
@@ -5276,15 +5283,6 @@
       "ts": 1789990538.0
     }
   ],
-  "AWK": [
-    {
-      "ticker": "AWK",
-      "title": "3 U.S. Utility Stocks Built For Higher Rates And Inflation Pass Through",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/3-u-utility-stocks-built-221453290.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1789856093.0
-    }
-  ],
   "AMP": [
     {
       "ticker": "AMP",
@@ -5316,6 +5314,13 @@
     }
   ],
   "AMGN": [
+    {
+      "ticker": "AMGN",
+      "title": "2 Healthcare Stocks That Just Delivered Great News for Investors",
+      "link": "https://finance.yahoo.com/healthcare/articles/2-healthcare-stocks-just-delivered-202101167.html",
+      "publisher": "Motley Fool",
+      "ts": 1790454061.0
+    },
     {
       "ticker": "AMGN",
       "title": "Amgen’s Deerfield office campus sold to Mesirow for $151M in sale-leaseback deal",
@@ -5413,13 +5418,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/novo-nordisk-stock-slides-unveiling-124126008.html",
       "publisher": "TIKR",
       "ts": 1790167286.0
-    },
-    {
-      "ticker": "AMGN",
-      "title": "Amgen Stock Gains After Announcing Positive Phase 3 Sjögren’s Disease Trial Results",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/amgen-stock-gains-announcing-positive-123533056.html",
-      "publisher": "TIKR",
-      "ts": 1790166933.0
     }
   ],
   "ADI": [
@@ -6363,13 +6361,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/atmos-energy-stock-underperforming-dow-113138150.html",
       "publisher": "Barchart",
       "ts": 1789990298.0
-    },
-    {
-      "ticker": "ATO",
-      "title": "3 U.S. Utility Stocks Built For Higher Rates And Inflation Pass Through",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/3-u-utility-stocks-built-221453290.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1789856093.0
     }
   ],
   "ADSK": [
@@ -6672,13 +6663,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/axon-enterprise-axon-prices-1b-194719659.html",
       "publisher": "Insider Monkey",
       "ts": 1789933639.0
-    },
-    {
-      "ticker": "AXON",
-      "title": "Axon (AXON) Stock Looks Fairly Valued As 149% Run Meets Funding Test",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/axon-axon-stock-looks-fairly-211243211.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1789852363.0
     }
   ],
   "BKR": [
@@ -6842,6 +6826,13 @@
     }
   ],
   "BDX": [
+    {
+      "ticker": "BDX",
+      "title": "Waters Tops Growth Outlook as AI Demand, BD Integration Fuel Momentum",
+      "link": "https://finance.yahoo.com/healthcare/articles/waters-tops-growth-outlook-ai-210203457.html",
+      "publisher": "MarketBeat",
+      "ts": 1790456523.0
+    },
     {
       "ticker": "BDX",
       "title": "How Far Can BSX Stock Swing After Losing More Than Half Its Value?",
@@ -7287,20 +7278,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/cash-management-stocks-bny-mellon-191204376.html",
       "publisher": "Simply Wall St.",
       "ts": 1789931524.0
-    },
-    {
-      "ticker": "BNY",
-      "title": "Bank of New York Mellon Corporation (BNY) Lost A Depositary Mandate",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/bank-york-mellon-corporation-bny-221520884.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1789856120.0
-    },
-    {
-      "ticker": "BNY",
-      "title": "BNY Sees Cross-Selling and AI Investments Fueling Its Next Growth Phase",
-      "link": "https://finance.yahoo.com/technology/ai/articles/bny-sees-cross-selling-ai-210204657.html",
-      "publisher": "MarketBeat",
-      "ts": 1789851724.0
     }
   ],
   "BKNG": [
@@ -7703,6 +7680,13 @@
     }
   ],
   "COF": [
+    {
+      "ticker": "COF",
+      "title": "Capital One Financial (COF) Joins Banks Warning On AI Shopping Agent Risks",
+      "link": "https://finance.yahoo.com/technology/ai/articles/capital-one-financial-cof-joins-190838247.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790449718.0
+    },
     {
       "ticker": "COF",
       "title": "‘It Won’t Work’: Clark Howard Warns Capital One Quietly Moved Its Cheapest Customers to Discover",
@@ -8132,13 +8116,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/casey-casy-beats-profit-soft-233311591.html",
       "publisher": "Insider Monkey",
       "ts": 1789947191.0
-    },
-    {
-      "ticker": "CASY",
-      "title": "Jim Cramer Notes Oil Is Behind Pressure on Casey’s (CASY) and Texas Roadhouse (TXRH)",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-notes-oil-behind-193509467.html",
-      "publisher": "Insider Monkey",
-      "ts": 1789846509.0
     }
   ],
   "CBOE": [
@@ -9421,10 +9398,24 @@
   "KO": [
     {
       "ticker": "KO",
+      "title": "What Could Rob Gehring's Return Mean For Coca-Cola (KO) Investors?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/could-rob-gehrings-return-mean-220746108.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790460466.0
+    },
+    {
+      "ticker": "KO",
       "title": "Why Is PepsiCo's Stock Down 10% While the S&P 500 Is Up 13% in 2026? Here's the Only Answer I Can Think of.",
       "link": "https://finance.yahoo.com/markets/stocks/articles/why-pepsicos-stock-down-10-183500475.html",
       "publisher": "Motley Fool",
       "ts": 1790447700.0
+    },
+    {
+      "ticker": "KO",
+      "title": "Warren Buffett Helps Berkshire Hathaway Make $848M From Coca-Cola Stock Each Year, Even if the Price Doesn’t Change",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/warren-buffett-helps-berkshire-hathaway-180021314.html",
+      "publisher": "Benzinga",
+      "ts": 1790445621.0
     },
     {
       "ticker": "KO",
@@ -9509,20 +9500,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/dave-ramsey-says-more-6-175817696.html",
       "publisher": "24/7 Wall St.",
       "ts": 1790272697.0
-    },
-    {
-      "ticker": "KO",
-      "title": "Has Coca-Cola (KO) Priced In Its Cash Flow Outlook?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/coca-cola-ko-priced-cash-161216273.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1790266336.0
-    },
-    {
-      "ticker": "KO",
-      "title": "Berkshire Hathaway Owns 400 Million Shares of Coca-Cola. Here Is What That Dividend Is Worth Now.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/berkshire-hathaway-owns-400-million-153424373.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1790264064.0
     }
   ],
   "CTSH": [
@@ -10223,6 +10200,13 @@
   "COO": [
     {
       "ticker": "COO",
+      "title": "Is Cooper Companies (COO) Undervalued After Opening Its New Vision Centre?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/cooper-companies-coo-undervalued-opening-211119339.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790457079.0
+    },
+    {
+      "ticker": "COO",
       "title": "COO Unveils New Innovation Hub & Lens Launch Plans to Aid CooperVision",
       "link": "https://finance.yahoo.com/healthcare/articles/coo-unveils-innovation-hub-lens-133100015.html",
       "publisher": "Zacks",
@@ -10450,6 +10434,13 @@
   "COST": [
     {
       "ticker": "COST",
+      "title": "Prediction: Here's What a $10,000 Investment in Costco (COST) Stock Could Be Worth in 5 Years",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/prediction-heres-10-000-investment-212500579.html",
+      "publisher": "Motley Fool",
+      "ts": 1790457900.0
+    },
+    {
+      "ticker": "COST",
       "title": "3 Elite Dividend Stocks Hiding in the Nasdaq-100",
       "link": "https://finance.yahoo.com/markets/stocks/articles/3-elite-dividend-stocks-hiding-155822033.html",
       "publisher": "24/7 Wall St.",
@@ -10545,13 +10536,6 @@
       "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-sp500-nasdaq-us-iran-peace-hopes-micron-sandisk/?src=A00220&yptr=yahoo",
       "publisher": "Investor's Business Daily",
       "ts": 1790345533.0
-    },
-    {
-      "ticker": "COST",
-      "title": "Costco is getting squeezed by the AI boom",
-      "link": "https://finance.yahoo.com/markets/article/costco-is-getting-squeezed-by-the-ai-boom-133927696.html",
-      "publisher": "Yahoo Finance",
-      "ts": 1790343567.0
     }
   ],
   "CRH": [
@@ -11687,13 +11671,6 @@
       "link": "https://finance.yahoo.com/energy/articles/nextera-nee-dominion-d-unveil-153356972.html",
       "publisher": "Insider Monkey",
       "ts": 1789918436.0
-    },
-    {
-      "ticker": "D",
-      "title": "Jim Cramer Suggests Against Holding Dominion (D) Through the NextEra (NEE) Share Conversion",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-suggests-against-holding-192955385.html",
-      "publisher": "Insider Monkey",
-      "ts": 1789846195.0
     }
   ],
   "DPZ": [
@@ -12478,13 +12455,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/ciena-upgraded-flutter-downgraded-wall-134710881.html",
       "publisher": "The Fly",
       "ts": 1789998430.0
-    },
-    {
-      "ticker": "EQIX",
-      "title": "Equinix Sees AI Driving Data Center Demand, Interconnection Growth",
-      "link": "https://finance.yahoo.com/technology/ai/articles/equinix-sees-ai-driving-data-200214555.html",
-      "publisher": "MarketBeat",
-      "ts": 1789848134.0
     }
   ],
   "EL": [
@@ -12658,13 +12628,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/3-defensive-us-stocks-retail-221312853.html",
       "publisher": "Simply Wall St.",
       "ts": 1790115192.0
-    },
-    {
-      "ticker": "ALLE",
-      "title": "How Investors May Respond To Quanta Services (PWR) Adding AI Cloud Veteran Ellen Rubin To Its Board",
-      "link": "https://finance.yahoo.com/technology/ai/articles/investors-may-respond-quanta-services-201054570.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1789848654.0
     }
   ],
   "CFG": [

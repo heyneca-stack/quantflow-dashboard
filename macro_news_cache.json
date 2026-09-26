@@ -1,6 +1,41 @@
 {
   "Politik/Makro": [
     {
+      "ticker": "BA",
+      "title": "A 737 MAX Software Glitch Gives Boeing Investors a Fresh Headache",
+      "link": "https://www.barrons.com/articles/boeing-737-max-software-glitch-stock-fee62a8f?siteid=yhoof2&yptr=yahoo",
+      "publisher": "Barrons.com",
+      "ts": 1790455140.0
+    },
+    {
+      "ticker": "BA",
+      "title": "Boeing finds 737 MAX software glitch that may affect automated navigation - WSJ",
+      "link": "https://www.yahoo.com/news/us/articles/boeing-finds-737-max-software-193146717.html",
+      "publisher": "Investing.com",
+      "ts": 1790451106.0
+    },
+    {
+      "ticker": "COF",
+      "title": "Capital One Financial (COF) Joins Banks Warning On AI Shopping Agent Risks",
+      "link": "https://finance.yahoo.com/technology/ai/articles/capital-one-financial-cof-joins-190838247.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790449718.0
+    },
+    {
+      "ticker": "BA",
+      "title": "New Boeing 737 MAX Software Glitch Could Disrupt Navigation Feature",
+      "link": "https://www.wsj.com/business/airlines/new-boeing-737-max-software-glitch-could-disrupt-navigation-feature-d537b8d8?siteid=yhoof2&yptr=yahoo",
+      "publisher": "The Wall Street Journal",
+      "ts": 1790446560.0
+    },
+    {
+      "ticker": "BRK-B",
+      "title": "Warren Buffett Helps Berkshire Hathaway Make $848M From Coca-Cola Stock Each Year, Even if the Price Doesn’t Change",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/warren-buffett-helps-berkshire-hathaway-180021314.html",
+      "publisher": "Benzinga",
+      "ts": 1790445621.0
+    },
+    {
       "ticker": "NVDA",
       "title": "IonQ (IONQ) Just Landed Nvidia Less Than 2 Years After Jensen Huang’s 30-Year Quantum Warning",
       "link": "https://finance.yahoo.com/technology/ai/articles/ionq-ionq-just-landed-nvidia-175356083.html",
@@ -27,6 +62,13 @@
       "link": "https://finance.yahoo.com/economy/policy/articles/fedwatchs-ben-emons-sees-10-144952725.html",
       "publisher": "Stocktwits",
       "ts": 1790434192.0
+    },
+    {
+      "ticker": "AMD",
+      "title": "What Musk’s Tesla and SpaceX Stocks Are Doing After That White House State Dinner",
+      "link": "https://www.barrons.com/articles/elon-musk-tesla-spacex-stock-trump-xi-a47adcbd?siteid=yhoof2&yptr=yahoo",
+      "publisher": "Barrons.com",
+      "ts": 1790432700.0
     },
     {
       "ticker": "BRK-B",
@@ -97,51 +139,16 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/duke-energy-duk-hits-52-034849950.html",
       "publisher": "Insider Monkey",
       "ts": 1790394529.0
-    },
-    {
-      "ticker": "BLK",
-      "title": "Higher Treasury Yields Are Rewriting The Primerica Stock Story",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/higher-treasury-yields-rewriting-primerica-021037331.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1790388637.0
-    },
-    {
-      "ticker": "COF",
-      "title": "‘A Better Rate Than a Student Loan’: Clark Howard Tells Texas Dad Where His College Money Is Hiding",
-      "link": "https://finance.yahoo.com/small-business/articles/better-rate-student-loan-clark-013922820.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1790386762.0
-    },
-    {
-      "ticker": "BRK-B",
-      "title": "Warren Buffett turned a 'death march' into $1 trillion Berkshire Hathaway; at 96, he is handing the chairman's seat to his son",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/warren-buffett-turned-death-march-210912422.html",
-      "publisher": "TheStreet",
-      "ts": 1790370552.0
-    },
-    {
-      "ticker": "BRK-B",
-      "title": "Warren Buffett Steps Down as Berkshire Hathaway Chairman After Warning U.S. Dollar Is ‘Going to Hell’",
-      "link": "https://finance.yahoo.com/economy/policy/articles/warren-buffett-steps-down-berkshire-200140116.html",
-      "publisher": "First for Money",
-      "ts": 1790366500.0
-    },
-    {
-      "ticker": "COST",
-      "title": "Iran War Is Driving Up the Cost of Your Next Oil Change",
-      "link": "https://www.wsj.com/business/retail/iran-war-is-driving-up-the-cost-of-your-next-oil-change-b254bfb1?siteid=yhoof2&yptr=yahoo",
-      "publisher": "The Wall Street Journal",
-      "ts": 1790365320.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "Senator Chris Murphy Calls AI ‘Friendship Bots’ a ‘Poison for Our Kids,’ Pushes Fast Regulation Targeting Deepfakes and Model Security",
-      "link": "https://www.yahoo.com/news/politics/articles/senator-chris-murphy-calls-ai-193040750.html",
-      "publisher": "Benzinga",
-      "ts": 1790364640.0
     }
   ],
   "Wirtschaft": [
+    {
+      "ticker": "NVDA",
+      "title": "Nvidia Is Weighing a $10 Billion Stake in Anthropic's IPO. It Would Be Buying Its Own Demand.",
+      "link": "https://finance.yahoo.com/technology/ai/articles/nvidia-weighing-10-billion-stake-195701843.html",
+      "publisher": "Motley Fool",
+      "ts": 1790452621.0
+    },
     {
       "ticker": "KO",
       "title": "Why Is PepsiCo's Stock Down 10% While the S&P 500 Is Up 13% in 2026? Here's the Only Answer I Can Think of.",
@@ -274,16 +281,37 @@
       "link": "https://finance.yahoo.com/technology/ai/articles/accenture-acn-joins-anthropic-ai-233631025.html",
       "publisher": "Insider Monkey",
       "ts": 1790379391.0
-    },
-    {
-      "ticker": "BIIB",
-      "title": "Biogen (NASDAQ:BIIB) Q2 Earnings: Leading The Therapeutics Pack",
-      "link": "https://finance.yahoo.com/healthcare/articles/biogen-nasdaq-biib-q2-earnings-225637248.html",
-      "publisher": "StockStory",
-      "ts": 1790376997.0
     }
   ],
   "Technologie": [
+    {
+      "ticker": "WDC",
+      "title": "Top Quantum Computing Stocks For September 2026",
+      "link": "https://finance.yahoo.com/technology/ai/articles/top-quantum-computing-stocks-september-211247698.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790457167.0
+    },
+    {
+      "ticker": "BDX",
+      "title": "Waters Tops Growth Outlook as AI Demand, BD Integration Fuel Momentum",
+      "link": "https://finance.yahoo.com/healthcare/articles/waters-tops-growth-outlook-ai-210203457.html",
+      "publisher": "MarketBeat",
+      "ts": 1790456523.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "Elon Musk Responds With Two Emojis as Google CEO Sundar Pichai Says Project Suncatcher Heads to Space: 'Can Our TPUs Survive...'",
+      "link": "https://tech.yahoo.com/ai/gemini/articles/elon-musk-responds-two-emojis-203008182.html",
+      "publisher": "Benzinga",
+      "ts": 1790454608.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "‘Don’t Ship Products Until They’re in Control’: Nvidia’s Huang Weighs In on AI Safety Debate",
+      "link": "https://www.barrons.com/articles/nvidia-jensen-huang-ai-openai-anthropic-a9995f13?siteid=yhoof2&yptr=yahoo",
+      "publisher": "Barrons.com",
+      "ts": 1790452740.0
+    },
     {
       "ticker": "GOOGL",
       "title": "Google, OpenAI, and Anthropic just made a move on AI safety",
@@ -395,37 +423,93 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/2-semiconductor-stocks-could-help-101000936.html",
       "publisher": "Motley Fool",
       "ts": 1790417400.0
-    },
-    {
-      "ticker": "AKAM",
-      "title": "Why Akamai Technologies (AKAM) Is Up 9.0% After Massive Anthropic AI Cloud Deal - And What's Next",
-      "link": "https://finance.yahoo.com/technology/ai/articles/why-akamai-technologies-akam-9-100915025.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1790417355.0
-    },
-    {
-      "ticker": "META",
-      "title": "Meta has an AI solution to its misunderstood trust problem",
-      "link": "https://finance.yahoo.com/technology/article/meta-has-an-ai-solution-to-its-misunderstood-trust-problem-100000057.html",
-      "publisher": "Yahoo Finance",
-      "ts": 1790416800.0
-    },
-    {
-      "ticker": "CRWD",
-      "title": "Jim Cramer Says Buy 2 Artificial Intelligence (AI) Stocks Up 875% and 1,400% Since 2023",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/jim-cramer-says-buy-2-090801840.html",
-      "publisher": "Motley Fool",
-      "ts": 1790413681.0
-    },
-    {
-      "ticker": "AVGO",
-      "title": "Nvidia vs. Broadcom: Whose AI Bull Case is Better?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-vs-broadcom-whose-ai-082200671.html",
-      "publisher": "Motley Fool",
-      "ts": 1790410920.0
     }
   ],
   "Sonstiges": [
+    {
+      "ticker": "KO",
+      "title": "What Could Rob Gehring's Return Mean For Coca-Cola (KO) Investors?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/could-rob-gehrings-return-mean-220746108.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790460466.0
+    },
+    {
+      "ticker": "HON",
+      "title": "Honeywell (HON) Stock May Be Undervalued After Marine Corps Security Win",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/honeywell-hon-stock-may-undervalued-220742842.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790460462.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "The Pentagon Is Buying eVTOLs. Here's Which Stock Wins the Defense Money.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/pentagon-buying-evtols-heres-stock-215000441.html",
+      "publisher": "Motley Fool",
+      "ts": 1790459400.0
+    },
+    {
+      "ticker": "^DJI",
+      "title": "By 1932, The Dow Had Lost 90% Of Its Value. J. Paul Getty Called It ‘The Opportunity Of A Lifetime’ And Scooped Up Shares Of American Oil Companies. 25 Years Later, Fortune Named Him ‘The Wealthiest Living American.’",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/1932-dow-had-lost-90-213110076.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1790458270.0
+    },
+    {
+      "ticker": "COST",
+      "title": "Prediction: Here's What a $10,000 Investment in Costco (COST) Stock Could Be Worth in 5 Years",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/prediction-heres-10-000-investment-212500579.html",
+      "publisher": "Motley Fool",
+      "ts": 1790457900.0
+    },
+    {
+      "ticker": "COO",
+      "title": "Is Cooper Companies (COO) Undervalued After Opening Its New Vision Centre?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/cooper-companies-coo-undervalued-opening-211119339.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790457079.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Energy Transfer vs. MPLX: Which Pipeline Giant's High-Yield Dividend Is Actually Safer?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/energy-transfer-vs-mplx-pipeline-202500783.html",
+      "publisher": "Motley Fool",
+      "ts": 1790454300.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "UBS makes bold call as CoreWeave faces $35 billion problem",
+      "link": "https://finance.yahoo.com/technology/ai/articles/ubs-makes-bold-call-coreweave-202300727.html",
+      "publisher": "TheStreet",
+      "ts": 1790454180.0
+    },
+    {
+      "ticker": "AMGN",
+      "title": "2 Healthcare Stocks That Just Delivered Great News for Investors",
+      "link": "https://finance.yahoo.com/healthcare/articles/2-healthcare-stocks-just-delivered-202101167.html",
+      "publisher": "Motley Fool",
+      "ts": 1790454061.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Should You Buy Nike Stock Before Oct. 1?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/buy-nike-stock-oct-1-194900068.html",
+      "publisher": "Motley Fool",
+      "ts": 1790452140.0
+    },
+    {
+      "ticker": "^GSPC",
+      "title": "SCHD Is Up 20% and Offers Investors a Compelling Yield. But These 3 Dividend Stocks Could Be Even Better Buys Now.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/schd-20-offers-investors-compelling-193500725.html",
+      "publisher": "Motley Fool",
+      "ts": 1790451300.0
+    },
+    {
+      "ticker": "HON",
+      "title": "Why Honeywell International (HON) Is Back In The Spotlight",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/why-honeywell-international-hon-back-190811275.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790449691.0
+    },
     {
       "ticker": "AIG",
       "title": "3 Insurance Stocks to Watch as Trade Credit Demand Shifts",
@@ -481,90 +565,6 @@
       "link": "https://finance.yahoo.com/technology/ai/articles/fastly-fsly-getting-more-interesting-165517875.html",
       "publisher": "Insider Monkey",
       "ts": 1790441717.0
-    },
-    {
-      "ticker": "AMD",
-      "title": "Broadcom Has More Than One Way to Win. Here’s Where I See the Stock Going",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/broadcom-more-one-way-win-164511971.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1790441111.0
-    },
-    {
-      "ticker": "ABBV",
-      "title": "How to Build $7,250 a Month in Dividend Income Without Owning a Single Yield Trap",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/build-7-250-month-dividend-161511905.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1790439311.0
-    },
-    {
-      "ticker": "COIN",
-      "title": "Ethereum’s $2,540 Retest Becomes Key Test for the Rally",
-      "link": "https://finance.yahoo.com/markets/crypto/articles/ethereum-2-540-retest-becomes-161428699.html",
-      "publisher": "Coinspeaker",
-      "ts": 1790439268.0
-    },
-    {
-      "ticker": "SCHW",
-      "title": "Charles Schwab (SCHW) Is Opening Private Markets To Retail Investors",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/charles-schwab-schw-opening-private-161243988.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1790439163.0
-    },
-    {
-      "ticker": "ABBV",
-      "title": "What Does AbbVie (ABBV) Need To Prove With Its Latest Pipeline Moves?",
-      "link": "https://finance.yahoo.com/healthcare/articles/does-abbvie-abbv-prove-latest-161207009.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1790439127.0
-    },
-    {
-      "ticker": "AXP",
-      "title": "American Express (AXP) Adds Business Savings And Payroll Tools",
-      "link": "https://finance.yahoo.com/small-business/articles/american-express-axp-adds-business-161130770.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1790439090.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "The 3 \"Magnificent Seven\" Stocks That I'm Buying Now",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/3-magnificent-seven-stocks-im-155000352.html",
-      "publisher": "Motley Fool",
-      "ts": 1790437800.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "Intuit vs. Oracle: Which Technology Stock Is a Better Buy in 2026?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/intuit-vs-oracle-technology-stock-153254756.html",
-      "publisher": "Motley Fool",
-      "ts": 1790436774.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "The Strategic Bitcoin Reserve Is Closer Than Ever to Being Signed Into Law. Is Bitcoin About to Soar in Value?",
-      "link": "https://finance.yahoo.com/markets/crypto/articles/strategic-bitcoin-closer-ever-being-153100846.html",
-      "publisher": "Motley Fool",
-      "ts": 1790436660.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Guess Which Group of Stocks Is Back at an All-Time High?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/guess-group-stocks-back-time-152700057.html",
-      "publisher": "Motley Fool",
-      "ts": 1790436420.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Where Will The Cryptocurrency XRP Be in 5 Years?",
-      "link": "https://finance.yahoo.com/markets/crypto/articles/where-cryptocurrency-xrp-5-years-151500559.html",
-      "publisher": "Motley Fool",
-      "ts": 1790435700.0
-    },
-    {
-      "ticker": "EQT",
-      "title": "What Does EQT (EQT) Record Lateral Mean For Its Gas Recovery Plans?",
-      "link": "https://finance.yahoo.com/energy/articles/does-eqt-eqt-record-lateral-151352655.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1790435632.0
     }
   ]
 }
