@@ -169,3 +169,7 @@
 2026-09-28 19:09:53 UTC,AUFSTOCKUNG,RKLB,Long,64.06,1.0000,,0.00,Aufstockung einer bestbewerteten gehaltenen Position mit Cash (64;06 €)
 2026-09-29 00:08:54 UTC,VERKAUF,CDNS,Quick Win,286.83,17.0000,-30.54,0.00,Durch besseren Kandidaten ersetzt (Score 17.94 vs. BE 30.15)
 2026-09-29 00:08:54 UTC,KAUF,BE,Quick Win,253.91,19.0000,,0.00,Tausch: ersetzt schwächere Position (Score 30.15)
+2026-09-29 10:22:55 UTC,VERKAUF,BE,Long,231.77,19.0000,-420.64,0.00,Durch besseren Kandidaten ersetzt (Score 3.15 vs. CDNS 13.08)
+2026-09-29 10:22:55 UTC,VERKAUF,RKLB,Long,63.65,79.0000,-80.26,0.00,Durch besseren Kandidaten ersetzt (Score 8.16 vs. PANW 12.28)
+2026-09-29 10:22:55 UTC,KAUF,CDNS,Quick Win,288.05,17.0000,,0.00,Tausch: ersetzt schwächere Position (Score 13.08)
+2026-09-29 10:22:55 UTC,KAUF,PANW,Quick Win,345.71,13.0000,,0.00,Tausch: ersetzt schwächere Position (Score 12.28)
