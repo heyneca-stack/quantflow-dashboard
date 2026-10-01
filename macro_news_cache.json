@@ -1,6 +1,13 @@
 {
   "Politik/Makro": [
     {
+      "ticker": "CRWD",
+      "title": "3 Rate Sensitive Software Stocks Investors May Want On Their Watchlist",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/3-rate-sensitive-software-stocks-231430931.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790810070.0
+    },
+    {
       "ticker": "GOOGL",
       "title": "Dow Jones Futures: Micron Earnings Crush Views, S&P 500 At Critical Level As Treasury Yields Rise",
       "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-micron-rises-earnings-treasury-yields/?src=A00220&yptr=yahoo",
@@ -132,22 +139,43 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-sept-30-134209395.html",
       "publisher": "TheStreet",
       "ts": 1790775729.0
-    },
-    {
-      "ticker": "JBL",
-      "title": "Exchange-Traded Funds, Equity Futures Lower Pre-Bell Wednesday Amid Inflation Data Release",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-equity-futures-132034377.html",
-      "publisher": "MT Newswires",
-      "ts": 1790774434.0
     }
   ],
   "Wirtschaft": [
+    {
+      "ticker": "KO",
+      "title": "Coca Cola (KO) Keeps Raising Its Outlook After Consecutive Earnings Beats",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/coca-cola-ko-keeps-raising-031426556.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790824466.0
+    },
+    {
+      "ticker": "MU",
+      "title": "U.S. stock futures rise following upbeat Micron earnings",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/u-stock-futures-rise-following-011351103.html",
+      "publisher": "Investing.com",
+      "ts": 1790817231.0
+    },
+    {
+      "ticker": "MU",
+      "title": "What Micron Technology (MU) Said on Its Q4 Earnings Call",
+      "link": "https://finance.yahoo.com/technology/articles/micron-technology-mu-said-q4-000220008.html",
+      "publisher": "MarketBeat",
+      "ts": 1790812940.0
+    },
     {
       "ticker": "MU",
       "title": "Micron Technology Q4 Earnings Call Highlights",
       "link": "https://finance.yahoo.com/markets/stocks/articles/micron-technology-q4-earnings-call-230239520.html",
       "publisher": "MarketBeat",
       "ts": 1790809359.0
+    },
+    {
+      "ticker": "MU",
+      "title": "Micron Profit, Revenue Surge as Memory Crunch Looks to Last Through 2028",
+      "link": "https://www.wsj.com/business/earnings/micron-profit-revenue-surge-on-memory-demand-562034e6?siteid=yhoof2&yptr=yahoo",
+      "publisher": "The Wall Street Journal",
+      "ts": 1790807280.0
     },
     {
       "ticker": "JBL",
@@ -253,37 +281,44 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/serv-cuts-2026-revenue-outlook-151200096.html",
       "publisher": "Zacks",
       "ts": 1790781120.0
-    },
-    {
-      "ticker": "MU",
-      "title": "Micron Stock Rises Ahead of Q4 Earnings",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/micron-stock-rises-ahead-q4-145011375.html",
-      "publisher": "GuruFocus.com",
-      "ts": 1790779811.0
-    },
-    {
-      "ticker": "PWR",
-      "title": "MYRG's T&D Segment 1H26 Revenues Up 10%: More Upside Ahead?",
-      "link": "https://finance.yahoo.com/energy/articles/myrgs-t-d-segment-1h26-144900844.html",
-      "publisher": "Zacks",
-      "ts": 1790779740.0
-    },
-    {
-      "ticker": "MU",
-      "title": "Micron Earnings Prediction Market Preview: Can the AI Memory Boom Keep Running?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/micron-earnings-prediction-market-preview-143051920.html",
-      "publisher": "Benzinga Prediction Markets",
-      "ts": 1790778651.0
-    },
-    {
-      "ticker": "EME",
-      "title": "How EMCOR’s AI-Fueled Data Center Backlog and Acquisitions Will Impact EMCOR Group (EME) Investors",
-      "link": "https://finance.yahoo.com/technology/ai/articles/emcor-ai-fueled-data-center-141139553.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1790777499.0
     }
   ],
   "Technologie": [
+    {
+      "ticker": "TSM",
+      "title": "TSMC weighs investment in Texas to expand U.S. chip production, Reuters reports",
+      "link": "https://finance.yahoo.com/technology/articles/tsmc-weighs-investment-texas-expand-021055343.html",
+      "publisher": "Investing.com",
+      "ts": 1790820655.0
+    },
+    {
+      "ticker": "BAC",
+      "title": "Bank of America (BAC) Stock Could Be 40% Below Fair Value On AI Spending Plans",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/bank-america-bac-stock-could-012413115.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790817853.0
+    },
+    {
+      "ticker": "PANW",
+      "title": "Is AI-Driven Edge Security Integration With Nvidia’s Stack Altering The Investment Case For Palo Alto Networks (PANW)?",
+      "link": "https://finance.yahoo.com/technology/ai/articles/ai-driven-edge-security-integration-012337957.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790817817.0
+    },
+    {
+      "ticker": "ADI",
+      "title": "3 AI Infrastructure Stocks Retail Investors Are Watching As Data Center Spending Climbs",
+      "link": "https://finance.yahoo.com/technology/ai/articles/3-ai-infrastructure-stocks-retail-001208035.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790813528.0
+    },
+    {
+      "ticker": "CSCO",
+      "title": "Did Bell–Cisco Sovereign AI Pact Just Recast Cisco Systems' (CSCO) Regulated-Market Strategy?",
+      "link": "https://finance.yahoo.com/technology/ai/articles/did-bell-cisco-sovereign-ai-231159514.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790809919.0
+    },
     {
       "ticker": "ABNB",
       "title": "Why Airbnb (ABNB) Stock Is Trading Up Today",
@@ -388,44 +423,65 @@
       "link": "https://www.barrons.com/articles/pasqal-stock-buy-quantum-computing-4e255a8c?siteid=yhoof2&yptr=yahoo",
       "publisher": "Barrons.com",
       "ts": 1790792580.0
-    },
-    {
-      "ticker": "AVGO",
-      "title": "Top 3 AI Chip Stocks To Watch In September 2026",
-      "link": "https://finance.yahoo.com/technology/ai/articles/top-3-ai-chip-stocks-181205375.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1790791925.0
-    },
-    {
-      "ticker": "SCHW",
-      "title": "Talk to ‘Charley’? Charles Schwab Unveils New AI Assistant for Investors",
-      "link": "https://www.barrons.com/advisor/articles/charles-schwab-charley-ai-assistant-b7d7cadd?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1790791920.0
-    },
-    {
-      "ticker": "MSFT",
-      "title": "OpenAI Faces Stunning Lawsuit Over Rogue AI Agent",
-      "link": "https://finance.yahoo.com/technology/ai/articles/openai-faces-stunning-lawsuit-over-180543065.html",
-      "publisher": "GuruFocus.com",
-      "ts": 1790791543.0
-    },
-    {
-      "ticker": "META",
-      "title": "Meta Stock Slides as Muse Faces OpenAI Threat",
-      "link": "https://www.barrons.com/articles/meta-muse-stock-openai-40103b67?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1790791500.0
-    },
-    {
-      "ticker": "CI",
-      "title": "Cigna Reaffirms 2026 Outlook, Targets Complex Care and AI-Driven Growth",
-      "link": "https://finance.yahoo.com/healthcare/articles/cigna-reaffirms-2026-outlook-targets-180221404.html",
-      "publisher": "MarketBeat",
-      "ts": 1790791341.0
     }
   ],
   "Sonstiges": [
+    {
+      "ticker": "ANET",
+      "title": "Arista Networks (ANET) Stock May Be Near Fair Value Today",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/arista-networks-anet-stock-may-020854976.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790820534.0
+    },
+    {
+      "ticker": "CBOE",
+      "title": "Cboe Global Markets (CBOE) Extends SPX Rights Through 2051, Is The Stock Fully Valued?",
+      "link": "https://finance.yahoo.com/markets/options/articles/cboe-global-markets-cboe-extends-020853822.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790820533.0
+    },
+    {
+      "ticker": "CL",
+      "title": "Oil holds gains as Middle East supply risks persist",
+      "link": "https://finance.yahoo.com/energy/articles/oil-holds-gains-middle-east-013422792.html",
+      "publisher": "Investing.com",
+      "ts": 1790818462.0
+    },
+    {
+      "ticker": "DD",
+      "title": "Can DuPont De Nemours (DD) Keep Trading Below Fair Value On Cash Flow?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/dupont-nemours-dd-keep-trading-012253374.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790817773.0
+    },
+    {
+      "ticker": "EBAY",
+      "title": "What is eBay’s (EBAY) Economic Moat, and is it Widening or Narrowing?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/ebay-ebay-economic-moat-widening-235626084.html",
+      "publisher": "Insider Monkey",
+      "ts": 1790812586.0
+    },
+    {
+      "ticker": "BBY",
+      "title": "Is Best Buy’s (BBY) Moat Narrowing as Electronics Move Online for Good?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/best-buy-bby-moat-narrowing-234246200.html",
+      "publisher": "Insider Monkey",
+      "ts": 1790811766.0
+    },
+    {
+      "ticker": "CDNS",
+      "title": "Synopsys (SNPS) vs Cadence (CDNS): Which is a Better Stock to Buy?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/synopsys-snps-vs-cadence-cdns-232835003.html",
+      "publisher": "Insider Monkey",
+      "ts": 1790810915.0
+    },
+    {
+      "ticker": "CI",
+      "title": "Cigna Group (CI), What Is Behind The Fresh Attention?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/cigna-group-ci-behind-fresh-231058467.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1790809858.0
+    },
     {
       "ticker": "NVDA",
       "title": "Forget Waiting Three Months for SPY’s Dividend. Invesco’s High-Dividend Fund Pays Every Month",
@@ -509,62 +565,6 @@
       "link": "https://www.barrons.com/articles/conocophillips-baker-hughes-energy-korea-c9b25fa1?siteid=yhoof2&yptr=yahoo",
       "publisher": "Barrons.com",
       "ts": 1790804160.0
-    },
-    {
-      "ticker": "COIN",
-      "title": "Coinbase Global (COIN) Opens Regulated Stablecoin Payments To Merchants",
-      "link": "https://finance.yahoo.com/markets/crypto/articles/coinbase-global-coin-opens-regulated-211637977.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1790802997.0
-    },
-    {
-      "ticker": "AMT",
-      "title": "American Tower (AMT) Declines More Than Market: Some Information for Investors",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/american-tower-amt-declines-more-211503181.html",
-      "publisher": "Zacks",
-      "ts": 1790802903.0
-    },
-    {
-      "ticker": "PWR",
-      "title": "Why Quanta Services (PWR) Dipped More Than Broader Market Today",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/why-quanta-services-pwr-dipped-211503386.html",
-      "publisher": "Zacks",
-      "ts": 1790802903.0
-    },
-    {
-      "ticker": "CRWD",
-      "title": "CrowdStrike (CRWD) Stock May Be Overvalued On Blueprint Alliance News",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/crowdstrike-crwd-stock-may-overvalued-211447326.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1790802887.0
-    },
-    {
-      "ticker": "BA",
-      "title": "Moderna, Cerebras, Jabil, HPE, Cal-Maine, Mattel, and More Stocks That Explain Today’s Market",
-      "link": "https://www.barrons.com/articles/stock-movers-81984569?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1790802540.0
-    },
-    {
-      "ticker": "AAPL",
-      "title": "Apple Predicted To Sell 6 Million iPhone Duo Handsets This Year",
-      "link": "https://www.investors.com/news/technology/apple-stock-aapl-iphone-duo-2026-sales-forecast/?src=A00220&yptr=yahoo",
-      "publisher": "Investor's Business Daily",
-      "ts": 1790802375.0
-    },
-    {
-      "ticker": "CEG",
-      "title": "Constellation Stock Rises as Amazon Backs Nuclear Plant Expansion",
-      "link": "https://www.barrons.com/articles/constellation-amazon-nuclear-plant-deal-ecf40154?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1790802120.0
-    },
-    {
-      "ticker": "MRNA",
-      "title": "Why Moderna (MRNA) Shares Are Falling Today",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/why-moderna-mrna-shares-falling-210113234.html",
-      "publisher": "StockStory",
-      "ts": 1790802073.0
     }
   ]
 }
