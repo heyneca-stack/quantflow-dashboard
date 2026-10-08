@@ -1,5 +1,5 @@
 {
-  "fetched_at": 1791385308.3571055,
+  "fetched_at": 1791472187.9963324,
   "sp500": [
     {
       "symbol": "MMM",
@@ -512,10 +512,6 @@
     {
       "symbol": "CPAY",
       "sector_raw": "Financials"
-    },
-    {
-      "symbol": "CTVA",
-      "sector_raw": "Materials"
     },
     {
       "symbol": "CSGP",
@@ -1434,7 +1430,7 @@
       "sector_raw": "Information Technology"
     },
     {
-      "symbol": "PSKY",
+      "symbol": "SKYD",
       "sector_raw": "Communication Services"
     },
     {
@@ -1806,6 +1802,10 @@
       "sector_raw": "Financials"
     },
     {
+      "symbol": "TWLO",
+      "sector_raw": "Information Technology"
+    },
+    {
       "symbol": "TYL",
       "sector_raw": "Information Technology"
     },
@@ -1914,6 +1914,10 @@
       "sector_raw": "Materials"
     },
     {
+      "symbol": "VYLR",
+      "sector_raw": "Consumer Staples"
+    },
+    {
       "symbol": "WRB",
       "sector_raw": "Financials"
     },
@@ -1931,10 +1935,6 @@
     },
     {
       "symbol": "DIS",
-      "sector_raw": "Communication Services"
-    },
-    {
-      "symbol": "WBD",
       "sector_raw": "Communication Services"
     },
     {
