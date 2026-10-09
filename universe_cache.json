@@ -1,5 +1,5 @@
 {
-  "fetched_at": 1791472187.9963324,
+  "fetched_at": 1791577844.3565655,
   "sp500": [
     {
       "symbol": "MMM",
@@ -1430,10 +1430,6 @@
       "sector_raw": "Information Technology"
     },
     {
-      "symbol": "SKYD",
-      "sector_raw": "Communication Services"
-    },
-    {
       "symbol": "PH",
       "sector_raw": "Industrials"
     },
@@ -1644,6 +1640,10 @@
     {
       "symbol": "SPG",
       "sector_raw": "Real Estate"
+    },
+    {
+      "symbol": "SKYD",
+      "sector_raw": "Communication Services"
     },
     {
       "symbol": "SWKS",
