@@ -1,5 +1,5 @@
 {
-  "fetched_at": 1792953704.0361297,
+  "fetched_at": 1793057518.969689,
   "sp500": [
     {
       "symbol": "MMM",
@@ -1518,20 +1518,20 @@
       "sector_raw": "Consumer Discretionary"
     },
     {
-      "symbol": "PWR",
-      "sector_raw": "Industrials"
+      "symbol": "Q",
+      "sector_raw": "Information Technology"
     },
     {
       "symbol": "QCOM",
       "sector_raw": "Information Technology"
     },
     {
-      "symbol": "DGX",
-      "sector_raw": "Health Care"
+      "symbol": "PWR",
+      "sector_raw": "Industrials"
     },
     {
-      "symbol": "Q",
-      "sector_raw": "Information Technology"
+      "symbol": "DGX",
+      "sector_raw": "Health Care"
     },
     {
       "symbol": "RL",
@@ -1544,10 +1544,6 @@
     {
       "symbol": "RDDT",
       "sector_raw": "Communication Services"
-    },
-    {
-      "symbol": "RTX",
-      "sector_raw": "Industrials"
     },
     {
       "symbol": "O",
@@ -1600,6 +1596,10 @@
     {
       "symbol": "RCL",
       "sector_raw": "Consumer Discretionary"
+    },
+    {
+      "symbol": "RTX",
+      "sector_raw": "Industrials"
     },
     {
       "symbol": "SPGI",
