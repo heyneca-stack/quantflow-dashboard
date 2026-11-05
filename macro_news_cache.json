@@ -1,6 +1,76 @@
 {
   "Politik/Makro": [
     {
+      "ticker": "AMD",
+      "title": "AMD Faces Nvidia Software Hurdle, While Intel Could Reclaim PC Market Share, Morningstar Says",
+      "link": "https://finance.yahoo.com/technology/articles/amd-faces-nvidia-software-hurdle-113436369.html",
+      "publisher": "Stocktwits",
+      "ts": 1793878476.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "REITs Usually Underperform When Interest Rates Are Rising. Not This Year. Here's Why.",
+      "link": "https://finance.yahoo.com/real-estate/articles/reits-usually-underperform-interest-rates-112000840.html",
+      "publisher": "Motley Fool",
+      "ts": 1793877600.0
+    },
+    {
+      "ticker": "BRK-B",
+      "title": "Warren Buffett Said 11 Words Warning That \"Prices for an Awful Lot of Things Will Look Very Silly.\" Here's Why His Market Warning Still Matters for Investors.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/warren-buffett-said-11-words-110500788.html",
+      "publisher": "Motley Fool",
+      "ts": 1793876700.0
+    },
+    {
+      "ticker": "FIX",
+      "title": "Is Comfort Systems Stock's Fall A Bargain Or A Warning?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/comfort-systems-stocks-fall-bargain-103635669.html",
+      "publisher": "Trefis",
+      "ts": 1793874995.0
+    },
+    {
+      "ticker": "SMSN.L",
+      "title": "AI Selloff Extends, Treasurys Gain as Blue Wave Reverberates",
+      "link": "https://www.wsj.com/finance/stocks/ai-selloff-extends-treasurys-gain-as-blue-wave-reverberates-2d60fa21?siteid=yhoof2&yptr=yahoo",
+      "publisher": "The Wall Street Journal",
+      "ts": 1793871960.0
+    },
+    {
+      "ticker": "^GSPC",
+      "title": "Stock market today: Dow, S&P 500, Nasdaq trade mixed as post-election relief rally cools, oil falls",
+      "link": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-november-5-dow-sp-500-nasdaq-oil-falls-090519607.html",
+      "publisher": "Yahoo Finance",
+      "ts": 1793869519.0
+    },
+    {
+      "ticker": "DXCM",
+      "title": "Will Shield Award Recognition Change Guardant Health Stock Narrative",
+      "link": "https://finance.yahoo.com/healthcare/articles/shield-award-recognition-change-guardant-044139570.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1793853699.0
+    },
+    {
+      "ticker": "SCHW",
+      "title": "3 Stocks Linked To Money Market Funds As Treasury Bill Supply Reshapes Cash Returns",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/3-stocks-linked-money-market-044045718.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1793853645.0
+    },
+    {
+      "ticker": "BRK-B",
+      "title": "Warren Buffett’s 90/10 Rule for a 65-Year-Old With $600,000 in an IRA and $2,800 a Month in Social Security. Here’s the Monthly Income and the Tax Bill.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/warren-buffett-90-10-rule-022046451.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1793845246.0
+    },
+    {
+      "ticker": "CL",
+      "title": "Oil rises amid uncertainty over Iran war after U.S. midterms",
+      "link": "https://finance.yahoo.com/energy/articles/oil-holds-steep-losses-u-012632186.html",
+      "publisher": "Investing.com",
+      "ts": 1793841992.0
+    },
+    {
       "ticker": "GOOGL",
       "title": "Dow Jones Futures Rise After Apple, Microsoft, Amazon Flash Buy Signals In Postelection Rally. CoreWeave, SpaceX Skid.",
       "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-elections-oil-apple-microsoft-amazon-buy-signals-coreweave-spacex-skid/?src=A00220&yptr=yahoo",
@@ -69,502 +139,432 @@
       "link": "https://www.barrons.com/livecoverage/stock-market-news-today-110426/card/the-election-flipped-congress-it-also-flipped-the-market--UT83eYXvz6tWwUwCZ2Mp?siteid=yhoof2&yptr=yahoo",
       "publisher": "Barrons.com",
       "ts": 1793826255.0
-    },
-    {
-      "ticker": "ETR",
-      "title": "Analysts Say These Industries Will See Midterm Election Impact",
-      "link": "https://www.investors.com/news/spacex-stock-analysts-weigh-in-on-how-midterm-election-results-will-hit-stocks/?src=A00220&yptr=yahoo",
-      "publisher": "Investor's Business Daily",
-      "ts": 1793825067.0
-    },
-    {
-      "ticker": "KO",
-      "title": "Here’s Why Dividend Kings Coca-Cola, Procter & Gamble, and Colgate-Palmolive Are Hitting 52-Week Highs Following Midterm Election Results",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/why-dividend-kings-coca-cola-203502707.html",
-      "publisher": "Motley Fool",
-      "ts": 1793824502.0
-    },
-    {
-      "ticker": "EW",
-      "title": "Edwards Lifesciences (EW) Trial Win Puts Fair Value Back In Focus",
-      "link": "https://finance.yahoo.com/healthcare/articles/edwards-lifesciences-ew-trial-win-201026920.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1793823026.0
-    },
-    {
-      "ticker": "WDC",
-      "title": "Seagate Sinks 8%, Western Digital Down 6% on Election, Memory Price Worries",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/seagate-sinks-8-western-digital-191224599.html",
-      "publisher": "TIKR",
-      "ts": 1793819544.0
-    },
-    {
-      "ticker": "^IXIC",
-      "title": "Dow surges 1,500 points after Democrats take control of Congress",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/stocks-soar-democrats-control-congress-151808011.html",
-      "publisher": "CBS News",
-      "ts": 1793819277.0
-    },
-    {
-      "ticker": "^GSPC",
-      "title": "Update: Equities Rally, Oil Plunges Intraday Following Democrats' Election Win",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/equities-rally-oil-plunges-intraday-190549058.html",
-      "publisher": "MT Newswires",
-      "ts": 1793819149.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "Alphabet Stock Jumps 5% as Midterm Election Rally Lifts Google Shares",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/alphabet-stock-jumps-5-midterm-185346799.html",
-      "publisher": "GuruFocus.com",
-      "ts": 1793818426.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "Democrats’ Big Win Sets Up a Debt Ceiling Fight. What the Election Means for Bonds.",
-      "link": "https://www.barrons.com/articles/election-democrats-treasuries-bond-debt-deficit-fb311877?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1793818260.0
-    },
-    {
-      "ticker": "AMD",
-      "title": "Market reaction to changes in Congress, AMD earnings, and where to find value in healthcare stocks",
-      "link": "https://finance.yahoo.com/video/market-reaction-to-changes-in-congress-amd-earnings-and-where-to-find-value-in-healthcare-stocks-185012443.html",
-      "publisher": "Yahoo Finance Video",
-      "ts": 1793818212.0
-    },
-    {
-      "ticker": "CEG",
-      "title": "VST, CEG Stocks Drop As Election Outcome Hits Merchant Power Generators",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/vst-ceg-stocks-drop-election-181047161.html",
-      "publisher": "Stocktwits",
-      "ts": 1793815847.0
     }
   ],
   "Wirtschaft": [
     {
-      "ticker": "APP",
-      "title": "What AppLovin (APP) Said on Its Q3 Earnings Call",
-      "link": "https://finance.yahoo.com/technology/articles/applovin-app-said-q3-earnings-001430989.html",
-      "publisher": "MarketBeat",
-      "ts": 1793837670.0
+      "ticker": "CI",
+      "title": "Cigna shares climb on raised earnings outlook, Q3 beat",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/cigna-shares-climb-raised-earnings-113806399.html",
+      "publisher": "Investing.com",
+      "ts": 1793878686.0
     },
     {
-      "ticker": "AAPL",
-      "title": "S&P 500, Nasdaq Surge Ahead After Democratic Sweep, Dow Jumps To One-Year High On Lower Oil — AAPL, SNAP, INTC, CRWV, QCOM In Focus",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/p-500-nasdaq-surge-ahead-233233121.html",
-      "publisher": "Stocktwits",
-      "ts": 1793835153.0
+      "ticker": "GOOGL",
+      "title": "Dow Jones Futures Rise As Techs Fall; Apple, Microsoft, Amazon Flash Buy Signals",
+      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-elections-oil-apple-microsoft-amazon-buy-signals-coreweave-spacex-skid/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1793878477.0
     },
     {
-      "ticker": "APA",
-      "title": "APA Corporation (NASDAQ:APA) beats expectations in strong Q3 2026",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/apa-corporation-nasdaq-apa-beats-233020949.html",
-      "publisher": "StockStory",
-      "ts": 1793835020.0
+      "ticker": "NVDA",
+      "title": "2 Bank Stocks to Buy After Their Third-Quarter Earnings Reports",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/2-bank-stocks-buy-third-113000767.html",
+      "publisher": "Motley Fool",
+      "ts": 1793878200.0
     },
     {
-      "ticker": "ATO",
-      "title": "Atmos: Fiscal Q4 Earnings Snapshot",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/atmos-fiscal-q4-earnings-snapshot-232629597.html",
+      "ticker": "MSFT",
+      "title": "Microsoft Opts Against Expanding Nscale Texas Data Centre Agreement Ahead of Planned $35 Billion IPO",
+      "link": "https://finance.yahoo.com/technology/ai/articles/microsoft-opts-against-expanding-nscale-112700515.html",
+      "publisher": "InvestorsHub",
+      "ts": 1793878020.0
+    },
+    {
+      "ticker": "APD",
+      "title": "Air Products and Chemicals: Fiscal Q4 Earnings Snapshot",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/air-products-chemicals-fiscal-q4-111442539.html",
       "publisher": "Associated Press",
-      "ts": 1793834789.0
+      "ts": 1793877282.0
     },
     {
-      "ticker": "NVDA",
-      "title": "Nuvectis Pharma, Inc. Q3 2026 Earnings Call Summary",
-      "link": "https://finance.yahoo.com/healthcare/articles/nuvectis-pharma-inc-q3-2026-232425455.html",
-      "publisher": "Moby",
-      "ts": 1793834665.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Natural Resource Partners L.P. Q3 2026 Earnings Call Summary",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/natural-partners-l-p-q3-232246981.html",
-      "publisher": "Moby",
-      "ts": 1793834566.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Royalty Pharma plc Q3 2026 Earnings Call Summary",
-      "link": "https://finance.yahoo.com/healthcare/articles/royalty-pharma-plc-q3-2026-232101479.html",
-      "publisher": "Moby",
-      "ts": 1793834461.0
-    },
-    {
-      "ticker": "APP",
-      "title": "AppLovin Stock What Changed After Its Earnings Beat",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/applovin-stock-changed-earnings-beat-232003502.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1793834403.0
+      "ticker": "DUK",
+      "title": "Duke Energy: Q3 Earnings Snapshot",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/duke-energy-q3-earnings-snapshot-111048043.html",
+      "publisher": "Associated Press",
+      "ts": 1793877048.0
     },
     {
       "ticker": "T",
-      "title": "Amdocs Ltd (DOX) (Q4 2026) Earnings Call Highlights: Solid Fiscal 2026 Results, AT&T aOS ...",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/amdocs-ltd-dox-q4-2026-230443751.html",
+      "title": "Tutor Perini Corp (TPC) (Q3 2026) Earnings Call Highlights: Record $1. ...",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/tutor-perini-corp-tpc-q3-111042426.html",
       "publisher": "GuruFocus.com",
-      "ts": 1793833483.0
-    },
-    {
-      "ticker": "KO",
-      "title": "Coca-Cola Consolidated: Q3 Earnings Snapshot",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/coca-cola-consolidated-q3-earnings-225631591.html",
-      "publisher": "Associated Press",
-      "ts": 1793832991.0
-    },
-    {
-      "ticker": "MSFT",
-      "title": "Why an equal-weight S&P 500 fund can reduce Big Tech risk",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/why-equal-weight-p-500-225408418.html",
-      "publisher": "TheStreet",
-      "ts": 1793832848.0
-    },
-    {
-      "ticker": "ALL",
-      "title": "Allstate (NYSE:ALL) reports sales below analyst estimates in Q3 2026 earnings",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/allstate-nyse-reports-sales-below-224752136.html",
-      "publisher": "StockStory",
-      "ts": 1793832472.0
-    },
-    {
-      "ticker": "APP",
-      "title": "AppLovin (NASDAQ:APP) delivers strong Q3 2026 numbers, stock jumps 24.9%",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/applovin-nasdaq-app-delivers-strong-223804244.html",
-      "publisher": "StockStory",
-      "ts": 1793831884.0
-    },
-    {
-      "ticker": "ANET",
-      "title": "Arista Networks Blows Out Earnings and Rises While Most AI Suppliers Fall After Midterms",
-      "link": "https://finance.yahoo.com/video/arista-networks-blows-earnings-rises-223103294.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1793831463.0
-    },
-    {
-      "ticker": "AFL",
-      "title": "Aflac (AFL) Q3 Earnings: Taking a Look at Key Metrics Versus Estimates",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/aflac-afl-q3-earnings-taking-223002097.html",
-      "publisher": "Zacks",
-      "ts": 1793831402.0
-    },
-    {
-      "ticker": "CF",
-      "title": "CF (CF) Q3 Earnings: Taking a Look at Key Metrics Versus Estimates",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/cf-cf-q3-earnings-taking-223002159.html",
-      "publisher": "Zacks",
-      "ts": 1793831402.0
-    },
-    {
-      "ticker": "MSFT",
-      "title": "Stock Market Today, Nov. 4: Oracle Falls on Canceled $7 Billion Tencent Chip-Leasing Deal",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/stock-market-today-nov-4-222002256.html",
-      "publisher": "Motley Fool",
-      "ts": 1793830802.0
-    },
-    {
-      "ticker": "APP",
-      "title": "AppLovin Turns 81% of New Sales Into Profit: Rapid Earnings Reaction",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/applovin-turns-81-sales-profit-221551689.html",
-      "publisher": "Motley Fool",
-      "ts": 1793830551.0
+      "ts": 1793877042.0
     },
     {
       "ticker": "CI",
-      "title": "Cigna Stock Has Gained Since Investor Day. Earnings Are Next.",
-      "link": "https://www.barrons.com/articles/cigna-stock-earnings-422b79e0?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1793830440.0
+      "title": "Cigna: Q3 Earnings Snapshot",
+      "link": "https://finance.yahoo.com/healthcare/articles/cigna-q3-earnings-snapshot-110735689.html",
+      "publisher": "Associated Press",
+      "ts": 1793876855.0
     },
     {
-      "ticker": "CAH",
-      "title": "The Biggest Drug Wholesaler Just Crushed Earnings Views — Here's What To Know",
-      "link": "https://www.investors.com/news/technology/mckesson-stock-mckesson-earnings-q2-2027/?src=A00220&yptr=yahoo",
-      "publisher": "Investor's Business Daily",
-      "ts": 1793830265.0
+      "ticker": "EMR",
+      "title": "Emerson Electric Co (EMR) (Q4 2026) Earnings Call Highlights: Strong Orders and Double-Digit ...",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/emerson-electric-co-emr-q4-110709200.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876829.0
+    },
+    {
+      "ticker": "AMZN",
+      "title": "Invesco NASDAQ 100 ETF (QQQM) Adds NVIDIA and Apple on Tuesday",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/invesco-nasdaq-100-etf-qqqm-110516688.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876716.0
+    },
+    {
+      "ticker": "AMGN",
+      "title": "Spdr Dow Jones Industrial Average ETF (DIA) Sells Goldman Sachs, Caterpillar on Nov. 3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/spdr-dow-jones-industrial-average-110509126.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876709.0
+    },
+    {
+      "ticker": "CLX",
+      "title": "ProShares S&P 500 Div Aristocrats (NOBL) Buys $3.9 Million More Pentair on Nov. 3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/proshares-p-500-div-aristocrats-110452062.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876692.0
+    },
+    {
+      "ticker": "AMZN",
+      "title": "What State Street SPDR Portfolio S&P 500 ETF (SPYM) Bought: Okta Leads on Nov. 3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/state-street-spdr-portfolio-p-110420807.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876660.0
+    },
+    {
+      "ticker": "ACN",
+      "title": "Invesco S&P 500 Equal Weight (RSP) Adds Kimberly-Clark and Moderna on Nov. 3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/invesco-p-500-equal-weight-110409048.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876649.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "Goldman Sachs S&P 500 Premium Income (GPIX) Adds Meta and Alphabet on Nov. 3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/goldman-sachs-p-500-premium-110356307.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876636.0
+    },
+    {
+      "ticker": "MRVL",
+      "title": "S&P 500 futures steady after midterm rally; Nasdaq lags on chip weakness",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/p-500-futures-steady-midterm-105838388.html",
+      "publisher": "Reuters",
+      "ts": 1793876318.0
+    },
+    {
+      "ticker": "APP",
+      "title": "AppLovin Is Raking in Cash as AI-Driven Revenue Accelerates",
+      "link": "https://www.barrons.com/articles/applovin-earnings-stock-price-f2ca1128?siteid=yhoof2&yptr=yahoo",
+      "publisher": "Barrons.com",
+      "ts": 1793875860.0
+    },
+    {
+      "ticker": "CPAY",
+      "title": "Corpay Q3 Earnings Call Highlights",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/corpay-q3-earnings-call-highlights-101502479.html",
+      "publisher": "MarketBeat",
+      "ts": 1793873702.0
+    },
+    {
+      "ticker": "SMSN.L",
+      "title": "European Defense Stocks Under Pressure After Mixed Earnings, Midterm Results",
+      "link": "https://www.wsj.com/finance/stocks/nikkei-rises-0-7-led-by-auto-pharma-stocks-f42def12?siteid=yhoof2&yptr=yahoo",
+      "publisher": "The Wall Street Journal",
+      "ts": 1793870640.0
+    },
+    {
+      "ticker": "COHR",
+      "title": "Coherent (COHR) Raises Full Year Targets After Q1 Earnings Beat",
+      "link": "https://finance.yahoo.com/technology/ai/articles/coherent-cohr-raises-full-targets-091827225.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1793870307.0
     }
   ],
   "Technologie": [
     {
+      "ticker": "NVDA",
+      "title": "Exclusive-Nvidia chips pile up in Hong Kong as China withholds import approval",
+      "link": "https://finance.yahoo.com/news/exclusive-nvidia-chips-pile-hong-112651215.html",
+      "publisher": "Reuters",
+      "ts": 1793879048.0
+    },
+    {
+      "ticker": "META",
+      "title": "The Wait Is Over: 2 Historic Artificial Intelligence (AI) Stock Splits Were Just Announced",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/wait-over-2-historic-artificial-112602606.html",
+      "publisher": "Motley Fool",
+      "ts": 1793877962.0
+    },
+    {
+      "ticker": "APP",
+      "title": "Chip Dip Churns Wall Street Pre-Bell; Asia Off, Europe Up",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/chip-dip-churns-wall-street-111036926.html",
+      "publisher": "MT Newswires",
+      "ts": 1793877036.0
+    },
+    {
       "ticker": "AMD",
-      "title": "The Deal With Meta & OpenAI Just Cost AMD $1.1 Billion",
-      "link": "https://finance.yahoo.com/technology/articles/deal-meta-openai-just-cost-001401130.html",
-      "publisher": "International Business Times",
-      "ts": 1793837641.0
+      "title": "iShares PHLX SOX Semiconductor (SOXX) Sells AMD and NVDA on Nov. 3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/ishares-phlx-sox-semiconductor-soxx-110441023.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876681.0
+    },
+    {
+      "ticker": "TSM",
+      "title": "Taiwan Semiconductor (TSM) Sees $146.2 Million in Net ETF Buying on Nov. 3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/taiwan-semiconductor-tsm-sees-146-110042936.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876442.0
+    },
+    {
+      "ticker": "ABNB",
+      "title": "Why one AI model won't rule the world: Fireworks AI CEO",
+      "link": "https://finance.yahoo.com/video/why-one-ai-model-wont-110000898.html",
+      "publisher": "Yahoo Finance Video",
+      "ts": 1793876400.0
+    },
+    {
+      "ticker": "TSM",
+      "title": "Better Foundry Stock: Taiwan Semiconductor vs. Intel",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/better-foundry-stock-taiwan-semiconductor-103500972.html",
+      "publisher": "Motley Fool",
+      "ts": 1793874900.0
     },
     {
       "ticker": "AVGO",
-      "title": "Steve Weiss Says the Midterms Just Put a Lid on AI Spending. Here’s Who Could Get Hurt",
-      "link": "https://finance.yahoo.com/technology/ai/articles/steve-weiss-says-midterms-just-000914700.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1793837354.0
-    },
-    {
-      "ticker": "AMD",
-      "title": "5 Best Performing AI Stocks in 2026",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/5-best-performing-ai-stocks-233151565.html",
-      "publisher": "Insider Monkey",
-      "ts": 1793835111.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "What Is Walmart (WMT) Betting On With Its New AI Shopping Agent?",
-      "link": "https://finance.yahoo.com/technology/ai/articles/walmart-wmt-betting-ai-shopping-231646446.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1793834206.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "Texas data centers face uncertain future after Hinojosa wins governor’s race",
-      "link": "https://finance.yahoo.com/technology/articles/texas-data-centers-face-uncertain-172340564.html",
-      "publisher": "Reuters",
-      "ts": 1793832401.0
+      "title": "How the Data Center Backlash Could Play Into the Hands of Big Tech",
+      "link": "https://www.wsj.com/tech/ai/how-the-data-center-backlash-could-play-into-the-hands-of-big-tech-a37dfb29?siteid=yhoof2&yptr=yahoo",
+      "publisher": "The Wall Street Journal",
+      "ts": 1793874600.0
     },
     {
       "ticker": "MU",
-      "title": "Why AI investors may need Nvidia and application stocks",
-      "link": "https://finance.yahoo.com/technology/ai/articles/why-ai-investors-may-nvidia-223220473.html",
-      "publisher": "TheStreet",
-      "ts": 1793831540.0
-    },
-    {
-      "ticker": "AVGO",
-      "title": "Marvell Sinks 7% as Democratic Sweep Hits AI Data-Center Stocks",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/marvell-sinks-7-democratic-sweep-222424583.html",
-      "publisher": "TIKR",
-      "ts": 1793831064.0
-    },
-    {
-      "ticker": "COHR",
-      "title": "Coherent Stock Climbs Back From AI Data Center Doom and Gloom",
-      "link": "https://www.barrons.com/articles/coherent-earnings-stock-price-352c4976?siteid=yhoof2&yptr=yahoo",
+      "title": "Kospi Tumbles on Chips Rout, Pressuring U.S. Tech Futures",
+      "link": "https://www.barrons.com/livecoverage/stock-market-news-today-110526/card/kospi-tumbles-on-chips-rout-pressuring-u-s-tech-futures-PtrbqUngaDqddBRShFJ0?siteid=yhoof2&yptr=yahoo",
       "publisher": "Barrons.com",
-      "ts": 1793830080.0
+      "ts": 1793874093.0
     },
     {
-      "ticker": "AEP",
-      "title": "AI Data Center Backlash Is Real. The Blue Wave Takes Out Energy Stocks.",
-      "link": "https://www.barrons.com/articles/ai-data-center-energy-utility-stocks-elections-37e63a25?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1793828580.0
-    },
-    {
-      "ticker": "AVGO",
-      "title": "Chip Stocks Take a Hit",
-      "link": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-04-2026/card/chip-stocks-take-a-hit-YOCGYXdxhJ2NABQB2DC5?siteid=yhoof2&yptr=yahoo",
-      "publisher": "The Wall Street Journal",
-      "ts": 1793828317.0
-    },
-    {
-      "ticker": "COIN",
-      "title": "Bitcoin Rises, Crypto Miners Sharply Divided As Midterms Dampen AI Outlook",
-      "link": "https://www.investors.com/news/bitcoin-cryptocurrency-midterm-elections-2026-house-senate-democrat-control-outlook-ai-data-center/?src=A00220&yptr=yahoo",
-      "publisher": "Investor's Business Daily",
-      "ts": 1793827493.0
-    },
-    {
-      "ticker": "ADBE",
-      "title": "Adobe (ADBE) Brings CX Enterprise Coworker to Major AI Platforms",
-      "link": "https://finance.yahoo.com/technology/ai/articles/adobe-adbe-brings-cx-enterprise-211230372.html",
+      "ticker": "CSCO",
+      "title": "Cisco Systems (CSCO) Expands Into Managed Secure Networking For AI Enterprise Infrastructure",
+      "link": "https://finance.yahoo.com/technology/ai/articles/cisco-systems-csco-expands-managed-091455671.html",
       "publisher": "Simply Wall St.",
-      "ts": 1793826750.0
+      "ts": 1793870095.0
     },
     {
-      "ticker": "DASH",
-      "title": "Uber Rises 5% on Q3 Beat as Robotaxi Push Turns to “Commercial Execution”",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/uber-rises-5-q3-beat-211148163.html",
-      "publisher": "TIKR",
-      "ts": 1793826708.0
+      "ticker": "SMSN.L",
+      "title": "Tech companies hit by new AI worries on positive day for most markets",
+      "link": "https://finance.yahoo.com/markets/world-indices/articles/shares-advance-wall-street-rally-053011467.html",
+      "publisher": "Euronews",
+      "ts": 1793868865.0
     },
     {
-      "ticker": "APO",
-      "title": "Goldman, Apollo in Talks to Sell SpaceX’s $40 Billion AI Deal",
-      "link": "https://finance.yahoo.com/technology/ai/articles/goldman-apollo-talks-sell-spacex-211021473.html",
-      "publisher": "Bloomberg",
-      "ts": 1793826621.0
+      "ticker": "AMD",
+      "title": "AI Roundup: AMD, Apple Results Puzzle Investors, Democrats’ Midterm Win Weighs On Traders",
+      "link": "https://finance.yahoo.com/technology/ai/articles/ai-roundup-amd-apple-results-084828692.html",
+      "publisher": "Stocktwits",
+      "ts": 1793868508.0
     },
     {
-      "ticker": "AXP",
-      "title": "Delta vs. United: Could Falling Oil Prices Set the Stage for an Airline Stock Comeback in 2027?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/delta-vs-united-could-falling-205002667.html",
-      "publisher": "Motley Fool",
-      "ts": 1793825402.0
+      "ticker": "AMD",
+      "title": "After an 11% tech sell-off, are AI valuations attractive again?",
+      "link": "https://finance.yahoo.com/technology/ai/articles/11-tech-sell-off-ai-082806748.html",
+      "publisher": "Investing.com",
+      "ts": 1793867286.0
     },
     {
-      "ticker": "AVGO",
-      "title": "5 Cheapest AI Data Center Stocks to Buy According to Billionaires",
-      "link": "https://finance.yahoo.com/technology/ai/articles/5-cheapest-ai-data-center-203221920.html",
-      "publisher": "Insider Monkey",
-      "ts": 1793824341.0
-    },
-    {
-      "ticker": "CRWD",
-      "title": "AI Server Backlog Could Reshape The Dell Stock Story",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/ai-server-backlog-could-reshape-201419354.html",
+      "ticker": "WDC",
+      "title": "Top 3 AI Stocks To Watch In November 2026",
+      "link": "https://finance.yahoo.com/technology/ai/articles/top-3-ai-stocks-watch-071837177.html",
       "publisher": "Simply Wall St.",
-      "ts": 1793823259.0
-    },
-    {
-      "ticker": "FIX",
-      "title": "Oklo Sinks 6%, Comfort Systems USA Down 15% as Democratic Sweep Rattles AI Power Stocks: “A Negative Surprise”",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/oklo-sinks-6-comfort-systems-200416953.html",
-      "publisher": "TIKR",
-      "ts": 1793822656.0
+      "ts": 1793863117.0
     },
     {
       "ticker": "ANET",
-      "title": "Own an AI or Tech ETF? Arista’s Big Quarter Just Paid Off",
-      "link": "https://finance.yahoo.com/technology/articles/own-ai-tech-etf-arista-193350490.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1793820830.0
+      "title": "Arista Networks And 2 Other AI Infrastructure Stocks To Own",
+      "link": "https://finance.yahoo.com/technology/ai/articles/arista-networks-2-other-ai-071730127.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1793863050.0
     },
     {
-      "ticker": "AIG",
-      "title": "What Happens To American Airlines Stock If Fuel Stays High?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/happens-american-airlines-stock-fuel-191410048.html",
-      "publisher": "Trefis",
-      "ts": 1793819650.0
+      "ticker": "META",
+      "title": "Microsoft Is the Last Big Tech Buyback Holdout: Alphabet, Meta, Amazon Go Dark as AI Spending Eats Cash, Says This Market Commentator",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/microsoft-last-big-tech-buyback-071439478.html",
+      "publisher": "Benzinga",
+      "ts": 1793862879.0
+    },
+    {
+      "ticker": "ADI",
+      "title": "The Zacks Analyst Blog Highlights Analog Devices, Taiwan Semiconductor Manufacturing, Texas Instruments and NVIDIA",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-analog-070000548.html",
+      "publisher": "Zacks",
+      "ts": 1793862000.0
+    },
+    {
+      "ticker": "T",
+      "title": "SpaceX Targets Wireless And AI Riches, Rocket Lab Nears 100 Launches — What’s Moving Space Stocks",
+      "link": "https://finance.yahoo.com/technology/articles/spacex-targets-wireless-ai-riches-060717990.html",
+      "publisher": "Stocktwits",
+      "ts": 1793858837.0
+    },
+    {
+      "ticker": "VRT",
+      "title": "Top 3 AI Infrastructure Stocks To Watch In November 2026",
+      "link": "https://finance.yahoo.com/technology/ai/articles/top-3-ai-infrastructure-stocks-051816770.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1793855896.0
+    },
+    {
+      "ticker": "BAC",
+      "title": "BofA lifts Supermicro target despite AI margin concerns",
+      "link": "https://finance.yahoo.com/technology/ai/articles/bofa-lifts-supermicro-target-despite-050300032.html",
+      "publisher": "TheStreet",
+      "ts": 1793854980.0
     }
   ],
   "Sonstiges": [
     {
       "ticker": "NVDA",
-      "title": "5-star analyst resets Nvidia stock target after Intel crash",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/5-star-analyst-resets-nvidia-003700610.html",
-      "publisher": "TheStreet",
-      "ts": 1793839020.0
+      "title": "Palantir Just Made Company History. Is the Stock a Buy?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/palantir-just-made-company-history-113500882.html",
+      "publisher": "Motley Fool",
+      "ts": 1793878500.0
+    },
+    {
+      "ticker": "MU",
+      "title": "Micron Stock Looks Cheap Despite 220% Rally. Is More Upside Coming?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/micron-stock-looks-cheap-despite-112922917.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793878162.0
     },
     {
       "ticker": "NVDA",
-      "title": "Prediction: This Is How Much IonQ Stock Will Be Worth by the End of 2027",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/prediction-much-ionq-stock-worth-002000473.html",
+      "title": "3 High-Yielding Dividend Stocks That Investors Can Safely Buy and Hold for Decades",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/3-high-yielding-dividend-stocks-112500075.html",
       "publisher": "Motley Fool",
-      "ts": 1793838000.0
+      "ts": 1793877900.0
     },
     {
-      "ticker": "DLR",
-      "title": "NextDC shares surge 43% as Goodman, Digital Realty buy stake",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/nextdc-shares-surge-43-goodman-001937831.html",
-      "publisher": "Investing.com",
-      "ts": 1793837977.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "Why Alphabet Stock Popped on Wednesday",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/why-alphabet-stock-popped-wednesday-001301263.html",
-      "publisher": "Motley Fool",
-      "ts": 1793837581.0
-    },
-    {
-      "ticker": "ABNB",
-      "title": "Expedia’s Stock Gives Back Some Gains After Murky Outlook",
-      "link": "https://www.barrons.com/articles/expedia-earnings-stock-price-2afcbadc?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1793837220.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "If You'd Invested $5,000 in VOO 15 Years Ago, Here's What You'd Have Today",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/youd-invested-5-000-voo-235000033.html",
-      "publisher": "Motley Fool",
-      "ts": 1793836200.0
+      "ticker": "ADBE",
+      "title": "Stock Alert: Citi Slaps Adobe With Rare 'Sell' Rating",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/stock-alert-citi-slaps-adobe-111849665.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793877529.0
     },
     {
       "ticker": "AAPL",
-      "title": "The Dow’s Big Winners Today",
-      "link": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-11-04-2026/card/the-dow-s-big-winners-today-n8DIkW6wC8p63dGJAmwp?siteid=yhoof2&yptr=yahoo",
-      "publisher": "The Wall Street Journal",
-      "ts": 1793835902.0
-    },
-    {
-      "ticker": "COIN",
-      "title": "Solana Foundation payments lead: Banks will hold cash on-chain",
-      "link": "https://finance.yahoo.com/markets/crypto/articles/solana-foundation-payments-lead-banks-234011252.html",
-      "publisher": "TheStreet",
-      "ts": 1793835611.0
-    },
-    {
-      "ticker": "CBRE",
-      "title": "Raleigh-Durham's Growth Story Is Moving Beyond Life Sciences",
-      "link": "https://finance.yahoo.com/real-estate/articles/raleigh-durhams-growth-story-moving-233408342.html",
-      "publisher": "Bisnow",
-      "ts": 1793835248.0
-    },
-    {
-      "ticker": "BKNG",
-      "title": "Booking (BKNG) Stock Jumps As Q3 Results Spotlight Margin Strength",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/booking-bkng-stock-jumps-q3-232447098.html",
+      "title": "Will Memory Costs Change Apple (AAPL) Narrative",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/memory-costs-change-apple-aapl-111328864.html",
       "publisher": "Simply Wall St.",
-      "ts": 1793834687.0
+      "ts": 1793877208.0
     },
     {
-      "ticker": "A",
-      "title": "Where Does Agilent Technologies (A) Value Sit After Proscia?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/where-does-agilent-technologies-value-232350873.html",
+      "ticker": "DHI",
+      "title": "D.R. Horton Stock Gains Attention as Lower Mortgage Rates Lift Housing Demand Hopes",
+      "link": "https://finance.yahoo.com/real-estate/articles/d-r-horton-stock-gains-111000924.html",
       "publisher": "Simply Wall St.",
-      "ts": 1793834630.0
+      "ts": 1793877000.0
     },
     {
-      "ticker": "CVNA",
-      "title": "Needham names Carvana top pick, flags bullish catalysts for EV stocks",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/needham-names-carvana-top-pick-232158490.html",
-      "publisher": "Investing.com",
-      "ts": 1793834518.0
+      "ticker": "SCHW",
+      "title": "Fidelity, Schwab, and Vanguard Each Fill In a Different Beneficiary When the Line Is Blank. At One Your Kids Get It, at Another Your Estate Does, and the Difference Is Five Years to Empty It vs. Ten",
+      "link": "https://finance.yahoo.com/markets/options/articles/fidelity-schwab-vanguard-fill-different-110829757.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1793876909.0
     },
     {
-      "ticker": "BLK",
-      "title": "Fiserv (FISV) Adds Raj Seshadri to Board in Payments and Data Push",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/fiserv-fisv-adds-raj-seshadri-231901268.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1793834341.0
+      "ticker": "AMZN",
+      "title": "Amazon Prime members can now get free deliveries from Uber Eats",
+      "link": "https://finance.yahoo.com/media-advertising/articles/amazon-prime-members-now-free-110719006.html",
+      "publisher": "USA TODAY",
+      "ts": 1793876839.0
     },
     {
-      "ticker": "ETN",
-      "title": "Eaton (ETN) Stock Sinks As Q3 Results Fail To Calm Execution Fears",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/eaton-etn-stock-sinks-q3-231745797.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1793834265.0
+      "ticker": "ANET",
+      "title": "Capital Group Global Growth (CGGO) Buys $51.3 Million More ICE on Nov. 3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/capital-group-global-growth-cggo-110544432.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876744.0
+    },
+    {
+      "ticker": "AMZN",
+      "title": "State Street Consumer Discretionary (XLY) Sells $50 Million of Amazon on Nov. 3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/state-street-consumer-discretionary-xly-110539860.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876739.0
+    },
+    {
+      "ticker": "AMZN",
+      "title": "Invesco QQQ (QQQ) Buys $19.6 Million More NVIDIA on Tuesday",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/invesco-qqq-qqq-buys-19-110535090.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876735.0
+    },
+    {
+      "ticker": "CAT",
+      "title": "Avantis U.S. Large Cap Value (AVLV) Adds Qualcomm and Texas Instruments on Nov. 3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/avantis-u-large-cap-value-110523031.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876723.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "ProShares Ultra S&P500 2x Shares (SSO) Buys $2.7 Million More OKTA on Nov. 3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/proshares-ultra-p500-2x-shares-110520984.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876720.0
     },
     {
       "ticker": "ABBV",
-      "title": "What Could Go Wrong At Gilead From Here?",
-      "link": "https://finance.yahoo.com/healthcare/articles/could-wrong-gilead-231257162.html",
-      "publisher": "Trefis",
-      "ts": 1793833977.0
+      "title": "What State Street Health Care SPDR (XLV) Bought: Eli Lilly Leads on Nov. 3",
+      "link": "https://finance.yahoo.com/healthcare/articles/state-street-health-care-spdr-110502486.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876702.0
     },
     {
-      "ticker": "RKLB",
-      "title": "5 Stocks That Could Skyrocket in 2027",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/5-stocks-could-skyrocket-2027-231255848.html",
-      "publisher": "Insider Monkey",
-      "ts": 1793833975.0
+      "ticker": "AAPL",
+      "title": "What State Street Tech Select SPDR (XLK) Bought: Okta Leads on Nov. 3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/state-street-tech-select-spdr-110444156.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876684.0
     },
     {
-      "ticker": "CNP",
-      "title": "CenterPoint Energy: 3 Key Takeaways for Long-Term Investors",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/centerpoint-energy-3-key-takeaways-225002058.html",
-      "publisher": "Motley Fool",
-      "ts": 1793832602.0
+      "ticker": "GOOGL",
+      "title": "State Street Comm Services SPDR (XLC) Sells $102.6 Million of Meta on Nov. 3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/state-street-comm-services-spdr-110423766.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876663.0
     },
     {
-      "ticker": "COIN",
-      "title": "Coinbase gets downgraded for a breach that happened elsewhere",
-      "link": "https://finance.yahoo.com/markets/crypto/articles/coinbase-gets-downgraded-breach-happened-224700573.html",
-      "publisher": "TheStreet",
-      "ts": 1793832420.0
+      "ticker": "ACN",
+      "title": "State Street SPDR S&P Dividend ETF (SDY) Adds Verizon and Realty Income on Nov. 3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/state-street-spdr-p-dividend-110416880.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876656.0
     },
     {
-      "ticker": "^IXIC",
-      "title": "Why Opendoor Stock Jumped 13.8% Today",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/why-opendoor-stock-jumped-13-224001953.html",
-      "publisher": "Motley Fool",
-      "ts": 1793832001.0
+      "ticker": "AAPL",
+      "title": "ProShares Ultra QQQ (QLD) Sells $50.5 Million of NVIDIA on Nov. 3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/proshares-ultra-qqq-qld-sells-110404057.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876644.0
     },
     {
-      "ticker": "ABBV",
-      "title": "Is Regeneron Stock Increasing Your Market Risk?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/regeneron-stock-increasing-market-risk-222208681.html",
-      "publisher": "Trefis",
-      "ts": 1793830928.0
+      "ticker": "DHI",
+      "title": "ETFs Are Net Sellers of D.R. Horton (DHI) on Tuesday",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-d-r-110321319.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876601.0
+    },
+    {
+      "ticker": "DASH",
+      "title": "ETFs Are Net Sellers of DoorDash (DASH) on Nov. 3",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/etfs-net-sellers-doordash-dash-110242106.html",
+      "publisher": "GuruFocus.com",
+      "ts": 1793876562.0
     }
   ]
 }
