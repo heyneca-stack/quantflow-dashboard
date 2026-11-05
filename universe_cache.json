@@ -1,5 +1,5 @@
 {
-  "fetched_at": 1793819796.4083846,
+  "fetched_at": 1793906745.101037,
   "sp500": [
     {
       "symbol": "MMM",
@@ -1078,10 +1078,6 @@
       "sector_raw": "Financials"
     },
     {
-      "symbol": "KVUE",
-      "sector_raw": "Consumer Staples"
-    },
-    {
       "symbol": "KDP",
       "sector_raw": "Consumer Staples"
     },
@@ -1388,6 +1384,10 @@
     {
       "symbol": "OXY",
       "sector_raw": "Energy"
+    },
+    {
+      "symbol": "OKTA",
+      "sector_raw": "Information Technology"
     },
     {
       "symbol": "ODFL",
