@@ -1,6 +1,20 @@
 {
   "Politik/Makro": [
     {
+      "ticker": "AAPL",
+      "title": "Warren Buffett’s Berkshire Just Hit a Record High as Nvidia Sank. A 67-Year-Old Who Bought 1,000 Shares in 2016 Can Sell $106,000 of It This Year and Pay 0% on the Gain",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/warren-buffett-berkshire-just-hit-235300098.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1794700380.0
+    },
+    {
+      "ticker": "BRK-B",
+      "title": "If a Bear Market Is Coming, History Says Warren Buffett's Proven Strategy Is Key",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/bear-market-coming-history-says-233500636.html",
+      "publisher": "Motley Fool",
+      "ts": 1794699300.0
+    },
+    {
       "ticker": "NVDA",
       "title": "Elon Musk's Tesla and SpaceX Lost More Than $420 Billion in Combined Market Value in Two Days After Democrats Swept the Midterms, With Investors Fearing New Congressional Probes. Here's Why That Political Risk Matters for Shareholders",
       "link": "https://finance.yahoo.com/markets/stocks/articles/elon-musks-tesla-spacex-lost-224802258.html",
@@ -125,23 +139,30 @@
       "link": "https://finance.yahoo.com/energy/articles/centrus-energy-leu-lands-multiyear-061743445.html",
       "publisher": "Simply Wall St.",
       "ts": 1794637063.0
-    },
-    {
-      "ticker": "CVS",
-      "title": "CVS Health (CVS) Wins Seven Stevie Awards For AI And Technology",
-      "link": "https://finance.yahoo.com/healthcare/articles/cvs-health-cvs-wins-seven-051257782.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1794633177.0
-    },
-    {
-      "ticker": "COIN",
-      "title": "Coinbase CEO Brian Armstrong Credits SEC, CFTC Chiefs For Ending ‘Turf Wars’ Over Stock Perps",
-      "link": "https://finance.yahoo.com/markets/options/articles/coinbase-ceo-brian-armstrong-credits-051149760.html",
-      "publisher": "Stocktwits",
-      "ts": 1794633109.0
     }
   ],
   "Wirtschaft": [
+    {
+      "ticker": "P",
+      "title": "Dow Jones Futures Loom, Bitcoin Dives In Shaky Market Rally; Nvidia Earnings, Anthropic IPO Ahead",
+      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-market-rally-nvidia-earnings-anthropic-ipo-spacex-starship-flight-15/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1794715544.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Nov. 25 Will Be a Critical Day for the Stock Market",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/nov-25-critical-day-stock-032002108.html",
+      "publisher": "Motley Fool",
+      "ts": 1794712802.0
+    },
+    {
+      "ticker": "^IXIC",
+      "title": "EXCLUSIVE: Anthropic IPO Could Follow SpaceX’s ‘Almost Perfectly’ Handled Offering, Market Expert Jay Woods Says",
+      "link": "https://finance.yahoo.com/technology/ai/articles/exclusive-anthropic-ipo-could-spacex-003005078.html",
+      "publisher": "Benzinga",
+      "ts": 1794702605.0
+    },
     {
       "ticker": "AIG",
       "title": "American International Group (AIG) Earnings And Dividend Put Fair Value Back In Focus",
@@ -260,30 +281,37 @@
       "link": "https://www.investors.com/research/investing-action-plan/stock-market-week-ahead-a-few-notes-on-optimism/?src=A00220&yptr=yahoo",
       "publisher": "Investor's Business Daily",
       "ts": 1794665833.0
-    },
-    {
-      "ticker": "FANG",
-      "title": "How Investors May Respond To Diamondback Energy (FANG) Earnings Beat",
-      "link": "https://finance.yahoo.com/energy/articles/investors-may-respond-diamondback-energy-130738319.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1794661658.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "Sundar Pichai Reported Alphabet's Cloud Revenue Grew 103% Last Quarter While the Gemini App Reached 1 Billion Monthly Users. Is Google Cloud Becoming a Bigger Growth Driver Than Search?",
-      "link": "https://finance.yahoo.com/technology/articles/sundar-pichai-reported-alphabets-cloud-105300921.html",
-      "publisher": "Motley Fool",
-      "ts": 1794653580.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "Nvidia, Alphabet, Microsoft, and Micron Are All Buying Anthropic’s IPO. Should You Buy Too?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-alphabet-microsoft-micron-buying-102202908.html",
-      "publisher": "Motley Fool",
-      "ts": 1794651722.0
     }
   ],
   "Technologie": [
+    {
+      "ticker": "CAT",
+      "title": "Michael Burry sees 2 chip winners in Nvidia’s shake-up",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/michael-burry-sees-2-chip-033300677.html",
+      "publisher": "TheStreet",
+      "ts": 1794713580.0
+    },
+    {
+      "ticker": "AVGO",
+      "title": "Top 3 AI Stocks To Watch In November 2026",
+      "link": "https://finance.yahoo.com/technology/ai/articles/top-3-ai-stocks-watch-021005217.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1794708605.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "How Jensen Huang Built the Backdoor Route That Keeps Beijing in the AI Race",
+      "link": "https://www.wsj.com/tech/jensen-huang-backdoor-ai-data-centers-a5e4499d?siteid=yhoof2&yptr=yahoo",
+      "publisher": "The Wall Street Journal",
+      "ts": 1794708000.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "The Semiconductor ETF Has Lost a Quarter of Its Value Since June. Buy It Now and Hold It Through 2030.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/semiconductor-etf-lost-quarter-value-013402396.html",
+      "publisher": "Motley Fool",
+      "ts": 1794706442.0
+    },
     {
       "ticker": "NVDA",
       "title": "3 AI Chip Stocks Retail Investors May Be Missing Beyond Nvidia",
@@ -395,37 +423,72 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/asml-soars-10-week-chip-092635434.html",
       "publisher": "TIKR",
       "ts": 1794648395.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "Jim Cramer: Amazon Has What “May Soon Be a $50 Billion Semiconductor Business”",
-      "link": "https://finance.yahoo.com/technology/articles/jim-cramer-amazon-may-soon-084957555.html",
-      "publisher": "TIKR",
-      "ts": 1794646197.0
-    },
-    {
-      "ticker": "DAL",
-      "title": "US to resume flights after air traffic network failure sparks chaos",
-      "link": "https://finance.yahoo.com/news/faa-issues-national-ground-stop-211012223.html",
-      "publisher": "Reuters",
-      "ts": 1794643567.0
-    },
-    {
-      "ticker": "COHR",
-      "title": "TTM Technologies And 2 AI Infrastructure Stocks To Own",
-      "link": "https://finance.yahoo.com/technology/ai/articles/ttm-technologies-2-ai-infrastructure-071032524.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1794640232.0
-    },
-    {
-      "ticker": "AKAM",
-      "title": "Cloudflare Jumps 12% as Its “Even Higher Gear” Delivers the Fastest Growth in Nearly Four Years",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/cloudflare-jumps-12-even-higher-065453225.html",
-      "publisher": "TIKR",
-      "ts": 1794639293.0
     }
   ],
   "Sonstiges": [
+    {
+      "ticker": "NVDA",
+      "title": "1 ETF That Can Turn $500 Monthly Into a $600,000 Portfolio That Pays Out $18,000 Annually",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/1-etf-turn-500-monthly-042001335.html",
+      "publisher": "Motley Fool",
+      "ts": 1794716401.0
+    },
+    {
+      "ticker": "HONA",
+      "title": "Honeywell Aerospace: 3 Key Takeaways for Long-Term Investors",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/honeywell-aerospace-3-key-takeaways-035501738.html",
+      "publisher": "Motley Fool",
+      "ts": 1794714901.0
+    },
+    {
+      "ticker": "CL",
+      "title": "U.S. diesel prices fall below $6 a gallon to two-month low",
+      "link": "https://finance.yahoo.com/energy/articles/u-diesel-prices-fall-below-033225657.html",
+      "publisher": "Investing.com",
+      "ts": 1794713545.0
+    },
+    {
+      "ticker": "AVGO",
+      "title": "Broadcom Jumped as Nvidia Fell. This Is What Has Investors Excited.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/broadcom-jumped-nvidia-fell-investors-022002767.html",
+      "publisher": "Motley Fool",
+      "ts": 1794709202.0
+    },
+    {
+      "ticker": "AAPL",
+      "title": "Evercore explains why Apple has the right assets to win the personal agents race",
+      "link": "https://finance.yahoo.com/technology/ai/articles/evercore-explains-why-apple-assets-020804809.html",
+      "publisher": "Investing.com",
+      "ts": 1794708484.0
+    },
+    {
+      "ticker": "BAC",
+      "title": "Bank Of America (BAC) Agrees To Settle Unauthorized Account Openings Class Action",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/bank-america-bac-agrees-settle-020800688.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1794708480.0
+    },
+    {
+      "ticker": "MU",
+      "title": "Samsung’s $34 Billion HBM Bet Raises Memory Glut Risks",
+      "link": "https://finance.yahoo.com/technology/articles/samsung-34-billion-hbm-bet-010807624.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1794704887.0
+    },
+    {
+      "ticker": "^GSPC",
+      "title": "History Says This Is the Best Investing Move You Can Make if a Bear Market Is Coming",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/history-says-best-investing-move-002000644.html",
+      "publisher": "Motley Fool",
+      "ts": 1794702000.0
+    },
+    {
+      "ticker": "BMY",
+      "title": "How Investors Are Reacting To Bristol Myers Squibb (BMY) R&D Leadership Overhaul",
+      "link": "https://finance.yahoo.com/healthcare/articles/investors-reacting-bristol-myers-squibb-001648177.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1794701808.0
+    },
     {
       "ticker": "NVDA",
       "title": "Dan Ives Valued Nvidia at “$225 Without Jensen.” Now the Stock Trades Below It",
@@ -502,69 +565,6 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/5-dividend-stocks-high-yields-203500041.html",
       "publisher": "Motley Fool",
       "ts": 1794688500.0
-    },
-    {
-      "ticker": "AXP",
-      "title": "American Express vs. Mastercard: Which Financial Stock Is a Better Buy for 2027?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/american-express-vs-mastercard-financial-203201337.html",
-      "publisher": "Motley Fool",
-      "ts": 1794688321.0
-    },
-    {
-      "ticker": "CCI",
-      "title": "Billboards and Cell Towers Collect Rent From Brands and Carriers, and $120,000 Across These 3 Stocks Pays $5,077 a Year",
-      "link": "https://finance.yahoo.com/real-estate/articles/billboards-cell-towers-collect-rent-202300722.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1794687780.0
-    },
-    {
-      "ticker": "^GSPC",
-      "title": "Corporate Yield vs. Government Safety: Comparing Returns, Dividends, and Risk of VCLT and VGLT",
-      "link": "https://finance.yahoo.com/markets/options/articles/corporate-yield-vs-government-safety-202002505.html",
-      "publisher": "Motley Fool",
-      "ts": 1794687602.0
-    },
-    {
-      "ticker": "META",
-      "title": "Italy fines Meta $880 mn over photo privacy: authority",
-      "link": "https://finance.yahoo.com/technology/articles/italy-fines-meta-880-mn-201258052.html",
-      "publisher": "AFP",
-      "ts": 1794687178.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "Mom Drives A Honda, Flies Economy. When She Asks Her Son To Be Trustee, He Finds Nearly $30M In Assets. He Says, ‘There Were Zero Signs’",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/mom-drives-honda-flies-economy-200046195.html",
-      "publisher": "Benzinga",
-      "ts": 1794686446.0
-    },
-    {
-      "ticker": "^GSPC",
-      "title": "REET vs RWR: Global Versus U.S. REIT ETF Which Is Better",
-      "link": "https://finance.yahoo.com/real-estate/articles/reet-vs-rwr-global-versus-195002851.html",
-      "publisher": "Motley Fool",
-      "ts": 1794685802.0
-    },
-    {
-      "ticker": "AAPL",
-      "title": "Apple's Market Value Grew From $350 Billion to $4 Trillion During Tim Cook's 15 Years as CEO. Here's What That Growth Curve Means for Apple's Next Chapter Under John Ternus",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/apples-market-value-grew-350-193101249.html",
-      "publisher": "Motley Fool",
-      "ts": 1794684661.0
-    },
-    {
-      "ticker": "KO",
-      "title": "Coca-Cola Has Paid a Growing Dividend for 64 Years. Here's the Income $5,000 Can Start You With.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/coca-cola-paid-growing-dividend-191657993.html",
-      "publisher": "Motley Fool",
-      "ts": 1794683817.0
-    },
-    {
-      "ticker": "^GSPC",
-      "title": "What Citi Expects From Alibaba (BABA) Before November 19",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/citi-expects-alibaba-baba-november-191647796.html",
-      "publisher": "Insider Monkey",
-      "ts": 1794683807.0
     }
   ]
 }
