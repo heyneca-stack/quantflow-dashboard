@@ -1,6 +1,27 @@
 {
   "Politik/Makro": [
     {
+      "ticker": "VRT",
+      "title": "Kevin O’Leary sums up the expected impact of a gubernatorial election on AI investments",
+      "link": "https://finance.yahoo.com/technology/ai/articles/kevin-o-leary-sums-expected-030300491.html",
+      "publisher": "TheStreet",
+      "ts": 1794798180.0
+    },
+    {
+      "ticker": "BRK-B",
+      "title": "In 1952, A North Carolina Man Was The Best Man At His Friend’s Wedding. 10 Years Later, He Gave The Groom $125,000 To Invest. The Groom’s Name Was Warren Buffett. In 2014, Fred Stanback Donated $397 Million In Berkshire Stock To Charity.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/1952-north-carolina-man-best-025300056.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1794797580.0
+    },
+    {
+      "ticker": "BRK-B",
+      "title": "The Stock Market Is Sending a Rare Warning. Here's Warren Buffett's Best Bear Market Advice.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/stock-market-sending-rare-warning-213500444.html",
+      "publisher": "Motley Fool",
+      "ts": 1794778500.0
+    },
+    {
       "ticker": "NVDA",
       "title": "US Treasury chief wants answers soon from Nvidia",
       "link": "https://finance.yahoo.com/technology/ai/articles/us-treasury-chief-wants-answers-202317355.html",
@@ -118,30 +139,51 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/3-high-quality-dividend-stocks-200819108.html",
       "publisher": "Simply Wall St.",
       "ts": 1794686899.0
-    },
-    {
-      "ticker": "BRK-B",
-      "title": "Warren Buffett's Berkshire Compounded at More Than 19% a Year Over Six Decades, Nearly Double the S&P 500's 10% Return. Can Investors Still Apply That Playbook Today?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/warren-buffetts-berkshire-compounded-more-175402474.html",
-      "publisher": "Motley Fool",
-      "ts": 1794678842.0
-    },
-    {
-      "ticker": "DVN",
-      "title": "What Do Rate Hikes Imply for Devon Energy (DVN)?",
-      "link": "https://finance.yahoo.com/economy/policy/articles/rate-hikes-imply-devon-energy-170945305.html",
-      "publisher": "Insider Monkey",
-      "ts": 1794676185.0
-    },
-    {
-      "ticker": "DD",
-      "title": "I’m a Retirement Planner: 4 Steps To Secure Your Retirement Now, Whatever Policy Changes Come",
-      "link": "https://finance.yahoo.com/economy/policy/articles/m-retirement-planner-4-steps-170039577.html",
-      "publisher": "MoneyLion",
-      "ts": 1794675639.0
     }
   ],
   "Wirtschaft": [
+    {
+      "ticker": "P",
+      "title": "Dow Jones Futures: Techs Fall As Jensen Huang Mulls Nvidia Return; Anthropic IPO Looms",
+      "link": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-market-rally-nvidia-earnings-anthropic-ipo-spacex-starship-flight-15/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1794802089.0
+    },
+    {
+      "ticker": "NVDA",
+      "title": "Anthropic IPO Reportedly Oversubscribed 7 Times – But Will The AI Euphoria Survive The Stock Market Debut?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/anthropic-ipo-reportedly-oversubscribed-7-035659320.html",
+      "publisher": "Stocktwits",
+      "ts": 1794801419.0
+    },
+    {
+      "ticker": "SMSN.L",
+      "title": "Asian chip stocks slide ahead of Nvidia earnings",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/asian-chip-stocks-slide-ahead-032730415.html",
+      "publisher": "Investing.com",
+      "ts": 1794799650.0
+    },
+    {
+      "ticker": "^DJI",
+      "title": "U.S. stock futures little changed as investors await Nvidia earnings",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/u-stock-futures-little-changed-020537465.html",
+      "publisher": "Investing.com",
+      "ts": 1794794737.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "Anthropic's record IPO faces some big questions",
+      "link": "https://finance.yahoo.com/technology/ai/articles/anthropics-record-ipo-faces-big-012430589.html",
+      "publisher": "AFP",
+      "ts": 1794792270.0
+    },
+    {
+      "ticker": "BRK-B",
+      "title": "Berkshire’s record high exposes hidden trap in S&P 500 401(k) plans",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/berkshire-record-high-exposes-hidden-224700298.html",
+      "publisher": "TheStreet",
+      "ts": 1794782820.0
+    },
     {
       "ticker": "XYZ",
       "title": "3 Top Founder Stocks With Earnings Growth Up To 58%",
@@ -239,51 +281,72 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/applovin-30-since-november-4-031439502.html",
       "publisher": "TIKR",
       "ts": 1794712479.0
-    },
-    {
-      "ticker": "^IXIC",
-      "title": "EXCLUSIVE: Anthropic IPO Could Follow SpaceX’s ‘Almost Perfectly’ Handled Offering, Market Expert Jay Woods Says",
-      "link": "https://finance.yahoo.com/technology/ai/articles/exclusive-anthropic-ipo-could-spacex-003005078.html",
-      "publisher": "Benzinga",
-      "ts": 1794702605.0
-    },
-    {
-      "ticker": "AIG",
-      "title": "American International Group (AIG) Earnings And Dividend Put Fair Value Back In Focus",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/american-international-group-aig-earnings-230821778.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1794697701.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "He Thinks His $200,000 S&P 500 401(k) Spreads His AI Risk. Two Alphabet Share Classes Put $10,380 in One Company. A 20% Drop Could Cost Him $2,076",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/thinks-200-000-p-500-230346273.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1794697426.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Forget SpaceX: This Potential Blockbuster IPO Has Attracted $26 Billion From AI Giants",
-      "link": "https://finance.yahoo.com/technology/ai/articles/forget-spacex-potential-blockbuster-ipo-220602300.html",
-      "publisher": "Motley Fool",
-      "ts": 1794693962.0
-    },
-    {
-      "ticker": "ANET",
-      "title": "Arista Stock Gained 15% in a Week as AI Stocks Bounced Back: Take Profits, or Buy More?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/arista-stock-gained-15-week-200954204.html",
-      "publisher": "TIKR",
-      "ts": 1794686994.0
-    },
-    {
-      "ticker": "CIEN",
-      "title": "Is Ciena (CIEN) Undervalued Going Into Its December 10 Earnings?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/ciena-cien-undervalued-going-december-200742677.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1794686862.0
     }
   ],
   "Technologie": [
+    {
+      "ticker": "MSFT",
+      "title": "Trump administration to name Nvidia, other AI firms as US 'national champions', WSJ reports",
+      "link": "https://finance.yahoo.com/news/trump-administration-name-nvidia-other-041705933.html",
+      "publisher": "Reuters",
+      "ts": 1794802625.0
+    },
+    {
+      "ticker": "ADBE",
+      "title": "Adobe’s Sam Garfield: AI has Sped Up Creative, But Organizations Haven’t Kept Pace",
+      "link": "https://finance.yahoo.com/video/adobe-sam-garfield-ai-sped-034331237.html",
+      "publisher": "Beet.TV",
+      "ts": 1794800611.0
+    },
+    {
+      "ticker": "^GSPC",
+      "title": "The AI Trade Is Going To Change: Morgan Stanley Reportedly Says 2027 Will Be Increasingly About Returns For AI Adopters",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/ai-trade-going-change-morgan-033704913.html",
+      "publisher": "Stocktwits",
+      "ts": 1794800224.0
+    },
+    {
+      "ticker": "CAT",
+      "title": "A Key Power Supplier to AI Data Centres Has Record Orders. Its Stock Is Down 44%",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/key-power-supplier-ai-data-032819810.html",
+      "publisher": "BeInCrypto",
+      "ts": 1794799699.0
+    },
+    {
+      "ticker": "WDC",
+      "title": "Western Digital Corp. (WDC) Faces Growing AI Spending Concerns After 17% Selloff",
+      "link": "https://finance.yahoo.com/technology/ai/articles/western-digital-corp-wdc-faces-030248231.html",
+      "publisher": "Insider Monkey",
+      "ts": 1794798168.0
+    },
+    {
+      "ticker": "BA",
+      "title": "Elon Musk Takes Aim at Boeing, Jeff Bezos’ Blue Origin After SpaceX Catches Starship With ‘Chopsticks’: ‘I Am Genuinely Curious’",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/elon-musk-takes-aim-boeing-024147342.html",
+      "publisher": "Benzinga",
+      "ts": 1794796907.0
+    },
+    {
+      "ticker": "AMD",
+      "title": "Advanced Micro Devices (AMD) Deepens Quantum Push With New Research And Commercial Ties",
+      "link": "https://finance.yahoo.com/technology/ai/articles/advanced-micro-devices-amd-deepens-001906359.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1794788346.0
+    },
+    {
+      "ticker": "DE",
+      "title": "Americans fear the worst after Pentagon doomsday prepping, ‘Black October’ cyberattacks, stock crash, spy scandal, Microsoft outage, and airport chaos",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/americans-fear-worst-pentagon-doomsday-232109128.html",
+      "publisher": "Fortune",
+      "ts": 1794784869.0
+    },
+    {
+      "ticker": "CSCO",
+      "title": "US AI Data Centers ‘Are Going to Get Built’ Despite Political Pushback, Says Cisco CEO: ‘Too Important to Our Country’",
+      "link": "https://finance.yahoo.com/technology/ai/articles/us-ai-data-centers-going-223006143.html",
+      "publisher": "Benzinga",
+      "ts": 1794781806.0
+    },
     {
       "ticker": "AMZN",
       "title": "Rigetti Computing vs. SoundHound AI: Which Technology Stock Is a Better Buy for 2027?",
@@ -360,211 +423,148 @@
       "link": "https://finance.yahoo.com/technology/ai/articles/credo-technology-better-ai-networking-135701708.html",
       "publisher": "Motley Fool",
       "ts": 1794751021.0
-    },
-    {
-      "ticker": "AMD",
-      "title": "The Evidence Is Piling Up: AMD Could Be the Best Artificial Intelligence (AI) Stock to Buy Amid the Sell-Off",
-      "link": "https://finance.yahoo.com/technology/ai/articles/evidence-piling-amd-could-best-134502914.html",
-      "publisher": "Motley Fool",
-      "ts": 1794750302.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "Why falling AI token prices aren’t the negative for AI providers one might assume",
-      "link": "https://finance.yahoo.com/technology/ai/articles/why-falling-ai-token-prices-133531971.html",
-      "publisher": "Investing.com",
-      "ts": 1794749731.0
-    },
-    {
-      "ticker": "CARR",
-      "title": "3 US Stocks Riding The AI Data Center Power And Cooling Buildout",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/3-us-stocks-riding-ai-130750054.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1794748070.0
-    },
-    {
-      "ticker": "AAPL",
-      "title": "5 big analyst AI moves: Nvidia hit with downgrades after Huang’s exit",
-      "link": "https://finance.yahoo.com/technology/ai/articles/5-big-analyst-ai-moves-093002830.html",
-      "publisher": "Investing.com",
-      "ts": 1794735002.0
-    },
-    {
-      "ticker": "BA",
-      "title": "Planes collide in Miami a day after a nationwide ground stop. Airlines may owe you nothing for hotels — who pays instead",
-      "link": "https://finance.yahoo.com/economy/policy/articles/planes-collide-miami-day-nationwide-073500687.html",
-      "publisher": "Moneywise",
-      "ts": 1794728100.0
-    },
-    {
-      "ticker": "DAL",
-      "title": "Is Delta Air Lines (DAL) Expensive After The FAA Ground Stop?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/delta-air-lines-dal-expensive-051021559.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1794719421.0
-    },
-    {
-      "ticker": "CAT",
-      "title": "Michael Burry sees 2 chip winners in Nvidia’s shake-up",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/michael-burry-sees-2-chip-033300677.html",
-      "publisher": "TheStreet",
-      "ts": 1794713580.0
-    },
-    {
-      "ticker": "AVGO",
-      "title": "Top 3 AI Stocks To Watch In November 2026",
-      "link": "https://finance.yahoo.com/technology/ai/articles/top-3-ai-stocks-watch-021005217.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1794708605.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "How Jensen Huang Built the Backdoor Route That Keeps Beijing in the AI Race",
-      "link": "https://www.wsj.com/tech/jensen-huang-backdoor-ai-data-centers-a5e4499d?siteid=yhoof2&yptr=yahoo",
-      "publisher": "The Wall Street Journal",
-      "ts": 1794708000.0
     }
   ],
   "Sonstiges": [
     {
-      "ticker": "AMZN",
-      "title": "US rocket fails after launch, payload of Amazon internet satellites destroyed",
-      "link": "https://finance.yahoo.com/news/us-rocket-fails-launch-payload-202554696.html",
-      "publisher": "Reuters",
-      "ts": 1794774354.0
-    },
-    {
       "ticker": "BA",
-      "title": "Boeing Is Handing 3 Businesses to Archer Aviation and Closing a $131 Billion F-15 Order. Here’s Which Stock Gets the Better Deal.",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/boeing-handing-3-businesses-archer-202002013.html",
-      "publisher": "Motley Fool",
-      "ts": 1794774002.0
+      "title": "SPCX Stock Climbs After Starship Catch — Musk Taunts Bezos, Boeing And Lockheed Martin For Trailing SpaceX",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/spcx-stock-climbs-starship-catch-041957770.html",
+      "publisher": "Stocktwits",
+      "ts": 1794802797.0
     },
     {
-      "ticker": "MO",
-      "title": "Higher Rates Are Testing Philip Morris Stock and Other Dividend Defensives",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/higher-rates-testing-philip-morris-200720052.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1794773240.0
-    },
-    {
-      "ticker": "NVDA",
-      "title": "Jensen Huang discusses comeback as Nvidia CEO with allies, FT reports",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/jensen-huang-discusses-comeback-nvidia-192628314.html",
-      "publisher": "Reuters",
-      "ts": 1794773231.0
-    },
-    {
-      "ticker": "TSM",
-      "title": "What TSMC Doubters Got Wrong",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/tsmc-doubters-got-wrong-200527158.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1794773127.0
-    },
-    {
-      "ticker": "^GSPC",
-      "title": "3 Magnificent Stocks to Buy Before 2027 and Hold for a Decade",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/3-magnificent-stocks-buy-2027-200502815.html",
-      "publisher": "Motley Fool",
-      "ts": 1794773102.0
-    },
-    {
-      "ticker": "AES",
-      "title": "Wind Farms, Solar Fields and Power Plants Sell Electricity to the Grid, and $120,000 Across These 3 Owners Pays $6,286 a Year",
-      "link": "https://finance.yahoo.com/energy/articles/wind-farms-solar-fields-power-195846511.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1794772726.0
-    },
-    {
-      "ticker": "DAL",
-      "title": "Airlines Cancel, Delay Thousands More Flights on Another Day of Travel Chaos",
-      "link": "https://www.barrons.com/articles/air-travelers-airlines-delays-cancellations-faa-duffy-c10c6beb?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1794772380.0
-    },
-    {
-      "ticker": "^GSPC",
-      "title": "Which Global Real Estate ETF Is the Better Buy: State Street’s RWO or Vanguard’s International VNQI?",
-      "link": "https://finance.yahoo.com/real-estate/articles/global-real-estate-etf-better-195219247.html",
-      "publisher": "Motley Fool",
-      "ts": 1794772339.0
-    },
-    {
-      "ticker": "^GSPC",
-      "title": "Which Healthcare ETF Is the Better Buy: VanEck’s Pharma Fund PPH or iShares’ Biotech Fund IBB?",
-      "link": "https://finance.yahoo.com/healthcare/articles/healthcare-etf-better-buy-vaneck-193633259.html",
-      "publisher": "Motley Fool",
-      "ts": 1794771393.0
-    },
-    {
-      "ticker": "COF",
-      "title": "His Credit Card May Cover a Broken or Stolen Phone, as Long as He Pays His Phone Bill With It",
-      "link": "https://finance.yahoo.com/markets/articles/credit-card-may-cover-broken-193631294.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1794771391.0
-    },
-    {
-      "ticker": "^GSPC",
-      "title": "Investors: If a Market Correction Is Coming, This 1 Move Will Make or Break Your Portfolio",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/investors-market-correction-coming-1-190502061.html",
-      "publisher": "Motley Fool",
-      "ts": 1794769502.0
-    },
-    {
-      "ticker": "BAC",
-      "title": "Bank of America Names 5 Bullish Stocks Amid Market Concerns",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/bank-america-names-5-bullish-190348027.html",
-      "publisher": "BeInCrypto",
-      "ts": 1794769428.0
+      "ticker": "CSCO",
+      "title": "Cisco posts its best growth in 15 years. Why isn't Wall Street buying?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/cisco-posts-best-growth-15-041700221.html",
+      "publisher": "TheStreet",
+      "ts": 1794802620.0
     },
     {
       "ticker": "GOOGL",
-      "title": "Why Fervo Energy Stock Surged This Week",
-      "link": "https://finance.yahoo.com/energy/articles/why-fervo-energy-stock-surged-190204106.html",
-      "publisher": "Motley Fool",
-      "ts": 1794769324.0
+      "title": "Steve Jobs Went Back to Apple in 1997 and $10,000 Became $18.6 Million. Jensen Huang May Be Next",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/steve-jobs-went-back-apple-034700097.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1794800820.0
     },
     {
-      "ticker": "BA",
-      "title": "Our Pick Of The Best British Value Stocks In November 2026",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/pick-best-british-value-stocks-180802339.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1794766082.0
-    },
-    {
-      "ticker": "AVGO",
-      "title": "Broadcom Heads 3 Top Growth Stocks To Watch",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/broadcom-heads-3-top-growth-180757072.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1794766077.0
-    },
-    {
-      "ticker": "COST",
-      "title": "Costco Is Paying Out $13 Billion in Special Dividends This Year. Is the Stock a Buy?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/costco-paying-13-billion-special-180502940.html",
-      "publisher": "Motley Fool",
-      "ts": 1794765902.0
+      "ticker": "NVDA",
+      "title": "KOSPI Falls Near 3% as Friday's Nvidia Selloff Reaches Seoul",
+      "link": "https://finance.yahoo.com/markets/world-indices/articles/kospi-falls-near-3-fridays-034120080.html",
+      "publisher": "BeInCrypto",
+      "ts": 1794800480.0
     },
     {
       "ticker": "AMD",
-      "title": "Nvidia Rival’s CEO on TSMC: “I Would Buy That Stock Every Day of the Week”",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-rival-ceo-tsmc-buy-175956534.html",
-      "publisher": "TIKR",
-      "ts": 1794765596.0
+      "title": "Jensen Huang Reportedly Considers Returning To Nvidia: FT",
+      "link": "https://www.investors.com/news/technology/jensen-huang-considers-returning-to-nvidia-stock/?src=A00220&yptr=yahoo",
+      "publisher": "Investor's Business Daily",
+      "ts": 1794800099.0
     },
     {
-      "ticker": "MSFT",
-      "title": "Morgan Stanley doubles down on Microsoft stock with bold outlook",
-      "link": "https://finance.yahoo.com/technology/ai/articles/morgan-stanley-doubles-down-microsoft-173300820.html",
+      "ticker": "AMZN",
+      "title": "Amazon vs. Target: Which Stock Is the Better Portfolio Addition?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/amazon-vs-target-stock-better-032002137.html",
+      "publisher": "Motley Fool",
+      "ts": 1794799202.0
+    },
+    {
+      "ticker": "COIN",
+      "title": "Coinbase Global (COIN) Is Upgrading Custody After 35% Of Bitcoin Was Flagged At Risk",
+      "link": "https://finance.yahoo.com/markets/crypto/articles/coinbase-global-coin-upgrading-custody-031124707.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1794798684.0
+    },
+    {
+      "ticker": "COP",
+      "title": "What Bernstein Sees Looming Over ConocoPhillips (COP)",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/bernstein-sees-looming-over-conocophillips-030556041.html",
+      "publisher": "Insider Monkey",
+      "ts": 1794798356.0
+    },
+    {
+      "ticker": "^IXIC",
+      "title": "Piper Sandler Flags a Risk at General Mills (GIS)",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/piper-sandler-flags-risk-general-030542589.html",
+      "publisher": "Insider Monkey",
+      "ts": 1794798342.0
+    },
+    {
+      "ticker": "^IXIC",
+      "title": "The $22.6 Billion Deal Behind Wolfe Research’s Call on PTC (PTC)",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/22-6-billion-deal-behind-030526155.html",
+      "publisher": "Insider Monkey",
+      "ts": 1794798326.0
+    },
+    {
+      "ticker": "DVN",
+      "title": "Sell Alert: 5 Stocks Analysts Downgraded on Thursday",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/sell-alert-5-stocks-analysts-030437408.html",
+      "publisher": "Insider Monkey",
+      "ts": 1794798277.0
+    },
+    {
+      "ticker": "AMD",
+      "title": "Buy Alert: 5 Stocks Analysts Upgraded on Thursday",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/buy-alert-5-stocks-analysts-025136531.html",
+      "publisher": "Insider Monkey",
+      "ts": 1794797496.0
+    },
+    {
+      "ticker": "AAPL",
+      "title": "Why Did AAPL, ZETA, FROG Stocks Jump To 52-Week Highs Last Week?c",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/why-did-aapl-zeta-frog-024109115.html",
+      "publisher": "Stocktwits",
+      "ts": 1794796869.0
+    },
+    {
+      "ticker": "AMZN",
+      "title": "Kevin O’Leary Backs Elon Musk’s Starlink as United CEO Calls It ‘Biggest Near-Term Competitive Advantage’ in 100 Years, Says Amazon Leo Is ‘A Mistake’",
+      "link": "https://finance.yahoo.com/technology/articles/kevin-o-leary-backs-elon-023007884.html",
+      "publisher": "Benzinga",
+      "ts": 1794796207.0
+    },
+    {
+      "ticker": "AXON",
+      "title": "What Is Axon Enterprise (AXON) Asking With Its $1.2 Billion Drone Push?",
+      "link": "https://finance.yahoo.com/technology/ai/articles/axon-enterprise-axon-asking-1-020713803.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1794794833.0
+    },
+    {
+      "ticker": "RKLB",
+      "title": "Rocket Lab (RKLB) Nears Its 100th Electron Launch",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/rocket-lab-rklb-nears-100th-020711401.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1794794831.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "Morgan Stanley’s Q3 filing reveals $5.6 billion SpaceX stock surprise",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/morgan-stanley-q3-filing-reveals-020300597.html",
       "publisher": "TheStreet",
-      "ts": 1794763980.0
+      "ts": 1794794580.0
     },
     {
-      "ticker": "AMD",
-      "title": "3 Beaten-Down Stocks Under $10 to Buy in November",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/3-beaten-down-stocks-under-172002121.html",
+      "ticker": "NVDA",
+      "title": "Nvidia stock steady as Jensen Huang reportedly weighs CEO comeback, Musk backs return",
+      "link": "https://finance.yahoo.com/markets/article/nvidia-stock-steady-as-jensen-huang-reportedly-weighs-ceo-comeback-musk-backs-return-015644730.html",
+      "publisher": "Yahoo Finance",
+      "ts": 1794794204.0
+    },
+    {
+      "ticker": "MU",
+      "title": "Why Micron Stock Is a Screaming Buy Before Year-End",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/why-micron-stock-screaming-buy-012002266.html",
       "publisher": "Motley Fool",
-      "ts": 1794763202.0
+      "ts": 1794792002.0
+    },
+    {
+      "ticker": "CHTR",
+      "title": "Consumer Defensive Stocks Extend Winning Streak To 6 Weeks As SPY, QQQ Rebound: TTD, CHTR, TSLA Lead Gains",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/consumer-defensive-stocks-extend-winning-011320620.html",
+      "publisher": "Stocktwits",
+      "ts": 1794791600.0
     }
   ]
 }
