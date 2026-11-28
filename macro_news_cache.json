@@ -1,6 +1,34 @@
 {
   "Politik/Makro": [
     {
+      "ticker": "DDOG",
+      "title": "Are recent outages bad for software?",
+      "link": "https://finance.yahoo.com/technology/articles/recent-outages-bad-software-033947446.html",
+      "publisher": "Investing.com",
+      "ts": 1795837187.0
+    },
+    {
+      "ticker": "CPRT",
+      "title": "3 Low Debt Stocks That Look Built for Higher Interest Rates",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/3-low-debt-stocks-look-031300591.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1795835580.0
+    },
+    {
+      "ticker": "^GSPC",
+      "title": "The Federal Reserve sends a troubling signal to S&P 500 investors",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/federal-sends-troubling-signal-p-023700278.html",
+      "publisher": "TheStreet",
+      "ts": 1795833420.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "Warning for Alphabet Investors: MScience Data Show Q4 Search Revenue Tracking Below Consensus",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/warning-alphabet-investors-mscience-data-232123369.html",
+      "publisher": "TIKR",
+      "ts": 1795821683.0
+    },
+    {
       "ticker": "EW",
       "title": "Edwards Lifesciences (EW) Stock Still Looks Reasonable On Cash Flow",
       "link": "https://finance.yahoo.com/markets/stocks/articles/edwards-lifesciences-ew-stock-still-221200698.html",
@@ -13,6 +41,13 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/ai-chip-stocks-swung-wildly-204129003.html",
       "publisher": "Investing.com",
       "ts": 1795812089.0
+    },
+    {
+      "ticker": "AAPL",
+      "title": "OpenAI Reportedly Fires Back At Apple Over Trade Secrets And Hardware Suppliers",
+      "link": "https://finance.yahoo.com/technology/ai/articles/openai-reportedly-fires-back-apple-201353708.html",
+      "publisher": "Stocktwits",
+      "ts": 1795810433.0
     },
     {
       "ticker": "^GSPC",
@@ -104,50 +139,36 @@
       "link": "https://finance.yahoo.com/economy/articles/adobe-sees-record-21-3b-124500481.html",
       "publisher": "Moneywise",
       "ts": 1795783500.0
-    },
-    {
-      "ticker": "BAC",
-      "title": "JPMorgan, BofA, Citigroup issue same red alert over US bank accounts — official policy changes shift liability to you",
-      "link": "https://finance.yahoo.com/markets/currencies/articles/jpmorgan-bofa-citigroup-issue-same-123000336.html",
-      "publisher": "Moneywise",
-      "ts": 1795782600.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "Fed Blames High Stock Prices Partly on “Enthusiasm for Super Intelligence.” Microsoft Has More to Lose Than Nvidia",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/fed-blames-high-stock-prices-115033253.html",
-      "publisher": "TIKR",
-      "ts": 1795780233.0
-    },
-    {
-      "ticker": "TSM",
-      "title": "President Trump Says 'Huang Is Happy to Return as Nvidia CEO'",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/president-trump-says-huang-happy-111035641.html",
-      "publisher": "GuruFocus.com",
-      "ts": 1795777835.0
-    },
-    {
-      "ticker": "AXP",
-      "title": "Warren Buffett's Successor, Greg Abel, Has 47% of Berkshire Hathaway's $346 Billion Portfolio Invested in 3 Proven Winners",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/warren-buffetts-successor-greg-abel-102602983.html",
-      "publisher": "Motley Fool",
-      "ts": 1795775162.0
-    },
-    {
-      "ticker": "BBY",
-      "title": "Shoppers helped pay Trump’s tariffs. Now Target, Best Buy, and Kohl’s are booking $387 million in refunds",
-      "link": "https://finance.yahoo.com/economy/policy/articles/shoppers-helped-pay-trump-tariffs-083100398.html",
-      "publisher": "Fortune",
-      "ts": 1795768260.0
     }
   ],
   "Wirtschaft": [
+    {
+      "ticker": "^GSPC",
+      "title": "Americans Are More Exposed to the Stock Market Than Ever Before",
+      "link": "https://www.wsj.com/finance/stocks/us-stock-market-wealth-0caf5bac?siteid=yhoof2&yptr=yahoo",
+      "publisher": "The Wall Street Journal",
+      "ts": 1795831200.0
+    },
+    {
+      "ticker": "CAH",
+      "title": "Cardinal Health (CAH) Stock Looks Fully Valued On Current Earnings",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/cardinal-health-cah-stock-looks-001359568.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1795824839.0
+    },
     {
       "ticker": "AMZN",
       "title": "Meta’s (META) Muse Could Unlock a New Revenue Stream",
       "link": "https://finance.yahoo.com/technology/ai/articles/meta-meta-muse-could-unlock-232353308.html",
       "publisher": "TipRanks",
       "ts": 1795821833.0
+    },
+    {
+      "ticker": "ADBE",
+      "title": "S&P 500, Nasdaq End Best Week In Over A Year As AI Optimism Makes Comeback — VZ, ANT, ADBE, TSLA In Focus",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/p-500-nasdaq-end-best-212946185.html",
+      "publisher": "Stocktwits",
+      "ts": 1795814986.0
     },
     {
       "ticker": "DG",
@@ -260,30 +281,51 @@
       "link": "https://finance.yahoo.com/technology/ai/articles/dual-ai-growth-catalysts-position-164930131.html",
       "publisher": "Insider Monkey",
       "ts": 1795798170.0
-    },
-    {
-      "ticker": "CHTR",
-      "title": "Liberty Global (LBTYB) Stock Is Up 9.5% Today in Broad Market Rally",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/liberty-global-lbtyb-stock-9-163009971.html",
-      "publisher": "GuruFocus.com",
-      "ts": 1795797009.0
-    },
-    {
-      "ticker": "ADSK",
-      "title": "MongoDB Set to Report Q3 Earnings: Is the MDB Stock a Smart Buy?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/mongodb-set-report-q3-earnings-161700688.html",
-      "publisher": "Zacks",
-      "ts": 1795796220.0
-    },
-    {
-      "ticker": "VRT",
-      "title": "3 Growth Stocks With Earnings Growth Up To 86% To Watch",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/3-growth-stocks-earnings-growth-161308522.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1795795988.0
     }
   ],
   "Technologie": [
+    {
+      "ticker": "SMSN.L",
+      "title": "Taiwan, South Korea share chip whiplash but not the factory boom",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/taiwan-south-korea-share-chip-050619945.html",
+      "publisher": "IntelliNews",
+      "ts": 1795842379.0
+    },
+    {
+      "ticker": "AMAT",
+      "title": "Jim Cramer's says another chip stock down 56% is \"comically cheap\"",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/jim-cramers-says-another-chip-033300118.html",
+      "publisher": "TheStreet",
+      "ts": 1795836780.0
+    },
+    {
+      "ticker": "CSCO",
+      "title": "Cisco Systems (CSCO) Expands AI Security Push With Two New Enterprise Tie Ups",
+      "link": "https://finance.yahoo.com/technology/ai/articles/cisco-systems-csco-expands-ai-020947010.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1795831787.0
+    },
+    {
+      "ticker": "AAPL",
+      "title": "OpenAI says a spy handed Apple secret plans for AI devices that could 'outcompete' the iPhone maker on its 'own turf'",
+      "link": "https://finance.yahoo.com/technology/ai/articles/openai-says-spy-handed-apple-010000370.html",
+      "publisher": "Moneywise",
+      "ts": 1795827600.0
+    },
+    {
+      "ticker": "AAPL",
+      "title": "2027 smartphone market outlook: Apple to outperform as shipments fall 5%",
+      "link": "https://finance.yahoo.com/technology/articles/2027-smartphone-market-outlook-apple-003322633.html",
+      "publisher": "Investing.com",
+      "ts": 1795826002.0
+    },
+    {
+      "ticker": "GOOGL",
+      "title": "Plot Twist: Nvidia’s Vera Rubin Gets 2-6.5x GB300’s Tokens per Dollar. Amazon’s Trainium Edge Was Against the Old Chip",
+      "link": "https://finance.yahoo.com/technology/articles/plot-twist-nvidia-vera-rubin-232355877.html",
+      "publisher": "TIKR",
+      "ts": 1795821835.0
+    },
     {
       "ticker": "ASML",
       "title": "Is ASML Holding (ENXTAM:ASML) Undervalued As Dutch Lawmakers Push Back On US Chip Curbs?",
@@ -381,190 +423,148 @@
       "link": "https://finance.yahoo.com/markets/stocks/articles/stanley-druckenmiller-david-tepper-5-182819474.html",
       "publisher": "TIKR",
       "ts": 1795804099.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "What Does Alphabet (GOOGL) Need To Prove After The Air Force Cloud Breach?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/does-alphabet-googl-prove-air-181025421.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1795803025.0
-    },
-    {
-      "ticker": "CAT",
-      "title": "Caterpillar (CAT) Stock May Be 44% Below Fair Value Despite AI Sell Off",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/caterpillar-cat-stock-may-44-181003127.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1795803003.0
-    },
-    {
-      "ticker": "ADBE",
-      "title": "ADBE Stock On Track For 4-Day Rally: Adobe Reports Surge In AI Traffic, $7.1B Thanksgiving Sales",
-      "link": "https://finance.yahoo.com/technology/ai/articles/adbe-stock-track-4-day-173901382.html",
-      "publisher": "Stocktwits",
-      "ts": 1795801141.0
-    },
-    {
-      "ticker": "SMSN.L",
-      "title": "Micron Faces New AI Memory Threat as Huawei Develops HBM Chip",
-      "link": "https://finance.yahoo.com/technology/ai/articles/micron-faces-ai-memory-threat-171328560.html",
-      "publisher": "GuruFocus.com",
-      "ts": 1795799608.0
-    },
-    {
-      "ticker": "COHR",
-      "title": "Coherent Jumps 12% as Optical Stocks Rebound From Wednesday’s AI Selloff; Applied Optoelectronics and Lumentum Rise 7%",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/coherent-jumps-12-optical-stocks-170638033.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1795799198.0
-    },
-    {
-      "ticker": "BKR",
-      "title": "C3.ai vs. UiPath: Which Technology Stock Is a Better Buy for 2027?",
-      "link": "https://finance.yahoo.com/technology/ai/articles/c3-ai-vs-uipath-technology-165726738.html",
-      "publisher": "Motley Fool",
-      "ts": 1795798646.0
     }
   ],
   "Sonstiges": [
     {
-      "ticker": "CBOE",
-      "title": "Cboe Global Markets (CBOE) Stock May Be Fully Priced After KPI Options Launch",
-      "link": "https://finance.yahoo.com/markets/options/articles/cboe-global-markets-cboe-stock-231023103.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1795821023.0
-    },
-    {
-      "ticker": "BLK",
-      "title": "BlackRock (BLK) Surpasses Market Returns: Some Facts Worth Knowing",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/blackrock-blk-surpasses-market-returns-221502725.html",
-      "publisher": "Zacks",
-      "ts": 1795817702.0
-    },
-    {
-      "ticker": "DECK",
-      "title": "How Holiday Retail Partnership Will Impact Deckers Outdoor Stock",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/holiday-retail-partnership-impact-deckers-221311452.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1795817591.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "What Amazon.com (AMZN)'s UK Car Marketplace Launch Means For Shareholders",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/amazon-com-amzn-uk-car-221235075.html",
-      "publisher": "Simply Wall St.",
-      "ts": 1795817555.0
-    },
-    {
       "ticker": "COIN",
-      "title": "Anthropic vs. Coinbase: One Stock Is Overhyped, One Is Oversold, Says Top Investor",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/anthropic-vs-coinbase-one-stock-221205035.html",
-      "publisher": "TipRanks",
-      "ts": 1795817525.0
+      "title": "Coinbase CEO Brian Armstrong Scales Back Bitcoin Prediction, Still Sees Nearly 7x Upside By 2030",
+      "link": "https://finance.yahoo.com/markets/crypto/articles/coinbase-ceo-brian-armstrong-scales-051847326.html",
+      "publisher": "Stocktwits",
+      "ts": 1795843127.0
     },
     {
-      "ticker": "CBOE",
-      "title": "Have Cboe Global Markets (CBOE) Shares Run 45% Above Fair Value Following ETF Outflows?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/cboe-global-markets-cboe-shares-221155887.html",
+      "ticker": "AMGN",
+      "title": "Top 3 Dividend Stocks To Watch In November 2026",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/top-3-dividend-stocks-watch-041115917.html",
       "publisher": "Simply Wall St.",
-      "ts": 1795817515.0
+      "ts": 1795839075.0
     },
     {
-      "ticker": "COST",
-      "title": "Costco (COST) Rises Yet Lags Behind Market: Some Facts Worth Knowing",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/costco-cost-rises-yet-lags-214503212.html",
-      "publisher": "Zacks",
-      "ts": 1795815903.0
-    },
-    {
-      "ticker": "C",
-      "title": "Citigroup (C) Outperforms Broader Market: What You Need to Know",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/citigroup-c-outperforms-broader-market-214502507.html",
-      "publisher": "Zacks",
-      "ts": 1795815902.0
-    },
-    {
-      "ticker": "DDOG",
-      "title": "Palantir Stock (PLTR) Has No Room for Error at This Valuation",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/palantir-stock-pltr-no-room-213800829.html",
-      "publisher": "TipRanks",
-      "ts": 1795815480.0
-    },
-    {
-      "ticker": "AMZN",
-      "title": "Billionaire Chase Coleman’s Tiger Global Raised Its Cerebras Stake 48% to $790 Million",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/billionaire-chase-coleman-tiger-global-213757846.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1795815477.0
-    },
-    {
-      "ticker": "BBY",
-      "title": "Skip the Doorbusters, Collect the Dividends: $90,000 in Target, Macy’s, and Best Buy Pays $2,885 a Year",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/skip-doorbusters-collect-dividends-90-213405960.html",
-      "publisher": "24/7 Wall St.",
-      "ts": 1795815245.0
-    },
-    {
-      "ticker": "GOOGL",
-      "title": "5 Best Tech Stocks to Buy for 2027 According to Hedge Funds",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/5-best-tech-stocks-buy-030856400.html",
-      "publisher": "Insider Monkey",
-      "ts": 1795814936.0
-    },
-    {
-      "ticker": "ETN",
-      "title": "Is NextEra A Safe Shelter Or A Fast Borrower?",
-      "link": "https://finance.yahoo.com/energy/articles/nextera-safe-shelter-fast-borrower-212843907.html",
-      "publisher": "Trefis",
-      "ts": 1795814923.0
-    },
-    {
-      "ticker": "CEG",
-      "title": "Is Constellation Energy (CEG) Below Fair Value After Its $5b Asset Sale?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/constellation-energy-ceg-below-fair-211346306.html",
+      "ticker": "ABBV",
+      "title": "AbbVie (ABBV) Stock Could Trade Below Fair Value As Its 193% Run Continues",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/abbvie-abbv-stock-could-trade-040954399.html",
       "publisher": "Simply Wall St.",
-      "ts": 1795814026.0
+      "ts": 1795838994.0
     },
     {
-      "ticker": "AMD",
-      "title": "Jensen Huang Is Back. Nvidia’s (NVDA) Bull Case Remains",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/jensen-huang-back-nvidia-nvda-210600721.html",
-      "publisher": "TipRanks",
-      "ts": 1795813560.0
+      "ticker": "KO",
+      "title": "3 Reasons I’d Be Nervous Buying Coca-Cola’s Stock Today",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/3-reasons-d-nervous-buying-034158527.html",
+      "publisher": "TIKR",
+      "ts": 1795837318.0
     },
     {
       "ticker": "^GSPC",
-      "title": "Review & Preview: Gratitude Trade",
-      "link": "https://www.barrons.com/articles/stocks-today-review-preview-560b235d?siteid=yhoof2&yptr=yahoo",
-      "publisher": "Barrons.com",
-      "ts": 1795813200.0
+      "title": "Nvidia Stock Has Swung 5% or More in a Single Day 5 Times in November. Here's How Big a Position I Think Makes Sense.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/nvidia-stock-swung-5-more-031302617.html",
+      "publisher": "Motley Fool",
+      "ts": 1795835582.0
     },
     {
-      "ticker": "PANW",
-      "title": "Your Palo Alto Networks Thesis Has One Loose End",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/palo-alto-networks-thesis-one-204630643.html",
-      "publisher": "Trefis",
-      "ts": 1795812390.0
+      "ticker": "AMZN",
+      "title": "Amazon takes its car store abroad for the first time in 2027",
+      "link": "https://finance.yahoo.com/small-business/articles/amazon-takes-car-store-abroad-030300487.html",
+      "publisher": "TheStreet",
+      "ts": 1795834980.0
     },
     {
-      "ticker": "AMP",
-      "title": "Millions of Americans are retiring—lifting this wealth stock 13%",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/millions-americans-retiring-lifting-wealth-204146017.html",
+      "ticker": "BBY",
+      "title": "3 Undervalued Stocks Trading Up To 36% Below Cash Flow Value",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/3-undervalued-stocks-trading-36-021020174.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1795831820.0
+    },
+    {
+      "ticker": "EL",
+      "title": "Leadership Changes Might Change The Case For Investing In WPP (LSE:WPP)",
+      "link": "https://finance.yahoo.com/media-advertising/articles/leadership-changes-might-change-case-020747805.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1795831667.0
+    },
+    {
+      "ticker": "^GSPC",
+      "title": "Wall Street stages major comeback during Thanksgiving-shortened trading week",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/wall-street-stages-major-comeback-020010550.html",
+      "publisher": "Fox Business",
+      "ts": 1795831210.0
+    },
+    {
+      "ticker": "C",
+      "title": "Citigroup’s $35 Billion Bookkeeping Snafu Sparks Shake-Up in Upper Ranks",
+      "link": "https://www.wsj.com/finance/banking/citigroups-35-billion-bookkeeping-snafu-sparks-shake-up-in-upper-ranks-71d8afe9?siteid=yhoof2&yptr=yahoo",
+      "publisher": "The Wall Street Journal",
+      "ts": 1795830240.0
+    },
+    {
+      "ticker": "ADBE",
+      "title": "U.S. Black Friday online sales set to exceed $13 billion, Adobe predicts",
+      "link": "https://finance.yahoo.com/economy/articles/u-black-friday-online-sales-012646652.html",
       "publisher": "Investing.com",
-      "ts": 1795812106.0
+      "ts": 1795829206.0
     },
     {
-      "ticker": "CME",
-      "title": "Market Swings Spooked Retail Traders—And Lifted CME Group Up 18%",
-      "link": "https://finance.yahoo.com/markets/options/articles/market-swings-spooked-retail-traders-204136574.html",
-      "publisher": "Investing.com",
-      "ts": 1795812096.0
+      "ticker": "AAPL",
+      "title": "Apple Is Beating the Rest of the \"Magnificent Seven\" in 2026. Can It Do It Again in 2027?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/apple-beating-rest-magnificent-seven-011910841.html",
+      "publisher": "Motley Fool",
+      "ts": 1795828750.0
     },
     {
-      "ticker": "MRNA",
-      "title": "Have You Already Missed Moderna Stock's Run?",
-      "link": "https://finance.yahoo.com/markets/stocks/articles/already-missed-moderna-stocks-run-203602621.html",
-      "publisher": "Trefis",
-      "ts": 1795811762.0
+      "ticker": "S",
+      "title": "Should Singapore Defence Partnership Require Action From SentinelOne (S) Investors?",
+      "link": "https://finance.yahoo.com/technology/ai/articles/singapore-defence-partnership-require-action-011017783.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1795828217.0
+    },
+    {
+      "ticker": "AAPL",
+      "title": "Vanguard's Growth ETF Has 3 Stocks Making Up More Than a Third of It. Only 1 Has Held Up in the Tech Sell-Off.",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/vanguards-growth-etf-3-stocks-010902414.html",
+      "publisher": "Motley Fool",
+      "ts": 1795828142.0
+    },
+    {
+      "ticker": "ACN",
+      "title": "Accenture vs. Intuit: Which Technology Stock Is a Better Buy for 2027?",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/accenture-vs-intuit-technology-stock-010626724.html",
+      "publisher": "Motley Fool",
+      "ts": 1795827986.0
+    },
+    {
+      "ticker": "MU",
+      "title": "A 60-Year-Old Who Bought 1,000 Micron Shares at $192 Just Watched Jim Cramer’s Investing Club Call It ‘Comically Cheap.’ Here’s What’s Left of His $1 Million Gain",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/60-old-bought-1-000-004100723.html",
+      "publisher": "24/7 Wall St.",
+      "ts": 1795826460.0
+    },
+    {
+      "ticker": "ANET",
+      "title": "Arista Networks vs. Snowflake: Which Technology Stock Is a Better Buy for 2027?",
+      "link": "https://finance.yahoo.com/technology/articles/arista-networks-vs-snowflake-technology-004003902.html",
+      "publisher": "Motley Fool",
+      "ts": 1795826403.0
+    },
+    {
+      "ticker": "COST",
+      "title": "Black Friday Push Could Be A Big Moment For Costco Stock (COST)",
+      "link": "https://finance.yahoo.com/markets/stocks/articles/black-friday-push-could-big-001331089.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1795824811.0
+    },
+    {
+      "ticker": "CBOE",
+      "title": "Did Prediction Market Push Just Shift Cboe Stock's Investment Narrative?",
+      "link": "https://finance.yahoo.com/markets/options/articles/did-prediction-market-push-just-001259366.html",
+      "publisher": "Simply Wall St.",
+      "ts": 1795824779.0
+    },
+    {
+      "ticker": "ABBV",
+      "title": "Biotech Dealmaker: Sanofi’s $41B Insmed Buyout Anchors Holiday Week As Lilly Continues Buying Spree",
+      "link": "https://finance.yahoo.com/healthcare/articles/stocktwits-biotech-dealmaker-sanofi-41b-001023937.html",
+      "publisher": "Stocktwits",
+      "ts": 1795824623.0
     }
   ]
 }
